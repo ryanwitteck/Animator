@@ -51,6 +51,7 @@ public class Posn {
     this.y += dy;
     return new Posn(this.x, this.y);
   }
+
   /**
    * Sets this Posn to the given coordinates.
    *

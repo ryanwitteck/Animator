@@ -22,12 +22,14 @@ public interface IShape {
 
   /**
    * Places this object at the given coordinates.
+   *
    * @param p the desired posn
    */
   void place(Posn p);
 
   /**
    * Moves this object by dx and dy.
+   *
    * @param dx the change in x.
    * @param dy the change in y.
    */
@@ -35,11 +37,11 @@ public interface IShape {
 
   /**
    * Changes the color of this object.
+   *
    * @param r the red value
    * @param g the green value
    * @param b the blue value
    */
   void setColor(int r, int g, int b);
-
 
 }
