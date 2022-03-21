@@ -6,8 +6,8 @@ package model;
 public class Posn {
 
   //TODO make bounds based on controller specifications.
-  private int x;
-  private int y;
+  private double x;
+  private double y;
 
   /**
    * Our contructor for Posn.
@@ -26,7 +26,7 @@ public class Posn {
    *
    * @return the x value
    */
-  public int getX() {
+  public double getX() {
     return this.x;
   }
 
@@ -35,7 +35,7 @@ public class Posn {
    *
    * @return the y value
    */
-  public int getY() {
+  public double getY() {
     return this.y;
   }
 
@@ -46,10 +46,10 @@ public class Posn {
    * @param dy change in y.
    * @return newly formed Posn.
    */
-  public Posn move(int dx, int dy) {
+  public Posn move(double dx, double dy) {
     this.x += dx;
     this.y += dy;
-    return new Posn(this.x, this.y);
+    return new Posn((int)Math.round(this.x), (int)Math.round(this.y));
   }
 
   /**
@@ -78,7 +78,7 @@ public class Posn {
 
   @Override
   public int hashCode() {
-    return x + y;
+    return (int)(x + y);
   }
 
   @Override
