@@ -36,4 +36,11 @@ public interface IShape {
    */
   void setColor(int r, int g, int b);
 
+  /**
+   * Changes the color of this object.
+   *
+   * @param c the color
+   */
+  void setColor(Color c);
+
 }

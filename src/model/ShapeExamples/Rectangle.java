@@ -45,4 +45,12 @@ public class Rectangle implements IShape {
   public void setColor(int r, int g, int b) {
     this.color = new Color(r, g, b);
   }
+
+  @Override
+  public void setColor(Color c) {
+    if (c == null) {
+      throw new IllegalArgumentException("Cannot have a null color");
+    }
+    this.color = c;
+  }
 }
