@@ -32,7 +32,7 @@ public class CompoundShape implements Movable, Drawable {
   }
 
   @Override
-  public void move(int dx, int dy) {
+  public void move(double dx, double dy) {
     this.posn.move(dx, dy);
   }
 

@@ -24,5 +24,5 @@ public interface Movable {
    * @param dx the change in x.
    * @param dy the change in y.
    */
-  void move(int dx, int dy);
+  void move(double dx, double dy);
 }
