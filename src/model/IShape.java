@@ -5,15 +5,7 @@ package model;
  */
 public interface IShape {
 
-  /**
-   * Makes this object visible if it is not already.
-   */
-  void makeVisible();
 
-  /**
-   * Makes this object invisible if it is not already.
-   */
-  void makeInvisible();
 
   /**
    * Places this object at the given coordinates.
