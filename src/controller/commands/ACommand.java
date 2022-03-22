@@ -16,6 +16,9 @@ public abstract class ACommand implements ICommand {
 
   @Override
   public int getStartTick() {
+    if (complete) {
+      return -1;
+    }
     return startTick;
   }
 

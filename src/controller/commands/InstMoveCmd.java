@@ -20,8 +20,8 @@ public class InstMoveCmd extends InstantCmd {
 
   @Override
   public void execute() {
-    super.execute();
     ((Movable) obj).place(endPos);
+    super.execute();
   }
 
   @Override
