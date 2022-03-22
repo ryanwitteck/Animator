@@ -2,56 +2,30 @@ package model;
 
 import java.util.List;
 
-import model.shapes.IShape;
+import controller.commands.ICommand;
+import model.ObjectInterfaces.Drawable;
 
 public class FirstAnimation implements IAnimation {
+  private final List<Drawable> objects;
 
-  private final List<IShape> shapes;
-
-  public FirstAnimation(List<IShape> shapes) {
-    if (shapes == null) {
+  public FirstAnimation(List<Drawable> objects) {
+    if (objects == null) {
       throw new IllegalArgumentException("Cannot have null arguments.");
     }
-    this.shapes = shapes;
-  }
-
-
-  @Override
-  public void addShape(IShape shape) {
-    this.shapes.add(shape);
+    this.objects = objects;
   }
 
   @Override
-  public void changeColor(int index, Color before, Color after) {
-    if (index < 0 || index >= this.shapes.size() || before == null || after == null) {
-      throw new IllegalArgumentException("Invalid arguments");
-    }
-
-    this.shapes.get(index).setColor(after);
+  public void execute(ICommand cmd) {
+    cmd.execute();
   }
 
   @Override
-  public void changePosition(int index, Posn before, Posn after) {
-
+  public List<Drawable> listObjects() {
+    return objects;
   }
 
-  @Override
-  public void stretchHorizontal(int index, int before, int after) {
-
-  }
-
-  @Override
-  public void stretchVertical(int index, int before, int after) {
-
-  }
-
-  @Override
-  public void scaleUp(int index, int before, int after) {
-
-  }
-
-  @Override
-  public void scaleDown(int index, int before, int after) {
-
+  private boolean inBounds(int index) {
+    return (index >= 0 && index < this.objects.size());
   }
 }

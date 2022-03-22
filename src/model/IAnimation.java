@@ -1,43 +1,22 @@
 package model;
 
-import model.shapes.IShape;
+import java.util.List;
+
+import controller.commands.ICommand;
+import model.ObjectInterfaces.Drawable;
 
 public interface IAnimation {
-  // Add shape(instant - all attributes to be created),
-  // change color, change position, change dimensions
 
   /**
-   * Adds a shape to the canvas at the current tick.
-   *
-   * @param shape the desired shape.
+   * Execute the command of the function object given to it.
+   * @param cmd the function object
    */
-  void addShape(IShape shape);
+  void execute(ICommand cmd);
 
   /**
-   * Changes the color of the shape at the desired point in the list.
-   *
-   * @param index  index of the shape in the list of shapes.
-   * @param before the color before the change.
-   * @param after  the color after the change.
+   * Get the list of animated objects.
+   * @return the list of objects being animated
    */
-  void changeColor(int index, Color before, Color after);
-
-  /**
-   * Changes the position of the shape at the desired point in the list.
-   *
-   * @param index  index of the shape
-   * @param before the posn before
-   * @param after  the posn after
-   */
-  void changePosition(int index, Posn before, Posn after);
-
-  void stretchHorizontal(int index, int before, int after);
-
-  void stretchVertical(int index, int before, int after);
-
-
-  void scaleUp(int index, int before, int after);
-
-  void scaleDown(int index, int before, int after);
+  List<Drawable> listObjects();
 }
 
