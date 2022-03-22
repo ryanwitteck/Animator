@@ -1,11 +1,22 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
+// TODO -- document
 public abstract class AAnimation implements IAnimation {
   protected List<IFrame> frames;
-  protected int tick;
   protected List<String> cmdLog;
+  protected int tick;
+  protected int nFrames;
+
+  // TODO -- document
+  public AAnimation() {
+    frames = new ArrayList<IFrame>();
+    cmdLog = new ArrayList<String>();
+    tick = 0;
+    nFrames = 0;
+  }
 
   @Override
   public IFrame getFrame(int tick) {
@@ -57,6 +68,6 @@ public abstract class AAnimation implements IAnimation {
 
   // TODO -- document
   protected boolean inBounds(int index) {
-    return (index >= 0 && index < this.frames.size());
+    return (index >= 0 && index < this.nFrames);
   }
 }
