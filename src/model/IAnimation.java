@@ -1,5 +1,7 @@
 package model;
 
+import model.shapes.IShape;
+
 public interface IAnimation {
   // Add shape(instant - all attributes to be created),
   // change color, change position, change dimensions

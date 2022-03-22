@@ -1,9 +1,7 @@
-package model.ShapeExamples;
+package model.shapes;
 
 
 import model.Color;
-import model.IShape;
-import model.Posn;
 
 /**
  * Class that represents a rectangle. May be changed when using swing later on for the view.

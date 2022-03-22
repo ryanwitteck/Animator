@@ -2,6 +2,8 @@ package model;
 
 import java.util.List;
 
+import model.shapes.IShape;
+
 public class FirstAnimation implements IAnimation {
 
   private final List<IShape> shapes;

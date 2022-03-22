@@ -1,7 +1,6 @@
-package model.ShapeExamples;
+package model.shapes;
 
 import model.Color;
-import model.IShape;
 import model.Posn;
 
 public abstract class ABasicShape implements IShape {

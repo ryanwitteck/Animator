@@ -1,11 +1,8 @@
-package model.ShapeExamples;
+package model.shapes;
 
 import java.util.List;
 
 import model.Color;
-import model.IShape;
-import model.ObjectInterfaces.Drawable;
-import model.ObjectInterfaces.Movable;
 import model.Posn;
 
 /**

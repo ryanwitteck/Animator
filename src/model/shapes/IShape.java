@@ -1,4 +1,4 @@
-package model;
+package model.shapes;
 
 import model.ObjectInterfaces.Drawable;
 import model.ObjectInterfaces.Movable;
