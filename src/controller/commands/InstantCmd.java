@@ -1,6 +1,6 @@
 package controller.commands;
 
-import model.IShape;
+import model.ObjectInterfaces.Drawable;
 
 // TODO -- Document
 public class InstantCmd extends ACommand {
@@ -10,8 +10,8 @@ public class InstantCmd extends ACommand {
   }
 
   @Override
-  public void execute(IShape s) {
-    super.execute(s);
+  public void execute(Drawable obj) {
+    super.execute(obj);
     this.complete = true;
   }
 }

@@ -1,6 +1,6 @@
 package controller.commands;
 
-import model.IShape;
+import model.ObjectInterfaces.Drawable;
 
 // TODO -- document
 public class GradualCmd extends ACommand {
@@ -12,8 +12,8 @@ public class GradualCmd extends ACommand {
   }
 
   @Override
-  public void execute(IShape s) {
-    super.execute(s);
+  public void execute(Drawable obj) {
+    super.execute(obj);
     startTick++;
     this.complete = startTick >= endTick;
   }
