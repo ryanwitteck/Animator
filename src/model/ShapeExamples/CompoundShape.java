@@ -12,11 +12,13 @@ import model.Posn;
  * Class that represents a shape made of multiple shapes.
  * May be changed when using swing later on for the view.
  */
-public class CompoundShape implements Movable, Drawable {
+public class CompoundShape implements IShape {
+  private String name;
   private Posn posn;
   private List<IShape> shapes;
 
-  public CompoundShape(int x, int y, List<IShape> shapes) {
+  public CompoundShape(String name, int x, int y, List<IShape> shapes) {
+    this.name = name;
     this.posn = new Posn(x, y);
     this.shapes = shapes;
   }
@@ -34,6 +36,11 @@ public class CompoundShape implements Movable, Drawable {
   @Override
   public void move(double dx, double dy) {
     this.posn.move(dx, dy);
+  }
+
+  @Override
+  public String getName() {
+    return name;
   }
 
   @Override

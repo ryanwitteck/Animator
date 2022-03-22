@@ -5,12 +5,24 @@ import model.IShape;
 import model.Posn;
 
 public abstract class ABasicShape implements IShape {
+  private String name;
   private Color color;
   private Posn posn;
 
-  public ABasicShape(int x, int y, Color color) {
+  public ABasicShape(String name, int x, int y, Color color) {
+    this.name = name;
     this.color = color;
     this.posn = new Posn(x, y);
+  }
+
+  @Override
+  public String getName() {
+    return this.name;
+  }
+
+  @Override
+  public Posn getPos() {
+    return this.posn;
   }
 
   @Override

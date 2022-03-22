@@ -25,4 +25,10 @@ public interface Movable {
    * @param dy the change in y.
    */
   void move(double dx, double dy);
+
+  /**
+   * Get the current position of this object.
+   * @return the position of this object.
+   */
+  Posn getPos();
 }

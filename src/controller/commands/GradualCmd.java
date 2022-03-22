@@ -3,17 +3,17 @@ package controller.commands;
 import model.ObjectInterfaces.Drawable;
 
 // TODO -- document
-public class GradualCmd extends ACommand {
+public abstract class GradualCmd extends ACommand {
   protected int endTick;
 
-  public GradualCmd(int start, int end) {
-    super(start);
+  public GradualCmd(Drawable obj, int start, int end) {
+    super(obj, start);
     this.endTick = end;
   }
 
   @Override
-  public void execute(Drawable obj) {
-    super.execute(obj);
+  public void execute() {
+    super.execute();
     startTick++;
     this.complete = startTick >= endTick;
   }

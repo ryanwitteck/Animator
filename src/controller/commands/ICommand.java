@@ -13,8 +13,13 @@ public interface ICommand {
   public int getStartTick();
 
   /**
-   * Execute this command on the given IShape.
-   * @param s The given shape.
+   * Execute this command.
    */
-  public void execute(Drawable obj);
+  public void execute();
+
+  /**
+   * Get the string representation of running this cmd.
+   * @return the string representation of running this cmd.
+   */
+  public String logCmd();
 }

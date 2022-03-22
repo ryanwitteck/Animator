@@ -12,8 +12,8 @@ public class Rectangle extends ABasicShape {
   private int width;
   private int height;
 
-  public Rectangle(int x, int y, int width, int height, Color color) {
-    super(x, y, color);
+  public Rectangle(String name, int x, int y, int width, int height, Color color) {
+    super(name, x, y, color);
     if (width < 0 || height < 0) {
       throw new IllegalArgumentException("Cannot have a size less than 0.");
     }

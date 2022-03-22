@@ -3,15 +3,15 @@ package controller.commands;
 import model.ObjectInterfaces.Drawable;
 
 // TODO -- Document
-public class InstantCmd extends ACommand {
+public abstract class InstantCmd extends ACommand {
 
-  public InstantCmd(int tick) {
-    super(tick);
+  public InstantCmd(Drawable obj, int tick) {
+    super(obj, tick);
   }
 
   @Override
-  public void execute(Drawable obj) {
-    super.execute(obj);
+  public void execute() {
+    super.execute();
     this.complete = true;
   }
 }
