@@ -23,6 +23,11 @@ public abstract class ACommand implements ICommand {
   }
 
   @Override
+  public boolean isComplete() {
+    return complete;
+  }
+
+  @Override
   public void execute() {
     if (complete) {
       throw new IllegalStateException("Error: Command already executed");

@@ -19,6 +19,12 @@ public interface ICommand {
   public int getEndTick();
 
   /**
+   * Get whether this command is finished running.
+   * @return whether this command is finished
+   */
+  public boolean isComplete();
+
+  /**
    * Execute this command.
    */
   public void execute();
