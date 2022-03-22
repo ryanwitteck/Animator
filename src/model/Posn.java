@@ -10,15 +10,26 @@ public class Posn {
   private double y;
 
   /**
-   * Our contructor for Posn.
+   * Our constructor for Posn.
    *
    * @param x the x value
    * @param y the y value
    */
-  public Posn(int x, int y) {
+  public Posn(double x, double y) {
     //TODO enforce bounds from controller or assignment specifications.
     this.x = x;
     this.y = y;
+  }
+
+  /**
+   * Our constructor for Posn taking another Posn as arguments.
+   *
+   * @param posn the position to copy
+   */
+  public Posn(Posn posn) {
+    //TODO enforce bounds from controller or assignment specifications.
+    this.x = posn.x;
+    this.y = posn.y;
   }
 
   /**
@@ -70,7 +81,7 @@ public class Posn {
     }
     if (other instanceof Posn) {
       Posn a = (Posn) other;
-      return this.x == a.x && this.y == a.y;
+      return this.x - a.x < 0.01 && this.y - a.y < 0.01;
     } else {
       return false;
     }
