@@ -78,7 +78,7 @@ public class Posn {
 
   @Override
   public int hashCode() {
-    return (int)(x + y);
+    return Double.hashCode(x + y);
   }
 
   @Override
