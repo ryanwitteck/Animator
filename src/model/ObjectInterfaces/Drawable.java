@@ -7,6 +7,12 @@ import model.attributes.Color;
  */
 public interface Drawable {
   /**
+   * Get a copy of this Drawable.
+   * @return the copy of this Drawable.
+   */
+  public Drawable getCopy();
+
+  /**
    * Get the name of this object.
    * @return the name of this object.
    */

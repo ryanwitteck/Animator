@@ -1,7 +1,9 @@
 package model.shapes;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import model.ObjectInterfaces.Drawable;
 import model.attributes.Color;
 import model.attributes.Posn;
 
@@ -14,7 +16,7 @@ public class CompoundShape implements IShape {
   private Posn posn;
   private List<IShape> shapes;
 
-  public CompoundShape(String name, int x, int y, List<IShape> shapes) {
+  public CompoundShape(String name, double x, double y, List<IShape> shapes) {
     this.name = name;
     this.posn = new Posn(x, y);
     this.shapes = shapes;
@@ -33,6 +35,21 @@ public class CompoundShape implements IShape {
   @Override
   public void move(double dx, double dy) {
     this.posn.move(dx, dy);
+  }
+
+  @Override
+  public Posn getPos() {
+    return posn;
+  }
+
+  @Override
+  public Drawable getCopy() {
+    List<IShape> copy = new ArrayList<IShape>();
+    for (IShape s : shapes) {
+      copy.add((IShape)s.getCopy());
+    }
+
+    return new CompoundShape(name, posn.getX(), posn.getY(), copy);
   }
 
   @Override

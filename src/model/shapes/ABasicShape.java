@@ -4,11 +4,11 @@ import model.attributes.Color;
 import model.attributes.Posn;
 
 public abstract class ABasicShape implements IShape {
-  private String name;
-  private Color color;
-  private Posn posn;
+  protected String name;
+  protected Color color;
+  protected Posn posn;
 
-  public ABasicShape(String name, int x, int y, Color color) {
+  public ABasicShape(String name, double x, double y, Color color) {
     this.name = name;
     this.color = color;
     this.posn = new Posn(x, y);
