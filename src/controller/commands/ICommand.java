@@ -13,6 +13,12 @@ public interface ICommand {
   public int getStartTick();
 
   /**
+   * Get the end tick of this command.
+   * @return the tick when this command ends.
+   */
+  public int getEndTick();
+
+  /**
    * Execute this command.
    */
   public void execute();

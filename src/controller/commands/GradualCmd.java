@@ -12,6 +12,11 @@ public abstract class GradualCmd extends ACommand {
   }
 
   @Override
+  public int getEndTick() {
+    return endTick;
+  }
+
+  @Override
   public void execute() {
     super.execute();
     startTick++;

@@ -4,9 +4,13 @@ import model.ObjectInterfaces.Drawable;
 
 // TODO -- Document
 public abstract class InstantCmd extends ACommand {
-
   public InstantCmd(Drawable obj, int tick) {
     super(obj, tick);
+  }
+
+  @Override
+  public int getEndTick() {
+    return startTick;
   }
 
   @Override
