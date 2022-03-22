@@ -15,8 +15,9 @@ public class PreBuiltAnimation extends AAnimation {
 
   /**
    * Constructs an animation given an initial state and a list of commands.
+   *
    * @param objects the list of objects in the animation
-   * @param cmds the list of commands
+   * @param cmds    the list of commands
    */
   public PreBuiltAnimation(List<Drawable> objects, List<ICommand> cmds) {
     super();
@@ -27,19 +28,11 @@ public class PreBuiltAnimation extends AAnimation {
 
   // TODO -- document and implement
   private void initHashMap(List<ICommand> cmds) {
-      for (ICommand cmd : cmds) {
-        int start = cmd.getStartTick();
-        nFrames = Math.max(nFrames, cmd.getEndTick());
-
-        if (cmdMap.containsKey(start)) {
-          cmdMap.get(start).add(cmd);
-        }
-        else {
-          List<ICommand> cmdList = new ArrayList<ICommand>();
-          cmdList.add(cmd);
-          cmdMap.put(start, cmdList);
-        }
-      }
+    cmdMap = new HashMap<Integer, List<ICommand>>();
+    for (ICommand cmd : cmds) {
+      nFrames = Math.max(nFrames, cmd.getEndTick());
+      addToCmdMap(cmd);
+    }
   }
 
   // TODO -- document and implement
@@ -51,11 +44,24 @@ public class PreBuiltAnimation extends AAnimation {
           cmd.execute();
           frames.add(new Frame(objects));
           if (!cmd.isComplete()) {
-            cmdMap.get(cmd.getStartTick()).add(cmd);
+            addToCmdMap(cmd);
           }
         }
       }
+    }
+    nFrames = frames.size();
+  }
 
+  // TODO -- document
+  private void addToCmdMap(ICommand cmd) {
+    int start = cmd.getStartTick();
+
+    if (cmdMap.containsKey(start)) {
+      cmdMap.get(start).add(cmd);
+    } else {
+      List<ICommand> cmdList = new ArrayList<ICommand>();
+      cmdList.add(cmd);
+      cmdMap.put(start, cmdList);
     }
   }
 
