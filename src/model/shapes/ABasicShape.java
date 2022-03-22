@@ -1,7 +1,7 @@
 package model.shapes;
 
-import model.Color;
-import model.Posn;
+import model.attributes.Color;
+import model.attributes.Posn;
 
 public abstract class ABasicShape implements IShape {
   private String name;

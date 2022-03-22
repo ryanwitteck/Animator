@@ -2,8 +2,8 @@ package model.shapes;
 
 import java.util.List;
 
-import model.Color;
-import model.Posn;
+import model.attributes.Color;
+import model.attributes.Posn;
 
 /**
  * Class that represents a shape made of multiple shapes.

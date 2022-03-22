@@ -2,7 +2,7 @@ package controller.commands;
 
 import model.ObjectInterfaces.Drawable;
 import model.ObjectInterfaces.Movable;
-import model.Posn;
+import model.attributes.Posn;
 
 // TODO -- document
 public class InstMoveCmd extends InstantCmd {

@@ -1,6 +1,6 @@
 package model.ObjectInterfaces;
 
-import model.Posn;
+import model.attributes.Posn;
 
 /**
  * Our interface for any object that can be moved when animated in the future.

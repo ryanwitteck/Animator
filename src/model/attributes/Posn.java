@@ -1,4 +1,4 @@
-package model;
+package model.attributes;
 
 /**
  * Represents a position on our canvas.

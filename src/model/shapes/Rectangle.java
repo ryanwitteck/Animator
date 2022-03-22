@@ -1,7 +1,7 @@
 package model.shapes;
 
 
-import model.Color;
+import model.attributes.Color;
 
 /**
  * Class that represents a rectangle. May be changed when using swing later on for the view.

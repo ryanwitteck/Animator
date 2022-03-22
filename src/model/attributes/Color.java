@@ -1,4 +1,4 @@
-package model;
+package model.attributes;
 
 /**
  * Represents colors for this animation.
