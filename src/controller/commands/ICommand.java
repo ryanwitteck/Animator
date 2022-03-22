@@ -1,9 +1,9 @@
 package controller.commands;
 
-import model.IShape;
+import model.ObjectInterfaces.Drawable;
 
 /**
- * Represents a function-object that modifies a shape.
+ * Represents a function-object that modifies any drawable.
  */
 public interface ICommand {
   /**
@@ -16,5 +16,5 @@ public interface ICommand {
    * Execute this command on the given IShape.
    * @param s The given shape.
    */
-  public void execute(IShape s);
+  public void execute(Drawable obj);
 }

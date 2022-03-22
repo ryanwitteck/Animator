@@ -1,7 +1,7 @@
 package controller.commands;
 
-import model.IShape;
-import model.Posn;
+import model.ObjectInterfaces.Drawable;
+import model.ObjectInterfaces.Movable;
 
 // TODO -- document
 public class InstMoveCmd extends InstantCmd {
@@ -15,8 +15,13 @@ public class InstMoveCmd extends InstantCmd {
   }
 
   @Override
-  public void execute(IShape s) {
-    super.execute(s);
-    s.move(dx, dy);
+  public void execute(Drawable obj) {
+    super.execute(obj);
+    if (obj instanceof Movable) {
+      ((Movable)obj).move(dx, dy);
+    }
+    else {
+      throw new IllegalArgumentException("Error: This object is not instance of Movable");
+    }
   }
 }

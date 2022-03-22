@@ -1,6 +1,6 @@
 package controller.commands;
 
-import model.IShape;
+import model.ObjectInterfaces.Drawable;
 
 // TODO -- document
 public abstract class ACommand implements ICommand {
@@ -18,7 +18,7 @@ public abstract class ACommand implements ICommand {
   }
 
   @Override
-  public void execute(IShape s) {
+  public void execute(Drawable obj) {
     if (complete) {
       throw new IllegalStateException("Error: Command already executed");
     }
