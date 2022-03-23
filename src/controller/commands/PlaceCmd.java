@@ -5,11 +5,11 @@ import model.ObjectInterfaces.Movable;
 import model.attributes.Posn;
 
 // TODO -- document
-public class InstMoveCmd extends InstantCmd {
+public class PlaceCmd extends InstantCmd {
   private Posn startPos;
   private Posn endPos;
 
-  public InstMoveCmd(Drawable obj, int tick, Posn dest) {
+  public PlaceCmd(Drawable obj, int tick, Posn dest) {
     super(obj, tick);
     if (!(obj instanceof Movable)) {
       throw new IllegalArgumentException("Error: This object is not instance of Movable");
