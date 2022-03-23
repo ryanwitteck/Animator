@@ -43,9 +43,21 @@ public class Rectangle extends BasicShape {
   }
 
   @Override
+  public void shrinkHorizontal(double scale) {
+    scaleError(scale);
+    width /= scale;
+  }
+
+  @Override
   public void stretchVertical(double scale) {
     scaleError(scale);
     height *= scale;
+  }
+
+  @Override
+  public void shrinkVertical(double scale) {
+    scaleError(scale);
+    width /= scale;
   }
 
   @Override
