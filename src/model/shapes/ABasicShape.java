@@ -25,7 +25,7 @@ public abstract class ABasicShape implements IShape {
   }
 
   @Override
-  public void place(int x, int y) {
+  public void place(double x, double y) {
     this.posn.set(x, y);
   }
 
