@@ -18,4 +18,9 @@ public abstract class InstantCmd extends ACommand {
     super.execute();
     this.complete = true;
   }
+
+  @Override
+  public boolean isRunning() {
+    return false;
+  }
 }

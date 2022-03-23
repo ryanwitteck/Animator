@@ -25,6 +25,12 @@ public interface ICommand {
   public boolean isComplete();
 
   /**
+   * Get whether this command is running.
+   * @return whether this command is running
+   */
+  public boolean isRunning();
+
+  /**
    * Execute this command.
    */
   public void execute();
