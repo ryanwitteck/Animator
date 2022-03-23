@@ -1,7 +1,7 @@
 package model.ObjectInterfaces;
 
 /**
- * Our interface for any object that can be scaled when animated in the future.
+ * Our interface for any object that can be scaled up and down.
  */
 public interface Scalable {
 

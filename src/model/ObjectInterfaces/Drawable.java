@@ -3,7 +3,7 @@ package model.ObjectInterfaces;
 import model.attributes.Color;
 
 /**
- * Our interface for any object that can be drawn when animated in the future.
+ * Our interface for any object that can be drawn.
  */
 public interface Drawable {
 
