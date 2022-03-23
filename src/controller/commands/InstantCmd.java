@@ -6,6 +6,7 @@ import model.ObjectInterfaces.Drawable;
  * Represents a command that happens instantly (in one tick).
  */
 public abstract class InstantCmd extends ACommand {
+
   /**
    * Constructor for InstantCmd.
    *

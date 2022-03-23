@@ -8,6 +8,7 @@ import model.attributes.Posn;
  * Represents a command to move an object over a period of time.
  */
 public class MoveCmd extends GradualCmd {
+
   private String log;
   private Posn startPos;
   private final Posn dest;
@@ -36,7 +37,7 @@ public class MoveCmd extends GradualCmd {
     if (startPos == null) {
       startPos = new Posn(((Movable) obj).getPos());
       this.log = obj.getName() + " moves from : " + startPos + " to " + dest
-              + " from t=" + (startTick - 1) + " to t=" + endTick;
+          + " from t=" + (startTick - 1) + " to t=" + endTick;
       dx = (dest.getX() - startPos.getX()) / (endTick - startTick + 1);
       dy = (dest.getY() - startPos.getY()) / (endTick - startTick + 1);
     }

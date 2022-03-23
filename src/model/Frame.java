@@ -9,6 +9,7 @@ import model.ObjectInterfaces.Drawable;
  * Represents a single frame in an animation. Simple implementation of IFrame.
  */
 public class Frame implements IFrame {
+
   private final List<Drawable> objects;
 
   /**

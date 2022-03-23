@@ -6,6 +6,7 @@ import model.attributes.Color;
  * Our interface for any object that can be drawn when animated in the future.
  */
 public interface Drawable {
+
   /**
    * Get a copy of this Drawable.
    *

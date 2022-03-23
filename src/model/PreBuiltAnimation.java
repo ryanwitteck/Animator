@@ -11,6 +11,7 @@ import model.ObjectInterfaces.Drawable;
  * Represents an animation that cannot be edited after creation.
  */
 public class PreBuiltAnimation extends AAnimation {
+
   private HashMap<Integer, List<ICommand>> cmdMap;
 
   /**
@@ -26,7 +27,11 @@ public class PreBuiltAnimation extends AAnimation {
     initFrames(objects);
   }
 
-  // TODO -- document
+  /**
+   * A method to initialize our hashmap given our list of commands.
+   *
+   * @param cmds list of commmands.
+   */
   private void initHashMap(List<ICommand> cmds) {
     cmdMap = new HashMap<>();
     for (ICommand cmd : cmds) {
@@ -35,7 +40,11 @@ public class PreBuiltAnimation extends AAnimation {
     }
   }
 
-  // TODO -- document
+  /**
+   * Applies the list of commands to the object and adds new frames to the canvas.
+   *
+   * @param objects list of drawable objects.
+   */
   private void initFrames(List<Drawable> objects) {
     for (int i = 1; i < nFrames; i++) {
       if (cmdMap.containsKey(i)) {
@@ -58,7 +67,11 @@ public class PreBuiltAnimation extends AAnimation {
     assert (nFrames == frames.size());
   }
 
-  // TODO -- document
+  /**
+   * Adds the given command to the cmdMap.
+   *
+   * @param cmd the command.
+   */
   private void addToCmdMap(ICommand cmd) {
     int start = cmd.getStartTick();
 

@@ -6,6 +6,7 @@ import model.ObjectInterfaces.Drawable;
  * Represents common attributes and functions among ICommand implementations.
  */
 public abstract class ACommand implements ICommand {
+
   protected Drawable obj;
   protected boolean complete;
   protected int startTick;

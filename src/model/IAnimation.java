@@ -8,6 +8,7 @@ import controller.commands.ICommand;
  * Represents an animated video.
  */
 public interface IAnimation {
+
   /**
    * Execute the command of the function object given to it.
    *

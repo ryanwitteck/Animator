@@ -6,6 +6,7 @@ import model.ObjectInterfaces.Drawable;
  * Represents a command that occurs over a duration.
  */
 public abstract class GradualCmd extends ACommand {
+
   protected boolean running;
   protected int endTick;
 

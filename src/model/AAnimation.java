@@ -7,15 +7,15 @@ import java.util.List;
  * Represents common attributes and functions among IAnimation implementations.
  */
 public abstract class AAnimation implements IAnimation {
+
   protected List<IFrame> frames;
   protected List<String> cmdLog;
   protected int tick;
   protected int nFrames;
 
   /**
-   * Constructor for AAnimation.
-   * Initialize frames and cmdLog as empty lists.
-   * Initialize tick and nFrames as 0.
+   * Constructor for AAnimation. Initialize frames and cmdLog as empty lists. Initialize tick and
+   * nFrames as 0.
    */
   public AAnimation() {
     frames = new ArrayList<>();

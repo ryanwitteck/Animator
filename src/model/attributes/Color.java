@@ -4,6 +4,7 @@ package model.attributes;
  * Represents colors for this animation.
  */
 public class Color {
+
   private int r;
   private int g;
   private int b;

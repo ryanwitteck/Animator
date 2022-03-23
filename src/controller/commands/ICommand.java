@@ -4,6 +4,7 @@ package controller.commands;
  * Represents a function-object that modifies any drawable.
  */
 public interface ICommand {
+
   /**
    * Get the start tick of this command.
    *

@@ -6,6 +6,7 @@ import model.attributes.Posn;
  * Our interface for any object that can be moved when animated in the future.
  */
 public interface Movable {
+
   /**
    * Places this object at the given coordinates.
    */

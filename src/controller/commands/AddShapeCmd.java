@@ -8,6 +8,7 @@ import model.ObjectInterfaces.Drawable;
  * Represent a command to add a Drawable to a list.
  */
 public class AddShapeCmd extends InstantCmd {
+
   private final List<Drawable> list;
 
   /**
