@@ -17,7 +17,7 @@ public class MoveCmd extends GradualCmd {
       throw new IllegalArgumentException("Error: This object is not instance of Movable");
     }
     this.startPos = new Posn(((Movable) obj).getPos());
-    this.dest = dest;
+    this.dest = new Posn(dest);
   }
 
   @Override

@@ -15,7 +15,7 @@ public class InstMoveCmd extends InstantCmd {
       throw new IllegalArgumentException("Error: This object is not instance of Movable");
     }
     this.startPos = new Posn(((Movable) obj).getPos());
-    this.endPos = dest;
+    this.endPos = new Posn(dest);
   }
 
   @Override
