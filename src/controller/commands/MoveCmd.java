@@ -9,6 +9,8 @@ import model.attributes.Posn;
  */
 public class MoveCmd extends GradualCmd {
   private String log;
+  private Posn startPos;
+  private Posn dest;
   private double dx;
   private double dy;
 
@@ -17,16 +19,19 @@ public class MoveCmd extends GradualCmd {
     if (!(obj instanceof Movable)) {
       throw new IllegalArgumentException("Error: This object is not instance of Movable");
     }
-    Posn startPos = new Posn(((Movable) obj).getPos());
-    this.log = obj.getName() + " moves from : " + startPos + " to " + dest
-            + " from t=" + startTick + "to t=" + endTick;
-    dx = (dest.getX() - startPos.getX()) / (endTick - startTick);
-    dy = (dest.getY() - startPos.getY()) / (endTick - startTick);
+    this.dest = dest;
   }
 
   @Override
   public void execute() {
     super.execute();
+    if (startPos == null) {
+      startPos = new Posn(((Movable) obj).getPos());
+      this.log = obj.getName() + " moves from : " + startPos + " to " + dest
+              + " from t=" + startTick + "to t=" + endTick;
+      dx = (dest.getX() - startPos.getX()) / (endTick - startTick);
+      dy = (dest.getY() - startPos.getY()) / (endTick - startTick);
+    }
     ((Movable) obj).move(dx, dy);
   }
 

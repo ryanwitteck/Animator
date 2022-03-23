@@ -14,18 +14,21 @@ public class PlaceCmd extends InstantCmd {
     if (!(obj instanceof Movable)) {
       throw new IllegalArgumentException("Error: This object is not instance of Movable");
     }
-    this.startPos = new Posn(((Movable) obj).getPos());
     this.endPos = new Posn(dest);
   }
 
   @Override
   public void execute() {
     super.execute();
+    this.startPos = new Posn(((Movable) obj).getPos());
     ((Movable) obj).place(endPos);
   }
 
   @Override
   public String logCmd() {
+    if (!complete) {
+      throw new IllegalStateException("Error: command has not run");
+    }
     return obj.getName() + " moves from : " + startPos + " to " + endPos + " at t=" + startTick;
   }
 }
