@@ -33,4 +33,23 @@ public abstract class ACommand implements ICommand {
       throw new IllegalStateException("Error: Command already executed");
     }
   }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (obj == this) {
+      return true;
+    }
+    if (obj instanceof ICommand) {
+      ICommand cmd = (ICommand) obj;
+      return this.logCmd().equals(cmd.logCmd());
+    }
+    else {
+      return false;
+    }
+  }
+
+  @Override
+  public int hashCode() {
+    return this.logCmd().hashCode();
+  }
 }
