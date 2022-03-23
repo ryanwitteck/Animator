@@ -101,6 +101,8 @@ public class AttributeTest {
 
     p1.move(0.1423, -231.34534);
     assertEquals(p1, new Posn(0.1423, -231.34534));
+    p1.move(0, 0);
+    assertEquals(p1, new Posn(0.1423, -231.34534));
 
     p1.set(-123.329, -751.12);
     assertEquals(p2, p1);
