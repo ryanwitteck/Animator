@@ -4,6 +4,7 @@ import model.attributes.Color;
 import model.attributes.Posn;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
 
@@ -61,9 +62,9 @@ public class AttributeTest {
     Color white = new Color(255, 255, 255);
     Color cRand = new Color(90, 55, 58);
 
-    assertFalse(black.equals(white));
-    assertFalse(black.equals(cRand));
-    assertFalse(white.equals(cRand));
+    assertNotEquals(black, white);
+    assertNotEquals(black, cRand);
+    assertNotEquals(white, cRand);
 
     white.setColor(0, 0, 0);
     assertEquals(white, black);
