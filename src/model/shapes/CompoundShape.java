@@ -65,4 +65,12 @@ public class CompoundShape extends ABasicShape {
       s.scaleDown(scale);
     }
   }
+
+  /**
+   * Get the list of shapes this object is made from.
+   * @return shapes the list of shapes defining this object.
+   */
+  public List<IShape> getShapes() {
+    return shapes;
+  }
 }
