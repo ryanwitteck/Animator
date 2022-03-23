@@ -88,11 +88,9 @@ public class ShapeTest {
     assertEquals(270, r.getHeight());
 
     Rectangle copy = (Rectangle)r.getCopy();
-    assertEquals(r.getName(), copy.getName());
-    assertEquals(r.getPos(), copy.getPos());
-    assertEquals(r.getWidth(), copy.getWidth());
-    assertEquals(r.getHeight(), copy.getHeight());
-    assertEquals(r.getColor(), copy.getColor());
+    assertEquals(r, copy);
+    copy.place(9999, 9999);
+    assertNotEquals(r, copy);
   }
 
   @Test
