@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.ObjectInterfaces.Drawable;
+import model.base_interfaces.Drawable;
 
 /**
  * Represents a single frame in an animation. Simple implementation of IFrame.

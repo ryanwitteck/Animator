@@ -1,4 +1,4 @@
-import model.ObjectInterfaces.Drawable;
+import model.base_interfaces.Drawable;
 import model.attributes.Color;
 
 /**
@@ -22,11 +22,11 @@ public class DummyClass implements Drawable {
 
   @Override
   public void setColor(int r, int g, int b) {
-
+    return;
   }
 
   @Override
   public void setColor(Color c) {
-
+    return;
   }
 }

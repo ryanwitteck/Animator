@@ -33,7 +33,7 @@ public class Posn {
   }
 
   /**
-   * Gets this Posn's x value
+   * Gets this Posn's x value.
    *
    * @return the x value
    */
@@ -42,7 +42,7 @@ public class Posn {
   }
 
   /**
-   * Gets this Posn's y value
+   * Gets this Posn's y value.
    *
    * @return the y value
    */

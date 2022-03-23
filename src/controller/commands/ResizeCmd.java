@@ -1,8 +1,8 @@
 package controller.commands;
 
-import model.ObjectInterfaces.Drawable;
+import model.base_interfaces.Drawable;
 
-import model.ObjectInterfaces.Scalable;
+import model.base_interfaces.Scalable;
 
 
 /**

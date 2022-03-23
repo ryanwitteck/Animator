@@ -1,4 +1,4 @@
-package model.ObjectInterfaces;
+package model.base_interfaces;
 
 import model.attributes.Posn;
 

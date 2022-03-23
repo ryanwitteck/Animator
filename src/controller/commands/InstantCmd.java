@@ -1,6 +1,6 @@
 package controller.commands;
 
-import model.ObjectInterfaces.Drawable;
+import model.base_interfaces.Drawable;
 
 /**
  * Represents a command that happens instantly (in one tick).

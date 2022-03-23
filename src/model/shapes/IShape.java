@@ -1,8 +1,8 @@
 package model.shapes;
 
-import model.ObjectInterfaces.Drawable;
-import model.ObjectInterfaces.Movable;
-import model.ObjectInterfaces.Scalable;
+import model.base_interfaces.Drawable;
+import model.base_interfaces.Movable;
+import model.base_interfaces.Scalable;
 
 /**
  * Our interface for various shapes that we want to create.

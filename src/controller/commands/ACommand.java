@@ -1,6 +1,6 @@
 package controller.commands;
 
-import model.ObjectInterfaces.Drawable;
+import model.base_interfaces.Drawable;
 
 /**
  * Represents common attributes and functions among ICommand implementations.
