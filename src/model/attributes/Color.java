@@ -4,7 +4,6 @@ package model.attributes;
  * Represents colors for this animation.
  */
 public class Color {
-
   private int r;
   private int g;
   private int b;
@@ -32,7 +31,7 @@ public class Color {
    * @return if it is in bounds.
    */
   public boolean inBounds(int x) {
-    return !(x < 0 || x > 255);
+    return x >= 0 && x <= 255;
   }
 
   /**
@@ -87,5 +86,21 @@ public class Color {
     this.b = b;
   }
 
+  @Override
+  public boolean equals(Object other) {
+    if (other == this) {
+      return true;
+    }
+    if (other instanceof Color) {
+      Color c = (Color) other;
+      return this.r == c.r && this.g == c.g && this.b == c.b;
+    } else {
+      return false;
+    }
+  }
 
+  @Override
+  public int hashCode() {
+    return r + g + b;
+  }
 }
