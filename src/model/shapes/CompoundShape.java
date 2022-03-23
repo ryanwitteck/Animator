@@ -55,10 +55,26 @@ public class CompoundShape extends BasicShape {
   }
 
   @Override
+  public void shrinkHorizontal(double scale) {
+    scaleError(scale);
+    for (IShape s : shapes) {
+      s.shrinkHorizontal(scale);
+    }
+  }
+
+  @Override
   public void stretchVertical(double scale) {
     scaleError(scale);
     for (IShape s : shapes) {
       s.stretchVertical(scale);
+    }
+  }
+
+  @Override
+  public void shrinkVertical(double scale) {
+    scaleError(scale);
+    for (IShape s : shapes) {
+      s.shrinkVertical(scale);
     }
   }
 
