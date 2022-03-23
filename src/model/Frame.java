@@ -5,9 +5,16 @@ import java.util.List;
 
 import model.ObjectInterfaces.Drawable;
 
+/**
+ * Represents a single frame in an animation. Simple implementation of IFrame.
+ */
 public class Frame implements IFrame {
   private final List<Drawable> objects;
 
+  /**
+   * Constructor of Frame.
+   * @param objects the animated objects
+   */
   public Frame(List<Drawable> objects) {
     if (objects == null) {
       throw new IllegalArgumentException("Cannot have null arguments.");

@@ -2,7 +2,6 @@ package model;
 
 import java.util.List;
 
-import controller.commands.ICommand;
 import model.ObjectInterfaces.Drawable;
 
 /**
