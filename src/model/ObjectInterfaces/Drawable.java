@@ -19,6 +19,12 @@ public interface Drawable {
   public String getName();
 
   /**
+   * Get the color of this object.
+   * @return the color of this object.
+   */
+  public Color getColor();
+
+  /**
    * Changes the color of this object.
    *
    * @param r the red value

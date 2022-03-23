@@ -84,8 +84,8 @@ public class Color {
   /**
    * Sets new Color values.
    *
-   * @param r the red value
-   * @param g the green value
+   * @param r the red value.
+   * @param g the green value.
    * @param b the blue value.
    */
   public void setColor(int r, int g, int b) {
@@ -95,6 +95,20 @@ public class Color {
     this.r = r;
     this.g = g;
     this.b = b;
+  }
+
+  /**
+   * Sets new Color values.
+   *
+   * @param c the color to copy.
+   */
+  public void setColor(Color c) {
+    if (c == null) {
+      throw new IllegalArgumentException("Color cannot be null");
+    }
+    this.r = c.r;
+    this.g = c.g;
+    this.b = c.b;
   }
 
   @Override

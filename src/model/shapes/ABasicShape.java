@@ -25,6 +25,11 @@ public abstract class ABasicShape implements IShape {
   }
 
   @Override
+  public Color getColor() {
+    return this.color;
+  }
+
+  @Override
   public void place(double x, double y) {
     this.posn.set(x, y);
   }
