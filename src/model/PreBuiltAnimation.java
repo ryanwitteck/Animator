@@ -26,7 +26,7 @@ public class PreBuiltAnimation extends AAnimation {
     initFrames(objects);
   }
 
-  // TODO -- document and implement
+  // TODO -- document
   private void initHashMap(List<ICommand> cmds) {
     cmdMap = new HashMap<Integer, List<ICommand>>();
     for (ICommand cmd : cmds) {
@@ -35,13 +35,19 @@ public class PreBuiltAnimation extends AAnimation {
     }
   }
 
-  // TODO -- document and implement
+  // TODO -- document
   private void initFrames(List<Drawable> objects) {
     for (int i = 1; i < nFrames; i++) {
-      List<ICommand> cmds = cmdMap.get(i);
-      if (cmds != null) {
+      if (cmdMap.containsKey(i)) {
+        List<ICommand> cmds = cmdMap.get(i);
         for (ICommand cmd : cmds) {
-          cmd.execute();
+          if (!cmd.isRunning()) {
+            cmd.execute();
+            cmdLog.add(cmd.logCmd());
+          }
+          else {
+            cmd.execute();
+          }
           frames.add(new Frame(objects));
           if (!cmd.isComplete()) {
             addToCmdMap(cmd);
@@ -68,5 +74,13 @@ public class PreBuiltAnimation extends AAnimation {
   @Override
   public void execute(ICommand cmd) {
     throw new IllegalStateException("Error: This animation does not accept commands");
+  }
+
+  /**
+   * Get the tick-command map of this animation.
+   * @return cmdMap this tick-command map
+   */
+  public HashMap<Integer, List<ICommand>> getCmdMap() {
+    return cmdMap;
   }
 }
