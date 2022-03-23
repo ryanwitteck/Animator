@@ -9,7 +9,7 @@ public interface Movable {
   /**
    * Places this object at the given coordinates.
    */
-  void place(int x, int y);
+  void place(double x, double y);
 
   /**
    * Places this object at the given coordinates.
