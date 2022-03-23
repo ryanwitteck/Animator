@@ -49,14 +49,4 @@ public interface Scalable {
    * @param scale the factor to scale this object by
    */
   void scaleDown(double scale);
-
-  /**
-   * Gets the current x position.
-   */
-  int getXPos();
-
-  /**
-   * Gets the current y position.
-   */
-  int getYPos();
 }
