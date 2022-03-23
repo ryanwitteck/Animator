@@ -69,7 +69,7 @@ public class Posn {
    * @param nx desired x position
    * @param ny desired y position
    */
-  public void set(int nx, int ny) {
+  public void set(double nx, double ny) {
     this.x = nx;
     this.y = ny;
   }
