@@ -13,13 +13,14 @@ public class Frame implements IFrame {
 
   /**
    * Constructor of Frame.
+   *
    * @param objects the animated objects
    */
   public Frame(List<Drawable> objects) {
     if (objects == null) {
       throw new IllegalArgumentException("Cannot have null arguments.");
     }
-    this.objects = new ArrayList<Drawable>();
+    this.objects = new ArrayList<>();
 
     for (Drawable d : objects) {
       this.objects.add(d.getCopy());

@@ -28,7 +28,7 @@ public class PreBuiltAnimation extends AAnimation {
 
   // TODO -- document
   private void initHashMap(List<ICommand> cmds) {
-    cmdMap = new HashMap<Integer, List<ICommand>>();
+    cmdMap = new HashMap<>();
     for (ICommand cmd : cmds) {
       nFrames = Math.max(nFrames, cmd.getEndTick());
       addToCmdMap(cmd);
@@ -44,8 +44,7 @@ public class PreBuiltAnimation extends AAnimation {
           if (!cmd.isRunning()) {
             cmd.execute();
             cmdLog.add(cmd.logCmd());
-          }
-          else {
+          } else {
             cmd.execute();
           }
           if (!cmd.isComplete()) {
@@ -56,7 +55,7 @@ public class PreBuiltAnimation extends AAnimation {
 
       frames.add(new Frame(objects));
     }
-    assert(nFrames == frames.size());
+    assert (nFrames == frames.size());
   }
 
   // TODO -- document
@@ -66,7 +65,7 @@ public class PreBuiltAnimation extends AAnimation {
     if (cmdMap.containsKey(start)) {
       cmdMap.get(start).add(cmd);
     } else {
-      List<ICommand> cmdList = new ArrayList<ICommand>();
+      List<ICommand> cmdList = new ArrayList<>();
       cmdList.add(cmd);
       cmdMap.put(start, cmdList);
     }
@@ -79,6 +78,7 @@ public class PreBuiltAnimation extends AAnimation {
 
   /**
    * Get the tick-command map of this animation.
+   *
    * @return cmdMap this tick-command map
    */
   public HashMap<Integer, List<ICommand>> getCmdMap() {
