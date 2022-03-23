@@ -1,7 +1,7 @@
 package controller.commands;
 
 /**
- * Represents a function-object that modifies any drawable.
+ * Represents a function-object that modifies a given drawable.
  */
 public interface ICommand {
 

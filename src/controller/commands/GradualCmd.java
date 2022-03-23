@@ -3,7 +3,7 @@ package controller.commands;
 import model.ObjectInterfaces.Drawable;
 
 /**
- * Represents a command that occurs over a duration.
+ * Represents a command that occurs over a duration of time.
  */
 public abstract class GradualCmd extends ACommand {
   protected boolean running;
