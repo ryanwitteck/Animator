@@ -10,7 +10,7 @@ public abstract class ABasicShape implements IShape {
 
   public ABasicShape(String name, double x, double y, Color color) {
     this.name = name;
-    this.color = color;
+    this.color = new Color(color);
     this.posn = new Posn(x, y);
   }
 
