@@ -11,35 +11,12 @@ import model.attributes.Posn;
  * Class that represents a shape made of multiple shapes.
  * May be changed when using swing later on for the view.
  */
-public class CompoundShape implements IShape {
-  private String name;
-  private Posn posn;
+public class CompoundShape extends ABasicShape {
   private List<IShape> shapes;
 
   public CompoundShape(String name, double x, double y, List<IShape> shapes) {
-    this.name = name;
-    this.posn = new Posn(x, y);
+    super(name, x, y, new Color(0, 0, 0));
     this.shapes = shapes;
-  }
-
-  @Override
-  public void place(double x, double y) {
-    this.posn.set(x, y);
-  }
-
-  @Override
-  public void place(Posn p) {
-    this.posn = p;
-  }
-
-  @Override
-  public void move(double dx, double dy) {
-    this.posn.move(dx, dy);
-  }
-
-  @Override
-  public Posn getPos() {
-    return posn;
   }
 
   @Override
@@ -50,11 +27,6 @@ public class CompoundShape implements IShape {
     }
 
     return new CompoundShape(name, posn.getX(), posn.getY(), copy);
-  }
-
-  @Override
-  public String getName() {
-    return name;
   }
 
   @Override
