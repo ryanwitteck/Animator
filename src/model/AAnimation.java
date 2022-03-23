@@ -23,13 +23,14 @@ public abstract class AAnimation implements IAnimation {
     if (!inBounds(tick)) {
       throw new IllegalArgumentException("Error: Invalid tick");
     }
-    return frames.get(tick);
+    this.tick = tick;
+    return frames.get(this.tick);
   }
 
   @Override
   public IFrame getCurrent() {
     if (!inBounds(tick)) {
-      throw new IllegalArgumentException("Error: Invalid tick");
+      throw new IllegalStateException("Error: Invalid tick");
     }
     return frames.get(tick);
   }
@@ -37,7 +38,7 @@ public abstract class AAnimation implements IAnimation {
   @Override
   public IFrame getPrev() {
     if (!inBounds(tick - 1)) {
-      throw new IllegalArgumentException("Error: Invalid tick");
+      throw new IllegalStateException("Error: Invalid tick");
     }
     tick--;
     return frames.get(tick);
@@ -46,7 +47,7 @@ public abstract class AAnimation implements IAnimation {
   @Override
   public IFrame getNext() {
     if (!inBounds(tick + 1)) {
-      throw new IllegalArgumentException("Error: Invalid tick");
+      throw new IllegalStateException("Error: Invalid tick");
     }
     tick++;
     return frames.get(tick);

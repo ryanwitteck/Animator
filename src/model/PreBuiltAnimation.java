@@ -48,14 +48,15 @@ public class PreBuiltAnimation extends AAnimation {
           else {
             cmd.execute();
           }
-          frames.add(new Frame(objects));
           if (!cmd.isComplete()) {
             addToCmdMap(cmd);
           }
         }
       }
+
+      frames.add(new Frame(objects));
     }
-    nFrames = frames.size();
+    assert(nFrames == frames.size());
   }
 
   // TODO -- document
