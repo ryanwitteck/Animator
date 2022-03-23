@@ -1,8 +1,5 @@
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import model.attributes.Color;
 import model.attributes.Posn;
 
@@ -82,6 +79,32 @@ public class AttributeTest {
 
   @Test
   public void testPosn() {
-    
+    Posn p1 = new Posn(0, 0);
+    Posn p2 = new Posn(-123.329, -751.12);
+    Posn p3 = new Posn(446535, 658834);
+
+    assertEquals("( 0.0, 0.0 )", p1.toString());
+    assertEquals("( -123.329, -751.12 )", p2.toString());
+    assertEquals("( 446535.0, 658834.0 )", p3.toString());
+
+    assertEquals(0, p1.getX(), 0.001);
+    assertEquals(0, p1.getY(), 0.001);
+    assertEquals(-123.329, p2.getX(), 0.001);
+    assertEquals(-751.12, p2.getY(), 0.001);
+    assertEquals(446535, p3.getX(), 0.001);
+    assertEquals(658834, p3.getY(), 0.001);
+
+    assertEquals(p1, new Posn(p1));
+    assertEquals(p2, new Posn(p2));
+    assertEquals(p3, new Posn(p3));
+
+    p1.move(0.1423, -231.34534);
+    assertEquals(p1, new Posn(0.1423, -231.34534));
+
+    p1.set(-123.329, -751.12);
+    assertEquals(p2, p1);
+
+    p2.set(446535, 658834);
+    assertEquals(p3, p2);
   }
 }
