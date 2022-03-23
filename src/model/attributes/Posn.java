@@ -60,7 +60,7 @@ public class Posn {
   public Posn move(double dx, double dy) {
     this.x += dx;
     this.y += dy;
-    return new Posn((int)Math.round(this.x), (int)Math.round(this.y));
+    return new Posn(this);
   }
 
   /**
