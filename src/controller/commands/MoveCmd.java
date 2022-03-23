@@ -10,7 +10,7 @@ import model.attributes.Posn;
 public class MoveCmd extends GradualCmd {
   private String log;
   private Posn startPos;
-  private Posn dest;
+  private final Posn dest;
   private double dx;
   private double dy;
 
