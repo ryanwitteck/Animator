@@ -127,6 +127,17 @@ public class ShapeTest {
     assertEquals(comp.getShapes(), copy.getShapes());
   }
 
-  //---------------------------- Constructor Illegal Arg Exception ---------------------------------
+  //---------------------------- Function Exceptions -----------------------------------------------
 
+  @Test(expected = IllegalArgumentException.class)
+  public void testScaleFail1() {
+    Rectangle r = new Rectangle("R", 0, 0, 12, 12, new Color(0, 0, 0));
+    r.scaleError(-1);
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testScaleFail2() {
+    CompoundShape c = new CompoundShape("C", 0, 0, new ArrayList<IShape>());
+    c.scaleError(-1);
+  }
 }
