@@ -85,36 +85,38 @@ public class CommandTest {
     ICommand cmd3 = new PlaceCmd(rect2, 1, new Posn(0, 3.33));
     ICommand cmd4 = new PlaceCmd(rect1, 1, new Posn(-1.75, -9));
 
-    assertFalse(cmd1.isComplete());
-    assertFalse(cmd2.isComplete());
-    assertFalse(cmd3.isComplete());
-    assertFalse(cmd4.isComplete());
+    assertFalse(cmd1.isComplete() || cmd1.isRunning());
+    assertFalse(cmd2.isComplete() || cmd2.isRunning());
+    assertFalse(cmd3.isComplete() || cmd3.isRunning());
+    assertFalse(cmd4.isComplete() || cmd4.isRunning());
 
     for (int i = 1; i < 11; i++) {
       cmd1.execute();
       p.move(1, -4);
+      assertTrue(cmd1.isRunning());
       assertFalse(cmd1.isComplete());
       assertEquals(p, rect2.getPos());
     }
     cmd1.execute();
     assertEquals(new Posn(1, 55), rect2.getPos());
-    assertTrue(cmd1.isComplete());
+    assertTrue(cmd1.isComplete() && !cmd1.isRunning());
 
     cmd3.execute();
     assertEquals(new Posn(0, 3.33), rect2.getPos());
-    assertTrue(cmd3.isComplete());
+    assertTrue(cmd3.isComplete()&& !cmd3.isRunning());
 
     for (int i = 1; i < 999; i++) {
       cmd2.execute();
+      assertTrue(cmd2.isRunning());
       assertFalse(cmd2.isComplete());
     }
     cmd2.execute();
     assertEquals(new Posn(10943.1343, 32142.765), rect1.getPos());
-    assertTrue(cmd2.isComplete());
+    assertTrue(cmd2.isComplete() && !cmd2.isRunning());
 
     cmd4.execute();
     assertEquals(new Posn(-1.75, -9), rect1.getPos());
-    assertTrue(cmd4.isComplete());
+    assertTrue(cmd4.isComplete() && !cmd4.isRunning());
 
     assertEquals("R2 moves from : ( -10.0, 99.0 ) to ( 1.0, 55.0 ) from t=1 to t=12",
             cmd1.logCmd());
