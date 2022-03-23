@@ -7,10 +7,19 @@ import model.attributes.Color;
 /**
  * Class that represents a rectangle. May be changed when using swing later on for the view.
  */
-public class Rectangle extends ABasicShape {
+public class Rectangle extends BasicShape {
   private int width;
   private int height;
 
+  /**
+   *
+   * @param name
+   * @param x
+   * @param y
+   * @param width
+   * @param height
+   * @param color
+   */
   public Rectangle(String name, double x, double y, int width, int height, Color color) {
     super(name, x, y, color);
     if (width < 0 || height < 0) {

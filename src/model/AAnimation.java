@@ -3,17 +3,23 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-// TODO -- document
+/**
+ * Represents common attributes and functions among IAnimation implementations.
+ */
 public abstract class AAnimation implements IAnimation {
   protected List<IFrame> frames;
   protected List<String> cmdLog;
   protected int tick;
   protected int nFrames;
 
-  // TODO -- document
+  /**
+   * Construct for AAnimation.
+   * Initialize frames and cmdLog as empty lists.
+   * Initialize tick and nFrames as 0.
+   */
   public AAnimation() {
-    frames = new ArrayList<IFrame>();
-    cmdLog = new ArrayList<String>();
+    frames = new ArrayList<>();
+    cmdLog = new ArrayList<>();
     tick = 0;
     nFrames = 0;
   }

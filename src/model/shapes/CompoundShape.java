@@ -10,9 +10,17 @@ import model.attributes.Color;
  * Class that represents a shape made of multiple shapes.
  * May be changed when using swing later on for the view.
  */
-public class CompoundShape extends ABasicShape {
+public class CompoundShape extends BasicShape {
   private final List<IShape> shapes;
 
+  /**
+   * blah blah ...
+   *
+   * @param name
+   * @param x
+   * @param y
+   * @param shapes
+   */
   public CompoundShape(String name, double x, double y, List<IShape> shapes) {
     super(name, x, y, new Color(0, 0, 0));
     this.shapes = shapes;

@@ -3,12 +3,21 @@ package model.shapes;
 import model.attributes.Color;
 import model.attributes.Posn;
 
-public abstract class ABasicShape implements IShape {
+// TODO -- document
+public abstract class BasicShape implements IShape {
   protected String name;
   protected Color color;
   protected Posn posn;
 
-  public ABasicShape(String name, double x, double y, Color color) {
+  /**
+   * Constructor for BasicShape
+   *
+   * @param name  the name of this shape
+   * @param x     the initial x coordinate of this shape
+   * @param y     the initial y coordinate of this shape
+   * @param color the initial color of this shape
+   */
+  public BasicShape(String name, double x, double y, Color color) {
     this.name = name;
     this.color = new Color(color);
     this.posn = new Posn(x, y);
@@ -59,6 +68,7 @@ public abstract class ABasicShape implements IShape {
 
   /**
    * If the given scale is negative, throw an exception.
+   *
    * @param scale the given scale
    */
   public void scaleError(double scale) {
