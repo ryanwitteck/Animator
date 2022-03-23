@@ -24,7 +24,6 @@ import static org.junit.Assert.assertTrue;
  * JUnit test cases for our Animation implementation.
  */
 public class AnimationTest {
-  private List<Drawable> objects;
   private List<ICommand> cmds;
   private PreBuiltAnimation animation;
 
@@ -32,12 +31,12 @@ public class AnimationTest {
 
   @Before
   public void init() {
-    objects = new ArrayList<Drawable>();
+    List<Drawable> objects = new ArrayList<>();
     Rectangle r1 = new Rectangle("R1", 0, 0, 30, 40, new Color(0, 100, 100));
     Rectangle r2 = new Rectangle("R2", 50, 100, 20, 20, new Color(0, 200, 0));
     Rectangle r3 = new Rectangle("R3", 100, 100, 90, 90, new Color(100, 100, 100));
 
-    cmds = new ArrayList<ICommand>();
+    cmds = new ArrayList<>();
     cmds.add(new AddShapeCmd(r1, 1, objects));
     cmds.add(new AddShapeCmd(r2, 1, objects));
     cmds.add(new AddShapeCmd(r3, 2, objects));
@@ -52,32 +51,32 @@ public class AnimationTest {
 
   @Test
   public void testHashMap() {
-    List<ICommand> tick1 = new ArrayList<ICommand>();
+    List<ICommand> tick1 = new ArrayList<>();
     tick1.add(cmds.get(0));
     tick1.add(cmds.get(1));
 
-    List<ICommand> tick2 = new ArrayList<ICommand>();
+    List<ICommand> tick2 = new ArrayList<>();
     tick2.add(cmds.get(2));
 
-    List<ICommand> tick3 = new ArrayList<ICommand>();
+    List<ICommand> tick3 = new ArrayList<>();
     tick3.add(cmds.get(3));
     tick3.add(cmds.get(4));
 
-    List<ICommand> tick4 = new ArrayList<ICommand>();
+    List<ICommand> tick4 = new ArrayList<>();
     tick4.add(cmds.get(5));
     tick4.add(cmds.get(7));
 
-    List<ICommand> tick5 = new ArrayList<ICommand>();
+    List<ICommand> tick5 = new ArrayList<>();
     tick5.add(cmds.get(6));
     tick5.add(cmds.get(5));
     tick5.add(cmds.get(7));
 
-    List<ICommand> tick9 = new ArrayList<ICommand>();
+    List<ICommand> tick9 = new ArrayList<>();
     tick9.add(cmds.get(6));
     tick9.add(cmds.get(5));
     tick9.add(cmds.get(7));
 
-    List<ICommand> tick14 = new ArrayList<ICommand>();
+    List<ICommand> tick14 = new ArrayList<>();
     tick14.add(cmds.get(7));
 
     HashMap<Integer, List<ICommand>> map = animation.getCmdMap();
@@ -98,14 +97,14 @@ public class AnimationTest {
       assertTrue(cmd.isComplete());
     }
 
-    String expected = "";
+    StringBuilder expected = new StringBuilder();
     for (int i = 0; i < 6; i++) {
-      expected += cmds.get(i).logCmd() + "\n";
+      expected.append(cmds.get(i).logCmd()).append("\n");
     }
-    expected += cmds.get(7).logCmd() + "\n";
-    expected += cmds.get(6).logCmd() + "\n";
+    expected.append(cmds.get(7).logCmd()).append("\n");
+    expected.append(cmds.get(6).logCmd()).append("\n");
 
-    assertEquals(expected, animation.getCmdLog());
+    assertEquals(expected.toString(), animation.getCmdLog());
   }
 
   @Test
@@ -113,6 +112,7 @@ public class AnimationTest {
     List<IFrame> frames = animation.getFrames();
 
     for (int i = 1; i < frames.size(); i++) {
+      assertEquals(frames.get(i - 1).listObjects(), animation.getCurrent().listObjects());
       assertEquals(frames.get(i).listObjects(), animation.getNext().listObjects());
     }
     for (int i = frames.size() - 2; i > 0; i--) {
