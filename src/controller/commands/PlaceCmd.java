@@ -21,7 +21,7 @@ public class PlaceCmd extends InstantCmd {
   public void execute() {
     super.execute();
     this.startPos = new Posn(((Movable) obj).getPos());
-    ((Movable) obj).place(endPos);
+    ((Movable) obj).place(new Posn(endPos));
   }
 
   @Override
