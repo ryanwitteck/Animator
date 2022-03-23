@@ -14,6 +14,14 @@ public class MoveCmd extends GradualCmd {
   private double dx;
   private double dy;
 
+  /**
+   * Constructor for MoveCmd.
+   *
+   * @param obj   the object to be added to the list.
+   * @param start the tick when this command triggers.
+   * @param end   the tick when this command ends.
+   * @param dest  the position we want to move the object to.
+   */
   public MoveCmd(Drawable obj, int start, int end, Posn dest) {
     super(obj, start, end);
     if (!(obj instanceof Movable)) {

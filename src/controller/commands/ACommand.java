@@ -2,12 +2,20 @@ package controller.commands;
 
 import model.ObjectInterfaces.Drawable;
 
-// TODO -- document
+/**
+ * Represents common attributes and functions among ICommand implementations.
+ */
 public abstract class ACommand implements ICommand {
   protected Drawable obj;
   protected boolean complete;
   protected int startTick;
 
+  /**
+   * Constructor for ACommand.
+   *
+   * @param obj  the object this command functions on.
+   * @param tick the tick when this command triggers.
+   */
   public ACommand(Drawable obj, int tick) {
     this.obj = obj;
     this.complete = false;
@@ -42,8 +50,7 @@ public abstract class ACommand implements ICommand {
     if (obj instanceof ICommand) {
       ICommand cmd = (ICommand) obj;
       return this.logCmd().equals(cmd.logCmd());
-    }
-    else {
+    } else {
       return false;
     }
   }

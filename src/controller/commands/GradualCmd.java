@@ -2,11 +2,20 @@ package controller.commands;
 
 import model.ObjectInterfaces.Drawable;
 
-// TODO -- document
+/**
+ * Represents a command that occurs over a duration.
+ */
 public abstract class GradualCmd extends ACommand {
   protected boolean running;
   protected int endTick;
 
+  /**
+   * Constructor for GradualCmd.
+   *
+   * @param obj   the object this command functions on.
+   * @param start the tick when this command triggers.
+   * @param end   the tick when this command ends.
+   */
   public GradualCmd(Drawable obj, int start, int end) {
     super(obj, start);
     this.running = false;

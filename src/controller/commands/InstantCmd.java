@@ -2,8 +2,16 @@ package controller.commands;
 
 import model.ObjectInterfaces.Drawable;
 
-// TODO -- Document
+/**
+ * Represents a command that happens instantly (in one tick).
+ */
 public abstract class InstantCmd extends ACommand {
+  /**
+   * Constructor for InstantCmd.
+   *
+   * @param obj  the object this command functions on.
+   * @param tick the tick when this command triggers.
+   */
   public InstantCmd(Drawable obj, int tick) {
     super(obj, tick);
   }

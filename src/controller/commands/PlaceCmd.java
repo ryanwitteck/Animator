@@ -4,11 +4,20 @@ import model.ObjectInterfaces.Drawable;
 import model.ObjectInterfaces.Movable;
 import model.attributes.Posn;
 
-// TODO -- document
+/**
+ * Represents a command to place an object at a specified position.
+ */
 public class PlaceCmd extends InstantCmd {
   private Posn startPos;
-  private Posn endPos;
+  private final Posn endPos;
 
+  /**
+   * Constructor for PlaceCmd.
+   *
+   * @param obj   the object this command functions on.
+   * @param tick the tick when this command triggers.
+   * @param dest  the position we want to place the object.
+   */
   public PlaceCmd(Drawable obj, int tick, Posn dest) {
     super(obj, tick);
     if (!(obj instanceof Movable)) {
