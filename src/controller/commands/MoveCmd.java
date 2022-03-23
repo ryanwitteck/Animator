@@ -37,6 +37,9 @@ public class MoveCmd extends GradualCmd {
 
   @Override
   public String logCmd() {
+    if (!complete) {
+      throw new IllegalStateException("Error: command has not run");
+    }
     return this.log;
   }
 }
