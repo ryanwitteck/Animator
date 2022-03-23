@@ -81,7 +81,7 @@ public class Posn {
     }
     if (other instanceof Posn) {
       Posn a = (Posn) other;
-      return this.x - a.x < 0.001 && this.y - a.y < 0.001;
+      return Math.abs(this.x - a.x) < 0.001 && Math.abs(this.y - a.y) < 0.001;
     } else {
       return false;
     }
