@@ -54,6 +54,7 @@ public class CommandTest {
     assertEquals(4, cmd3.getStartTick());
 
     assertEquals("Create Drawable named R1 at t=1", cmd1.logCmd());
+    assertEquals("Create Drawable named R2 at t=1", cmd2.logCmd());
     assertEquals("Create Drawable named R3 at t=4", cmd3.logCmd());
 
     assertFalse(cmd1.isComplete());
@@ -75,8 +76,8 @@ public class CommandTest {
 
   @Test
   public void testPlaceMove() {
-    Rectangle rect1 = new Rectangle("R2", 3.33, 6.67, 87, 11, new Color(0, 0, 0));
-    Rectangle rect2 = new Rectangle("R3", -10, 99, 50, 1, new Color(0, 0, 0));
+    Rectangle rect1 = new Rectangle("R1", 3.33, 6.67, 87, 11, new Color(0, 0, 0));
+    Rectangle rect2 = new Rectangle("R2", -10, 99, 50, 1, new Color(0, 0, 0));
     Posn p = new Posn(-10, 99);
 
     ICommand cmd1 = new MoveCmd(rect2, 1, 12, new Posn(1, 55));
@@ -114,5 +115,48 @@ public class CommandTest {
     cmd4.execute();
     assertEquals(new Posn(-1.75, -9), rect1.getPos());
     assertTrue(cmd4.isComplete());
+
+    assertEquals("R2 moves from : ( -10.0, 99.0 ) to ( 1.0, 55.0 ) from t=1 to t=12",
+            cmd1.logCmd());
+    assertEquals("R1 moves from : ( 3.33, 6.67 ) to ( 10943.1343, 32142.765 ) " +
+            "from t=1 to t=1000", cmd2.logCmd());
+    assertEquals("R2 moves from : ( 1.0, 55.0 ) to ( 0.0, 3.33 ) at t=1", cmd3.logCmd());
+    assertEquals("R1 moves from : ( 10943.134300000109, 32142.764999999396 ) " +
+            "to ( -1.75, -9.0 ) at t=1", cmd4.logCmd());
+  }
+
+  //---------------------------- Execute Illegal State Exception -----------------------------------
+
+  @Test(expected = IllegalStateException.class)
+  public void testExecFail1() {
+    Rectangle rect = new Rectangle("R1", 0, 0, 10, 5, new Color(0, 0, 0));
+    List<Drawable> list = new ArrayList<Drawable>();
+    ICommand cmd = new AddShapeCmd(rect, 1, list);
+    cmd.execute();
+    cmd.execute();
+  }
+
+  @Test(expected = IllegalStateException.class)
+  public void testExecFail2() {
+    Rectangle rect = new Rectangle("R1", 0, 0, 10, 5, new Color(0, 0, 0));
+    ICommand cmd = new MoveCmd(rect, 1, 12, new Posn(1, 55));
+
+    for (int i = 0; i < 12; i++) {
+      cmd.execute();
+    }
+  }
+
+  @Test(expected = IllegalStateException.class)
+  public void testLogFail1() {
+    Rectangle rect = new Rectangle("R1", 0, 0, 10, 5, new Color(0, 0, 0));
+    ICommand cmd = new PlaceCmd(rect, 1, new Posn(0, 3.33));
+    cmd.logCmd();
+  }
+
+  @Test(expected = IllegalStateException.class)
+  public void testLogFail2() {
+    Rectangle rect = new Rectangle("R1", 0, 0, 10, 5, new Color(0, 0, 0));
+    ICommand cmd = new MoveCmd(rect, 1, 12, new Posn(1, 55));
+    cmd.logCmd();
   }
 }
