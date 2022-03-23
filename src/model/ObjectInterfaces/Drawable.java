@@ -8,21 +8,24 @@ import model.attributes.Color;
 public interface Drawable {
   /**
    * Get a copy of this Drawable.
+   *
    * @return the copy of this Drawable.
    */
-  public Drawable getCopy();
+  Drawable getCopy();
 
   /**
    * Get the name of this object.
+   *
    * @return the name of this object.
    */
-  public String getName();
+  String getName();
 
   /**
    * Get the color of this object.
+   *
    * @return the color of this object.
    */
-  public Color getColor();
+  Color getColor();
 
   /**
    * Changes the color of this object.

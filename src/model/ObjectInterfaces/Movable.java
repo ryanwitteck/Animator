@@ -28,6 +28,7 @@ public interface Movable {
 
   /**
    * Get the current position of this object.
+   *
    * @return the position of this object.
    */
   Posn getPos();
