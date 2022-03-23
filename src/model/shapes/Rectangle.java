@@ -24,4 +24,26 @@ public class Rectangle extends ABasicShape {
   public Drawable getCopy() {
     return new Rectangle(name, posn.getX(), posn.getY(), width, height, color);
   }
+
+  @Override
+  public void stretchHorizontal(double scale) {
+    width *= scale;
+  }
+
+  @Override
+  public void stretchVertical(double scale) {
+    height *= scale;
+  }
+
+  @Override
+  public void scaleUp(double scale) {
+    width *= scale;
+    height *= scale;
+  }
+
+  @Override
+  public void scaleDown(double scale) {
+    width /= scale;
+    height /= scale;
+  }
 }

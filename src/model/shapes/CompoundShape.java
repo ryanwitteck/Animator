@@ -59,11 +59,39 @@ public class CompoundShape implements IShape {
 
   @Override
   public void setColor(int r, int g, int b) {
-    //TODO -- Behavior undecided
+    throw new IllegalStateException("Error: this object does not support this operation");
   }
 
   @Override
   public void setColor(Color c) {
-    //TODO -- Behavior undecided
+    throw new IllegalStateException("Error: this object does not support this operation");
+  }
+
+  @Override
+  public void stretchHorizontal(double scale) {
+    for (IShape s : shapes) {
+      s.stretchHorizontal(scale);
+    }
+  }
+
+  @Override
+  public void stretchVertical(double scale) {
+    for (IShape s : shapes) {
+      s.stretchVertical(scale);
+    }
+  }
+
+  @Override
+  public void scaleUp(double scale) {
+    for (IShape s : shapes) {
+      s.scaleUp(scale);
+    }
+  }
+
+  @Override
+  public void scaleDown(double scale) {
+    for (IShape s : shapes) {
+      s.scaleDown(scale);
+    }
   }
 }
