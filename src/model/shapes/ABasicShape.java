@@ -54,6 +54,6 @@ public abstract class ABasicShape implements IShape {
     if (c == null) {
       throw new IllegalArgumentException("Cannot have a null color");
     }
-    this.color = c;
+    this.color.setColor(c);
   }
 }

@@ -22,7 +22,8 @@ public class Rectangle extends ABasicShape {
 
   @Override
   public Drawable getCopy() {
-    return new Rectangle(name, posn.getX(), posn.getY(), width, height, color);
+    Color copy = new Color(color);
+    return new Rectangle(name, posn.getX(), posn.getY(), width, height, copy);
   }
 
   @Override
