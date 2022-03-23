@@ -55,12 +55,10 @@ public class Posn {
    *
    * @param dx change in x.
    * @param dy change in y.
-   * @return newly formed Posn.
    */
-  public Posn move(double dx, double dy) {
+  public void move(double dx, double dy) {
     this.x += dx;
     this.y += dy;
-    return new Posn(this);
   }
 
   /**
