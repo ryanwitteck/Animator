@@ -16,6 +16,11 @@ public class DummyClass implements Drawable {
   }
 
   @Override
+  public Color getColor() {
+    return null;
+  }
+
+  @Override
   public void setColor(int r, int g, int b) {
 
   }
