@@ -87,7 +87,7 @@ public class ShapeTest {
     assertEquals(40, r.getWidth());
     assertEquals(270, r.getHeight());
 
-    Rectangle copy = (Rectangle)r.getCopy();
+    Rectangle copy = (Rectangle) r.getCopy();
     assertEquals(r, copy);
     copy.place(9999, 9999);
     assertNotEquals(r, copy);
@@ -101,25 +101,25 @@ public class ShapeTest {
     CompoundShape comp = new CompoundShape("C1", 0, 0, list);
 
     comp.scaleDown(4);
-    assertEquals(3, ((Rectangle)list.get(0)).getWidth());
-    assertEquals(3, ((Rectangle)list.get(0)).getHeight());
-    assertEquals(1, ((Rectangle)list.get(1)).getWidth());
-    assertEquals(1, ((Rectangle)list.get(1)).getHeight());
+    assertEquals(3, ((Rectangle) list.get(0)).getWidth());
+    assertEquals(3, ((Rectangle) list.get(0)).getHeight());
+    assertEquals(1, ((Rectangle) list.get(1)).getWidth());
+    assertEquals(1, ((Rectangle) list.get(1)).getHeight());
 
     comp.scaleUp(2);
-    assertEquals(6, ((Rectangle)list.get(0)).getWidth());
-    assertEquals(6, ((Rectangle)list.get(0)).getHeight());
-    assertEquals(2, ((Rectangle)list.get(1)).getWidth());
-    assertEquals(2, ((Rectangle)list.get(1)).getHeight());
+    assertEquals(6, ((Rectangle) list.get(0)).getWidth());
+    assertEquals(6, ((Rectangle) list.get(0)).getHeight());
+    assertEquals(2, ((Rectangle) list.get(1)).getWidth());
+    assertEquals(2, ((Rectangle) list.get(1)).getHeight());
 
     comp.stretchHorizontal(7.07);
     comp.stretchVertical(2.5);
-    assertEquals(42, ((Rectangle)list.get(0)).getWidth());
-    assertEquals(15, ((Rectangle)list.get(0)).getHeight());
-    assertEquals(14, ((Rectangle)list.get(1)).getWidth());
-    assertEquals(5, ((Rectangle)list.get(1)).getHeight());
+    assertEquals(42, ((Rectangle) list.get(0)).getWidth());
+    assertEquals(15, ((Rectangle) list.get(0)).getHeight());
+    assertEquals(14, ((Rectangle) list.get(1)).getWidth());
+    assertEquals(5, ((Rectangle) list.get(1)).getHeight());
 
-    CompoundShape copy = (CompoundShape)comp.getCopy();
+    CompoundShape copy = (CompoundShape) comp.getCopy();
     assertEquals(comp.getName(), copy.getName());
     assertEquals(comp.getPos(), copy.getPos());
     assertEquals(comp.getShapes(), copy.getShapes());

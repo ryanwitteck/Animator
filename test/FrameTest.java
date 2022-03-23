@@ -26,7 +26,7 @@ public class FrameTest {
     Frame f = new Frame(objects);
     List<Drawable> list = f.listObjects();
     assertEquals(objects, list);
-    ((Movable)objects.get(0)).move(0, 1);
+    ((Movable) objects.get(0)).move(0, 1);
     assertNotEquals(objects, list);
   }
 }

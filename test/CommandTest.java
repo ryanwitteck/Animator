@@ -103,7 +103,7 @@ public class CommandTest {
 
     cmd3.execute();
     assertEquals(new Posn(0, 3.33), rect2.getPos());
-    assertTrue(cmd3.isComplete()&& !cmd3.isRunning());
+    assertTrue(cmd3.isComplete() && !cmd3.isRunning());
 
     for (int i = 1; i < 999; i++) {
       cmd2.execute();
