@@ -5,14 +5,13 @@ import java.util.List;
 
 import model.ObjectInterfaces.Drawable;
 import model.attributes.Color;
-import model.attributes.Posn;
 
 /**
  * Class that represents a shape made of multiple shapes.
  * May be changed when using swing later on for the view.
  */
 public class CompoundShape extends ABasicShape {
-  private List<IShape> shapes;
+  private final List<IShape> shapes;
 
   public CompoundShape(String name, double x, double y, List<IShape> shapes) {
     super(name, x, y, new Color(0, 0, 0));
