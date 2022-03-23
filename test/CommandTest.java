@@ -7,7 +7,7 @@ import controller.commands.AddShapeCmd;
 import controller.commands.ICommand;
 import controller.commands.MoveCmd;
 import controller.commands.PlaceCmd;
-import model.baseInterfaces.Drawable;
+import model.interfaces.Drawable;
 import model.attributes.Color;
 import model.attributes.Posn;
 import model.shapes.Rectangle;

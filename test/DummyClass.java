@@ -1,4 +1,4 @@
-import model.baseInterfaces.Drawable;
+import model.interfaces.Drawable;
 import model.attributes.Color;
 
 /**

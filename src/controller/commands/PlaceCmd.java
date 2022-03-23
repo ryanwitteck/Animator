@@ -1,7 +1,7 @@
 package controller.commands;
 
-import model.baseInterfaces.Drawable;
-import model.baseInterfaces.Movable;
+import model.interfaces.Drawable;
+import model.interfaces.Movable;
 import model.attributes.Posn;
 
 /**

@@ -1,4 +1,4 @@
-package model.baseInterfaces;
+package model.interfaces;
 
 import model.attributes.Color;
 

@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import controller.commands.ICommand;
-import model.baseInterfaces.Drawable;
+import model.interfaces.Drawable;
 
 /**
  * Represents an animation that cannot be edited after creation.

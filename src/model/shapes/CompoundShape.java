@@ -3,7 +3,7 @@ package model.shapes;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.baseInterfaces.Drawable;
+import model.interfaces.Drawable;
 import model.attributes.Color;
 
 /**

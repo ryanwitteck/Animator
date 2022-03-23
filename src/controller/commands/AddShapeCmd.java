@@ -2,7 +2,7 @@ package controller.commands;
 
 import java.util.List;
 
-import model.baseInterfaces.Drawable;
+import model.interfaces.Drawable;
 
 /**
  * Represent a command to add a Drawable to a list.

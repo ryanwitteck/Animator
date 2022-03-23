@@ -2,7 +2,7 @@ package model;
 
 import java.util.List;
 
-import model.baseInterfaces.Drawable;
+import model.interfaces.Drawable;
 
 /**
  * Represents a single frame in an animation.
