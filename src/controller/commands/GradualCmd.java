@@ -4,12 +4,12 @@ import model.ObjectInterfaces.Drawable;
 
 // TODO -- document
 public abstract class GradualCmd extends ACommand {
-  private boolean isRunning;
+  protected boolean running;
   protected int endTick;
 
   public GradualCmd(Drawable obj, int start, int end) {
     super(obj, start);
-    this.isRunning = false;
+    this.running = false;
     this.endTick = end;
   }
 
@@ -20,7 +20,7 @@ public abstract class GradualCmd extends ACommand {
 
   @Override
   public boolean isRunning() {
-    return isRunning;
+    return running;
   }
 
   @Override
@@ -28,6 +28,6 @@ public abstract class GradualCmd extends ACommand {
     super.execute();
     startTick++;
     complete = startTick >= endTick;
-    isRunning = !complete;
+    running = !complete;
   }
 }
