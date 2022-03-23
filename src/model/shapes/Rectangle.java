@@ -50,6 +50,7 @@ public class Rectangle extends ABasicShape {
 
   /**
    * Get the width of this rectangle.
+   *
    * @return width the width of this rectangle
    */
   public int getWidth() {
@@ -58,9 +59,32 @@ public class Rectangle extends ABasicShape {
 
   /**
    * Get the height of this rectangle.
+   *
    * @return height the height of this rectangle
    */
   public int getHeight() {
     return height;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (obj == this) {
+      return true;
+    }
+    if (obj instanceof Rectangle) {
+      Rectangle r = (Rectangle) obj;
+      return this.name.equals(r.name)
+              && this.posn.equals(r.posn)
+              && this.color.equals(r.color)
+              && this.width - r.width < 0.001
+              && this.height - r.height < 0.001;
+    } else {
+      return false;
+    }
+  }
+
+  @Override
+  public int hashCode() {
+    return name.hashCode() + posn.hashCode() + color.hashCode() + width + height;
   }
 }
