@@ -95,7 +95,7 @@ public class ShapeTest {
 
   @Test
   public void testCompShape() {
-    List<IShape> list = new ArrayList<IShape>();
+    List<IShape> list = new ArrayList<>();
     list.add(new Rectangle("R1", 0, 0, 12, 12, new Color(0, 0, 0)));
     list.add(new Rectangle("R2", 2, 2, 4, 4, new Color(8, 8, 8)));
     CompoundShape comp = new CompoundShape("C1", 0, 0, list);
@@ -135,7 +135,7 @@ public class ShapeTest {
 
   @Test(expected = IllegalArgumentException.class)
   public void testScaleFail2() {
-    CompoundShape c = new CompoundShape("C", 0, 0, new ArrayList<IShape>());
+    CompoundShape c = new CompoundShape("C", 0, 0, new ArrayList<>());
     c.scaleError(-1);
   }
 
@@ -147,13 +147,13 @@ public class ShapeTest {
 
   @Test(expected = IllegalStateException.class)
   public void testCompColorFail1() {
-    CompoundShape c = new CompoundShape("C", 0, 0, new ArrayList<IShape>());
+    CompoundShape c = new CompoundShape("C", 0, 0, new ArrayList<>());
     c.setColor(0, 0, 0);
   }
 
   @Test(expected = IllegalStateException.class)
   public void testCompColorFail2() {
-    CompoundShape c = new CompoundShape("C", 0, 0, new ArrayList<IShape>());
+    CompoundShape c = new CompoundShape("C", 0, 0, new ArrayList<>());
     c.setColor(new Color(0, 0, 0));
   }
 }

@@ -42,7 +42,7 @@ public class CommandTest {
     Rectangle rect1 = new Rectangle("R1", 0, 0, 10, 5, new Color(0, 0, 0));
     Rectangle rect2 = new Rectangle("R2", 3.33, 6.67, 87, 11, new Color(0, 0, 0));
     Rectangle rect3 = new Rectangle("R3", -10, 999, 50, 1, new Color(0, 0, 0));
-    List<Drawable> list = new ArrayList<Drawable>();
+    List<Drawable> list = new ArrayList<>();
 
     ICommand cmd1 = new AddShapeCmd(rect1, 1, list);
     ICommand cmd2 = new AddShapeCmd(rect2, 1, list);
@@ -132,7 +132,7 @@ public class CommandTest {
   @Test(expected = IllegalStateException.class)
   public void testExecFail1() {
     Rectangle rect = new Rectangle("R1", 0, 0, 10, 5, new Color(0, 0, 0));
-    List<Drawable> list = new ArrayList<Drawable>();
+    List<Drawable> list = new ArrayList<>();
     ICommand cmd = new AddShapeCmd(rect, 1, list);
     cmd.execute();
     cmd.execute();
