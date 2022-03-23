@@ -56,4 +56,14 @@ public abstract class ABasicShape implements IShape {
     }
     this.color.setColor(c);
   }
+
+  /**
+   * If the given scale is negative, throw an exception.
+   * @param scale the given scale
+   */
+  public void scaleError(double scale) {
+    if (scale < 0) {
+      throw new IllegalArgumentException("Error: Scale cannot be negative");
+    }
+  }
 }

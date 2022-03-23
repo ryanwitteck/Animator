@@ -52,14 +52,6 @@ public class Rectangle extends ABasicShape {
     height /= scale;
   }
 
-
-  // TODO -- document
-  private void scaleError(double scale) {
-    if (scale < 0) {
-      throw new IllegalArgumentException("Error: Scale cannot be negative");
-    }
-  }
-
   /**
    * Get the width of this rectangle.
    *

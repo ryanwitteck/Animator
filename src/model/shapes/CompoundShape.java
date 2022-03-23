@@ -40,6 +40,7 @@ public class CompoundShape extends ABasicShape {
 
   @Override
   public void stretchHorizontal(double scale) {
+    scaleError(scale);
     for (IShape s : shapes) {
       s.stretchHorizontal(scale);
     }
@@ -47,6 +48,7 @@ public class CompoundShape extends ABasicShape {
 
   @Override
   public void stretchVertical(double scale) {
+    scaleError(scale);
     for (IShape s : shapes) {
       s.stretchVertical(scale);
     }
@@ -54,6 +56,7 @@ public class CompoundShape extends ABasicShape {
 
   @Override
   public void scaleUp(double scale) {
+    scaleError(scale);
     for (IShape s : shapes) {
       s.scaleUp(scale);
     }
@@ -61,6 +64,7 @@ public class CompoundShape extends ABasicShape {
 
   @Override
   public void scaleDown(double scale) {
+    scaleError(scale);
     for (IShape s : shapes) {
       s.scaleDown(scale);
     }
