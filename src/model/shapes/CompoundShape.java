@@ -14,12 +14,12 @@ public class CompoundShape extends BasicShape {
   private final List<IShape> shapes;
 
   /**
-   * blah blah ...
+   * Constructor for CompoundShape.
    *
-   * @param name
-   * @param x
-   * @param y
-   * @param shapes
+   * @param name   the name of this shape
+   * @param x      the initial x coordinate of this shape
+   * @param y      the initial y coordinate of this shape
+   * @param shapes the shapes that define this shape
    */
   public CompoundShape(String name, double x, double y, List<IShape> shapes) {
     super(name, x, y, new Color(0, 0, 0));
@@ -28,9 +28,9 @@ public class CompoundShape extends BasicShape {
 
   @Override
   public Drawable getCopy() {
-    List<IShape> copy = new ArrayList<IShape>();
+    List<IShape> copy = new ArrayList<>();
     for (IShape s : shapes) {
-      copy.add((IShape)s.getCopy());
+      copy.add((IShape) s.getCopy());
     }
 
     return new CompoundShape(name, posn.getX(), posn.getY(), copy);
@@ -80,6 +80,7 @@ public class CompoundShape extends BasicShape {
 
   /**
    * Get the list of shapes this object is made from.
+   *
    * @return shapes the list of shapes defining this object.
    */
   public List<IShape> getShapes() {

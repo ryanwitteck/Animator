@@ -12,13 +12,14 @@ public class Rectangle extends BasicShape {
   private int height;
 
   /**
+   * Constructor for Rectangle.
    *
-   * @param name
-   * @param x
-   * @param y
-   * @param width
-   * @param height
-   * @param color
+   * @param name   the name of this shape
+   * @param x      the initial x coordinate of this shape
+   * @param y      the initial y coordinate of this shape
+   * @param width  the initial width of this shape.
+   * @param height the initial height of this shape.
+   * @param color  the initial color of this shape
    */
   public Rectangle(String name, double x, double y, int width, int height, Color color) {
     super(name, x, y, color);

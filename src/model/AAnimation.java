@@ -13,7 +13,7 @@ public abstract class AAnimation implements IAnimation {
   protected int nFrames;
 
   /**
-   * Construct for AAnimation.
+   * Constructor for AAnimation.
    * Initialize frames and cmdLog as empty lists.
    * Initialize tick and nFrames as 0.
    */
@@ -26,7 +26,7 @@ public abstract class AAnimation implements IAnimation {
 
   @Override
   public IFrame getFrame(int tick) {
-    if (!inBounds(tick)) {
+    if (outBounds(tick)) {
       throw new IllegalArgumentException("Error: Invalid tick");
     }
     this.tick = tick;
@@ -35,7 +35,7 @@ public abstract class AAnimation implements IAnimation {
 
   @Override
   public IFrame getCurrent() {
-    if (!inBounds(tick)) {
+    if (outBounds(tick)) {
       throw new IllegalStateException("Error: Invalid tick");
     }
     return frames.get(tick);
@@ -43,7 +43,7 @@ public abstract class AAnimation implements IAnimation {
 
   @Override
   public IFrame getPrev() {
-    if (!inBounds(tick - 1)) {
+    if (outBounds(tick - 1)) {
       throw new IllegalStateException("Error: Invalid tick");
     }
     tick--;
@@ -52,7 +52,7 @@ public abstract class AAnimation implements IAnimation {
 
   @Override
   public IFrame getNext() {
-    if (!inBounds(tick + 1)) {
+    if (outBounds(tick + 1)) {
       throw new IllegalStateException("Error: Invalid tick");
     }
     tick++;
@@ -66,15 +66,20 @@ public abstract class AAnimation implements IAnimation {
 
   @Override
   public String getCmdLog() {
-    String log = "";
+    StringBuilder log = new StringBuilder();
     for (String s : cmdLog) {
-      log += s + "\n";
+      log.append(s).append("\n");
     }
-    return log;
+    return log.toString();
   }
 
-  // TODO -- document
-  protected boolean inBounds(int index) {
-    return (index >= 0 && index < this.nFrames);
+  /**
+   * Check if the given index is a valid index for frames.
+   *
+   * @param index the given index
+   * @return whether the index is in bounds
+   */
+  protected boolean outBounds(int index) {
+    return (index < 0 || index >= this.nFrames);
   }
 }

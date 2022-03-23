@@ -3,14 +3,16 @@ package model.shapes;
 import model.attributes.Color;
 import model.attributes.Posn;
 
-// TODO -- document
+/**
+ * Represents common attributes and functions among IShape implementations.
+ */
 public abstract class BasicShape implements IShape {
   protected String name;
   protected Color color;
   protected Posn posn;
 
   /**
-   * Constructor for BasicShape
+   * Constructor for BasicShape.
    *
    * @param name  the name of this shape
    * @param x     the initial x coordinate of this shape
