@@ -28,24 +28,36 @@ public class Rectangle extends ABasicShape {
 
   @Override
   public void stretchHorizontal(double scale) {
+    scaleError(scale);
     width *= scale;
   }
 
   @Override
   public void stretchVertical(double scale) {
+    scaleError(scale);
     height *= scale;
   }
 
   @Override
   public void scaleUp(double scale) {
+    scaleError(scale);
     width *= scale;
     height *= scale;
   }
 
   @Override
   public void scaleDown(double scale) {
+    scaleError(scale);
     width /= scale;
     height /= scale;
+  }
+
+
+  // TODO -- document
+  private void scaleError(double scale) {
+    if (scale < 0) {
+      throw new IllegalArgumentException("Error: Scale cannot be negative");
+    }
   }
 
   /**
