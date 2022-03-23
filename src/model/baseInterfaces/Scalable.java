@@ -1,4 +1,4 @@
-package model.base_interfaces;
+package model.baseInterfaces;
 
 /**
  * Our interface for any object that can be scaled up and down.

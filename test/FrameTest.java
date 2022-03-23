@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Frame;
-import model.base_interfaces.Drawable;
-import model.base_interfaces.Movable;
+import model.baseInterfaces.Drawable;
+import model.baseInterfaces.Movable;
 import model.attributes.Color;
 import model.shapes.Rectangle;
 

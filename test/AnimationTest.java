@@ -10,7 +10,7 @@ import controller.commands.ICommand;
 import controller.commands.MoveCmd;
 import controller.commands.PlaceCmd;
 import model.IFrame;
-import model.base_interfaces.Drawable;
+import model.baseInterfaces.Drawable;
 import model.PreBuiltAnimation;
 import model.attributes.Color;
 import model.attributes.Posn;

@@ -1,7 +1,7 @@
 package model.shapes;
 
 
-import model.base_interfaces.Drawable;
+import model.baseInterfaces.Drawable;
 import model.attributes.Color;
 
 /**
