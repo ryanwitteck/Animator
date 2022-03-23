@@ -9,7 +9,7 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
 
 /**
- * JUnit test cases for the implemented commands.
+ * JUnit test cases for the implemented attributes.
  */
 public class AttributeTest {
 

@@ -13,7 +13,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
 /**
- * JUnit test cases for the implemented commands.
+ * JUnit test cases for the implemented shapes.
  */
 public class ShapeTest {
 
