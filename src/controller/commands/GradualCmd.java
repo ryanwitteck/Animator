@@ -20,6 +20,6 @@ public abstract class GradualCmd extends ACommand {
   public void execute() {
     super.execute();
     startTick++;
-    this.complete = startTick >= endTick;
+    complete = startTick >= endTick;
   }
 }
