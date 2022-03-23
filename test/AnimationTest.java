@@ -9,6 +9,7 @@ import controller.commands.AddShapeCmd;
 import controller.commands.ICommand;
 import controller.commands.MoveCmd;
 import controller.commands.PlaceCmd;
+import model.IFrame;
 import model.ObjectInterfaces.Drawable;
 import model.PreBuiltAnimation;
 import model.attributes.Color;
@@ -17,13 +18,17 @@ import model.shapes.Rectangle;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * JUnit test cases for our Animation implementation.
  */
 public class AnimationTest {
-  private List<Drawable> objects = new ArrayList<Drawable>();
-  private List<ICommand> cmds = new ArrayList<ICommand>();
+  private List<Drawable> objects;
+  private List<ICommand> cmds;
+  private PreBuiltAnimation animation;
+
+  //---------------------------- Test Functionality ------------------------------------------------
 
   @Before
   public void init() {
@@ -41,6 +46,8 @@ public class AnimationTest {
     cmds.add(new MoveCmd(r1, 4, 10, new Posn(0, 0)));
     cmds.add(new MoveCmd(r2, 5, 10, new Posn(555, 123)));
     cmds.add(new MoveCmd(r3, 4, 15, new Posn(45, 45)));
+
+    animation = new PreBuiltAnimation(objects, cmds);
   }
 
   @Test
@@ -73,7 +80,6 @@ public class AnimationTest {
     List<ICommand> tick14 = new ArrayList<ICommand>();
     tick14.add(cmds.get(7));
 
-    PreBuiltAnimation animation = new PreBuiltAnimation(objects, cmds);
     HashMap<Integer, List<ICommand>> map = animation.getCmdMap();
 
     assertEquals(tick1, map.get(1));
@@ -84,5 +90,92 @@ public class AnimationTest {
     assertEquals(tick9, map.get(9));
     assertEquals(tick14, map.get(14));
     assertNull(map.get(15));
+  }
+
+  @Test
+  public void testLog() {
+    for (ICommand cmd : cmds) {
+      assertTrue(cmd.isComplete());
+    }
+
+    String expected = "";
+    for (int i = 0; i < 6; i++) {
+      expected += cmds.get(i).logCmd() + "\n";
+    }
+    expected += cmds.get(7).logCmd() + "\n";
+    expected += cmds.get(6).logCmd() + "\n";
+
+    assertEquals(expected, animation.getCmdLog());
+  }
+
+  @Test
+  public void testFrames() {
+    List<IFrame> frames = animation.getFrames();
+
+    for (int i = 1; i < frames.size(); i++) {
+      assertEquals(frames.get(i).listObjects(), animation.getNext().listObjects());
+    }
+    for (int i = frames.size() - 2; i > 0; i--) {
+      assertEquals(frames.get(i).listObjects(), animation.getPrev().listObjects());
+    }
+
+    Rectangle r1 = new Rectangle("R1", 0, 0, 30, 40, new Color(0, 100, 100));
+    Rectangle r2 = new Rectangle("R2", 50, 100, 20, 20, new Color(0, 200, 0));
+    Rectangle r3 = new Rectangle("R3", 100, 100, 90, 90, new Color(100, 100, 100));
+    assertTrue(frames.get(0).listObjects().isEmpty());
+    assertEquals(r1, frames.get(1).listObjects().get(0));
+    assertEquals(r2, frames.get(1).listObjects().get(1));
+
+    assertEquals(r1, frames.get(2).listObjects().get(0));
+    assertEquals(r2, frames.get(2).listObjects().get(1));
+    assertEquals(r3, frames.get(2).listObjects().get(2));
+
+    r1.place(900, 900);
+    r2.place(-10, -50);
+    assertEquals(r1, frames.get(3).listObjects().get(0));
+    assertEquals(r2, frames.get(3).listObjects().get(1));
+    assertEquals(r3, frames.get(3).listObjects().get(2));
+
+    r1.place(0, 0);
+    r2.place(555, 123);
+    r3.place(70, 70);
+    assertEquals(r1, frames.get(9).listObjects().get(0));
+    assertEquals(r2, frames.get(9).listObjects().get(1));
+    assertEquals(r3, frames.get(9).listObjects().get(2));
+
+    r3.place(45, 45);
+    assertEquals(r1, frames.get(14).listObjects().get(0));
+    assertEquals(r2, frames.get(14).listObjects().get(1));
+    assertEquals(r3, frames.get(14).listObjects().get(2));
+  }
+
+  //---------------------------- Test Exceptions ---------------------------------------------------
+
+  @Test(expected = IllegalStateException.class)
+  public void testExecuteFail() {
+    animation.execute(cmds.get(0));
+  }
+
+  @Test(expected = IllegalStateException.class)
+  public void testPrevFail() {
+    animation.getPrev();
+  }
+
+  @Test(expected = IllegalStateException.class)
+  public void testNextFail() {
+    int nFrames = animation.getFrames().size();
+    for (int i = 0; i < nFrames; i++) {
+      animation.getNext();
+    }
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testGetFail1() {
+    animation.getFrame(-1);
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testGetFail2() {
+    animation.getFrame(animation.getFrames().size());
   }
 }
