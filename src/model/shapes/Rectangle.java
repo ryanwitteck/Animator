@@ -46,4 +46,20 @@ public class Rectangle extends ABasicShape {
     width /= scale;
     height /= scale;
   }
+
+  /**
+   * Get the width of this rectangle.
+   * @return width the width of this rectangle
+   */
+  public int getWidth() {
+    return width;
+  }
+
+  /**
+   * Get the height of this rectangle.
+   * @return height the height of this rectangle
+   */
+  public int getHeight() {
+    return height;
+  }
 }
