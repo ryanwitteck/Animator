@@ -25,6 +25,17 @@ public class Color {
   }
 
   /**
+   * Our constructor for color class.
+   *
+   * @param other the desired color
+   */
+  public Color(Color other) {
+    this.r = other.r;
+    this.g = other.g;
+    this.b = other.b;
+  }
+
+  /**
    * Returns whether or not the given number is a valid color value.
    *
    * @param x the number
