@@ -41,7 +41,7 @@ public abstract class ABasicShape implements IShape {
 
   @Override
   public void setColor(int r, int g, int b) {
-    this.color = new Color(r, g, b);
+    this.color.setColor(r, g, b);
   }
 
   @Override
