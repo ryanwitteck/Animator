@@ -29,8 +29,8 @@ public class MoveCmd extends GradualCmd {
       startPos = new Posn(((Movable) obj).getPos());
       this.log = obj.getName() + " moves from : " + startPos + " to " + dest
               + " from t=" + startTick + "to t=" + endTick;
-      dx = (dest.getX() - startPos.getX()) / (endTick - startTick);
-      dy = (dest.getY() - startPos.getY()) / (endTick - startTick);
+      dx = (dest.getX() - startPos.getX()) / (endTick - startTick + 1);
+      dy = (dest.getY() - startPos.getY()) / (endTick - startTick + 1);
     }
     ((Movable) obj).move(dx, dy);
   }
