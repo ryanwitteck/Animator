@@ -5,7 +5,9 @@ import java.util.List;
 import model.commands.ICommand;
 
 /**
- * Represents an animated video.
+ * This interface represents an animated video.
+ * A video in this context is defined as a collection of IFrames with a clear sequence.
+ * IFrames represent the state of the video at a given moment.
  */
 public interface IAnimation {
 
@@ -14,7 +16,7 @@ public interface IAnimation {
    *
    * @param cmd the function object
    */
-  void execute(ICommand cmd);
+  void addCommand(ICommand cmd);
 
   /**
    * Get the frame at desired tick.

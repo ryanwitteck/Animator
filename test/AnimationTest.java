@@ -111,12 +111,8 @@ public class AnimationTest {
   public void testFrames() {
     List<IFrame> frames = animation.getFrames();
 
-    for (int i = 1; i < frames.size(); i++) {
-      assertEquals(frames.get(i - 1).listObjects(), animation.getCurrent().listObjects());
-      assertEquals(frames.get(i).listObjects(), animation.getNext().listObjects());
-    }
-    for (int i = frames.size() - 2; i > 0; i--) {
-      assertEquals(frames.get(i).listObjects(), animation.getPrev().listObjects());
+    for (int i = 0; i < frames.size(); i++) {
+      assertEquals(frames.get(i).listObjects(), animation.getFrame(i).listObjects());
     }
 
     Rectangle r1 = new Rectangle("R1", 0, 0, 30, 40, new Color(0, 100, 100));
@@ -153,20 +149,7 @@ public class AnimationTest {
 
   @Test(expected = IllegalStateException.class)
   public void testExecuteFail() {
-    animation.execute(cmds.get(0));
-  }
-
-  @Test(expected = IllegalStateException.class)
-  public void testPrevFail() {
-    animation.getPrev();
-  }
-
-  @Test(expected = IllegalStateException.class)
-  public void testNextFail() {
-    int nFrames = animation.getFrames().size();
-    for (int i = 0; i < nFrames; i++) {
-      animation.getNext();
-    }
+    animation.addCommand(cmds.get(0));
   }
 
   @Test(expected = IllegalArgumentException.class)
