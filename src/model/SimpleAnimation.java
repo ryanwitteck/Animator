@@ -9,8 +9,9 @@ import model.interfaces.Drawable;
 
 /**
  * Represents an animation that cannot be edited after creation.
+ * This class allows the user to ... TODO
  */
-public class PreBuiltAnimation extends AAnimation {
+public class SimpleAnimation extends AAnimation {
 
   private HashMap<Integer, List<ICommand>> cmdMap;
 
@@ -20,7 +21,7 @@ public class PreBuiltAnimation extends AAnimation {
    * @param objects the list of objects in the animation
    * @param cmds    the list of commands
    */
-  public PreBuiltAnimation(List<Drawable> objects, List<ICommand> cmds) {
+  public SimpleAnimation(List<Drawable> objects, List<ICommand> cmds) {
     super();
     this.frames.add(new Frame(objects));
     initHashMap(cmds);

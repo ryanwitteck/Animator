@@ -11,7 +11,7 @@ import model.commands.MoveCmd;
 import model.commands.PlaceCmd;
 import model.IFrame;
 import model.interfaces.Drawable;
-import model.PreBuiltAnimation;
+import model.SimpleAnimation;
 import model.attributes.Color;
 import model.attributes.Posn;
 import model.shapes.Rectangle;
@@ -25,7 +25,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class AnimationTest {
   private List<ICommand> cmds;
-  private PreBuiltAnimation animation;
+  private SimpleAnimation animation;
 
   //---------------------------- Test Functionality ------------------------------------------------
 
@@ -46,7 +46,7 @@ public class AnimationTest {
     cmds.add(new MoveCmd(r2, 5, 10, new Posn(555, 123)));
     cmds.add(new MoveCmd(r3, 4, 15, new Posn(45, 45)));
 
-    animation = new PreBuiltAnimation(objects, cmds);
+    animation = new SimpleAnimation(objects, cmds);
   }
 
   @Test
