@@ -14,8 +14,9 @@ public abstract class AAnimation implements IAnimation {
   protected int nFrames;
 
   /**
-   * Constructor for AAnimation. Initialize frames and cmdLog as empty lists. Initialize tick and
-   * nFrames as 0.
+   * Default constructor for AAnimation.
+   * Initialize frames and cmdLog as empty lists.
+   * Initialize tick and nFrames as 0.
    */
   public AAnimation() {
     frames = new ArrayList<>();
