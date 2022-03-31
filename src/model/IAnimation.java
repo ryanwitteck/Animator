@@ -34,7 +34,7 @@ public interface IAnimation {
   IFrame getFrame(int tick);
 
   /**
-   * Get the list of frames.
+   * Get the frames in this animation as a list.
    *
    * @return the list of frames in this animation
    */
