@@ -4,6 +4,10 @@ import model.attributes.Posn;
 
 /**
  * Our interface for any object that can be moved.
+ *
+ * Every Movable should...
+ *  - Have a position.
+ *  - Be able to change position.
  */
 public interface Movable {
 
