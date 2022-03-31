@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Represents common attributes and functions among IAnimation implementations.
+ * Abstract class for IAnimation interface.
+ * Implements all methods defined in IAnimation except for addAnimation.
  */
 public abstract class AAnimation implements IAnimation {
 
