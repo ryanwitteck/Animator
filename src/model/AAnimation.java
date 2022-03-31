@@ -34,7 +34,7 @@ public abstract class AAnimation implements IAnimation {
 
   @Override
   public List<IFrame> getFrames() {
-    // TODO -- change to copy of frames
+    List<>
     return frames;
   }
 
