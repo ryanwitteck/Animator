@@ -110,6 +110,11 @@ public class CompoundShape extends BasicShape {
    * @return shapes the list of shapes defining this object.
    */
   public List<IShape> getShapes() {
-    return new ArrayList<>(shapes);
+    List<IShape> copy = new ArrayList<>();
+    for (IShape s : shapes) {
+      copy.add((IShape) s.getCopy());
+    }
+
+    return copy;
   }
 }

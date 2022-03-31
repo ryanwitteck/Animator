@@ -34,7 +34,13 @@ public abstract class AAnimation implements IAnimation {
 
   @Override
   public List<IFrame> getFrames() {
-    return new ArrayList<>(frames);
+    List<IFrame> copy = new ArrayList<>();
+
+    for (IFrame f : frames) {
+      copy.add(new Frame(f.listObjects()));
+    }
+
+    return copy;
   }
 
   @Override
