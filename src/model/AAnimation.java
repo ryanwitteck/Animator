@@ -10,7 +10,6 @@ public abstract class AAnimation implements IAnimation {
 
   protected List<IFrame> frames;
   protected List<String> cmdLog;
-  protected int tick;
   protected int nFrames;
 
   /**
@@ -20,7 +19,6 @@ public abstract class AAnimation implements IAnimation {
   public AAnimation() {
     frames = new ArrayList<>();
     cmdLog = new ArrayList<>();
-    tick = 0;
     nFrames = 0;
   }
 
@@ -29,38 +27,12 @@ public abstract class AAnimation implements IAnimation {
     if (outBounds(tick)) {
       throw new IllegalArgumentException("Error: Invalid tick");
     }
-    this.tick = tick;
-    return frames.get(this.tick);
-  }
-
-  @Override
-  public IFrame getCurrent() {
-    if (outBounds(tick)) {
-      throw new IllegalStateException("Error: Invalid tick");
-    }
-    return frames.get(tick);
-  }
-
-  @Override
-  public IFrame getPrev() {
-    if (outBounds(tick - 1)) {
-      throw new IllegalStateException("Error: Invalid tick");
-    }
-    tick--;
-    return frames.get(tick);
-  }
-
-  @Override
-  public IFrame getNext() {
-    if (outBounds(tick + 1)) {
-      throw new IllegalStateException("Error: Invalid tick");
-    }
-    tick++;
     return frames.get(tick);
   }
 
   @Override
   public List<IFrame> getFrames() {
+    // TODO -- change to copy of frames
     return frames;
   }
 

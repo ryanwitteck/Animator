@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import controller.commands.ICommand;
+import model.commands.ICommand;
 import model.interfaces.Drawable;
 
 /**

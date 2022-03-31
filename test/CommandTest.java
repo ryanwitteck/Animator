@@ -3,10 +3,10 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import controller.commands.AddShapeCmd;
-import controller.commands.ICommand;
-import controller.commands.MoveCmd;
-import controller.commands.PlaceCmd;
+import model.commands.AddShapeCmd;
+import model.commands.ICommand;
+import model.commands.MoveCmd;
+import model.commands.PlaceCmd;
 import model.interfaces.Drawable;
 import model.attributes.Color;
 import model.attributes.Posn;

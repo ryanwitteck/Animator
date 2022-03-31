@@ -1,4 +1,4 @@
-package controller.commands;
+package model.commands;
 
 /**
  * Represents a function-object that modifies a given drawable.

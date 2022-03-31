@@ -2,7 +2,7 @@ package model;
 
 import java.util.List;
 
-import controller.commands.ICommand;
+import model.commands.ICommand;
 
 /**
  * Represents an animated video.
@@ -23,27 +23,6 @@ public interface IAnimation {
    * @return the frame
    */
   IFrame getFrame(int tick);
-
-  /**
-   * Get the current frame.
-   *
-   * @return the current frame
-   */
-  IFrame getCurrent();
-
-  /**
-   * Get the previous frame.
-   *
-   * @return the previous frame
-   */
-  IFrame getPrev();
-
-  /**
-   * Get the next frame.
-   *
-   * @return the next frame
-   */
-  IFrame getNext();
 
   /**
    * Get the list of frames.

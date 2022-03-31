@@ -1,4 +1,4 @@
-package controller.commands;
+package model.commands;
 
 import model.interfaces.Drawable;
 

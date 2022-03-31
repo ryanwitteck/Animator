@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import controller.commands.AddShapeCmd;
-import controller.commands.ICommand;
-import controller.commands.MoveCmd;
-import controller.commands.PlaceCmd;
+import model.commands.AddShapeCmd;
+import model.commands.ICommand;
+import model.commands.MoveCmd;
+import model.commands.PlaceCmd;
 import model.IFrame;
 import model.interfaces.Drawable;
 import model.PreBuiltAnimation;
