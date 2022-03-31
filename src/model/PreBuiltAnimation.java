@@ -85,8 +85,13 @@ public class PreBuiltAnimation extends AAnimation {
   }
 
   @Override
-  public void addCommand(ICommand cmd) {
-    throw new IllegalStateException("Error: This animation does not accept commands");
+  public void addCmd(ICommand cmd) {
+    throw new IllegalStateException("Error: This animation does not accept changes");
+  }
+
+  @Override
+  public void removeCmd(ICommand cmd) {
+    throw new IllegalStateException("Error: This animation does not accept changes");
   }
 
   /**
