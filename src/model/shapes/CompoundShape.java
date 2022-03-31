@@ -7,8 +7,18 @@ import model.interfaces.Drawable;
 import model.attributes.Color;
 
 /**
- * Class that represents a shape made of multiple shapes.
+ * This class represents a shape composed of multiple shapes.
  * May be changed when using swing later on for the view.
+ *
+ * Contains fields:
+ *  - All fields in BasicShape by inheritance.
+ *  - shapes  the list of shapes that form this shape.
+ * Implemented Methods:
+ *  - All methods in BasicShape by inheritance.
+ *  - getCopy from Drawable.
+ *  - All Scalable methods.
+ *  - Getters for width and height.
+ *  - Equals and HashCode.
  */
 public class CompoundShape extends BasicShape {
   private final List<IShape> shapes;
@@ -100,6 +110,6 @@ public class CompoundShape extends BasicShape {
    * @return shapes the list of shapes defining this object.
    */
   public List<IShape> getShapes() {
-    return shapes;
+    return new ArrayList<>(shapes);
   }
 }

@@ -5,7 +5,18 @@ import model.interfaces.Drawable;
 import model.attributes.Color;
 
 /**
- * Class that represents a rectangle. May be changed when using swing later on for the view.
+ * This class represents a rectangle. May be changed when using swing later on for the view.
+ *
+ * Contains fields:
+ *  - All fields in BasicShape by inheritance.
+ *  - width   the width of this rectangle.
+ *  - height  the height of this rectangle.
+ * Implemented Methods:
+ *  - All methods in BasicShape by inheritance.
+ *  - getCopy from Drawable.
+ *  - All Scalable methods.
+ *  - Getters for width and height.
+ *  - Equals and HashCode.
  */
 public class Rectangle extends BasicShape {
   private int width;
