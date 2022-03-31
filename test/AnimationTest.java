@@ -149,7 +149,7 @@ public class AnimationTest {
 
   @Test(expected = IllegalStateException.class)
   public void testExecuteFail() {
-    animation.addCommand(cmds.get(0));
+    animation.addCmd(cmds.get(0));
   }
 
   @Test(expected = IllegalArgumentException.class)
