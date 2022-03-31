@@ -12,11 +12,18 @@ import model.commands.ICommand;
 public interface IAnimation {
 
   /**
-   * Execute the command of the function object given to it.
+   * Add the given command/motion to this animation.
    *
    * @param cmd the function object
    */
-  void addCommand(ICommand cmd);
+  void addCmd(ICommand cmd);
+
+  /**
+   * Remove the given command/motion from this animation.
+   *
+   * @param cmd the function object
+   */
+  void removeCmd(ICommand cmd);
 
   /**
    * Get the frame at desired tick.

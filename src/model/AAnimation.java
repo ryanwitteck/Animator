@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  * Abstract class for IAnimation interface.
- * Implements all methods defined in IAnimation except for addAnimation.
+ * Implements all methods defined in IAnimation except for addCmd and removeCmd.
  */
 public abstract class AAnimation implements IAnimation {
 
