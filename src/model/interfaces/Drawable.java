@@ -3,7 +3,13 @@ package model.interfaces;
 import model.attributes.Color;
 
 /**
- * Our interface for any object that can be drawn.
+ * Our interface for any object that can be drawn onto the canvas.
+ *
+ * Every Drawable should...
+ *  - Have a unique name/ID for easy recognition.
+ *  - Have a color.
+ *  - Be able to create a copy of itself.
+ *  - Be able to return an image of itself or draw itself onto a canvas <--- TODO
  */
 public interface Drawable {
 
@@ -44,5 +50,5 @@ public interface Drawable {
    */
   void setColor(Color c);
 
-  // TODO -- Add draw method. Do after behavior is defined.
+  // TODO -- Add draw method. Do after behavior is decided.
 }
