@@ -4,7 +4,14 @@ import model.attributes.Color;
 import model.attributes.Posn;
 
 /**
- * Represents common attributes and functions among IShape implementations.
+ * Abstract class for IShape.
+ * Implements common fields among IShape implementations:
+ *  - name  the unique name of this shape (required by Drawable).
+ *  - color the color of this shape (required by Drawable).
+ *  - posn  the position of this shape (required by Movable).
+ * Implements most methods in IShape except for:
+ * - the getCopy() method in Drawable.
+ * - the Scalable methods.
  */
 public abstract class BasicShape implements IShape {
   protected String name;
