@@ -10,7 +10,7 @@ import model.interfaces.Drawable;
 public interface IFrame {
 
   /**
-   * Get the list of animated objects.
+   * Get the list of animated objects in this frame.
    *
    * @return the list of objects being animated
    */

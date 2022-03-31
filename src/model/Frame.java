@@ -30,6 +30,12 @@ public class Frame implements IFrame {
 
   @Override
   public List<Drawable> listObjects() {
-    return objects;
+    ArrayList<Drawable> copy = new ArrayList<>();
+
+    for (Drawable d : objects) {
+      copy.add(d.getCopy());
+    }
+
+    return copy;
   }
 }
