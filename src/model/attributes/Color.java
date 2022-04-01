@@ -1,7 +1,8 @@
 package model.attributes;
 
 /**
- * Represents colors for this animation.
+ * This class represents a color.
+ * Colors are represented by traditional rgb values.
  */
 public class Color {
 
