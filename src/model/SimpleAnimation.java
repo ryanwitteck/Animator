@@ -1,19 +1,17 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
 import model.commands.ICommand;
-import model.interfaces.Drawable;
 
 /**
  * This is a simple implementation of IAnimation that extends AAnimation.
  * New Fields:
  * - cmdMap      a HashMap of all the commands in this animation mapped to their start tick
  * - cmds        a list of all the commands in this animation. Used to reset the cmdMap when needed
- * This class implements addCmd and removeCmd from the IAnimation interface.
+ * This class implements addCmd, removeCmd, and Compile from the IAnimation interface.
  */
 public class SimpleAnimation extends AAnimation {
 

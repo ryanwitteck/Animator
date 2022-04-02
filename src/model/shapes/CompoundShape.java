@@ -9,16 +9,16 @@ import model.attributes.Color;
 /**
  * This class represents a shape composed of multiple shapes.
  * May be changed when using swing later on for the view.
- *
+ * <p>
  * Contains fields:
- *  - All fields in BasicShape by inheritance.
- *  - shapes  the list of shapes that form this shape.
+ * - All fields in BasicShape by inheritance.
+ * - shapes  the list of shapes that form this shape.
  * Implemented Methods:
- *  - All methods in BasicShape by inheritance.
- *  - getCopy from Drawable.
- *  - All Scalable methods.
- *  - Getters for width and height.
- *  - Equals and HashCode.
+ * - All methods in BasicShape by inheritance.
+ * - getCopy from Drawable.
+ * - All Scalable methods.
+ * - Getters for width and height.
+ * - Equals and HashCode.
  */
 public class CompoundShape extends BasicShape {
   private final List<IShape> shapes;
