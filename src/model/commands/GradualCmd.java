@@ -1,7 +1,6 @@
 package model.commands;
 
 import model.IAnimation;
-import model.interfaces.Drawable;
 
 /**
  * This abstract class represents a command that occurs over a duration of time.
@@ -14,7 +13,7 @@ import model.interfaces.Drawable;
 public abstract class GradualCmd extends ACommand {
   protected boolean running;
   protected int endTick;
-  private int sTick;
+  private final int sTick;
 
   /**
    * Constructor for GradualCmd.
