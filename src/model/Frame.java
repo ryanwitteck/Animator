@@ -16,7 +16,7 @@ public class Frame implements IFrame {
   /**
    * Constructor of Frame taking a Collection of Drawable as an argument.
    *
-   * @param objects the animated objects
+   * @param objects the collection of animated objects
    */
   public Frame(Collection<Drawable> objects) {
     if (objects == null) {

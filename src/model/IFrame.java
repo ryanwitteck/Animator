@@ -6,6 +6,8 @@ import model.interfaces.Drawable;
 
 /**
  * Represents a single frame in an animation.
+ * Each IFrame contains the information necessary for a user to visualize
+ * the state of an animation at a single instant in time.
  */
 public interface IFrame {
 
@@ -15,4 +17,6 @@ public interface IFrame {
    * @return the list of objects being animated
    */
   List<Drawable> listObjects();
+
+  // TODO -- draw method
 }
