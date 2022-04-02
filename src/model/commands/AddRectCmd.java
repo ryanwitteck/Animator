@@ -36,7 +36,6 @@ public class AddRectCmd extends InstantCmd {
   public void execute(IAnimation a) {
     super.execute(a);
     a.addDrawable(rect);
-    assert(a.getDrawable(name).equals(rect));
   }
 
   @Override

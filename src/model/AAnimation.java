@@ -37,12 +37,15 @@ public abstract class AAnimation implements IAnimation {
 
   @Override
   public void addDrawable(Drawable d) {
+    if (objects.containsKey(d.getName())) {
+      throw new IllegalArgumentException("Error: An object with this name already exists");
+    }
     objects.put(d.getName(), d);
   }
 
   @Override
-  public void removeDrawable(Drawable d) {
-    objects.remove(d.getName());
+  public void removeDrawable(String name) {
+    objects.remove(name);
   }
 
   @Override
