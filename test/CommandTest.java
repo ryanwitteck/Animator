@@ -42,9 +42,9 @@ public class CommandTest {
     assertEquals(1, cmd2.getStartTick());
     assertEquals(4, cmd3.getStartTick());
 
-    assertEquals("Create Drawable named R1 at t=1", cmd1.logCmd());
-    assertEquals("Create Drawable named R2 at t=1", cmd2.logCmd());
-    assertEquals("Create Drawable named R3 at t=4", cmd3.logCmd());
+    assertEquals("Created Rectangle named R1 at t=1", cmd1.logCmd());
+    assertEquals("Created Rectangle named R2 at t=1", cmd2.logCmd());
+    assertEquals("Created Rectangle named R3 at t=4", cmd3.logCmd());
 
     assertFalse(cmd1.isComplete());
     assertFalse(cmd2.isComplete());

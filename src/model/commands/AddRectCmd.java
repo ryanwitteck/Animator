@@ -36,10 +36,11 @@ public class AddRectCmd extends InstantCmd {
   public void execute(IAnimation a) {
     super.execute(a);
     a.addDrawable(rect);
+    assert(a.getDrawable(name).equals(rect));
   }
 
   @Override
   public String logCmd() {
-    return "Created Rectanlge named " + name + " at t=" + startTick;
+    return "Created Rectangle named " + name + " at t=" + startTick;
   }
 }
