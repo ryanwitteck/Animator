@@ -5,7 +5,10 @@ import java.util.List;
 import model.interfaces.Drawable;
 
 /**
- * Represent a command to add a Drawable to a list.
+ * Represents a command to add a Drawable to a list.
+ *
+ * log format:
+ *  - "Create Drawable named [object name] at t=[start tick]"
  */
 public class AddShapeCmd extends InstantCmd {
 
@@ -13,6 +16,7 @@ public class AddShapeCmd extends InstantCmd {
 
   /**
    * Constructor for this AddShapeCmd.
+   * Takes the target object, start tick, and targeted list as arguments.
    *
    * @param obj  the object to be added to the list.
    * @param tick the tick when this command triggers.

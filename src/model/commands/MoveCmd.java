@@ -6,6 +6,9 @@ import model.attributes.Posn;
 
 /**
  * Represents a command to move an object over a period of time.
+ *
+ * log format:
+ *  - "[target name] moves from : (x0, y0) to (x1, y1) from t=[start tick] to t=[end tick]"
  */
 public class MoveCmd extends GradualCmd {
 
@@ -17,6 +20,7 @@ public class MoveCmd extends GradualCmd {
 
   /**
    * Constructor for MoveCmd.
+   * Takes the target object, start and end tick, and destination Posn as arguments.
    *
    * @param obj   the object to be added to the list.
    * @param start the tick when this command triggers.

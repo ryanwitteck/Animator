@@ -6,6 +6,9 @@ import model.attributes.Posn;
 
 /**
  * Represents a command to place an object at a specified position.
+ *
+ * log format:
+ *  - "[target name] moves from : (x0, y0) to (x1, y1) at t=[start tick]"
  */
 public class PlaceCmd extends InstantCmd {
 
@@ -14,6 +17,7 @@ public class PlaceCmd extends InstantCmd {
 
   /**
    * Constructor for PlaceCmd.
+   * Takes the target object, start tick, and destination Posn as arguments.
    *
    * @param obj  the object this command functions on.
    * @param tick the tick when this command triggers.
