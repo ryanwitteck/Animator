@@ -9,6 +9,7 @@ import model.commands.AddRectCmd;
 import model.commands.ICommand;
 import model.commands.MoveCmd;
 import model.commands.PlaceCmd;
+import model.commands.RemoveDrawableCmd;
 import model.interfaces.Drawable;
 import model.attributes.Color;
 import model.attributes.Posn;
@@ -16,6 +17,7 @@ import model.interfaces.Movable;
 import model.shapes.Rectangle;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
 
@@ -27,7 +29,7 @@ public class CommandTest {
   //---------------------------- Test Functionality ------------------------------------------------
 
   @Test
-  public void testAdd() {
+  public void testAddRemove() {
     IAnimation animation = new SimpleAnimation();
     Rectangle rect1 = new Rectangle("R1", 0, 0, 10, 5, new Color(0, 0, 0));
     Rectangle rect2 = new Rectangle("R2", 3.33, 6.67, 87, 11, new Color(0, 0, 0));
@@ -60,6 +62,17 @@ public class CommandTest {
     assertTrue(cmd1.isComplete());
     assertTrue(cmd2.isComplete());
     assertTrue(cmd3.isComplete());
+
+    ICommand rcmd1 = new RemoveDrawableCmd("R1", 1);
+    ICommand rcmd2 = new RemoveDrawableCmd("R2", 1);
+    ICommand rcmd3 = new RemoveDrawableCmd("R3",4);
+
+    rcmd1.execute(animation);
+    rcmd2.execute(animation);
+    rcmd3.execute(animation);
+    assertNull(animation.getDrawable("R1"));
+    assertNull(animation.getDrawable("R2"));
+    assertNull(animation.getDrawable("R3"));
   }
 
   @Test
