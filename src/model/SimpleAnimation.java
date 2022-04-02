@@ -9,44 +9,51 @@ import model.interfaces.Drawable;
 
 /**
  * This is a simple implementation of IAnimation that extends AAnimation.
- * This class allows the user to ... TODO
+ * New Fields:
+ * - objects     a HashMap of all the objects in this animation mapped to their names
+ * - cmdMap      a HashMap of all the commands in this animation mapped to their start tick
+ * - cmds        a list of all the commands in this animation. Used to reset the cmdMap when needed
+ * This class implements addCmd and removeCmd from the IAnimation interface.
  */
 public class SimpleAnimation extends AAnimation {
 
+  private HashMap<String, Drawable> objects;
   private HashMap<Integer, List<ICommand>> cmdMap;
+  private List<ICommand> cmds;
 
   /**
-   * Constructs an animation given an initial state and a list of commands.
-   *
-   * @param objects the list of objects in the animation
-   * @param cmds    the list of commands
+   * Default and sole constructor of SimpleAnimation.
+   * Calls parent constructor and initializes objects and cmdMap to empty HashMaps.
    */
-  public SimpleAnimation(List<Drawable> objects, List<ICommand> cmds) {
+  public SimpleAnimation() {
     super();
-    this.frames.add(new Frame(objects));
-    initHashMap(cmds);
-    initFrames(objects);
+    objects = new HashMap<>();
+    cmdMap = new HashMap<>();
+    cmds = new ArrayList<>();
   }
 
   @Override
   public void addCmd(ICommand cmd) {
-    throw new IllegalStateException("Error: This animation does not accept changes");
+    cmds.add(cmd);
+    resetCmdMap();
   }
 
   @Override
   public void removeCmd(ICommand cmd) {
-    throw new IllegalStateException("Error: This animation does not accept changes");
+    cmds.remove(cmd);
+    resetCmdMap();
   }
 
   /**
-   * A method to initialize our hashmap given our list of commands.
-   *
-   * @param cmds list of commmands.
+   * Resets cmdMap to its initial state:
+   *  - resets cmdMap to a new HashMap
+   *  - calls reset on every ICommand in cmds
+   *  - adds every ICommand in cmds to cmdMap
    */
-  private void initHashMap(List<ICommand> cmds) {
+  private void resetCmdMap() {
     cmdMap = new HashMap<>();
     for (ICommand cmd : cmds) {
-      nFrames = Math.max(nFrames, cmd.getEndTick());
+      cmd.reset();
       addToCmdMap(cmd);
     }
   }
@@ -57,7 +64,7 @@ public class SimpleAnimation extends AAnimation {
    * @param objects list of drawable objects.
    */
   private void initFrames(List<Drawable> objects) {
-    for (int i = 1; i < nFrames; i++) {
+    for (int i = 0; i < nFrames; i++) {
       if (cmdMap.containsKey(i)) {
         List<ICommand> cmds = cmdMap.get(i);
         for (ICommand cmd : cmds) {
@@ -93,14 +100,15 @@ public class SimpleAnimation extends AAnimation {
       cmdList.add(cmd);
       cmdMap.put(start, cmdList);
     }
+    resetCmdMap();
   }
 
   /**
-   * Get the tick-command map of this animation.
+   * Get the tick-command HashMap of this animation.
    *
-   * @return cmdMap this tick-command map
+   * @return cmdMap the HashMap of this animation's commands mapped to their start ticks.
    */
   public HashMap<Integer, List<ICommand>> getCmdMap() {
-    return cmdMap;
+    return new HashMap<>(cmdMap);
   }
 }
