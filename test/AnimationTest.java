@@ -5,17 +5,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import model.IAnimation;
-import model.commands.AddRectCmd;
-import model.commands.ICommand;
-import model.commands.MoveCmd;
-import model.commands.PlaceCmd;
-import model.IFrame;
-import model.interfaces.Drawable;
-import model.SimpleAnimation;
-import model.attributes.Color;
-import model.attributes.Posn;
-import model.shapes.Rectangle;
+import cs3500.animator.model.IAnimation;
+import cs3500.animator.model.commands.AddRectCmd;
+import cs3500.animator.model.commands.ICommand;
+import cs3500.animator.model.commands.MoveCmd;
+import cs3500.animator.model.commands.PlaceCmd;
+import cs3500.animator.model.IFrame;
+import cs3500.animator.model.interfaces.Drawable;
+import cs3500.animator.model.SimpleAnimation;
+import cs3500.animator.model.attributes.Color;
+import cs3500.animator.model.attributes.Posn;
+import cs3500.animator.model.shapes.Rectangle;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;

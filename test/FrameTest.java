@@ -3,11 +3,11 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Frame;
-import model.interfaces.Drawable;
-import model.interfaces.Movable;
-import model.attributes.Color;
-import model.shapes.Rectangle;
+import cs3500.animator.model.Frame;
+import cs3500.animator.model.interfaces.Drawable;
+import cs3500.animator.model.interfaces.Movable;
+import cs3500.animator.model.attributes.Color;
+import cs3500.animator.model.shapes.Rectangle;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;

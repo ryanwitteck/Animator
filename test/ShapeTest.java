@@ -3,11 +3,11 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.attributes.Color;
-import model.attributes.Posn;
-import model.shapes.CompoundShape;
-import model.shapes.IShape;
-import model.shapes.Rectangle;
+import cs3500.animator.model.attributes.Color;
+import cs3500.animator.model.attributes.Posn;
+import cs3500.animator.model.shapes.CompoundShape;
+import cs3500.animator.model.shapes.IShape;
+import cs3500.animator.model.shapes.Rectangle;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;

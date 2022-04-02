@@ -1,5 +1,5 @@
-import model.interfaces.Drawable;
-import model.attributes.Color;
+import cs3500.animator.model.interfaces.Drawable;
+import cs3500.animator.model.attributes.Color;
 
 /**
  * Dummy class for testing purposes.

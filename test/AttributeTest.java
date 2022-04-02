@@ -1,7 +1,7 @@
 import org.junit.Test;
 
-import model.attributes.Color;
-import model.attributes.Posn;
+import cs3500.animator.model.attributes.Color;
+import cs3500.animator.model.attributes.Posn;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
