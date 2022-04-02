@@ -3,7 +3,7 @@ package model.commands;
 /**
  * This interface represents a function-object that performs an action.
  * ICommands direct the behavior of our Animations.
- * All commands should execute some action
+ * All commands should execute some action, be able to reset themselves,
  * and be able to return the following information:
  *  - the tick they should execute.
  *  - the tick they should stop executing.
@@ -45,6 +45,11 @@ public interface ICommand {
    * Execute this command.
    */
   void execute();
+
+  /**
+   * Reset this command to its pre-execution state.
+   */
+  void reset();
 
   /**
    * Get the string representation of running this cmd.

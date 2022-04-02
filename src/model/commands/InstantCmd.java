@@ -4,7 +4,7 @@ import model.interfaces.Drawable;
 
 /**
  * This abstract class represents a command that happens instantly (in one tick).
- * Implements getEndTick, execute, and isRunning methods.
+ * Implements getEndTick, execute, reset, and isRunning methods.
  */
 public abstract class InstantCmd extends ACommand {
 
@@ -28,6 +28,11 @@ public abstract class InstantCmd extends ACommand {
   public void execute() {
     super.execute();
     this.complete = true;
+  }
+
+  @Override
+  public void reset() {
+    this.complete = false;
   }
 
   @Override
