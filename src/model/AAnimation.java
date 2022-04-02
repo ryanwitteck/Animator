@@ -4,17 +4,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import model.commands.ICommand;
 import model.interfaces.Drawable;
 
 /**
  * Abstract class for IAnimation interface.
  * Implements fields:
- *  - objects   the HashMap of the objects in this animation mapped to their name
- *  - frames    the list of IFrames that represents this animation
- *  - cmdLog    a list of the string representations of each ICommand in this animation.
- *              From this, we can create the command log.
- *  - nFrames   the number of frames in this animation i.e. the size of frames
+ * - objects   the HashMap of the objects in this animation mapped to their name
+ * - frames    the list of IFrames that represents this animation
+ * - cmdLog    a list of the string representations of each ICommand in this animation.
+ * From this, we can create the command log.
+ * - nFrames   the number of frames in this animation i.e. the size of frames
  * Implements all methods defined in IAnimation except for addCmd and removeCmd.
  */
 public abstract class AAnimation implements IAnimation {
