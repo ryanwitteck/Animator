@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import model.IAnimation;
 import model.commands.AddRectCmd;
 import model.commands.ICommand;
 import model.commands.MoveCmd;
@@ -48,6 +49,13 @@ public class AnimationTest {
       animation.addCmd(cmd);
     }
     animation.compile();
+  }
+
+  @Test
+  public void testEmptyAnimation() {
+    IAnimation empty = new SimpleAnimation();
+    assertTrue(empty.getFrames().isEmpty());
+    assertEquals("", empty.getCmdLog());
   }
 
   @Test
