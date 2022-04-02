@@ -5,9 +5,9 @@ import model.IAnimation;
 /**
  * This abstract class represents a command that occurs over a duration of time.
  * New fields:
- *  - running   if this command is running
- *  - endTick   the tick this command should stop running
- *  - sTick     the tick this command starts running. Used to reset startTick.
+ * - running   if this command is running
+ * - endTick   the tick this command should stop running
+ * - sTick     the tick this command starts running. Used to reset startTick.
  * Implements getEndTick, isRunning, execute, and reset methods.
  */
 public abstract class GradualCmd extends ACommand {

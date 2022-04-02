@@ -18,8 +18,8 @@ public abstract class ACommand implements ICommand {
    * Takes in basic information -- the name of the target object and the start tick -- as arguments.
    * Initializes complete to false;
    *
-   * @param name  the name of the object this command functions on.
-   * @param tick  the tick when this command triggers.
+   * @param name the name of the object this command functions on.
+   * @param tick the tick when this command triggers.
    */
   public ACommand(String name, int tick) {
     this.name = name;
