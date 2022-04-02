@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -10,14 +11,12 @@ import model.interfaces.Drawable;
 /**
  * This is a simple implementation of IAnimation that extends AAnimation.
  * New Fields:
- * - objects      a HashMap of all the objects in this animation mapped to their names
  * - cmdMap      a HashMap of all the commands in this animation mapped to their start tick
  * - cmds        a list of all the commands in this animation. Used to reset the cmdMap when needed
  * This class implements addCmd and removeCmd from the IAnimation interface.
  */
 public class SimpleAnimation extends AAnimation {
 
-  private HashMap<String, Drawable> objects;
   private HashMap<Integer, List<ICommand>> cmdMap;
   private List<ICommand> cmds;
 
@@ -27,7 +26,6 @@ public class SimpleAnimation extends AAnimation {
    */
   public SimpleAnimation() {
     super();
-    objects = new HashMap<>();
     cmdMap = new HashMap<>();
     cmds = new ArrayList<>();
   }
@@ -45,17 +43,18 @@ public class SimpleAnimation extends AAnimation {
   /**
    * Executes the list of commands to create the frames in this animation.
    * - resets the command map
+   * - resets the cmdLog
    * - resets the object map
    * - runs all the at a given tick commands to initialize each frame
    */
   public void compile() {
     resetCmdMap();
+    cmdLog = new ArrayList<>();
     objects = new HashMap<>();
 
     for (int i = 0; i < nFrames; i++) {
       if (cmdMap.containsKey(i)) {
-        List<ICommand> cmds = cmdMap.get(i);
-        for (ICommand cmd : cmds) {
+        for (ICommand cmd : cmdMap.get(i)) {
           if (!cmd.isRunning()) {
             cmd.execute(this);
             cmdLog.add(cmd.logCmd());
@@ -67,7 +66,6 @@ public class SimpleAnimation extends AAnimation {
           }
         }
       }
-
       frames.add(new Frame(objects.values()));
     }
     assert (nFrames == frames.size());
@@ -75,9 +73,9 @@ public class SimpleAnimation extends AAnimation {
 
   /**
    * Resets cmdMap to its initial state:
-   *  - resets cmdMap to a new HashMap
-   *  - calls reset on every ICommand in cmds
-   *  - adds every ICommand in cmds to cmdMap
+   * - resets cmdMap to a new HashMap
+   * - calls reset on every ICommand in cmds
+   * - adds every ICommand in cmds to cmdMap
    */
   private void resetCmdMap() {
     cmdMap = new HashMap<>();
