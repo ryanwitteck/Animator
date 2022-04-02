@@ -4,7 +4,7 @@ package model.interfaces;
  * Our interface for any object that can be scaled up and down.
  *
  * Every Scalable should...
- *  - Be able to scale up or down in both the x or y dimension.
+ *  - Be able to scale up or down in both the x and y dimension.
  */
 public interface Scalable {
 
