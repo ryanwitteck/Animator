@@ -2,11 +2,10 @@ package model.commands;
 
 import model.IAnimation;
 import model.attributes.Color;
-import model.attributes.Posn;
 import model.shapes.Rectangle;
 
 /**
- * Represents a command to add a Drawable to a list.
+ * Represents a command to add a Drawable to an animation.
  * <p>
  * log format:
  * - "Created Rectangle named [object name] at t=[start tick]"
@@ -16,11 +15,11 @@ public class AddRectCmd extends InstantCmd {
   private Rectangle rect;
 
   /**
-   * Constructor for AddRectCmd.
+   * Sole constructor for AddRectCmd.
    * Takes the name, position, dimensions, and color of the new rectangle
    * in addition to the start tick as arguments.
    *
-   * @param name   the name of the object to be added to the list.
+   * @param name   the name of the object to be added to the animation.
    * @param x      the initial x coordinate of the new Rectangle.
    * @param y      the initial y coordinate of the new Rectangle.
    * @param width  the width of the new Rectangle.
@@ -41,6 +40,6 @@ public class AddRectCmd extends InstantCmd {
 
   @Override
   public String logCmd() {
-    return "Create Drawable named " + rect.getName() + " at t=" + startTick;
+    return "Created Rectanlge named " + name + " at t=" + startTick;
   }
 }

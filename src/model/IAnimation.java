@@ -45,9 +45,9 @@ public interface IAnimation {
   /**
    * Remove the given Drawable from this animation.
    *
-   * @param d the desired Drawable
+   * @param name the name of the desired Drawable
    */
-  void removeDrawable(Drawable d);
+  void removeDrawable(String name);
 
   /**
    * Return the Drawable in this animation with the given name.
