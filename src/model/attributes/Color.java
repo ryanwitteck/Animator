@@ -11,11 +11,12 @@ public class Color {
   private int b;
 
   /**
-   * Our constructor for color class.
+   * Constructor for color class.
+   * Initializes rgb values to the given integer values.
    *
    * @param r the red value
    * @param g the green value
-   * @param b the blue value.
+   * @param b the blue value
    */
   public Color(int r, int g, int b) {
     if (!(inBounds(r) && inBounds(g) && inBounds(b))) {
@@ -27,7 +28,8 @@ public class Color {
   }
 
   /**
-   * Our constructor for color class.
+   * Another constructor for color class.
+   * Initializes rgb values to the rgb values of the given color.
    *
    * @param other the desired color
    */
@@ -39,6 +41,7 @@ public class Color {
 
   /**
    * Returns whether or not the given number is a valid color value.
+   * A value is valid if it is in the range [0, 255].
    *
    * @param x the number
    * @return if it is in bounds.
@@ -50,7 +53,7 @@ public class Color {
   /**
    * Sets red value.
    *
-   * @param r red value.
+   * @param r the desired red value.
    */
   public void setR(int r) {
     if (!inBounds(r)) {
@@ -62,7 +65,7 @@ public class Color {
   /**
    * Sets green value.
    *
-   * @param g green value.
+   * @param g the desired green value.
    */
   public void setG(int g) {
     if (!inBounds(g)) {
@@ -74,7 +77,7 @@ public class Color {
   /**
    * Sets blue value.
    *
-   * @param b blue value.
+   * @param b the desired blue value.
    */
   public void setB(int b) {
     if (!inBounds(b)) {
@@ -86,9 +89,9 @@ public class Color {
   /**
    * Sets new Color values.
    *
-   * @param r the red value.
-   * @param g the green value.
-   * @param b the blue value.
+   * @param r the desired red value.
+   * @param g the desired green value.
+   * @param b the desired blue value.
    */
   public void setColor(int r, int g, int b) {
     if (!(inBounds(r) && inBounds(g) && inBounds(b))) {

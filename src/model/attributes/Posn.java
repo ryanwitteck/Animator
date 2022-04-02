@@ -2,6 +2,10 @@ package model.attributes;
 
 /**
  * Represents a position on our canvas.
+ * Our coordinate system:
+ *  - The position (0, 0) corresponds to the top left corner of our canvas.
+ *  - The x-value increases as we move rightward on the canvas.
+ *  - The y-value increases as we move downward on the canvas.
  */
 public class Posn {
 
@@ -10,7 +14,8 @@ public class Posn {
   private double y;
 
   /**
-   * Our constructor for Posn.
+   * Our constructor for Posn taking two doubles as arguments.
+   * Initializes the x and y coordinate to the given double values.
    *
    * @param x the x value
    * @param y the y value
@@ -23,6 +28,7 @@ public class Posn {
 
   /**
    * Our constructor for Posn taking another Posn as arguments.
+   * Initializes the x and y coordinate to the given Posn's x and y coordinates.
    *
    * @param posn the position to copy
    */
@@ -51,7 +57,7 @@ public class Posn {
   }
 
   /**
-   * Changes this Posn's values based on the parameters.
+   * Changes this Posn's values based on the given double values.
    *
    * @param dx change in x.
    * @param dy change in y.
