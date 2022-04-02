@@ -1,15 +1,15 @@
 package model.attributes;
 
 /**
- * Represents a position on our canvas.
+ * This class represents a position on our canvas with an x and y coordinate.
  * Our coordinate system:
  *  - The position (0, 0) corresponds to the top left corner of our canvas.
  *  - The x-value increases as we move rightward on the canvas.
  *  - The y-value increases as we move downward on the canvas.
+ *  - Pixels are 1 by 1 in size.
  */
 public class Posn {
 
-  //TODO make bounds based on controller specifications.
   private double x;
   private double y;
 
@@ -21,7 +21,6 @@ public class Posn {
    * @param y the y value
    */
   public Posn(double x, double y) {
-    //TODO enforce bounds from controller or assignment specifications.
     this.x = x;
     this.y = y;
   }
@@ -33,13 +32,12 @@ public class Posn {
    * @param posn the position to copy
    */
   public Posn(Posn posn) {
-    //TODO enforce bounds from controller or assignment specifications.
     this.x = posn.x;
     this.y = posn.y;
   }
 
   /**
-   * Gets this Posn's x value.
+   * Returns this Posn's x value.
    *
    * @return the x value
    */
@@ -48,7 +46,7 @@ public class Posn {
   }
 
   /**
-   * Gets this Posn's y value.
+   * Returns this Posn's y value.
    *
    * @return the y value
    */
@@ -57,7 +55,8 @@ public class Posn {
   }
 
   /**
-   * Changes this Posn's values based on the given double values.
+   * Increases this Posn's values based on the given double values.
+   * Accepts both positive and negative doubles as arguments.
    *
    * @param dx change in x.
    * @param dy change in y.
@@ -68,7 +67,7 @@ public class Posn {
   }
 
   /**
-   * Sets this Posn to the given coordinates.
+   * Sets this Posn to the given coordinates represented as two doubles, x and y.
    *
    * @param nx desired x position
    * @param ny desired y position
