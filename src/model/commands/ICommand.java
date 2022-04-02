@@ -1,15 +1,17 @@
 package model.commands;
 
+import model.IAnimation;
+
 /**
  * This interface represents a function-object that performs an action.
  * ICommands direct the behavior of our Animations.
  * All commands should execute some action, be able to reset themselves,
  * and be able to return the following information:
- *  - the tick they should execute.
- *  - the tick they should stop executing.
- *  - if they have finished running.
- *  - if they are currently running.
- *  - a string representation of itself.
+ * - the tick they should execute.
+ * - the tick they should stop executing.
+ * - if they have finished running.
+ * - if they are currently running.
+ * - a string representation of itself.
  */
 public interface ICommand {
 
@@ -43,8 +45,10 @@ public interface ICommand {
 
   /**
    * Execute this command.
+   *
+   * @param animation the animation that this motion is a part of.
    */
-  void execute();
+  void execute(IAnimation animation);
 
   /**
    * Reset this command to its pre-execution state.

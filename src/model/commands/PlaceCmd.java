@@ -1,5 +1,6 @@
 package model.commands;
 
+import model.IAnimation;
 import model.interfaces.Drawable;
 import model.interfaces.Movable;
 import model.attributes.Posn;
@@ -19,23 +20,24 @@ public class PlaceCmd extends InstantCmd {
    * Constructor for PlaceCmd.
    * Takes the target object, start tick, and destination Posn as arguments.
    *
-   * @param obj  the object this command functions on.
+   * @param name the name of object this command functions on.
    * @param tick the tick when this command triggers.
    * @param dest the position we want to place the object.
    */
-  public PlaceCmd(Drawable obj, int tick, Posn dest) {
-    super(obj, tick);
-    if (!(obj instanceof Movable)) {
-      throw new IllegalArgumentException("Error: This object is not instance of Movable");
-    }
+  public PlaceCmd(String name, int tick, Posn dest) {
+    super(name, tick);
     this.endPos = new Posn(dest);
   }
 
   @Override
-  public void execute() {
-    super.execute();
-    this.startPos = new Posn(((Movable) obj).getPos());
-    ((Movable) obj).place(new Posn(endPos));
+  public void execute(IAnimation a) {
+    super.execute(a);
+    Drawable target = a.getDrawable(name);
+    if (!(target instanceof Movable)) {
+      throw new IllegalArgumentException("Error: This object is not instance of Movable");
+    }
+    this.startPos = new Posn(((Movable) target).getPos());
+    ((Movable) target).place(new Posn(endPos));
   }
 
   @Override
@@ -43,6 +45,6 @@ public class PlaceCmd extends InstantCmd {
     if (!complete) {
       throw new IllegalStateException("Error: command has not run");
     }
-    return obj.getName() + " moves from : " + startPos + " to " + endPos + " at t=" + startTick;
+    return name + " moves from : " + startPos + " to " + endPos + " at t=" + startTick;
   }
 }

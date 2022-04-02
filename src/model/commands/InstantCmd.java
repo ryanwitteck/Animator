@@ -1,6 +1,6 @@
 package model.commands;
 
-import model.interfaces.Drawable;
+import model.IAnimation;
 
 /**
  * This abstract class represents a command that happens instantly (in one tick).
@@ -12,11 +12,11 @@ public abstract class InstantCmd extends ACommand {
    * Constructor for InstantCmd.
    * Takes in the target object and execution tick as arguments.
    *
-   * @param obj  the object this command functions on.
+   * @param name the name of the object this command functions on.
    * @param tick the tick when this command triggers.
    */
-  public InstantCmd(Drawable obj, int tick) {
-    super(obj, tick);
+  public InstantCmd(String name, int tick) {
+    super(name, tick);
   }
 
   @Override
@@ -25,8 +25,8 @@ public abstract class InstantCmd extends ACommand {
   }
 
   @Override
-  public void execute() {
-    super.execute();
+  public void execute(IAnimation a) {
+    super.execute(a);
     this.complete = true;
   }
 

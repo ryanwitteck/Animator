@@ -1,6 +1,6 @@
 package model.commands;
 
-import model.interfaces.Drawable;
+import model.IAnimation;
 
 /**
  * Abstract class for ICommand interface.
@@ -8,20 +8,23 @@ import model.interfaces.Drawable;
  */
 public abstract class ACommand implements ICommand {
 
-  protected Drawable obj;
-  protected boolean complete;
+  protected String name;
   protected int startTick;
+  protected boolean complete;
+
 
   /**
-   * Constructor for ACommand.
+   * Sole constructor for ACommand.
+   * Takes in basic information -- the name of the target object and the start tick -- as arguments.
+   * Initializes complete to false;
    *
-   * @param obj  the object this command functions on.
-   * @param tick the tick when this command triggers.
+   * @param name  the name of the object this command functions on.
+   * @param tick  the tick when this command triggers.
    */
-  public ACommand(Drawable obj, int tick) {
-    this.obj = obj;
-    this.complete = false;
+  public ACommand(String name, int tick) {
+    this.name = name;
     this.startTick = tick;
+    this.complete = false;
   }
 
   @Override
@@ -38,7 +41,7 @@ public abstract class ACommand implements ICommand {
   }
 
   @Override
-  public void execute() {
+  public void execute(IAnimation a) {
     if (complete) {
       throw new IllegalStateException("Error: Command already executed");
     }
