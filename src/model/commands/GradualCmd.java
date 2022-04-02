@@ -3,7 +3,8 @@ package model.commands;
 import model.interfaces.Drawable;
 
 /**
- * Represents a command that occurs over a duration of time.
+ * This abstract class represents a command that occurs over a duration of time.
+ * Defines new fields running and endTick. Implements getEndTick, isRunning, and execute methods.
  */
 public abstract class GradualCmd extends ACommand {
   protected boolean running;
@@ -11,6 +12,8 @@ public abstract class GradualCmd extends ACommand {
 
   /**
    * Constructor for GradualCmd.
+   * Takes in the target object and
+   * this command's start and end tick as arguments.
    *
    * @param obj   the object this command functions on.
    * @param start the tick when this command triggers.

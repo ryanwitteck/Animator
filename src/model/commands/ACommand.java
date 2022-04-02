@@ -3,7 +3,8 @@ package model.commands;
 import model.interfaces.Drawable;
 
 /**
- * Represents common attributes and functions among ICommand implementations.
+ * Abstract class for ICommand interface.
+ * Implements the getStartTick, isComplete, and execute methods in the ICommand interface.
  */
 public abstract class ACommand implements ICommand {
 
