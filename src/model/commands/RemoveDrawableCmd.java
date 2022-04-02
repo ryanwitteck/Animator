@@ -12,7 +12,7 @@ public class RemoveDrawableCmd extends InstantCmd {
 
   /**
    * Sole constructor for RemoveShapeCmd.
-   * Takes the name and start tick as arguments.
+   * Takes the name of the target and start tick as arguments.
    *
    * @param name   the name of the object to be removed from the animation.
    * @param tick   the tick when this command triggers.

@@ -21,7 +21,7 @@ public class MoveCmd extends GradualCmd {
 
   /**
    * Constructor for MoveCmd.
-   * Takes the target object, start and end tick, and destination Posn as arguments.
+   * Takes the name of the target object, start and end tick, and destination Posn as arguments.
    *
    * @param name  the name of the object to be added to the list.
    * @param start the tick when this command triggers.

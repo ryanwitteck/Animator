@@ -2,14 +2,14 @@ package model.commands;
 
 /**
  * Abstract class for commands that scale an object's dimensions over time.
- * Implements constructor exception and field scale.
+ * Implements constructor exception and a new field scale, the factor by which the target's.
  */
 public abstract class ResizeCmd extends GradualCmd {
   protected double scale;
 
   /**
    * Constructor for ResizeCmd.
-   * Takes in target object and start and end tick as arguments.
+   * Takes in the name of the target object and start and end tick as arguments.
    *
    * @param name  the name of the object this command functions on.
    * @param start the tick when this command triggers.

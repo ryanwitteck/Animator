@@ -12,14 +12,14 @@ import model.shapes.Rectangle;
  */
 public class AddRectCmd extends InstantCmd {
 
-  private Rectangle rect;
+  private final Rectangle rect;
 
   /**
    * Sole constructor for AddRectCmd.
    * Takes the name, position, dimensions, and color of the new rectangle
    * in addition to the start tick as arguments.
    *
-   * @param name   the name of the object to be added to the animation.
+   * @param name   the name of the rectangle to be added to the animation.
    * @param x      the initial x coordinate of the new Rectangle.
    * @param y      the initial y coordinate of the new Rectangle.
    * @param width  the width of the new Rectangle.
