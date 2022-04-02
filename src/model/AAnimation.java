@@ -5,6 +5,11 @@ import java.util.List;
 
 /**
  * Abstract class for IAnimation interface.
+ * Implements fields:
+ *  - frames    the list of IFrames that represents this animation
+ *  - cmdLog    a list of the string representations of each ICommand in this animation.
+ *              From this, we can create the command log.
+ *  - nFrames   the number of frames in this animation i.e. the size of frames
  * Implements all methods defined in IAnimation except for addCmd and removeCmd.
  */
 public abstract class AAnimation implements IAnimation {
@@ -14,9 +19,8 @@ public abstract class AAnimation implements IAnimation {
   protected int nFrames;
 
   /**
-   * Default constructor for AAnimation.
-   * Initialize frames and cmdLog as empty lists.
-   * Initialize tick and nFrames as 0.
+   * Default and sole constructor for AAnimation.
+   * Initializes frames and cmdLog as empty lists and nFrames as 0.
    */
   public AAnimation() {
     frames = new ArrayList<>();
@@ -54,6 +58,7 @@ public abstract class AAnimation implements IAnimation {
 
   /**
    * Check if the given index is a valid index for frames.
+   * An index is valid if it is in the range [0, nFrames - 1].
    *
    * @param index the given index
    * @return whether the index is in bounds

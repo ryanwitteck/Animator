@@ -8,7 +8,7 @@ import model.commands.ICommand;
 import model.interfaces.Drawable;
 
 /**
- * Represents an animation that cannot be edited after creation.
+ * This is a simple implementation of IAnimation that extends AAnimation.
  * This class allows the user to ... TODO
  */
 public class SimpleAnimation extends AAnimation {
@@ -26,6 +26,16 @@ public class SimpleAnimation extends AAnimation {
     this.frames.add(new Frame(objects));
     initHashMap(cmds);
     initFrames(objects);
+  }
+
+  @Override
+  public void addCmd(ICommand cmd) {
+    throw new IllegalStateException("Error: This animation does not accept changes");
+  }
+
+  @Override
+  public void removeCmd(ICommand cmd) {
+    throw new IllegalStateException("Error: This animation does not accept changes");
   }
 
   /**
@@ -83,16 +93,6 @@ public class SimpleAnimation extends AAnimation {
       cmdList.add(cmd);
       cmdMap.put(start, cmdList);
     }
-  }
-
-  @Override
-  public void addCmd(ICommand cmd) {
-    throw new IllegalStateException("Error: This animation does not accept changes");
-  }
-
-  @Override
-  public void removeCmd(ICommand cmd) {
-    throw new IllegalStateException("Error: This animation does not accept changes");
   }
 
   /**
