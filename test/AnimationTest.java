@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import model.commands.AddShapeCmd;
+import model.commands.AddRectCmd;
 import model.commands.ICommand;
 import model.commands.MoveCmd;
 import model.commands.PlaceCmd;
@@ -32,21 +32,22 @@ public class AnimationTest {
   @Before
   public void init() {
     List<Drawable> objects = new ArrayList<>();
-    Rectangle r1 = new Rectangle("R1", 0, 0, 30, 40, new Color(0, 100, 100));
-    Rectangle r2 = new Rectangle("R2", 50, 100, 20, 20, new Color(0, 200, 0));
-    Rectangle r3 = new Rectangle("R3", 100, 100, 90, 90, new Color(100, 100, 100));
 
     cmds = new ArrayList<>();
-    cmds.add(new AddShapeCmd(r1, 1, objects));
-    cmds.add(new AddShapeCmd(r2, 1, objects));
-    cmds.add(new AddShapeCmd(r3, 2, objects));
-    cmds.add(new PlaceCmd(r1, 3, new Posn(900, 900)));
-    cmds.add(new PlaceCmd(r2, 3, new Posn(-10, -50)));
-    cmds.add(new MoveCmd(r1, 4, 10, new Posn(0, 0)));
-    cmds.add(new MoveCmd(r2, 5, 10, new Posn(555, 123)));
-    cmds.add(new MoveCmd(r3, 4, 15, new Posn(45, 45)));
+    cmds.add(new AddRectCmd("R1", 0, 0, 30, 40, new Color(0, 100, 100), 1));
+    cmds.add(new AddRectCmd("R2", 50, 100, 20, 20, new Color(0, 200, 0), 1));
+    cmds.add(new AddRectCmd("R3", 100, 100, 90, 90, new Color(100, 100, 100), 2));
+    cmds.add(new PlaceCmd("R1", 3, new Posn(900, 900)));
+    cmds.add(new PlaceCmd("R2", 3, new Posn(-10, -50)));
+    cmds.add(new MoveCmd("R1", 4, 10, new Posn(0, 0)));
+    cmds.add(new MoveCmd("R2", 5, 10, new Posn(555, 123)));
+    cmds.add(new MoveCmd("R3", 4, 15, new Posn(45, 45)));
 
-    animation = new SimpleAnimation(objects, cmds);
+    animation = new SimpleAnimation();
+    for (ICommand cmd : cmds) {
+      animation.addCmd(cmd);
+    }
+    animation.compile();
   }
 
   @Test
@@ -146,11 +147,6 @@ public class AnimationTest {
   }
 
   //---------------------------- Test Exceptions ---------------------------------------------------
-
-  @Test(expected = IllegalStateException.class)
-  public void testExecuteFail() {
-    animation.addCmd(cmds.get(0));
-  }
 
   @Test(expected = IllegalArgumentException.class)
   public void testGetFail1() {
