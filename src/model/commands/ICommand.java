@@ -5,6 +5,8 @@ import model.IAnimation;
 /**
  * This interface represents a function-object that performs an action.
  * ICommands direct the behavior of our Animations.
+ * Users should create a new class implementing this interface for each command type
+ * they want our animation model to accept.
  * All commands should execute some action, be able to reset themselves,
  * and be able to return the following information:
  * - the tick it should execute.
