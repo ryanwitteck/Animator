@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import model.interfaces.Drawable;
@@ -13,11 +14,11 @@ public class Frame implements IFrame {
   private final List<Drawable> objects;
 
   /**
-   * Constructor of Frame.
+   * Constructor of Frame taking a Collection of Drawable as an argument.
    *
    * @param objects the animated objects
    */
-  public Frame(List<Drawable> objects) {
+  public Frame(Collection<Drawable> objects) {
     if (objects == null) {
       throw new IllegalArgumentException("Cannot have null arguments.");
     }

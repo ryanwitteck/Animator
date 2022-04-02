@@ -3,6 +3,7 @@ package model;
 import java.util.List;
 
 import model.commands.ICommand;
+import model.interfaces.Drawable;
 
 /**
  * The IAnimation interface represents our model of an animated video.
@@ -33,6 +34,34 @@ public interface IAnimation {
    * @param cmd the desired command
    */
   void removeCmd(ICommand cmd);
+
+  /**
+   * Add the given Drawable to this animation.
+   *
+   * @param d the desired Drawable
+   */
+  void addDrawable(Drawable d);
+
+  /**
+   * Remove the given Drawable from this animation.
+   *
+   * @param d the desired Drawable
+   */
+  void removeDrawable(Drawable d);
+
+  /**
+   * Return the Drawable in this animation with the given name.
+   *
+   * @param name the name of the desired Drawable
+   */
+  Drawable getDrawable(String name);
+
+  /**
+   * This method will initialize all the frames in the animation according to how it is defined
+   * by the ICommands given to it. This method must be run or else the any changes to the animation
+   * will not be reflected in the animation itself.
+   */
+  void compile();
 
   /**
    * Returns the frame of this animation at the desired tick.

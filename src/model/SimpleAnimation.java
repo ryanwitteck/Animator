@@ -10,7 +10,7 @@ import model.interfaces.Drawable;
 /**
  * This is a simple implementation of IAnimation that extends AAnimation.
  * New Fields:
- * - objects     a HashMap of all the objects in this animation mapped to their names
+ * - objects      a HashMap of all the objects in this animation mapped to their names
  * - cmdMap      a HashMap of all the commands in this animation mapped to their start tick
  * - cmds        a list of all the commands in this animation. Used to reset the cmdMap when needed
  * This class implements addCmd and removeCmd from the IAnimation interface.
@@ -22,7 +22,7 @@ public class SimpleAnimation extends AAnimation {
   private List<ICommand> cmds;
 
   /**
-   * Default and sole constructor of SimpleAnimation.
+   * Sole constructor of SimpleAnimation.
    * Calls parent constructor and initializes objects and cmdMap to empty HashMaps.
    */
   public SimpleAnimation() {
@@ -35,13 +35,42 @@ public class SimpleAnimation extends AAnimation {
   @Override
   public void addCmd(ICommand cmd) {
     cmds.add(cmd);
-    resetCmdMap();
   }
 
   @Override
   public void removeCmd(ICommand cmd) {
     cmds.remove(cmd);
+  }
+
+  /**
+   * Executes the list of commands to create the frames in this animation.
+   * - resets the command map
+   * - resets the object map
+   * - runs all the at a given tick commands to initialize each frame
+   */
+  public void compile() {
     resetCmdMap();
+    objects = new HashMap<>();
+
+    for (int i = 0; i < nFrames; i++) {
+      if (cmdMap.containsKey(i)) {
+        List<ICommand> cmds = cmdMap.get(i);
+        for (ICommand cmd : cmds) {
+          if (!cmd.isRunning()) {
+            cmd.execute(this);
+            cmdLog.add(cmd.logCmd());
+          } else {
+            cmd.execute(this);
+          }
+          if (!cmd.isComplete()) {
+            addToCmdMap(cmd);
+          }
+        }
+      }
+
+      frames.add(new Frame(objects.values()));
+    }
+    assert (nFrames == frames.size());
   }
 
   /**
@@ -59,39 +88,13 @@ public class SimpleAnimation extends AAnimation {
   }
 
   /**
-   * Applies the list of commands to the object and adds new frames to the canvas.
-   *
-   * @param objects list of drawable objects.
-   */
-  private void initFrames(List<Drawable> objects) {
-    for (int i = 0; i < nFrames; i++) {
-      if (cmdMap.containsKey(i)) {
-        List<ICommand> cmds = cmdMap.get(i);
-        for (ICommand cmd : cmds) {
-          if (!cmd.isRunning()) {
-            cmd.execute();
-            cmdLog.add(cmd.logCmd());
-          } else {
-            cmd.execute();
-          }
-          if (!cmd.isComplete()) {
-            addToCmdMap(cmd);
-          }
-        }
-      }
-
-      frames.add(new Frame(objects));
-    }
-    assert (nFrames == frames.size());
-  }
-
-  /**
    * Adds the given command to the cmdMap.
    *
    * @param cmd the command.
    */
   private void addToCmdMap(ICommand cmd) {
     int start = cmd.getStartTick();
+    nFrames = Math.max(nFrames, cmd.getEndTick());
 
     if (cmdMap.containsKey(start)) {
       cmdMap.get(start).add(cmd);
@@ -100,7 +103,6 @@ public class SimpleAnimation extends AAnimation {
       cmdList.add(cmd);
       cmdMap.put(start, cmdList);
     }
-    resetCmdMap();
   }
 
   /**
