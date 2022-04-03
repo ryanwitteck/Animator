@@ -8,7 +8,7 @@ import cs3500.animator.io.AnimationFileReader;
 import cs3500.animator.io.OurModelBuilder;
 import cs3500.animator.model.IAnimation;
 import cs3500.animator.view.AnimationView;
-import cs3500.animator.view.SwingViewFrame;
+import cs3500.animator.view.VisualView;
 import cs3500.animator.view.TextView;
 
 /**
@@ -71,7 +71,7 @@ public class Main {
           view.renderAnimation();
           break;
         case "visual":
-          view = new SwingViewFrame("Animation", animation, tickRate);
+          view = new VisualView("Animation", animation, tickRate);
           view.renderAnimation();
           break;
         case "svg":

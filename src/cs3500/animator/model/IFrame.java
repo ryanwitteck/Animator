@@ -17,4 +17,11 @@ public interface IFrame {
    * @return the list of objects being animated
    */
   List<Drawable> listObjects();
+
+  /**
+   * Get the list of animated objects in this frame in reverse order.
+   *
+   * @return the list of objects being animated
+   */
+  List<Drawable> listObjectsRev();
 }

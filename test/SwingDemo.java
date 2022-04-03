@@ -13,7 +13,7 @@ import cs3500.animator.model.commands.ICommand;
 import cs3500.animator.model.commands.MoveCmd;
 import cs3500.animator.model.commands.ResizeCmd;
 import cs3500.animator.view.AnimationView;
-import cs3500.animator.view.SwingViewFrame;
+import cs3500.animator.view.VisualView;
 
 /**
  * This class runs a short demo of our swing view. It is for testing purposes only.
@@ -43,7 +43,7 @@ public class SwingDemo {
     }
     animation.compile();
 
-    AnimationView view = new SwingViewFrame("Demo", animation, 50);
+    AnimationView view = new VisualView("Demo", animation, 50);
     try {
       view.renderAnimation();
     } catch (IOException e) {
