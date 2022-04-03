@@ -198,6 +198,6 @@ public class Color {
 
   @Override
   public String toString() {
-    return "(" + r + "," + g + "," + b + ")";
+    return "(" + (int) r + "," + (int) g + "," + (int) b + ")";
   }
 }
