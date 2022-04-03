@@ -77,8 +77,9 @@ simply prints the command log of an animation to the given destination when rend
 Our visual view of an animation creates an animated video of an animation using swing. We have
 implemented this view in the VisualView class, which relies on the SwingViewPanel class. This class
 requires the user to supply a window title, IAnimation, and frame rate in ticks per second. After
-the renderAnimation method is called, the animation will play and loop infinitely. To end the video,
-simply close the window.
+the renderAnimation method is called, a window will appear, on which the animation will play. The 
+window will not close automatically. If you would like to end the video early, simply close the 
+window.
 
 #### SVG
 We have not completed the implementation of this view yet. When complete this view will use the

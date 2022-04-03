@@ -12,6 +12,7 @@ import cs3500.animator.model.IAnimation;
  */
 public class VisualView extends JFrame implements AnimationView {
 
+  private Timer timer;
   private final IAnimation animation;
   private final SwingViewPanel panel;
   private int tick;
@@ -35,6 +36,7 @@ public class VisualView extends JFrame implements AnimationView {
     this.panel = new SwingViewPanel();
     this.panel.setFrame(animation.getFrame(0));
     this.add(panel);
+    this.timer = new Timer(1000 / fps, new MyActionListener());
     tick = 0;
     this.fps = fps;
   }
@@ -50,7 +52,7 @@ public class VisualView extends JFrame implements AnimationView {
       panel.setFrame(animation.getFrame(tick));
       repaint();
       if (tick >= animation.getNFrames() - 1) {
-        tick = 0;
+        timer.stop();
       }
     }
   }
@@ -58,7 +60,7 @@ public class VisualView extends JFrame implements AnimationView {
   @Override
   public void renderAnimation() {
     this.setVisible(true);
-    Timer timer = new Timer(1000 / fps, new MyActionListener());
+    tick = 0;
     timer.start();
   }
 }
