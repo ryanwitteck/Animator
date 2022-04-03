@@ -35,6 +35,7 @@ public class OurModelBuilder implements TweenModelBuilder<IAnimation> {
                                                float red, float green, float blue,
                                                int startOfLife, int endOfLife) {
     checkDimensions(xRadius, yRadius);
+    checkColor(red, green, blue);
     checkTime(startOfLife, endOfLife);
     animation.addCmd(new AddOvalCmd(name, cx, cy, xRadius, yRadius,
             new Color(255 * red, 255 * green, 255 * blue), startOfLife));
@@ -48,6 +49,7 @@ public class OurModelBuilder implements TweenModelBuilder<IAnimation> {
                                                     float red, float green, float blue,
                                                     int startOfLife, int endOfLife) {
     checkDimensions(width, height);
+    checkColor(red, green, blue);
     checkTime(startOfLife, endOfLife);
     animation.addCmd(new AddRectCmd(name, lx, ly, width, height,
             new Color(255 * red, 255 * green, 255 * blue), startOfLife));
@@ -71,6 +73,8 @@ public class OurModelBuilder implements TweenModelBuilder<IAnimation> {
                                                       float newR, float newG, float newB,
                                                       int startTime, int endTime) {
     checkTime(startTime, endTime);
+    checkColor(oldR, oldG, oldB);
+    checkColor(newR, newG, newB);
     animation.addCmd(new ChangeColorCmd(name, startTime, endTime,
             new Color(255 * oldR, 255 * oldG, 255 * oldB), new Color(255 * newR, 255 * newG, 255 * newB)));
     return this;
@@ -122,6 +126,24 @@ public class OurModelBuilder implements TweenModelBuilder<IAnimation> {
     }
     if (endTime < startTime) {
       throw new IllegalArgumentException("Error: end time cannot be before start time");
+    }
+  }
+
+  /**
+   * Given the RGB values of some color, throw an error if any of the three is invalid.
+   * Color values are invalid they are outside the range [0, 1].
+   *
+   * @param red   the red time
+   * @param green the green time
+   * @param blue  the blue value
+   * @throws IllegalArgumentException if any color value is invalid
+   */
+  private void checkColor(float red, float green, float blue) {
+    if (red < 0 || green < 0 || blue < 0) {
+      throw new IllegalArgumentException("Error: color values must be in the range [0, 1]");
+    }
+    if (red > 1 || green > 1 || blue > 1) {
+      throw new IllegalArgumentException("Error: color values must be in the range [0, 1]");
     }
   }
 }
