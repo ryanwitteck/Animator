@@ -103,6 +103,27 @@ public class Color {
   }
 
   /**
+   * Returns the red value.
+   */
+  public double getR() {
+    return r;
+  }
+
+  /**
+   * Returns the green value.
+   */
+  public double getG() {
+    return g;
+  }
+
+  /**
+   * Returns the blue value.
+   */
+  public double getB() {
+    return b;
+  }
+
+  /**
    * Sets new Color values.
    *
    * @param c the color to copy.

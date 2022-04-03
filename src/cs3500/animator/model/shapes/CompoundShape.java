@@ -3,8 +3,8 @@ package cs3500.animator.model.shapes;
 import java.util.ArrayList;
 import java.util.List;
 
-import cs3500.animator.model.interfaces.Drawable;
 import cs3500.animator.model.attributes.Color;
+import cs3500.animator.model.interfaces.Drawable;
 
 /**
  * This class represents a shape composed of multiple shapes.

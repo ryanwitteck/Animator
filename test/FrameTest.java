@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cs3500.animator.model.Frame;
+import cs3500.animator.model.attributes.Color;
 import cs3500.animator.model.interfaces.Drawable;
 import cs3500.animator.model.interfaces.Movable;
-import cs3500.animator.model.attributes.Color;
 import cs3500.animator.model.shapes.Rectangle;
 
 import static org.junit.Assert.assertEquals;

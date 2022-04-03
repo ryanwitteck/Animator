@@ -40,7 +40,8 @@ class SwingViewPanel extends JPanel {
     for (Drawable d : list) {
       if (d instanceof Rectangle) {
         Rectangle r = (Rectangle) d;
-        g2.setColor(new Color());
+        g2.setColor(new Color(
+                (int) r.getColor().getR(), (int) r.getColor().getG(), (int) r.getColor().getB()));
         g2.drawRect((int) r.getPos().getX(), (int) r.getPos().getY(), r.getWidth(), r.getHeight());
       }
     }

@@ -1,8 +1,7 @@
 package cs3500.animator.model.shapes;
 
-
-import cs3500.animator.model.interfaces.Drawable;
 import cs3500.animator.model.attributes.Color;
+import cs3500.animator.model.interfaces.Drawable;
 
 /**
  * This class represents a rectangle. May be changed when using swing later on for the view.

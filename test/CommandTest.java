@@ -5,13 +5,13 @@ import java.util.List;
 
 import cs3500.animator.model.IAnimation;
 import cs3500.animator.model.SimpleAnimation;
+import cs3500.animator.model.attributes.Color;
 import cs3500.animator.model.commands.AddRectCmd;
 import cs3500.animator.model.commands.ICommand;
 import cs3500.animator.model.commands.MoveCmd;
 import cs3500.animator.model.commands.PlaceCmd;
 import cs3500.animator.model.commands.RemoveDrawableCmd;
 import cs3500.animator.model.interfaces.Drawable;
-import cs3500.animator.model.attributes.Color;
 import cs3500.animator.model.attributes.Posn;
 import cs3500.animator.model.interfaces.Movable;
 import cs3500.animator.model.shapes.Rectangle;
