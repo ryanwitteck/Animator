@@ -2,6 +2,7 @@ package cs3500.animator.model.commands;
 
 import cs3500.animator.model.IAnimation;
 import cs3500.animator.model.attributes.Color;
+import cs3500.animator.model.attributes.Posn;
 import cs3500.animator.model.shapes.Rectangle;
 
 /**

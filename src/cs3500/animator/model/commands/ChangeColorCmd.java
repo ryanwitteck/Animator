@@ -2,6 +2,7 @@ package cs3500.animator.model.commands;
 
 import cs3500.animator.model.IAnimation;
 import cs3500.animator.model.attributes.Color;
+import cs3500.animator.model.attributes.Posn;
 import cs3500.animator.model.interfaces.Drawable;
 
 /**
@@ -18,6 +19,7 @@ public class ChangeColorCmd extends GradualCmd {
   private final String log;
   private final Color initColor; // initial color of the object. Used to reset this cmd.
   private Color startColor;
+  private Color endColor;
   private final double dr; // rate of change of the red value
   private final double dg; // rate of change of the green value
   private final double db; // rate of change of the blue value
@@ -36,6 +38,7 @@ public class ChangeColorCmd extends GradualCmd {
     super(name, start, end);
     this.initColor = startColor;
     this.startColor = new Color(startColor);
+    this.endColor = new Color(endColor);
     this.log = name + " changes color from : " + initColor + " to " + endColor
             + " from t=" + (startTick - 1) + " to t=" + endTick;
     this.dr = (endColor.getR() - initColor.getR()) / (endTick - startTick + 1);

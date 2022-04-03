@@ -14,7 +14,6 @@ import cs3500.animator.model.IAnimation;
  * - if it has finished running.
  * - if it is currently running.
  * - a readable string representation of itself.
- * - an SVG string representation of itself.
  */
 public interface ICommand {
 
@@ -65,13 +64,4 @@ public interface ICommand {
    * @return the string representation of running this cmd.
    */
   String logCmd();
-
-  /**
-   * Return the representation of running this cmd in SVG format.
-   * Example: "<animate attributeName="x" attributeType="XML"
-   *           begin="0s" dur="9s" fill="freeze" from="300" to="0" />"
-   *
-   * @return the SVG string representation of running this cmd.
-   */
-  String toSVG();
 }
