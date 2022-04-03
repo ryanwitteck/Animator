@@ -14,7 +14,7 @@ public interface Movable {
   /**
    * Places this object at the given coordinates.
    */
-  void place(double x, double y);
+  void place(float x, float y);
 
   /**
    * Places this object at the given coordinates.
@@ -29,7 +29,7 @@ public interface Movable {
    * @param dx the change in x.
    * @param dy the change in y.
    */
-  void move(double dx, double dy);
+  void move(float dx, float dy);
 
   /**
    * Get the current position of this object.

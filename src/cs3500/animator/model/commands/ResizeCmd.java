@@ -5,7 +5,7 @@ package cs3500.animator.model.commands;
  * Implements constructor exception and a new field scale, the factor by which the target's.
  */
 public abstract class ResizeCmd extends GradualCmd {
-  protected double scale;
+  protected float scale;
 
   /**
    * Constructor for ResizeCmd.
@@ -16,7 +16,7 @@ public abstract class ResizeCmd extends GradualCmd {
    * @param end   the tick when this command ends.
    * @throws IllegalArgumentException if the target object is not an instance of scalable.
    */
-  public ResizeCmd(String name, int start, int end, double scale) {
+  public ResizeCmd(String name, int start, int end, float scale) {
     super(name, start, end);
     this.scale = scale;
   }

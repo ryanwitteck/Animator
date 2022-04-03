@@ -16,8 +16,8 @@ public class MoveCmd extends GradualCmd {
   private String log;
   private Posn startPos;
   private final Posn dest;
-  private double dx;
-  private double dy;
+  private float dx;
+  private float dy;
 
   /**
    * Constructor for MoveCmd.
