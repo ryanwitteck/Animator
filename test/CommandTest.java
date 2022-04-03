@@ -3,6 +3,7 @@ import org.junit.Test;
 import cs3500.animator.model.IAnimation;
 import cs3500.animator.model.SimpleAnimation;
 import cs3500.animator.model.attributes.Color;
+import cs3500.animator.model.commands.AddOvalCmd;
 import cs3500.animator.model.commands.AddRectCmd;
 import cs3500.animator.model.commands.ICommand;
 import cs3500.animator.model.commands.MoveCmd;
@@ -34,15 +35,21 @@ public class CommandTest {
     ICommand cmd1 = new AddRectCmd("R1", 0, 0, 10, 5, new Color(0, 0, 0), 1);
     ICommand cmd2 = new AddRectCmd("R2", 3.33, 6.67, 87, 11, new Color(0, 0, 0), 1);
     ICommand cmd3 = new AddRectCmd("R3", -10, 999, 50, 1, new Color(0, 0, 0), 4);
+    ICommand cmd4 = new AddOvalCmd("O1", -10, 999, 50, 1, new Color(0, 0, 0), 4);
 
     assertEquals(1, cmd1.getStartTick());
     assertEquals(1, cmd1.getEndTick());
     assertEquals(1, cmd2.getStartTick());
     assertEquals(4, cmd3.getStartTick());
 
-    assertEquals("Created Rectangle named R1 at t=1", cmd1.logCmd());
-    assertEquals("Created Rectangle named R2 at t=1", cmd2.logCmd());
-    assertEquals("Created Rectangle named R3 at t=4", cmd3.logCmd());
+    assertEquals("Created Rectangle name=R1 posn=( 0.0, 0.0 ) " +
+            "width=10.0 height=5.0 color=(0.0,0.0,0.0) at t=1", cmd1.logCmd());
+    assertEquals("Created Rectangle name=R2 posn=( 3.33, 6.67 ) " +
+            "width=87.0 height=11.0 color=(0.0,0.0,0.0) at t=1", cmd2.logCmd());
+    assertEquals("Created Rectangle name=R3 posn=( -10.0, 999.0 ) " +
+            "width=50.0 height=1.0 color=(0.0,0.0,0.0) at t=4", cmd3.logCmd());
+    assertEquals("Created Oval name=O1 posn=( -10.0, 999.0 ) " +
+            "xr=50.0 yr=1.0 color=(0.0,0.0,0.0) at t=4", cmd4.logCmd());
 
     assertFalse(cmd1.isComplete());
     assertFalse(cmd2.isComplete());

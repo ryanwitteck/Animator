@@ -44,7 +44,7 @@ public class AddOvalCmd extends InstantCmd {
 
   @Override
   public String logCmd() {
-    return "Created Oval name=" + name + "posn=" + oval.getPos() + "xr=" + oval.getXRadius()
-            + "yr=" + oval.getYRadius() + "posn=" + oval.getColor() + " at t=" + startTick;
+    return "Created Oval name=" + name + " posn=" + oval.getPos() + " xr=" + oval.getXRadius()
+            + " yr=" + oval.getYRadius() + " color=" + oval.getColor() + " at t=" + startTick;
   }
 }

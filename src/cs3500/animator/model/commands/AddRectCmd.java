@@ -45,7 +45,7 @@ public class AddRectCmd extends InstantCmd {
 
   @Override
   public String logCmd() {
-    return "Created Rectangle name=" + name + "posn=" + rect.getPos() + "width=" + rect.getWidth()
-            + "posn=" + rect.getHeight() + "posn=" + rect.getColor() + " at t=" + startTick;
+    return "Created Rectangle name=" + name + " posn=" + rect.getPos() + " width=" + rect.getWidth()
+            + " height=" + rect.getHeight() + " color=" + rect.getColor() + " at t=" + startTick;
   }
 }
