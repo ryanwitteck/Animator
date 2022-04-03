@@ -1,5 +1,6 @@
 package cs3500.animator.view;
 
+import java.io.FileWriter;
 import java.io.IOException;
 
 import cs3500.animator.model.IAnimation;
@@ -25,6 +26,13 @@ public class TextView implements AnimationView {
 
   @Override
   public void renderAnimation() throws IOException {
-    ap.append(animation.getCmdLog());
+    if (ap instanceof FileWriter) {
+      FileWriter writer = (FileWriter) ap;
+      writer.write(animation.getCmdLog());
+      writer.close();
+    }
+    else {
+      ap.append(animation.getCmdLog());
+    }
   }
 }

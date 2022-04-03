@@ -1,5 +1,6 @@
 package cs3500.animator;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -65,7 +66,8 @@ public class Main {
       switch (viewType) {
         case "text":
           if (!out.isEmpty()) {
-            view = new TextView(animation, new FileWriter(out));
+            FileWriter writer = new FileWriter(out);
+            view = new TextView(animation, writer);
           } else {
             view = new TextView(animation, System.out);
           }
