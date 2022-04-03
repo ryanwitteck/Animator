@@ -17,21 +17,8 @@
     <br />
   </p>
 
-
-
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents (Links not working. Sorry)</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-    </li>
-    <li><a href="#Usage">Usage</a></li>
-  </ol>
-</details>
-
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## Our MVC Model
 
 In this project, we used the MVC model to design and create an implementation of an animation using
 basic shapes. The traditional roles a controller fills is split between our view and main class.
@@ -103,12 +90,17 @@ In this project, the controller's role of parsing user input is filled by our Ma
 classes in the IO package. They are in charge of parsing user inputs and building a model and view
 according to the given input.
 
+#### IO Package
+This package contains an interface TweenModelBuilder and two classes AnimationFileReader and 
+OurModelBuilder (an implementation of TweenModelBuilder). The classes AnimationFileReader and 
+OurModelBuilder together are used to create animations based off of an appropriately formatted text
+file. The AnimationFileReader class is responsible for parsing the text in the given file into 
+commands that OurModelBuilder can recognize and OurModelBuilder translates uses that information to 
+create an IAnimation by adding various ICommands to it.
+
 #### Main
-Our main class and method parse
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-<p align="right">(<a href="#top">back to top</a>)</p>
+Our main class and method is responsible for reading the command line inputs given by the user and 
+parsing that into five pieces of information: the name of the animation file, the type of view 
+desired, the output file, and the tick rate of the animation. Using that information, our main 
+method uses an instance of AnimationFileReader and OurModelBuilder to read the given animation file
+and create the appropriate view of it.
