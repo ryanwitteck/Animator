@@ -2,7 +2,7 @@ package cs3500.animator.model.attributes;
 
 /**
  * This class represents a color.
- * Colors are represented by traditional rgb values.
+ * Colors are represented by traditional rgb values and each color value is stored as a double.
  */
 public class Color {
 
@@ -54,10 +54,11 @@ public class Color {
    * Sets red value.
    *
    * @param r the desired red value.
+   * @throws IllegalArgumentException if the given value is outside of the range [0, 255].
    */
   public void setR(double r) {
     if (!inBounds(r)) {
-      throw new IllegalArgumentException("Value must be in range [0-255].");
+      throw new IllegalArgumentException("Value must be in range [0, 255].");
     }
     this.r = r;
   }
@@ -66,10 +67,11 @@ public class Color {
    * Sets green value.
    *
    * @param g the desired green value.
+   * @throws IllegalArgumentException if the given value is outside of the range [0, 255].
    */
   public void setG(double g) {
     if (!inBounds(g)) {
-      throw new IllegalArgumentException("Value must be in range [0-255].");
+      throw new IllegalArgumentException("Value must be in range [0, 255].");
     }
     this.g = g;
   }
@@ -78,10 +80,11 @@ public class Color {
    * Sets blue value.
    *
    * @param b the desired blue value.
+   * @throws IllegalArgumentException if the given value is outside of the range [0, 255].
    */
   public void setB(double b) {
     if (!inBounds(b)) {
-      throw new IllegalArgumentException("Value must be in range [0-255].");
+      throw new IllegalArgumentException("Value must be in range [0, 255].");
     }
     this.b = b;
   }

@@ -14,8 +14,8 @@ public class Posn {
   private double y;
 
   /**
-   * Our constructor for Posn taking two floats as arguments.
-   * Initializes the x and y coordinate to the given float values.
+   * Our constructor for Posn taking two doubles as arguments.
+   * Initializes the x and y coordinate to the given double values.
    *
    * @param x the x value
    * @param y the y value
@@ -55,7 +55,7 @@ public class Posn {
   }
 
   /**
-   * Increases this Posn's values based on the given float values.
+   * Increases this Posn's values based on the given double values.
    * Accepts both positive and negative doubles as arguments.
    *
    * @param dx change in x.
@@ -67,7 +67,7 @@ public class Posn {
   }
 
   /**
-   * Sets this Posn to the given coordinates represented as two floats, x and y.
+   * Sets this Posn to the given coordinates represented as two doubles, x and y.
    *
    * @param nx desired x position
    * @param ny desired y position
