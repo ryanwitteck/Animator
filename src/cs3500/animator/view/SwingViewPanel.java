@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 
 import cs3500.animator.model.IFrame;
 import cs3500.animator.model.interfaces.Drawable;
+import cs3500.animator.model.shapes.Oval;
 import cs3500.animator.model.shapes.Rectangle;
 
 /**
@@ -42,8 +43,15 @@ class SwingViewPanel extends JPanel {
         Rectangle r = (Rectangle) d;
         g2.setColor(new Color(
                 (int) r.getColor().getR(), (int) r.getColor().getG(), (int) r.getColor().getB()));
-        g2.drawRect((int) r.getPos().getX(), (int) r.getPos().getY(),
+        g2.fillRect((int) r.getPos().getX(), (int) r.getPos().getY(),
                 (int) r.getWidth(), (int) r.getHeight());
+      }
+      else if (d instanceof Oval) {
+        Oval o = (Oval) d;
+        g2.setColor(new Color(
+                (int) o.getColor().getR(), (int) o.getColor().getG(), (int) o.getColor().getB()));
+        g2.fillOval((int) o.getPos().getX(), (int) o.getPos().getY(),
+                (int) o.getXRadius(), (int) o.getYRadius());
       }
     }
 

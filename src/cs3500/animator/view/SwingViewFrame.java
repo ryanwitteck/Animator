@@ -2,7 +2,6 @@ package cs3500.animator.view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
 import javax.swing.*;
 
@@ -13,25 +12,22 @@ import cs3500.animator.model.IAnimation;
  */
 public class SwingViewFrame extends JFrame implements AnimationView {
 
-  private IAnimation animation;
-  private SwingViewPanel panel;
+  private final IAnimation animation;
+  private final SwingViewPanel panel;
   private int tick;
-  private int fps;
-  private Timer timer;
+  private final int fps;
 
   /**
    * Constructor --- TODO make better
    *
-   * @param windowTitle the title of the main window
+   * @param windowTitle the title of the animation window
    * @param animation   the animation that this view will visualize
-   * @param width       the width of the canvas
-   * @param height      the height of the canvas
    * @param fps         the framerate of this animation in frames per second
    */
-  public SwingViewFrame(String windowTitle, IAnimation animation, int width, int height, int fps) {
+  public SwingViewFrame(String windowTitle, IAnimation animation, int fps) {
     super(windowTitle);
 
-    setSize(width, height);
+    setSize(animation.getWindowWidth(), animation.getWindowHeight());
     setLocation(0, 0);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -53,16 +49,16 @@ public class SwingViewFrame extends JFrame implements AnimationView {
       tick++;
       panel.setFrame(animation.getFrame(tick));
       repaint();
-      if (tick >= animation.getNFrames()) {
-        timer.stop();
+      if (tick >= animation.getNFrames() - 1) {
+        tick = 0;
       }
     }
   }
 
   @Override
-  public void renderAnimation() throws IOException {
+  public void renderAnimation() {
     this.setVisible(true);
-    timer = new Timer(1000 / fps, new MyActionListener());
+    Timer timer = new Timer(1000 / fps, new MyActionListener());
     timer.start();
   }
 }

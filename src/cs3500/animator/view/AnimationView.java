@@ -12,7 +12,7 @@ public interface AnimationView {
   /**
    * This method renders the Animation being viewed. --- TODO make better
    *
-   * @throws IOException if transmission of the board to the provided data destination fails
+   * @throws IOException if the view fails to render the animation to the given data destination.
    */
   void renderAnimation() throws IOException;
 }
