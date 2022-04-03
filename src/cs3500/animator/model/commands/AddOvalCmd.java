@@ -2,17 +2,17 @@ package cs3500.animator.model.commands;
 
 import cs3500.animator.model.IAnimation;
 import cs3500.animator.model.attributes.Color;
-import cs3500.animator.model.shapes.Rectangle;
+import cs3500.animator.model.shapes.Oval;
 
 /**
- * Represents a command to add a Rectangle to an animation.
+ * Represents a command to add an Oval to an animation.
  * <p>
  * log format:
- * - "Created Rectangle named [object name] at t=[start tick]"
+ * - "Created Oval named [object name] at t=[start tick]"
  */
-public class AddRectCmd extends InstantCmd {
+public class AddOvalCmd extends InstantCmd {
 
-  private final Rectangle rect;
+  private final Oval oval;
 
   /**
    * Sole constructor for AddRectCmd.
@@ -27,19 +27,19 @@ public class AddRectCmd extends InstantCmd {
    * @param color  the color of the new Rectangle.
    * @param tick   the tick when this command triggers.
    */
-  public AddRectCmd(String name, double x, double y, double width, double height, Color color, int tick) {
+  public AddOvalCmd(String name, double x, double y, double width, double height, Color color, int tick) {
     super(name, tick);
-    this.rect = new Rectangle(name, x, y, width, height, color);
+    this.oval = new Oval(name, x, y, width, height, color);
   }
 
   @Override
   public void execute(IAnimation a) {
     super.execute(a);
-    a.addDrawable(rect);
+    a.addDrawable(oval);
   }
 
   @Override
   public String logCmd() {
-    return "Created Rectangle named " + name + " at t=" + startTick;
+    return "Created Oval named " + name + " at t=" + startTick;
   }
 }

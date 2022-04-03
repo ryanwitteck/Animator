@@ -4,12 +4,12 @@ import cs3500.animator.model.attributes.Color;
 import cs3500.animator.model.interfaces.Drawable;
 
 /**
- * This class represents a rectangle.
+ * This class represents an oval.
  * <p>
  * Contains fields:
  * - All fields in BasicShape by inheritance.
- * - width   the width of this rectangle.
- * - height  the height of this rectangle.
+ * - width   the width of this oval.
+ * - height  the height of this oval.
  * Implemented Methods:
  * - All methods in BasicShape by inheritance.
  * - getCopy from Drawable.
@@ -17,7 +17,7 @@ import cs3500.animator.model.interfaces.Drawable;
  * - Getters for width and height.
  * - Equals and HashCode.
  */
-public class Rectangle extends BasicShape {
+public class Oval extends BasicShape {
   private double width;
   private double height;
 
@@ -31,7 +31,7 @@ public class Rectangle extends BasicShape {
    * @param height the initial height of this shape.
    * @param color  the initial color of this shape
    */
-  public Rectangle(String name, double x, double y, double width, double height, Color color) {
+  public Oval(String name, double x, double y, double width, double height, Color color) {
     super(name, x, y, color);
     if (width < 0 || height < 0) {
       throw new IllegalArgumentException("Cannot have a size less than 0.");
@@ -43,7 +43,7 @@ public class Rectangle extends BasicShape {
   @Override
   public Drawable getCopy() {
     Color copy = new Color(color);
-    return new Rectangle(name, posn.getX(), posn.getY(), width, height, copy);
+    return new Oval(name, posn.getX(), posn.getY(), width, height, copy);
   }
 
   @Override
@@ -107,8 +107,8 @@ public class Rectangle extends BasicShape {
     if (obj == this) {
       return true;
     }
-    if (obj instanceof Rectangle) {
-      Rectangle r = (Rectangle) obj;
+    if (obj instanceof Oval) {
+      Oval r = (Oval) obj;
       return this.name.equals(r.name)
               && this.posn.equals(r.posn)
               && this.color.equals(r.color)
