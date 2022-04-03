@@ -87,6 +87,42 @@ public class Color {
   }
 
   /**
+   * Increment RGB values by given values.
+   * If the any RGB value goes out of bounds it is set to either 0 or 255
+   * depending on if it is too low or high.
+   *
+   * @param dr the change in red value.
+   * @param dg the change in green value.
+   * @param db the change in blue value.
+   */
+  public void changeColor(double dr, double dg, double db) {
+    r += dr;
+    g += dg;
+    b += db;
+    // keep red in bounds
+    if (r < 0) {
+      r = 0;
+    }
+    else if (r > 255) {
+      r = 255;
+    }
+    // keep green in bounds
+    if (g < 0) {
+      g = 0;
+    }
+    else if (g > 255) {
+      g = 255;
+    }
+    // keep blue in bounds
+    if (b < 0) {
+      b = 0;
+    }
+    else if (b > 255) {
+      b = 255;
+    }
+  }
+
+  /**
    * Sets new Color values.
    *
    * @param r the desired red value.
@@ -155,5 +191,10 @@ public class Color {
   @Override
   public int hashCode() {
     return Double.hashCode(r + g + b);
+  }
+
+  @Override
+  public String toString() {
+    return "(" + r + ", " + g + ", " + b + ")";
   }
 }
