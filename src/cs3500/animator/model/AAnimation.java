@@ -72,6 +72,11 @@ public abstract class AAnimation implements IAnimation {
   }
 
   @Override
+  public int getNFrames() {
+    return nFrames;
+  }
+
+  @Override
   public String getCmdLog() {
     StringBuilder log = new StringBuilder();
     for (String s : cmdLog) {

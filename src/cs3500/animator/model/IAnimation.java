@@ -96,6 +96,14 @@ public interface IAnimation {
   List<IFrame> getFrames();
 
   /**
+   * Returns the number of frames that makes up this animation.
+   * May not return the expected list if compile has not been run since the last change.
+   *
+   * @return the number of frames in this animation
+   */
+  int getNFrames();
+
+  /**
    * Returns the command log of this animation.
    * The command log is the string representation of every ICommand that is part of this
    * animation. The log should be readable and contain all the information necessary to
