@@ -6,6 +6,8 @@ import cs3500.animator.model.shapes.Rectangle;
 
 /**
  * Represents a command to add a Rectangle to an animation.
+ * Allows the user to define the parameters of the new Rectangle:
+ * its initial position, dimensions, and color.
  * <p>
  * log format:
  * - "Created Rectangle named [object name] at t=[start tick]"

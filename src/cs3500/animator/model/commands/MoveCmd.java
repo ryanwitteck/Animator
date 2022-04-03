@@ -7,17 +7,19 @@ import cs3500.animator.model.interfaces.Drawable;
 
 /**
  * Represents a command to move an object over a period of time.
+ * Requires the user to know the start position of the object and
+ * allows the user to decide the end position of the object.
  * <p>
  * log format:
  * - "[target name] moves from : (x0, y0) to (x1, y1) from t=[start tick] to t=[end tick]"
  */
 public class MoveCmd extends GradualCmd {
 
-  private String log;
-  private Posn startPos;
+  private final String log;
+  private final Posn startPos;
   private Posn currentPos;
-  private double dx; // rate of change of the x value
-  private double dy; // rate of change of the y value
+  private final double dx; // rate of change of the x value
+  private final double dy; // rate of change of the y value
 
   /**
    * Constructor for MoveCmd.

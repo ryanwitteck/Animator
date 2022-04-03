@@ -4,6 +4,7 @@ import cs3500.animator.model.IAnimation;
 
 /**
  * This abstract class represents a command that happens instantly (in one tick).
+ * The user decides the target object and the time this command triggers.
  * Implements getEndTick, execute, reset, and isRunning methods.
  */
 public abstract class InstantCmd extends ACommand {

@@ -17,8 +17,8 @@ public abstract class GradualCmd extends ACommand {
 
   /**
    * Constructor for GradualCmd.
-   * Takes in the target object's name and
-   * this command's start and end tick as arguments.
+   * Allows the user to decide the target object's name and
+   * the period during which this command runs.
    *
    * @param name  the name of the object this command functions on.
    * @param start the tick when this command triggers.
