@@ -4,7 +4,8 @@ import cs3500.animator.model.IAnimation;
 
 /**
  * Abstract class for ICommand interface.
- * Implements the getStartTick, isComplete, and execute methods in the ICommand interface.
+ * Implements the getTarget, getStartTick, isComplete,
+ * and execute methods in the ICommand interface.
  */
 public abstract class ACommand implements ICommand {
 
@@ -31,6 +32,11 @@ public abstract class ACommand implements ICommand {
     this.name = name;
     this.startTick = tick;
     this.complete = false;
+  }
+
+  @Override
+  public String getTarget() {
+    return name;
   }
 
   @Override

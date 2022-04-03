@@ -9,6 +9,7 @@ import cs3500.animator.model.IAnimation;
  * they want our animation model to accept.
  * All commands should execute some action, be able to reset themselves,
  * and be able to return the following information:
+ * - the name of the target object.
  * - the tick it should execute.
  * - the tick it should stop executing.
  * - if it has finished running.
@@ -16,6 +17,13 @@ import cs3500.animator.model.IAnimation;
  * - a readable string representation of itself.
  */
 public interface ICommand {
+
+  /**
+   * Return the name of the target object.
+   *
+   * @return the name of the object targeted by this command.
+   */
+  String getTarget();
 
   /**
    * Return the start tick of this command i.e. the tick this command should start running.
