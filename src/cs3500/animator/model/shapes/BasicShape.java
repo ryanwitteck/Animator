@@ -39,12 +39,12 @@ public abstract class BasicShape implements IShape {
 
   @Override
   public Posn getPos() {
-    return this.posn;
+    return new Posn(this.posn);
   }
 
   @Override
   public Color getColor() {
-    return this.color;
+    return new Color(this.color);
   }
 
   @Override
