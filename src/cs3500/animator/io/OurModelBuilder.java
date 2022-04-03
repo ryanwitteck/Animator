@@ -53,7 +53,7 @@ public class OurModelBuilder implements TweenModelBuilder<IAnimation> {
   public TweenModelBuilder<IAnimation> addMove(String name, float moveFromX, float moveFromY,
                                                float moveToX, float moveToY,
                                                int startTime, int endTime) {
-    animation.addCmd(new MoveCmd(name, startTime, endTime, new Posn(moveToX, moveToY)));
+    animation.addCmd(new MoveCmd(name, startTime, endTime, new Posn(moveToX, moveToY), new Posn(moveToX, moveToY)));
     return this;
   }
 
@@ -62,7 +62,7 @@ public class OurModelBuilder implements TweenModelBuilder<IAnimation> {
                                                       float oldR, float oldG, float oldB,
                                                       float newR, float newG, float newB,
                                                       int startTime, int endTime) {
-    animation.addCmd(new ChangeColorCmd(name, startTime, endTime, new Color(newR, newG, newB)));
+    animation.addCmd(new ChangeColorCmd(name, startTime, endTime, new Color(oldR, oldG, oldB), new Color(newR, newG, newB)));
     return this;
   }
 

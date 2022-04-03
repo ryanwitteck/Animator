@@ -15,7 +15,7 @@ public class MoveCmd extends GradualCmd {
 
   private String log;
   private Posn startPos;
-  private final Posn dest;
+  private Posn currentPos;
   private double dx; // rate of change of the x value
   private double dy; // rate of change of the y value
 
@@ -26,11 +26,17 @@ public class MoveCmd extends GradualCmd {
    * @param name  the name of the object to be added to the list.
    * @param start the tick when this command triggers.
    * @param end   the tick when this command ends.
+   * @param start the original position of the target.
    * @param dest  the position we want to move the object to.
    */
-  public MoveCmd(String name, int start, int end, Posn dest) {
+  public MoveCmd(String name, int start, int end, Posn startPos, Posn dest) {
     super(name, start, end);
-    this.dest = dest;
+    this.startPos = startPos;
+    this.currentPos = new Posn(startPos);
+    this.log = name + " moves from : " + startPos + " to " + dest
+            + " from t=" + startTick + " to t=" + endTick;
+    this.dx = (dest.getX() - startPos.getX()) / (endTick - startTick);
+    this.dy = (dest.getY() - startPos.getY()) / (endTick - startTick);
   }
 
   @Override
@@ -40,13 +46,10 @@ public class MoveCmd extends GradualCmd {
     if (!(target instanceof Movable)) {
       throw new IllegalArgumentException("Error: This object is not instance of Movable");
     }
-    if (startPos == null) {
-      startPos = new Posn(((Movable) target).getPos());
-      this.log = target.getName() + " moves from : " + startPos + " to " + dest
-              + " from t=" + (startTick - 1) + " to t=" + endTick;
-      dx = (dest.getX() - startPos.getX()) / (endTick - startTick + 1);
-      dy = (dest.getY() - startPos.getY()) / (endTick - startTick + 1);
+    if (!currentPos.equals(target.getPos())) {
+      throw new IllegalStateException("Error: This object is not at the expected position");
     }
+    currentPos.move(dx, dy);
     ((Movable) target).move(dx, dy);
   }
 
@@ -56,5 +59,11 @@ public class MoveCmd extends GradualCmd {
       throw new IllegalStateException("Error: command has not run");
     }
     return this.log;
+  }
+
+  @Override
+  public void reset() {
+    super.reset();
+    currentPos = new Posn(startPos);
   }
 }

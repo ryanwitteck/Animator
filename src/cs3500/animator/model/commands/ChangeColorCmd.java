@@ -1,5 +1,7 @@
 package cs3500.animator.model.commands;
 
+import java.net.CookieHandler;
+
 import cs3500.animator.model.IAnimation;
 import cs3500.animator.model.attributes.Color;
 import cs3500.animator.model.interfaces.Drawable;
@@ -28,29 +30,31 @@ public class ChangeColorCmd extends GradualCmd {
    * @param name       the name of the object to be added to the list.
    * @param start      the tick when this command triggers.
    * @param end        the tick when this command ends.
+   * @param startColor the original color of this object.
    * @param endColor   the color we want this object to become.
    */
-  public ChangeColorCmd(String name, int start, int end, Color endColor) {
+  public ChangeColorCmd(String name, int start, int end, Color startColor, Color endColor) {
     super(name, start, end);
+    this.initColor = startColor;
+    this.startColor = new Color(startColor);
     this.endColor = endColor;
+    this.log = name + " changes color from : " + initColor + " to " + endColor
+            + " from t=" + (startTick - 1) + " to t=" + endTick;
+    this.dr = (endColor.getR() - initColor.getR()) / (endTick - startTick + 1);
+    this.dg = (endColor.getG() - initColor.getG()) / (endTick - startTick + 1);
+    this.db = (endColor.getB() - initColor.getB()) / (endTick - startTick + 1);
   }
 
   @Override
   public void execute(IAnimation a) {
     super.execute(a);
     Drawable target = a.getDrawable(name);
-    if (initColor == null) {
-      initColor = new Color(target.getColor());
-      this.log = name + " changes color from : " + initColor + " to " + endColor
-              + " from t=" + (startTick - 1) + " to t=" + endTick;
-      dr = (endColor.getR() - initColor.getR()) / (endTick - startTick + 1);
-      dg = (endColor.getG() - initColor.getG()) / (endTick - startTick + 1);
-      db = (endColor.getB() - initColor.getB()) / (endTick - startTick + 1);
-      startColor = new Color(initColor);
+    if (!target.getColor().equals(startColor)) {
+      throw new IllegalStateException("Error: the target is not the expected color");
     }
-    startColor.changeColor(dr, dg, db);
+    startColor.changeColor(dr,dg,db);
     target.setColor(startColor);
-  }
+}
 
   @Override
   public String logCmd() {
@@ -63,5 +67,6 @@ public class ChangeColorCmd extends GradualCmd {
   @Override
   public void reset() {
     super.reset();
+    this.startColor = new Color(initColor);
   }
 }

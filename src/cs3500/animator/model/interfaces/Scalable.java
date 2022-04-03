@@ -16,7 +16,8 @@ public interface Scalable {
   void stretchHorizontal(double scale);
 
   /**
-   * Increase this object's width by the given value.
+   * Increase this object's width (the term used to refer to a shape's x dimension may vary)
+   * by the given value.
    *
    * @param dx the change in width.
    */
@@ -30,7 +31,8 @@ public interface Scalable {
   void stretchVertical(double scale);
 
   /**
-   * Increase this object's height by the given value.
+   * Increase this object's height (the term used to refer to a shape's x dimension may vary)
+   * by the given value.
    *
    * @param dy the change in height.
    */

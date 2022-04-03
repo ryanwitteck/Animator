@@ -61,7 +61,7 @@ public class CommandTest {
 
     ICommand rcmd1 = new RemoveDrawableCmd("R1", 1);
     ICommand rcmd2 = new RemoveDrawableCmd("R2", 1);
-    ICommand rcmd3 = new RemoveDrawableCmd("R3",4);
+    ICommand rcmd3 = new RemoveDrawableCmd("R3", 4);
 
     rcmd1.execute(animation);
     rcmd2.execute(animation);
@@ -81,8 +81,9 @@ public class CommandTest {
 
     Posn p = new Posn(-10, 99);
 
-    ICommand cmd1 = new MoveCmd("R2", 1, 12, new Posn(1, 55));
-    ICommand cmd2 = new MoveCmd("R1", 1, 1000, new Posn(10943.1343, 32142.765));
+    ICommand cmd1 = new MoveCmd("R2", 1, 12, new Posn(-10, 99), new Posn(1, 55));
+    ICommand cmd2 = new MoveCmd("R1", 1, 1000,
+            new Posn(3.33, 6.67), new Posn(10943.1343, 32142.765));
     ICommand cmd3 = new PlaceCmd("R2", 1, new Posn(0, 3.33));
     ICommand cmd4 = new PlaceCmd("R1", 1, new Posn(-1.75, -9));
 
@@ -96,14 +97,14 @@ public class CommandTest {
       p.move(1, -4);
       assertTrue(cmd1.isRunning());
       assertFalse(cmd1.isComplete());
-      assertEquals(p, ((Movable)a.getDrawable("R2")).getPos());
+      assertEquals(p, ((Movable) a.getDrawable("R2")).getPos());
     }
     cmd1.execute(a);
-    assertEquals(new Posn(1, 55), ((Movable)a.getDrawable("R2")).getPos());
+    assertEquals(new Posn(1, 55), ((Movable) a.getDrawable("R2")).getPos());
     assertTrue(cmd1.isComplete() && !cmd1.isRunning());
 
     cmd3.execute(a);
-    assertEquals(new Posn(0, 3.33), ((Movable)a.getDrawable("R2")).getPos());
+    assertEquals(new Posn(0, 3.33), ((Movable) a.getDrawable("R2")).getPos());
     assertTrue(cmd3.isComplete() && !cmd3.isRunning());
 
     for (int i = 1; i < 999; i++) {
@@ -112,11 +113,11 @@ public class CommandTest {
       assertFalse(cmd2.isComplete());
     }
     cmd2.execute(a);
-    assertEquals(new Posn(10943.1343, 32142.765), ((Movable)a.getDrawable("R1")).getPos());
+    assertEquals(new Posn(10943.1343, 32142.765), ((Movable) a.getDrawable("R1")).getPos());
     assertTrue(cmd2.isComplete() && !cmd2.isRunning());
 
     cmd4.execute(a);
-    assertEquals(new Posn(-1.75, -9), ((Movable)a.getDrawable("R1")).getPos());
+    assertEquals(new Posn(-1.75, -9), ((Movable) a.getDrawable("R1")).getPos());
     assertTrue(cmd4.isComplete() && !cmd4.isRunning());
 
     assertEquals("R2 moves from : ( -10.0, 99.0 ) to ( 1.0, 55.0 ) from t=1 to t=12",
@@ -143,7 +144,7 @@ public class CommandTest {
     IAnimation a = new SimpleAnimation();
     Rectangle rect = new Rectangle("R1", 0, 0, 10, 5, new Color(0, 0, 0));
     a.addDrawable(rect);
-    ICommand cmd = new MoveCmd("R1", 1, 12, new Posn(1, 55));
+    ICommand cmd = new MoveCmd("R1", 1, 12, new Posn(0, 0), new Posn(1, 55));
 
     for (int i = 0; i < 12; i++) {
       cmd.execute(a);
@@ -158,7 +159,7 @@ public class CommandTest {
 
   @Test(expected = IllegalStateException.class)
   public void testLogFail2() {
-    ICommand cmd = new MoveCmd("R1", 1, 12, new Posn(1, 55));
+    ICommand cmd = new MoveCmd("R1", 1, 12, new Posn(1, 55), new Posn(1, 55));
     cmd.logCmd();
   }
 }

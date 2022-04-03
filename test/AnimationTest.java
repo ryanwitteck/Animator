@@ -37,9 +37,9 @@ public class AnimationTest {
     cmds.add(new AddRectCmd("R3", 100, 100, 90, 90, new Color(100, 100, 100), 2));
     cmds.add(new PlaceCmd("R1", 3, new Posn(900, 900)));
     cmds.add(new PlaceCmd("R2", 3, new Posn(-10, -50)));
-    cmds.add(new MoveCmd("R1", 4, 10, new Posn(0, 0)));
-    cmds.add(new MoveCmd("R2", 5, 10, new Posn(555, 123)));
-    cmds.add(new MoveCmd("R3", 4, 15, new Posn(45, 45)));
+    cmds.add(new MoveCmd("R1", 4, 10, new Posn(900, 900), new Posn(0, 0)));
+    cmds.add(new MoveCmd("R2", 5, 10, new Posn(-10, -50), new Posn(555, 123)));
+    cmds.add(new MoveCmd("R3", 4, 15, new Posn(100, 100), new Posn(45, 45)));
 
     animation = new SimpleAnimation();
     for (ICommand cmd : cmds) {
