@@ -104,4 +104,4 @@ Our main class and method is responsible for reading the command line inputs giv
 parsing that into five pieces of information: the name of the animation file, the type of view 
 desired, the output file, and the tick rate of the animation. Using that information, our main 
 method uses an instance of AnimationFileReader and OurModelBuilder to read the given animation file
-and create the appropriate view of it.
+and create the appropriate model and view of it.
