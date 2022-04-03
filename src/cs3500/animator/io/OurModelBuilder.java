@@ -9,6 +9,7 @@ import cs3500.animator.model.commands.AddRectCmd;
 import cs3500.animator.model.commands.ChangeColorCmd;
 import cs3500.animator.model.commands.MoveCmd;
 import cs3500.animator.model.commands.RemoveDrawableCmd;
+import cs3500.animator.model.commands.ResizeCmd;
 
 /**
  * TODO
@@ -70,11 +71,13 @@ public class OurModelBuilder implements TweenModelBuilder<IAnimation> {
   public TweenModelBuilder<IAnimation> addScaleToChange(String name, float fromSx, float fromSy,
                                                         float toSx, float toSy,
                                                         int startTime, int endTime) {
+    animation.addCmd(new ResizeCmd(name, startTime, endTime, fromSx, fromSy, toSx, toSy));
     return this;
   }
 
   @Override
   public IAnimation build() {
+    animation.compile();
     return animation;
   }
 }
