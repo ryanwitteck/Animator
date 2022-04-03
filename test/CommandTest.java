@@ -1,8 +1,5 @@
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import cs3500.animator.model.IAnimation;
 import cs3500.animator.model.SimpleAnimation;
 import cs3500.animator.model.attributes.Color;
@@ -11,7 +8,6 @@ import cs3500.animator.model.commands.ICommand;
 import cs3500.animator.model.commands.MoveCmd;
 import cs3500.animator.model.commands.PlaceCmd;
 import cs3500.animator.model.commands.RemoveDrawableCmd;
-import cs3500.animator.model.interfaces.Drawable;
 import cs3500.animator.model.attributes.Posn;
 import cs3500.animator.model.interfaces.Movable;
 import cs3500.animator.model.shapes.Rectangle;
@@ -30,7 +26,7 @@ public class CommandTest {
 
   @Test
   public void testAddRemove() {
-    IAnimation animation = new SimpleAnimation();
+    IAnimation animation = new SimpleAnimation(100, 100);
     Rectangle rect1 = new Rectangle("R1", 0, 0, 10, 5, new Color(0, 0, 0));
     Rectangle rect2 = new Rectangle("R2", 3.33, 6.67, 87, 11, new Color(0, 0, 0));
     Rectangle rect3 = new Rectangle("R3", -10, 999, 50, 1, new Color(0, 0, 0));
@@ -77,7 +73,7 @@ public class CommandTest {
 
   @Test
   public void testPlaceMove() {
-    IAnimation a = new SimpleAnimation();
+    IAnimation a = new SimpleAnimation(100, 100);
     Rectangle rect1 = new Rectangle("R1", 3.33, 6.67, 87, 11, new Color(0, 0, 0));
     Rectangle rect2 = new Rectangle("R2", -10, 99, 50, 1, new Color(0, 0, 0));
     a.addDrawable(rect1);
@@ -136,8 +132,7 @@ public class CommandTest {
 
   @Test(expected = IllegalStateException.class)
   public void testExecFail1() {
-    IAnimation a = new SimpleAnimation();
-    List<Drawable> list = new ArrayList<>();
+    IAnimation a = new SimpleAnimation(100, 100);
     ICommand cmd = new AddRectCmd("R1", 0, 0, 10, 5, new Color(0, 0, 0), 1);
     cmd.execute(a);
     cmd.execute(a);
@@ -145,7 +140,7 @@ public class CommandTest {
 
   @Test(expected = IllegalStateException.class)
   public void testExecFail2() {
-    IAnimation a = new SimpleAnimation();
+    IAnimation a = new SimpleAnimation(100, 100);
     Rectangle rect = new Rectangle("R1", 0, 0, 10, 5, new Color(0, 0, 0));
     a.addDrawable(rect);
     ICommand cmd = new MoveCmd("R1", 1, 12, new Posn(1, 55));

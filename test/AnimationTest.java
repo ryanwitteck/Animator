@@ -12,7 +12,6 @@ import cs3500.animator.model.commands.ICommand;
 import cs3500.animator.model.commands.MoveCmd;
 import cs3500.animator.model.commands.PlaceCmd;
 import cs3500.animator.model.IFrame;
-import cs3500.animator.model.interfaces.Drawable;
 import cs3500.animator.model.SimpleAnimation;
 import cs3500.animator.model.attributes.Posn;
 import cs3500.animator.model.shapes.Rectangle;
@@ -32,8 +31,6 @@ public class AnimationTest {
 
   @Before
   public void init() {
-    List<Drawable> objects = new ArrayList<>();
-
     cmds = new ArrayList<>();
     cmds.add(new AddRectCmd("R1", 0, 0, 30, 40, new Color(0, 100, 100), 1));
     cmds.add(new AddRectCmd("R2", 50, 100, 20, 20, new Color(0, 200, 0), 1));
@@ -44,7 +41,7 @@ public class AnimationTest {
     cmds.add(new MoveCmd("R2", 5, 10, new Posn(555, 123)));
     cmds.add(new MoveCmd("R3", 4, 15, new Posn(45, 45)));
 
-    animation = new SimpleAnimation();
+    animation = new SimpleAnimation(100, 100);
     for (ICommand cmd : cmds) {
       animation.addCmd(cmd);
     }
@@ -53,9 +50,9 @@ public class AnimationTest {
 
   @Test
   public void testEmptyAnimation() {
-    IAnimation empty = new SimpleAnimation();
+    IAnimation empty = new SimpleAnimation(100, 100);
     assertTrue(empty.getFrames().isEmpty());
-    assertEquals("", empty.getCmdLog());
+    assertEquals("Window: 100 by 100\n", empty.getCmdLog());
   }
 
   @Test
@@ -107,6 +104,7 @@ public class AnimationTest {
     }
 
     StringBuilder expected = new StringBuilder();
+    expected.append("Window: 100 by 100\n");
     for (int i = 0; i < 6; i++) {
       expected.append(cmds.get(i).logCmd()).append("\n");
     }

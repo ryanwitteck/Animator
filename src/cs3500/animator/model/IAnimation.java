@@ -17,8 +17,9 @@ import cs3500.animator.model.interfaces.Drawable;
  * - Be able to compile the animation as a collection of frames.
  * - Return the IFrame at a given tick.
  * - Return all the IFrames in the video as a list.
- * - Return the string representation of every ICommand that directs this animation,
- * referred to as the command log.
+ * - Return the string representation of every ICommand that directs this animation
+ * a.k.a. the command log.
+ * - Return the width and height of the window this animation runs in.
  */
 public interface IAnimation {
 
@@ -113,5 +114,19 @@ public interface IAnimation {
    * @return the command log
    */
   String getCmdLog();
+
+  /**
+   * Returns the width of this animation's window/canvas.
+   *
+   * @return the window width
+   */
+  int getWindowWidth();
+
+  /**
+   * Returns the height of this animation's window/canvas.
+   *
+   * @return the window height
+   */
+  int getWindowHeight();
 }
 

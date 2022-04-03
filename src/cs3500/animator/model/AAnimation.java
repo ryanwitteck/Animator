@@ -9,11 +9,13 @@ import cs3500.animator.model.interfaces.Drawable;
 /**
  * Abstract class for IAnimation interface.
  * Implements fields:
- * - objects   the HashMap of the objects in this animation mapped to their name
- * - frames    the list of IFrames that represents this animation
- * - cmdLog    a list of the string representations of each ICommand in this animation.
+ * - objects    the HashMap of the objects in this animation mapped to their name
+ * - frames     the list of IFrames that represents this animation
+ * - cmdLog     a list of the string representations of each ICommand in this animation.
  * From this, we can create the command log.
- * - nFrames   the number of frames in this animation i.e. the size of frames
+ * - nFrames    the number of frames in this animation i.e. the size of frames
+ * - width      the width of the window
+ * - height     the height of the window
  * Implements all methods defined in IAnimation except for addCmd and removeCmd.
  */
 public abstract class AAnimation implements IAnimation {
@@ -22,12 +24,20 @@ public abstract class AAnimation implements IAnimation {
   protected List<IFrame> frames;
   protected List<String> cmdLog;
   protected int nFrames;
+  private int width;
+  private int height;
 
   /**
-   * Default and sole constructor for AAnimation.
+   * Sole constructor for AAnimation.
+   * Takes in window dimensions as arguments and initializes width and height appropriately.
    * Initializes frames and cmdLog as empty lists and nFrames as 0.
+   *
+   * @param width  the desired window width
+   * @param height the desired window height
    */
-  public AAnimation() {
+  public AAnimation(int width, int height) {
+    this.width = width;
+    this.height = height;
     objects = new HashMap<>();
     frames = new ArrayList<>();
     cmdLog = new ArrayList<>();
@@ -71,20 +81,6 @@ public abstract class AAnimation implements IAnimation {
     return copy;
   }
 
-  @Override
-  public int getNFrames() {
-    return nFrames;
-  }
-
-  @Override
-  public String getCmdLog() {
-    StringBuilder log = new StringBuilder();
-    for (String s : cmdLog) {
-      log.append(s).append("\n");
-    }
-    return log.toString();
-  }
-
   /**
    * Check if the given index is a valid index for frames.
    * An index is valid if it is in the range [0, nFrames - 1].
@@ -94,5 +90,30 @@ public abstract class AAnimation implements IAnimation {
    */
   protected boolean outBounds(int index) {
     return (index < 0 || index >= this.nFrames);
+  }
+
+  @Override
+  public int getNFrames() {
+    return nFrames;
+  }
+
+  @Override
+  public String getCmdLog() {
+    StringBuilder log = new StringBuilder();
+    log.append("Window: " + width + " by " + height + "\n");
+    for (String s : cmdLog) {
+      log.append(s).append("\n");
+    }
+    return log.toString();
+  }
+
+  @Override
+  public int getWindowWidth() {
+    return width;
+  }
+
+  @Override
+  public int getWindowHeight() {
+    return height;
   }
 }
