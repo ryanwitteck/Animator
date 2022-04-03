@@ -5,21 +5,21 @@ import cs3500.animator.model.interfaces.Drawable;
 
 /**
  * This class represents a rectangle. May be changed when using swing later on for the view.
- *
+ * <p>
  * Contains fields:
- *  - All fields in BasicShape by inheritance.
- *  - width   the width of this rectangle.
- *  - height  the height of this rectangle.
+ * - All fields in BasicShape by inheritance.
+ * - width   the width of this rectangle.
+ * - height  the height of this rectangle.
  * Implemented Methods:
- *  - All methods in BasicShape by inheritance.
- *  - getCopy from Drawable.
- *  - All Scalable methods.
- *  - Getters for width and height.
- *  - Equals and HashCode.
+ * - All methods in BasicShape by inheritance.
+ * - getCopy from Drawable.
+ * - All Scalable methods.
+ * - Getters for width and height.
+ * - Equals and HashCode.
  */
 public class Rectangle extends BasicShape {
-  private int width;
-  private int height;
+  private double width;
+  private double height;
 
   /**
    * Constructor for Rectangle.
@@ -31,7 +31,7 @@ public class Rectangle extends BasicShape {
    * @param height the initial height of this shape.
    * @param color  the initial color of this shape
    */
-  public Rectangle(String name, double x, double y, int width, int height, Color color) {
+  public Rectangle(String name, double x, double y, double width, double height, Color color) {
     super(name, x, y, color);
     if (width < 0 || height < 0) {
       throw new IllegalArgumentException("Cannot have a size less than 0.");
@@ -89,7 +89,7 @@ public class Rectangle extends BasicShape {
    *
    * @return width the width of this rectangle
    */
-  public int getWidth() {
+  public double getWidth() {
     return width;
   }
 
@@ -98,7 +98,7 @@ public class Rectangle extends BasicShape {
    *
    * @return height the height of this rectangle
    */
-  public int getHeight() {
+  public double getHeight() {
     return height;
   }
 
@@ -121,6 +121,6 @@ public class Rectangle extends BasicShape {
 
   @Override
   public int hashCode() {
-    return name.hashCode() + posn.hashCode() + color.hashCode() + width + height;
+    return name.hashCode() + posn.hashCode() + color.hashCode() + Double.hashCode(width + height);
   }
 }
