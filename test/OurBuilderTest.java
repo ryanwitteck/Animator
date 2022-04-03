@@ -12,7 +12,6 @@ import static org.junit.Assert.assertEquals;
 
 /**
  * JUnit test cases for our ModelBuilder class.
- * TODO add more tests
  */
 public class OurBuilderTest {
 
@@ -300,6 +299,4 @@ public class OurBuilderTest {
     // blank name
     builder.addColorChange("", 0, 1, 1,  (float) 0.12, (float) 0.9, (float) 0.4, 2, 2);
   }
-
-  // ------------------------ Add Scale Change Tests -----------------------------------------------
 }
