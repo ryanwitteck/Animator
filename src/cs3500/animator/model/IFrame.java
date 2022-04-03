@@ -17,6 +17,4 @@ public interface IFrame {
    * @return the list of objects being animated
    */
   List<Drawable> listObjects();
-
-  // TODO -- draw method
 }

@@ -1,15 +1,16 @@
 package cs3500.animator.model.interfaces;
 
 import cs3500.animator.model.attributes.Color;
+import cs3500.animator.model.attributes.Posn;
 
 /**
  * Our interface for any object that can be drawn onto the canvas.
  * <p>
  * Every Drawable should...
  * - Have a unique name/ID for recognition.
+ * - Have a position on the canvas.
  * - Have a color.
  * - Be able to create a copy of itself.
- * - Be able to return an image of itself or draw itself onto a canvas <--- TODO
  */
 public interface Drawable {
 
@@ -26,6 +27,13 @@ public interface Drawable {
    * @return the name of this object.
    */
   String getName();
+
+  /**
+   * Get the current position of this object.
+   *
+   * @return the position of this object.
+   */
+  Posn getPos();
 
   /**
    * Get the color of this object.
@@ -49,6 +57,4 @@ public interface Drawable {
    * @param c the color
    */
   void setColor(Color c);
-
-  // TODO -- Add draw method. Do after behavior is decided.
 }
