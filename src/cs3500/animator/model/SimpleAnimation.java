@@ -103,11 +103,7 @@ public class SimpleAnimation extends AAnimation {
     }
   }
 
-  /**
-   * Get the tick-command HashMap of this animation.
-   *
-   * @return cmdMap the HashMap of this animation's commands mapped to their start ticks.
-   */
+  @Override
   public HashMap<Integer, List<ICommand>> getCmdMap() {
     return new HashMap<>(cmdMap);
   }

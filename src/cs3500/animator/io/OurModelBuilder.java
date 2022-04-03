@@ -34,7 +34,7 @@ public class OurModelBuilder implements TweenModelBuilder<IAnimation> {
                                                float red, float green, float blue,
                                                int startOfLife, int endOfLife) {
     animation.addCmd(new AddOvalCmd(name, cx, cy, xRadius, yRadius,
-            new Color(red, green, blue), startOfLife));
+            new Color(255 * red, 255 * green, 255 * blue), startOfLife));
     animation.addCmd(new RemoveDrawableCmd(name, endOfLife));
     return this;
   }
@@ -45,7 +45,7 @@ public class OurModelBuilder implements TweenModelBuilder<IAnimation> {
                                                     float red, float green, float blue,
                                                     int startOfLife, int endOfLife) {
     animation.addCmd(new AddRectCmd(name, lx, ly, width, height,
-            new Color(red, green, blue), startOfLife));
+            new Color(255 * red, 255 * green, 255 * blue), startOfLife));
     animation.addCmd(new RemoveDrawableCmd(name, endOfLife));
     return this;
   }
@@ -65,7 +65,7 @@ public class OurModelBuilder implements TweenModelBuilder<IAnimation> {
                                                       float newR, float newG, float newB,
                                                       int startTime, int endTime) {
     animation.addCmd(new ChangeColorCmd(name, startTime, endTime,
-            new Color(oldR, oldG, oldB), new Color(newR, newG, newB)));
+            new Color(255 * oldR, 255 * oldG, 255 * oldB), new Color(255 * newR, 255 * newG, 255 * newB)));
     return this;
   }
 

@@ -1,5 +1,6 @@
 package cs3500.animator.model;
 
+import java.util.HashMap;
 import java.util.List;
 
 import cs3500.animator.model.commands.ICommand;
@@ -135,5 +136,12 @@ public interface IAnimation {
    * @return the window height
    */
   int getWindowHeight();
+
+  /**
+   * Get the tick-command HashMap of this animation.
+   *
+   * @return cmdMap the HashMap of this animation's commands mapped to their start ticks.
+   */
+  HashMap<Integer, List<ICommand>> getCmdMap();
 }
 
