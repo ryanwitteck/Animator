@@ -6,9 +6,9 @@ package cs3500.animator.model.attributes;
  */
 public class Color {
 
-  private int r;
-  private int g;
-  private int b;
+  private float r;
+  private float g;
+  private float b;
 
   /**
    * Constructor for color class.
@@ -18,7 +18,7 @@ public class Color {
    * @param g the green value
    * @param b the blue value
    */
-  public Color(int r, int g, int b) {
+  public Color(float r, float g, float b) {
     if (!(inBounds(r) && inBounds(g) && inBounds(b))) {
       throw new IllegalArgumentException("Values must be in range [0-255].");
     }
@@ -46,7 +46,7 @@ public class Color {
    * @param x the number
    * @return if it is in bounds.
    */
-  public boolean inBounds(int x) {
+  public boolean inBounds(float x) {
     return x >= 0 && x <= 255;
   }
 
@@ -55,7 +55,7 @@ public class Color {
    *
    * @param r the desired red value.
    */
-  public void setR(int r) {
+  public void setR(float r) {
     if (!inBounds(r)) {
       throw new IllegalArgumentException("Value must be in range [0-255].");
     }
@@ -67,7 +67,7 @@ public class Color {
    *
    * @param g the desired green value.
    */
-  public void setG(int g) {
+  public void setG(float g) {
     if (!inBounds(g)) {
       throw new IllegalArgumentException("Value must be in range [0-255].");
     }
@@ -79,7 +79,7 @@ public class Color {
    *
    * @param b the desired blue value.
    */
-  public void setB(int b) {
+  public void setB(float b) {
     if (!inBounds(b)) {
       throw new IllegalArgumentException("Value must be in range [0-255].");
     }
@@ -93,7 +93,7 @@ public class Color {
    * @param g the desired green value.
    * @param b the desired blue value.
    */
-  public void setColor(int r, int g, int b) {
+  public void setColor(float r, float g, float b) {
     if (!(inBounds(r) && inBounds(g) && inBounds(b))) {
       throw new IllegalArgumentException("Values must be in range [0-255].");
     }
@@ -123,7 +123,9 @@ public class Color {
     }
     if (other instanceof Color) {
       Color c = (Color) other;
-      return this.r == c.r && this.g == c.g && this.b == c.b;
+      return Math.abs(this.r - c.r) < 0.001
+              && Math.abs(this.g - c.g) < 0.001
+              && Math.abs(this.b - c.b) < 0.001;
     } else {
       return false;
     }
@@ -131,6 +133,6 @@ public class Color {
 
   @Override
   public int hashCode() {
-    return r + g + b;
+    return Float.hashCode(r + g + b);
   }
 }

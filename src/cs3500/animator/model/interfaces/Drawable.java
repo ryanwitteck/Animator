@@ -41,7 +41,7 @@ public interface Drawable {
    * @param g the green value
    * @param b the blue value
    */
-  void setColor(int r, int g, int b);
+  void setColor(float r, float g, float b);
 
   /**
    * Changes the color of this object.
