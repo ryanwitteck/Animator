@@ -12,7 +12,6 @@ public abstract class ACommand implements ICommand {
   protected int startTick;
   protected boolean complete;
 
-
   /**
    * Sole constructor for ACommand.
    * Takes in basic information -- the name of the target object and the start tick -- as arguments.
