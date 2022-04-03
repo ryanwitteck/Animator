@@ -45,7 +45,7 @@ public abstract class AAnimation implements IAnimation {
     if (objects.containsKey(d.getName())) {
       throw new IllegalArgumentException("Error: An object with this name already exists");
     }
-    objects.put(d.getName(), d);
+    objects.put(d.getName(), d.getCopy());
   }
 
   @Override

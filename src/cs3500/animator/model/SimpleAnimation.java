@@ -16,7 +16,7 @@ import cs3500.animator.model.commands.ICommand;
 public class SimpleAnimation extends AAnimation {
 
   private HashMap<Integer, List<ICommand>> cmdMap;
-  private List<ICommand> cmds;
+  private final List<ICommand> cmds;
 
   /**
    * Sole constructor of SimpleAnimation.
@@ -43,12 +43,14 @@ public class SimpleAnimation extends AAnimation {
    * - resets the command map
    * - resets the cmdLog
    * - resets the object map
+   * - resets frames
    * - runs all the at a given tick commands to initialize each frame
    */
   public void compile() {
     resetCmdMap();
     cmdLog = new ArrayList<>();
     objects = new HashMap<>();
+    frames = new ArrayList<>();
 
     for (int i = 0; i < nFrames; i++) {
       if (cmdMap.containsKey(i)) {

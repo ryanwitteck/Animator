@@ -153,6 +153,15 @@ public class AnimationTest {
     assertEquals(r1, frames.get(14).listObjects().get(2));
   }
 
+  @Test
+  public void testMultipleCompile() {
+    animation.compile();
+    animation.compile();
+
+    testLog();
+    testFrames();
+  }
+
   //---------------------------- Test Exceptions ---------------------------------------------------
 
   @Test(expected = IllegalArgumentException.class)

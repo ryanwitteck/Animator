@@ -127,6 +127,24 @@ public class CommandTest {
     assertEquals("R2 moves from : ( 1.0, 55.0 ) to ( 0.0, 3.33 ) at t=1", cmd3.logCmd());
     assertEquals("R1 moves from : ( 10943.134300000109, 32142.764999999396 ) " +
             "to ( -1.75, -9.0 ) at t=1", cmd4.logCmd());
+
+    a.removeDrawable("R2");
+    Rectangle rect3 = new Rectangle("R2", -10, 99, 50, 1, new Color(0, 0, 0));
+    a.addDrawable(rect3);
+    cmd1.reset();
+    assertFalse(cmd1.isComplete() || cmd1.isRunning());
+    p.set(-10, 99);
+
+    for (int i = 1; i < 11; i++) {
+      cmd1.execute(a);
+      p.move(1, -4);
+      assertTrue(cmd1.isRunning());
+      assertFalse(cmd1.isComplete());
+      assertEquals(p, ((Movable) a.getDrawable("R2")).getPos());
+    }
+    cmd1.execute(a);
+    assertEquals(new Posn(1, 55), ((Movable) a.getDrawable("R2")).getPos());
+    assertTrue(cmd1.isComplete() && !cmd1.isRunning());
   }
 
   //---------------------------- Execute Illegal State Exception -----------------------------------

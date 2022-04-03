@@ -2,6 +2,7 @@ package cs3500.animator.model.commands;
 
 import cs3500.animator.model.IAnimation;
 import cs3500.animator.model.interfaces.Drawable;
+import cs3500.animator.model.interfaces.Scalable;
 
 /**
  * This class represents a command that scales an object's dimensions over time to a given value.
@@ -28,7 +29,7 @@ public class ResizeCmd extends GradualCmd {
                    double fromX, double fromY, double toX, double toY) {
     super(name, start, end);
     this.dx = (toX - fromX) / (end - start);
-    this.dx = (toY - fromY) / (end - start);
+    this.dy = (toY - fromY) / (end - start);
     this.log = name + " scales from : " + fromX + " by " + fromY + " to " + toX + " by " + toY
             + " from t=" + start + " to t=" + end;
   }
@@ -37,10 +38,15 @@ public class ResizeCmd extends GradualCmd {
   public void execute(IAnimation a) {
     super.execute(a);
     Drawable target = a.getDrawable(name);
+    if (!(target instanceof Scalable)) {
+      throw new IllegalArgumentException("Error: This object is not an instance of Scalable");
+    }
+    ((Scalable) target).addHorizontal(dx);
+    ((Scalable) target).addVertical(dy);
   }
 
   @Override
   public String logCmd() {
-    return null;
+    return log;
   }
 }
