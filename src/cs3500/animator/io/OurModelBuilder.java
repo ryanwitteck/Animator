@@ -3,7 +3,10 @@ package cs3500.animator.io;
 import cs3500.animator.model.IAnimation;
 import cs3500.animator.model.SimpleAnimation;
 import cs3500.animator.model.attributes.Color;
+import cs3500.animator.model.attributes.Posn;
 import cs3500.animator.model.commands.AddRectCmd;
+import cs3500.animator.model.commands.MoveCmd;
+import cs3500.animator.model.commands.RemoveDrawableCmd;
 
 /**
  * TODO
@@ -31,11 +34,13 @@ public class OurModelBuilder implements TweenModelBuilder<IAnimation> {
   @Override
   public TweenModelBuilder<IAnimation> addRectangle(String name, float lx, float ly, float width, float height, float red, float green, float blue, int startOfLife, int endOfLife) {
     animation.addCmd(new AddRectCmd(name, lx, ly, width, height, new Color(red, green, blue), startOfLife));
+    animation.addCmd(new RemoveDrawableCmd(name, endOfLife));
     return this;
   }
 
   @Override
   public TweenModelBuilder<IAnimation> addMove(String name, float moveFromX, float moveFromY, float moveToX, float moveToY, int startTime, int endTime) {
+    animation.addCmd(new MoveCmd(name, startTime, endTime, new Posn(moveToX, moveToY)));
     return this;
   }
 
