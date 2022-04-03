@@ -9,10 +9,16 @@ import static org.junit.Assert.assertEquals;
 
 /**
  * JUnit test cases for our Main class and method.
- * TODO add more tests
  */
 public class MainTest {
 
+  /**
+   * Tests our main method and text view using the big-bang-big-crunch animation.
+   * This test will likely fail on other computers because
+   * the path of the big bang animation file is too specific.
+   *
+   * @throws IOException if any of the File readers or writers fail.
+   */
   @Test
   public void testBigBang() throws IOException {
     Main myMain = new Main();
@@ -41,7 +47,5 @@ public class MainTest {
       }
     }
     assertEquals(expected, actual);
-
   }
-
 }
