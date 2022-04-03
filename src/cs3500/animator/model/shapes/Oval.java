@@ -8,98 +8,99 @@ import cs3500.animator.model.interfaces.Drawable;
  * <p>
  * Contains fields:
  * - All fields in BasicShape by inheritance.
- * - width   the width of this oval.
- * - height  the height of this oval.
+ * - xRadius  the horizontal dimension of this oval.
+ * - yRadius  the vertical dimension of this oval.
  * Implemented Methods:
  * - All methods in BasicShape by inheritance.
  * - getCopy from Drawable.
  * - All Scalable methods.
- * - Getters for width and height.
+ * - Getters for x and y radii.
  * - Equals and HashCode.
  */
 public class Oval extends BasicShape {
-  private double width;
-  private double height;
+  private double xRadius;
+  private double yRadius;
 
   /**
-   * Constructor for Rectangle.
+   * Sole constructor for Oval.
+   * Initializes the name, position, dimensions, and color of this shape.
    *
-   * @param name   the name of this shape
-   * @param x      the initial x coordinate of this shape
-   * @param y      the initial y coordinate of this shape
-   * @param width  the initial width of this shape.
-   * @param height the initial height of this shape.
-   * @param color  the initial color of this shape
+   * @param name    the name of this shape
+   * @param x       the initial x coordinate of this shape
+   * @param y       the initial y coordinate of this shape
+   * @param xRadius the initial horizontal dimension of this shape.
+   * @param yRadius  the initial vertical dimension of this shape.
+   * @param color   the initial color of this shape
    */
-  public Oval(String name, double x, double y, double width, double height, Color color) {
+  public Oval(String name, double x, double y, double xRadius, double yRadius, Color color) {
     super(name, x, y, color);
-    if (width < 0 || height < 0) {
+    if (xRadius < 0 || yRadius < 0) {
       throw new IllegalArgumentException("Cannot have a size less than 0.");
     }
-    this.width = width;
-    this.height = height;
+    this.xRadius = xRadius;
+    this.yRadius = yRadius;
   }
 
   @Override
   public Drawable getCopy() {
     Color copy = new Color(color);
-    return new Oval(name, posn.getX(), posn.getY(), width, height, copy);
+    return new Oval(name, posn.getX(), posn.getY(), xRadius, yRadius, copy);
   }
 
   @Override
   public void stretchHorizontal(double scale) {
     scaleError(scale);
-    width *= scale;
+    xRadius *= scale;
   }
 
   @Override
   public void shrinkHorizontal(double scale) {
     scaleError(scale);
-    width /= scale;
+    xRadius /= scale;
   }
 
   @Override
   public void stretchVertical(double scale) {
     scaleError(scale);
-    height *= scale;
+    yRadius *= scale;
   }
 
   @Override
   public void shrinkVertical(double scale) {
     scaleError(scale);
-    width /= scale;
+    yRadius /= scale;
   }
 
   @Override
   public void scaleUp(double scale) {
     scaleError(scale);
-    width *= scale;
-    height *= scale;
+    xRadius *= scale;
+    yRadius *= scale;
   }
 
   @Override
   public void scaleDown(double scale) {
     scaleError(scale);
-    width /= scale;
-    height /= scale;
+    xRadius /= scale;
+    yRadius /= scale;
   }
 
   /**
-   * Get the width of this rectangle.
+   * Get the horizontal dimension of this oval.
    *
-   * @return width the width of this rectangle
+   * @return xRadius the horizontal dimension of this oval
    */
-  public double getWidth() {
-    return width;
+  public double getXRadius() {
+    return xRadius;
   }
 
   /**
-   * Get the height of this rectangle.
+   * Get the vertical dimension of this rectangle.
    *
-   * @return height the height of this rectangle
+   * @return yRadius the vertical dimension of this oval
    */
-  public double getHeight() {
-    return height;
+  public double getYRadius() {
+    return yRadius;
   }
 
   @Override
@@ -112,8 +113,8 @@ public class Oval extends BasicShape {
       return this.name.equals(r.name)
               && this.posn.equals(r.posn)
               && this.color.equals(r.color)
-              && this.width - r.width < 0.001
-              && this.height - r.height < 0.001;
+              && this.xRadius - r.xRadius < 0.001
+              && this.yRadius - r.yRadius < 0.001;
     } else {
       return false;
     }
@@ -121,6 +122,6 @@ public class Oval extends BasicShape {
 
   @Override
   public int hashCode() {
-    return name.hashCode() + posn.hashCode() + color.hashCode() + Double.hashCode(width + height);
+    return name.hashCode() + posn.hashCode() + color.hashCode() + Double.hashCode(xRadius + yRadius);
   }
 }

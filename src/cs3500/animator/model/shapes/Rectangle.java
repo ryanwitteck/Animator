@@ -22,7 +22,8 @@ public class Rectangle extends BasicShape {
   private double height;
 
   /**
-   * Constructor for Rectangle.
+   * Sole constructor for Rectangle.
+   * Initializes the name, position, dimensions, and color of this shape.
    *
    * @param name   the name of this shape
    * @param x      the initial x coordinate of this shape
