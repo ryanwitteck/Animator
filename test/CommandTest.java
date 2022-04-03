@@ -170,6 +170,18 @@ public class CommandTest {
   }
 
   @Test(expected = IllegalStateException.class)
+  public void testExecFail3() {
+    IAnimation a = new SimpleAnimation();
+    Rectangle rect = new Rectangle("R1", 0, 0, 10, 5, new Color(0, 0, 0));
+    a.addDrawable(rect);
+    ICommand cmd = new MoveCmd("R1", 1, 12, new Posn(0, 0), new Posn(1, 55));
+    ICommand cmd2 = new MoveCmd("R1", 0, 1, new Posn(0, 0), new Posn(1, 1));
+
+    cmd2.execute(a);
+    cmd.execute(a);
+  }
+
+  @Test(expected = IllegalStateException.class)
   public void testLogFail1() {
     ICommand cmd = new PlaceCmd("R1", 1, new Posn(0, 3.33));
     cmd.logCmd();
