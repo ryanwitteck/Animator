@@ -52,6 +52,10 @@ public class SwingViewFrame extends JFrame implements AnimationView {
     public void actionPerformed(ActionEvent arg0) {
       tick++;
       panel.setFrame(animation.getFrame(tick));
+      repaint();
+      if (tick >= animation.getNFrames()) {
+        timer.stop();
+      }
     }
   }
 
@@ -60,13 +64,5 @@ public class SwingViewFrame extends JFrame implements AnimationView {
     this.setVisible(true);
     timer = new Timer(1000 / fps, new MyActionListener());
     timer.start();
-    while (tick < animation.getNFrames()) {
-      // TODO
-
-
-
-      this.repaint();
-    }
-    timer.stop();
   }
 }
