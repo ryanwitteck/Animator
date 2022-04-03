@@ -35,7 +35,7 @@ public class Rectangle extends BasicShape {
   public Rectangle(String name, double x, double y, double width, double height, Color color) {
     super(name, x, y, color);
     if (width < 0 || height < 0) {
-      throw new IllegalArgumentException("Cannot have a size less than 0.");
+      throw new IllegalArgumentException("Error: Dimensions cannot be negative.");
     }
     this.width = width;
     this.height = height;

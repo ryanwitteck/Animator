@@ -30,10 +30,14 @@ public class AddRectCmd extends InstantCmd {
    * @param height the height of the new Rectangle.
    * @param color  the color of the new Rectangle.
    * @param tick   the tick when this command triggers.
+   * @throws IllegalArgumentException if either given dimension is negative.
    */
   public AddRectCmd(String name, double x, double y, double width, double height,
                     Color color, int tick) {
     super(name, tick);
+    if (width < 0 || height < 0) {
+      throw new IllegalArgumentException("Error: dimensions cannot be negative");
+    }
     this.rect = new Rectangle(name, x, y, width, height, color);
   }
 

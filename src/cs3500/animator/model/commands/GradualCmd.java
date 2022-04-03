@@ -23,9 +23,13 @@ public abstract class GradualCmd extends ACommand {
    * @param name  the name of the object this command functions on.
    * @param start the tick when this command triggers.
    * @param end   the tick when this command ends.
+   * @throws IllegalArgumentException if the end tick is before the start tick.
    */
   public GradualCmd(String name, int start, int end) {
     super(name, start);
+    if (end < start) {
+      throw new IllegalArgumentException("Error: the end tick must be after the start tick");
+    }
     this.running = false;
     this.endTick = end;
     this.sTick = start;

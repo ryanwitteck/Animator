@@ -24,10 +24,14 @@ public class ResizeCmd extends GradualCmd {
    * @param name  the name of the object this command functions on.
    * @param start the tick when this command triggers.
    * @param end   the tick when this command ends.
+   * @throws IllegalArgumentException if any of the given dimensions are negative.
    */
   public ResizeCmd(String name, int start, int end,
                    double fromX, double fromY, double toX, double toY) {
     super(name, start, end);
+    if (fromX < 0 || fromY < 0 || toX < 0 || toY < 0) {
+      throw new IllegalArgumentException("Error: dimensions cannot be negative");
+    }
     this.dx = (toX - fromX) / (end - start);
     this.dy = (toY - fromY) / (end - start);
     this.log = name + " scales from : " + fromX + " by " + fromY + " to " + toX + " by " + toY

@@ -19,8 +19,15 @@ public abstract class ACommand implements ICommand {
    *
    * @param name the name of the object this command functions on.
    * @param tick the tick when this command triggers.
+   * @throws IllegalArgumentException if the given name is blank or the start tick is negative.
    */
   public ACommand(String name, int tick) {
+    if (name.isBlank()) {
+      throw new IllegalArgumentException("Error: target must have a name");
+    }
+    if (tick < 0) {
+      throw new IllegalArgumentException("Error: time cannot be negative");
+    }
     this.name = name;
     this.startTick = tick;
     this.complete = false;

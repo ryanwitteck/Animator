@@ -29,10 +29,14 @@ public class AddOvalCmd extends InstantCmd {
    * @param yRadius the y dimension of the new Oval.
    * @param color   the color of the new Oval.
    * @param tick    the tick when this command triggers.
+   * @throws IllegalArgumentException if either given dimension is negative.
    */
   public AddOvalCmd(String name, double x, double y, double xRadius, double yRadius,
                     Color color, int tick) {
     super(name, tick);
+    if (xRadius < 0 || yRadius < 0) {
+      throw new IllegalArgumentException("Error: dimensions cannot be negative");
+    }
     this.oval = new Oval(name, x, y, xRadius, yRadius, color);
   }
 

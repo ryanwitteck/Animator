@@ -35,7 +35,7 @@ public class Oval extends BasicShape {
   public Oval(String name, double x, double y, double xRadius, double yRadius, Color color) {
     super(name, x, y, color);
     if (xRadius < 0 || yRadius < 0) {
-      throw new IllegalArgumentException("Cannot have a size less than 0.");
+      throw new IllegalArgumentException("Error: Dimensions cannot be negative.");
     }
     this.xRadius = xRadius;
     this.yRadius = yRadius;
