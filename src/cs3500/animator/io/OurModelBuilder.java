@@ -27,32 +27,48 @@ public class OurModelBuilder implements TweenModelBuilder<IAnimation> {
   }
 
   @Override
-  public TweenModelBuilder<IAnimation> addOval(String name, float cx, float cy, float xRadius, float yRadius, float red, float green, float blue, int startOfLife, int endOfLife) {
-    animation.addCmd(new AddOvalCmd(name, cx, cy, xRadius, yRadius, new Color(red, green, blue), startOfLife));
+  public TweenModelBuilder<IAnimation> addOval(String name, float cx, float cy,
+                                               float xRadius, float yRadius,
+                                               float red, float green, float blue,
+                                               int startOfLife, int endOfLife) {
+    animation.addCmd(new AddOvalCmd(name, cx, cy, xRadius, yRadius,
+            new Color(red, green, blue), startOfLife));
     animation.addCmd(new RemoveDrawableCmd(name, endOfLife));
     return this;
   }
 
   @Override
-  public TweenModelBuilder<IAnimation> addRectangle(String name, float lx, float ly, float width, float height, float red, float green, float blue, int startOfLife, int endOfLife) {
-    animation.addCmd(new AddRectCmd(name, lx, ly, width, height, new Color(red, green, blue), startOfLife));
+  public TweenModelBuilder<IAnimation> addRectangle(String name, float lx, float ly,
+                                                    float width, float height,
+                                                    float red, float green, float blue,
+                                                    int startOfLife, int endOfLife) {
+    animation.addCmd(new AddRectCmd(name, lx, ly, width, height,
+            new Color(red, green, blue), startOfLife));
     animation.addCmd(new RemoveDrawableCmd(name, endOfLife));
     return this;
   }
 
   @Override
-  public TweenModelBuilder<IAnimation> addMove(String name, float moveFromX, float moveFromY, float moveToX, float moveToY, int startTime, int endTime) {
+  public TweenModelBuilder<IAnimation> addMove(String name, float moveFromX, float moveFromY,
+                                               float moveToX, float moveToY,
+                                               int startTime, int endTime) {
     animation.addCmd(new MoveCmd(name, startTime, endTime, new Posn(moveToX, moveToY)));
     return this;
   }
 
   @Override
-  public TweenModelBuilder<IAnimation> addColorChange(String name, float oldR, float oldG, float oldB, float newR, float newG, float newB, int startTime, int endTime) {
+  public TweenModelBuilder<IAnimation> addColorChange(String name,
+                                                      float oldR, float oldG, float oldB,
+                                                      float newR, float newG, float newB,
+                                                      int startTime, int endTime) {
+
     return this;
   }
 
   @Override
-  public TweenModelBuilder<IAnimation> addScaleToChange(String name, float fromSx, float fromSy, float toSx, float toSy, int startTime, int endTime) {
+  public TweenModelBuilder<IAnimation> addScaleToChange(String name, float fromSx, float fromSy,
+                                                        float toSx, float toSy,
+                                                        int startTime, int endTime) {
     return this;
   }
 
