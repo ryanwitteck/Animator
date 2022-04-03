@@ -2,7 +2,6 @@ package cs3500.animator.model.commands;
 
 import cs3500.animator.model.IAnimation;
 import cs3500.animator.model.attributes.Color;
-import cs3500.animator.model.attributes.Posn;
 import cs3500.animator.model.shapes.Oval;
 
 /**
@@ -11,7 +10,8 @@ import cs3500.animator.model.shapes.Oval;
  * its initial position, dimensions, and color.
  * <p>
  * log format:
- * - "Created Oval named [object name] at t=[start tick]"
+ * - "Created Oval name=[name] posn=[posn] xr=[XRadius] yr=[yRadius] color=[color]
+ *   + " at t=[start tick]"
  */
 public class AddOvalCmd extends InstantCmd {
 
@@ -44,6 +44,7 @@ public class AddOvalCmd extends InstantCmd {
 
   @Override
   public String logCmd() {
-    return "Created Oval named " + name + " at t=" + startTick;
+    return "Created Oval name=" + name + "posn=" + oval.getPos() + "xr=" + oval.getXRadius()
+            + "yr=" + oval.getYRadius() + "posn=" + oval.getColor() + " at t=" + startTick;
   }
 }

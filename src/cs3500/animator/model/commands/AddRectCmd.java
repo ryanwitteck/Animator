@@ -11,7 +11,8 @@ import cs3500.animator.model.shapes.Rectangle;
  * its initial position, dimensions, and color.
  * <p>
  * log format:
- * - "Created Rectangle named [object name] at t=[start tick]"
+ * - "Created Rectangle name=[name] posn=[posn] width=[width] height=[height] color=[color]
+ *   + " at t=[start tick]"
  */
 public class AddRectCmd extends InstantCmd {
 
@@ -44,6 +45,7 @@ public class AddRectCmd extends InstantCmd {
 
   @Override
   public String logCmd() {
-    return "Created Rectangle named " + name + " at t=" + startTick;
+    return "Created Rectangle name=" + name + "posn=" + rect.getPos() + "width=" + rect.getWidth()
+            + "posn=" + rect.getHeight() + "posn=" + rect.getColor() + " at t=" + startTick;
   }
 }
