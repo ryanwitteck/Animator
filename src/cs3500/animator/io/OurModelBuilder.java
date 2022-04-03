@@ -4,6 +4,7 @@ import cs3500.animator.model.IAnimation;
 import cs3500.animator.model.SimpleAnimation;
 import cs3500.animator.model.attributes.Color;
 import cs3500.animator.model.attributes.Posn;
+import cs3500.animator.model.commands.AddOvalCmd;
 import cs3500.animator.model.commands.AddRectCmd;
 import cs3500.animator.model.commands.MoveCmd;
 import cs3500.animator.model.commands.RemoveDrawableCmd;
@@ -27,7 +28,8 @@ public class OurModelBuilder implements TweenModelBuilder<IAnimation> {
 
   @Override
   public TweenModelBuilder<IAnimation> addOval(String name, float cx, float cy, float xRadius, float yRadius, float red, float green, float blue, int startOfLife, int endOfLife) {
-    // TODO animation.addCmd();
+    animation.addCmd(new AddOvalCmd(name, cx, cy, xRadius, yRadius, new Color(red, green, blue), startOfLife));
+    animation.addCmd(new RemoveDrawableCmd(name, endOfLife));
     return this;
   }
 
