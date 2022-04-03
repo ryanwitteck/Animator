@@ -11,10 +11,11 @@ import cs3500.animator.model.interfaces.Drawable;
  * whose motions (any changes between IFrames) are directed by various ICommands.
  * Each IFrame represents the state of the video at a given moment and
  * each ICommand represents some motion in the video.
- * All IAnimations must:
- * - Be able to accept new commands.
- * - Be able to remove commands.
- * - Be able to compile the animation as a collection of frames.
+ * All IAnimations must be able to:
+ * - Accept new commands.
+ * - Remove commands.
+ * - Compile the animation as a collection of frames.
+ * - Allow the user to set the window dimensions.
  * - Return the IFrame at a given tick.
  * - Return all the IFrames in the video as a list.
  * - Return the string representation of every ICommand that directs this animation
@@ -73,6 +74,12 @@ public interface IAnimation {
    * will not be reflected in the animation itself.
    */
   void compile();
+
+  /**
+   * This method allow the user to set the dimensions of the window. If the user never sets the
+   * window size, it defaults to 500 by 500.
+   */
+  void setBounds(int width, int height);
 
   /**
    * Returns the frame of this animation at the desired tick.

@@ -41,7 +41,7 @@ public class AnimationTest {
     cmds.add(new MoveCmd("R2", 5, 10, new Posn(555, 123)));
     cmds.add(new MoveCmd("R3", 4, 15, new Posn(45, 45)));
 
-    animation = new SimpleAnimation(100, 100);
+    animation = new SimpleAnimation();
     for (ICommand cmd : cmds) {
       animation.addCmd(cmd);
     }
@@ -50,9 +50,9 @@ public class AnimationTest {
 
   @Test
   public void testEmptyAnimation() {
-    IAnimation empty = new SimpleAnimation(100, 100);
+    IAnimation empty = new SimpleAnimation();
     assertTrue(empty.getFrames().isEmpty());
-    assertEquals("Window: 100 by 100\n", empty.getCmdLog());
+    assertEquals("Window: 500 by 500\n", empty.getCmdLog());
   }
 
   @Test
@@ -103,8 +103,9 @@ public class AnimationTest {
       assertTrue(cmd.isComplete());
     }
 
+    animation.setBounds(200, 200);
     StringBuilder expected = new StringBuilder();
-    expected.append("Window: 100 by 100\n");
+    expected.append("Window: 200 by 200\n");
     for (int i = 0; i < 6; i++) {
       expected.append(cmds.get(i).logCmd()).append("\n");
     }

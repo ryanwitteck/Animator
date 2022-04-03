@@ -21,12 +21,9 @@ public class SimpleAnimation extends AAnimation {
   /**
    * Sole constructor of SimpleAnimation.
    * Calls parent constructor and initializes objects and cmdMap to empty HashMaps.
-   *
-   * @param width  the desired window width
-   * @param height the desired window height
    */
-  public SimpleAnimation(int width, int height) {
-    super(width, height);
+  public SimpleAnimation() {
+    super();
     cmdMap = new HashMap<>();
     cmds = new ArrayList<>();
   }

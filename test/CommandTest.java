@@ -26,7 +26,7 @@ public class CommandTest {
 
   @Test
   public void testAddRemove() {
-    IAnimation animation = new SimpleAnimation(100, 100);
+    IAnimation animation = new SimpleAnimation();
     Rectangle rect1 = new Rectangle("R1", 0, 0, 10, 5, new Color(0, 0, 0));
     Rectangle rect2 = new Rectangle("R2", 3.33, 6.67, 87, 11, new Color(0, 0, 0));
     Rectangle rect3 = new Rectangle("R3", -10, 999, 50, 1, new Color(0, 0, 0));
@@ -73,7 +73,7 @@ public class CommandTest {
 
   @Test
   public void testPlaceMove() {
-    IAnimation a = new SimpleAnimation(100, 100);
+    IAnimation a = new SimpleAnimation();
     Rectangle rect1 = new Rectangle("R1", 3.33, 6.67, 87, 11, new Color(0, 0, 0));
     Rectangle rect2 = new Rectangle("R2", -10, 99, 50, 1, new Color(0, 0, 0));
     a.addDrawable(rect1);
@@ -132,7 +132,7 @@ public class CommandTest {
 
   @Test(expected = IllegalStateException.class)
   public void testExecFail1() {
-    IAnimation a = new SimpleAnimation(100, 100);
+    IAnimation a = new SimpleAnimation();
     ICommand cmd = new AddRectCmd("R1", 0, 0, 10, 5, new Color(0, 0, 0), 1);
     cmd.execute(a);
     cmd.execute(a);
@@ -140,7 +140,7 @@ public class CommandTest {
 
   @Test(expected = IllegalStateException.class)
   public void testExecFail2() {
-    IAnimation a = new SimpleAnimation(100, 100);
+    IAnimation a = new SimpleAnimation();
     Rectangle rect = new Rectangle("R1", 0, 0, 10, 5, new Color(0, 0, 0));
     a.addDrawable(rect);
     ICommand cmd = new MoveCmd("R1", 1, 12, new Posn(1, 55));

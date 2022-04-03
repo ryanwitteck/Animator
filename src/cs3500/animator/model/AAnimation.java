@@ -29,15 +29,11 @@ public abstract class AAnimation implements IAnimation {
 
   /**
    * Sole constructor for AAnimation.
-   * Takes in window dimensions as arguments and initializes width and height appropriately.
-   * Initializes frames and cmdLog as empty lists and nFrames as 0.
-   *
-   * @param width  the desired window width
-   * @param height the desired window height
+   * Initializes frames and cmdLog as empty lists, nFrames as 0, and both width and height as 500.
    */
-  public AAnimation(int width, int height) {
-    this.width = width;
-    this.height = height;
+  public AAnimation() {
+    this.width = 500;
+    this.height = 500;
     objects = new HashMap<>();
     frames = new ArrayList<>();
     cmdLog = new ArrayList<>();
@@ -55,6 +51,12 @@ public abstract class AAnimation implements IAnimation {
   @Override
   public void removeDrawable(String name) {
     objects.remove(name);
+  }
+
+  @Override
+  public void setBounds(int width, int height) {
+    this.width = width;
+    this.height = height;
   }
 
   @Override
