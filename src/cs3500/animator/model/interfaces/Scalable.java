@@ -4,7 +4,7 @@ package cs3500.animator.model.interfaces;
  * Our interface for any object that can be scaled up and down.
  * <p>
  * Every Scalable should...
- * - Be able to scale up or down in both the x and y dimension.
+ * - Be able to change its horizontal and vertical dimensions.
  */
 public interface Scalable {
 
@@ -21,7 +21,6 @@ public interface Scalable {
    * @param dx the change in width.
    */
   void addHorizontal(double dx);
-
 
   /**
    * Vertically stretch this object by the given factor.
