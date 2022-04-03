@@ -27,7 +27,8 @@ public class AddRectCmd extends InstantCmd {
    * @param color  the color of the new Rectangle.
    * @param tick   the tick when this command triggers.
    */
-  public AddRectCmd(String name, double x, double y, double width, double height, Color color, int tick) {
+  public AddRectCmd(String name, double x, double y, double width, double height,
+                    Color color, int tick) {
     super(name, tick);
     this.rect = new Rectangle(name, x, y, width, height, color);
   }

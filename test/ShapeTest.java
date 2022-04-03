@@ -7,6 +7,7 @@ import cs3500.animator.model.attributes.Color;
 import cs3500.animator.model.attributes.Posn;
 import cs3500.animator.model.shapes.CompoundShape;
 import cs3500.animator.model.shapes.IShape;
+import cs3500.animator.model.shapes.Oval;
 import cs3500.animator.model.shapes.Rectangle;
 
 import static org.junit.Assert.assertEquals;
@@ -70,22 +71,22 @@ public class ShapeTest {
     Color black = new Color(0, 0, 0);
     Rectangle r = new Rectangle("R1", 0, 0, 12, 12, black);
 
-    r.scaleDown(12);
-    assertEquals(1, r.getWidth());
-    assertEquals(1, r.getHeight());
+    r.addVertical(15);
+    assertEquals(12, r.getWidth(), 0.001);
+    assertEquals(27, r.getHeight(), 0.001);
 
-    r.scaleUp(55);
-    assertEquals(55, r.getWidth());
-    assertEquals(55, r.getHeight());
+    r.addHorizontal(88);
+    assertEquals(100, r.getWidth(), 0.001);
+    assertEquals(27, r.getHeight(), 0.001);
 
-    r.scaleUp(0.5);
-    assertEquals(27, r.getWidth());
-    assertEquals(27, r.getHeight());
+    r.addHorizontal(-73);
+    assertEquals(27, r.getWidth(), 0.001);
+    assertEquals(27, r.getHeight(), 0.001);
 
     r.stretchHorizontal(1.5);
     r.stretchVertical(10);
-    assertEquals(40, r.getWidth());
-    assertEquals(270, r.getHeight());
+    assertEquals(40.5, r.getWidth(), 0.001);
+    assertEquals(270, r.getHeight(), 0.001);
 
     Rectangle copy = (Rectangle) r.getCopy();
     assertEquals(r, copy);
@@ -97,27 +98,27 @@ public class ShapeTest {
   public void testCompShape() {
     List<IShape> list = new ArrayList<>();
     list.add(new Rectangle("R1", 0, 0, 12, 12, new Color(0, 0, 0)));
-    list.add(new Rectangle("R2", 2, 2, 4, 4, new Color(8, 8, 8)));
+    list.add(new Oval("O1", 2, 2, 4, 4, new Color(8, 8, 8)));
     CompoundShape comp = new CompoundShape("C1", 0, 0, list);
 
-    comp.scaleDown(4);
-    assertEquals(3, ((Rectangle) list.get(0)).getWidth());
-    assertEquals(3, ((Rectangle) list.get(0)).getHeight());
-    assertEquals(1, ((Rectangle) list.get(1)).getWidth());
-    assertEquals(1, ((Rectangle) list.get(1)).getHeight());
+    comp.addHorizontal(4);
+    assertEquals(16, ((Rectangle) list.get(0)).getWidth(), 0.001);
+    assertEquals(12, ((Rectangle) list.get(0)).getHeight(), 0.001);
+    assertEquals(8, ((Oval) list.get(1)).getXRadius(), 0.001);
+    assertEquals(4, ((Oval) list.get(1)).getYRadius(), 0.001);
 
-    comp.scaleUp(2);
-    assertEquals(6, ((Rectangle) list.get(0)).getWidth());
-    assertEquals(6, ((Rectangle) list.get(0)).getHeight());
-    assertEquals(2, ((Rectangle) list.get(1)).getWidth());
-    assertEquals(2, ((Rectangle) list.get(1)).getHeight());
+    comp.addVertical(2.55);
+    assertEquals(16, ((Rectangle) list.get(0)).getWidth(), 0.001);
+    assertEquals(14.55, ((Rectangle) list.get(0)).getHeight(), 0.001);
+    assertEquals(8, ((Oval) list.get(1)).getXRadius(), 0.001);
+    assertEquals(6.55, ((Oval) list.get(1)).getYRadius(), 0.001);
 
-    comp.stretchHorizontal(7.07);
+    comp.stretchHorizontal(10.5);
     comp.stretchVertical(2.5);
-    assertEquals(42, ((Rectangle) list.get(0)).getWidth());
-    assertEquals(15, ((Rectangle) list.get(0)).getHeight());
-    assertEquals(14, ((Rectangle) list.get(1)).getWidth());
-    assertEquals(5, ((Rectangle) list.get(1)).getHeight());
+    assertEquals(168, ((Rectangle) list.get(0)).getWidth(), 0.001);
+    assertEquals(36.375, ((Rectangle) list.get(0)).getHeight(), 0.001);
+    assertEquals(84, ((Oval) list.get(1)).getXRadius(), 0.001);
+    assertEquals(16.375, ((Oval) list.get(1)).getYRadius(), 0.001);
 
     CompoundShape copy = (CompoundShape) comp.getCopy();
     assertEquals(comp.getName(), copy.getName());

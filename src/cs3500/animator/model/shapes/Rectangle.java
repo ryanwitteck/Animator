@@ -54,9 +54,8 @@ public class Rectangle extends BasicShape {
   }
 
   @Override
-  public void shrinkHorizontal(double scale) {
-    scaleError(scale);
-    width /= scale;
+  public void addHorizontal(double dx) {
+    width += dx;
   }
 
   @Override
@@ -66,23 +65,8 @@ public class Rectangle extends BasicShape {
   }
 
   @Override
-  public void shrinkVertical(double scale) {
-    scaleError(scale);
-    width /= scale;
-  }
-
-  @Override
-  public void scaleUp(double scale) {
-    scaleError(scale);
-    width *= scale;
-    height *= scale;
-  }
-
-  @Override
-  public void scaleDown(double scale) {
-    scaleError(scale);
-    width /= scale;
-    height /= scale;
+  public void addVertical(double dy) {
+    height += dy;
   }
 
   /**

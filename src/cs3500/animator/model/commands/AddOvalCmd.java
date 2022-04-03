@@ -15,21 +15,22 @@ public class AddOvalCmd extends InstantCmd {
   private final Oval oval;
 
   /**
-   * Sole constructor for AddRectCmd.
-   * Takes the name, position, dimensions, and color of the new rectangle
+   * Sole constructor for AddOvalCmd.
+   * Takes the name, position, dimensions, and color of the new oval
    * in addition to the start tick as arguments.
    *
-   * @param name   the name of the rectangle to be added to the animation.
-   * @param x      the initial x coordinate of the new Rectangle.
-   * @param y      the initial y coordinate of the new Rectangle.
-   * @param width  the width of the new Rectangle.
-   * @param height the height of the new Rectangle.
-   * @param color  the color of the new Rectangle.
-   * @param tick   the tick when this command triggers.
+   * @param name    the name of the Oval to be added to the animation.
+   * @param x       the initial x coordinate of the new Oval.
+   * @param y       the initial y coordinate of the new Oval.
+   * @param xRadius the x dimension of the new Oval.
+   * @param yRadius the y dimension of the new Oval.
+   * @param color   the color of the new Oval.
+   * @param tick    the tick when this command triggers.
    */
-  public AddOvalCmd(String name, double x, double y, double width, double height, Color color, int tick) {
+  public AddOvalCmd(String name, double x, double y, double xRadius, double yRadius,
+                    Color color, int tick) {
     super(name, tick);
-    this.oval = new Oval(name, x, y, width, height, color);
+    this.oval = new Oval(name, x, y, xRadius, yRadius, color);
   }
 
   @Override

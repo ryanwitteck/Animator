@@ -2,8 +2,6 @@ package cs3500.animator.model.commands;
 
 import cs3500.animator.model.IAnimation;
 import cs3500.animator.model.attributes.Color;
-import cs3500.animator.model.attributes.Posn;
-import cs3500.animator.model.interfaces.Movable;
 import cs3500.animator.model.interfaces.Drawable;
 
 /**
@@ -11,12 +9,13 @@ import cs3500.animator.model.interfaces.Drawable;
  * <p>
  * log format:
  * - "[target name] changes color from : (r0, g0, g0) to (r1, g1, b1) "
- *   + "from t=[start tick] to t=[end tick]"
+ * + "from t=[start tick] to t=[end tick]"
  */
 public class ChangeColorCmd extends GradualCmd {
 
   private String log;
-  private Color initColor;
+  private Color initColor; // initial color of the object. Used to reset this cmd.
+  private Color startColor;
   private Color endColor;
   private double dr; // rate of change of the red value
   private double dg; // rate of change of the green value
@@ -24,12 +23,12 @@ public class ChangeColorCmd extends GradualCmd {
 
   /**
    * Constructor for ChangeColorCmd.
-   * Takes the name of the target object, start and end tick, and the final Color as arguments.
+   * Takes the name of the target object, start and end tick, and final Color as arguments.
    *
-   * @param name     the name of the object to be added to the list.
-   * @param start    the tick when this command triggers.
-   * @param end      the tick when this command ends.
-   * @param endColor the color we want this object to become.
+   * @param name       the name of the object to be added to the list.
+   * @param start      the tick when this command triggers.
+   * @param end        the tick when this command ends.
+   * @param endColor   the color we want this object to become.
    */
   public ChangeColorCmd(String name, int start, int end, Color endColor) {
     super(name, start, end);
@@ -45,11 +44,12 @@ public class ChangeColorCmd extends GradualCmd {
       this.log = name + " changes color from : " + initColor + " to " + endColor
               + " from t=" + (startTick - 1) + " to t=" + endTick;
       dr = (endColor.getR() - initColor.getR()) / (endTick - startTick + 1);
-      dg = (endColor.getG() - initColor.getG())/ (endTick - startTick + 1);
+      dg = (endColor.getG() - initColor.getG()) / (endTick - startTick + 1);
       db = (endColor.getB() - initColor.getB()) / (endTick - startTick + 1);
+      startColor = new Color(initColor);
     }
-    initColor.changeColor(dr, dg, db);
-    target.setColor(initColor);
+    startColor.changeColor(dr, dg, db);
+    target.setColor(startColor);
   }
 
   @Override
@@ -58,5 +58,10 @@ public class ChangeColorCmd extends GradualCmd {
       throw new IllegalStateException("Error: command has not run");
     }
     return this.log;
+  }
+
+  @Override
+  public void reset() {
+    super.reset();
   }
 }

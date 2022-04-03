@@ -54,9 +54,8 @@ public class Oval extends BasicShape {
   }
 
   @Override
-  public void shrinkHorizontal(double scale) {
-    scaleError(scale);
-    xRadius /= scale;
+  public void addHorizontal(double dx) {
+    xRadius += dx;
   }
 
   @Override
@@ -66,23 +65,8 @@ public class Oval extends BasicShape {
   }
 
   @Override
-  public void shrinkVertical(double scale) {
-    scaleError(scale);
-    yRadius /= scale;
-  }
-
-  @Override
-  public void scaleUp(double scale) {
-    scaleError(scale);
-    xRadius *= scale;
-    yRadius *= scale;
-  }
-
-  @Override
-  public void scaleDown(double scale) {
-    scaleError(scale);
-    xRadius /= scale;
-    yRadius /= scale;
+  public void addVertical(double dy) {
+    yRadius += dy;
   }
 
   /**

@@ -65,10 +65,9 @@ public class CompoundShape extends BasicShape {
   }
 
   @Override
-  public void shrinkHorizontal(double scale) {
-    scaleError(scale);
+  public void addHorizontal(double dx) {
     for (IShape s : shapes) {
-      s.shrinkHorizontal(scale);
+      s.addHorizontal(dx);
     }
   }
 
@@ -81,26 +80,9 @@ public class CompoundShape extends BasicShape {
   }
 
   @Override
-  public void shrinkVertical(double scale) {
-    scaleError(scale);
+  public void addVertical(double dy) {
     for (IShape s : shapes) {
-      s.shrinkVertical(scale);
-    }
-  }
-
-  @Override
-  public void scaleUp(double scale) {
-    scaleError(scale);
-    for (IShape s : shapes) {
-      s.scaleUp(scale);
-    }
-  }
-
-  @Override
-  public void scaleDown(double scale) {
-    scaleError(scale);
-    for (IShape s : shapes) {
-      s.scaleDown(scale);
+      s.addVertical(dy);
     }
   }
 

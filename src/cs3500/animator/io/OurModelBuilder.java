@@ -6,6 +6,7 @@ import cs3500.animator.model.attributes.Color;
 import cs3500.animator.model.attributes.Posn;
 import cs3500.animator.model.commands.AddOvalCmd;
 import cs3500.animator.model.commands.AddRectCmd;
+import cs3500.animator.model.commands.ChangeColorCmd;
 import cs3500.animator.model.commands.MoveCmd;
 import cs3500.animator.model.commands.RemoveDrawableCmd;
 
@@ -61,7 +62,7 @@ public class OurModelBuilder implements TweenModelBuilder<IAnimation> {
                                                       float oldR, float oldG, float oldB,
                                                       float newR, float newG, float newB,
                                                       int startTime, int endTime) {
-
+    animation.addCmd(new ChangeColorCmd(name, startTime, endTime, new Color(newR, newG, newB)));
     return this;
   }
 
