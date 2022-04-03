@@ -55,7 +55,7 @@ public class OurModelBuilder implements TweenModelBuilder<IAnimation> {
                                                float moveToX, float moveToY,
                                                int startTime, int endTime) {
     animation.addCmd(new MoveCmd(name, startTime, endTime,
-            new Posn(moveToX, moveToY), new Posn(moveToX, moveToY)));
+            new Posn(moveFromX, moveFromY), new Posn(moveToX, moveToY)));
     return this;
   }
 

@@ -56,6 +56,7 @@ public class Main {
       return;
     }
 
+    // create the animation from the given file
     AnimationFileReader reader = new AnimationFileReader();
     IAnimation animation = reader.readFile(fileName, new OurModelBuilder());
     AnimationView view;
@@ -75,7 +76,8 @@ public class Main {
           view.renderAnimation();
           break;
         case "svg":
-
+          // TODO
+          System.out.println("This view is has not been implemented yet");
           break;
         default:
           System.out.println("The view type provided is not recognized. Exiting Program.");
