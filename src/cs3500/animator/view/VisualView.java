@@ -10,7 +10,7 @@ import cs3500.animator.model.IAnimation;
 /**
  * This class represents a visual representation of an animation using swing. --- TODO
  */
-public class SwingViewFrame extends JFrame implements AnimationView {
+public class VisualView extends JFrame implements AnimationView {
 
   private final IAnimation animation;
   private final SwingViewPanel panel;
@@ -24,7 +24,7 @@ public class SwingViewFrame extends JFrame implements AnimationView {
    * @param animation   the animation that this view will visualize
    * @param fps         the framerate of this animation in frames per second
    */
-  public SwingViewFrame(String windowTitle, IAnimation animation, int fps) {
+  public VisualView(String windowTitle, IAnimation animation, int fps) {
     super(windowTitle);
 
     setSize(animation.getWindowWidth(), animation.getWindowHeight());
