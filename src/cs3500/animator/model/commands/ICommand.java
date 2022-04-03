@@ -13,7 +13,8 @@ import cs3500.animator.model.IAnimation;
  * - the tick it should stop executing.
  * - if it has finished running.
  * - if it is currently running.
- * - a string representation of itself.
+ * - a readable string representation of itself.
+ * - an SVG string representation of itself.
  */
 public interface ICommand {
 
@@ -58,10 +59,19 @@ public interface ICommand {
   void reset();
 
   /**
-   * Return the string representation of running this cmd.
+   * Return a readable string representation of running this cmd.
    * Example log: "[target name] moves from (x0, y0) to (x1, y1) at t=[tick]"
    *
    * @return the string representation of running this cmd.
    */
   String logCmd();
+
+  /**
+   * Return the representation of running this cmd in SVG format.
+   * Example: "<animate attributeName="x" attributeType="XML"
+   *           begin="0s" dur="9s" fill="freeze" from="300" to="0" />"
+   *
+   * @return the SVG string representation of running this cmd.
+   */
+  String toSVG();
 }
