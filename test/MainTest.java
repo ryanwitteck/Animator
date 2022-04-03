@@ -14,8 +14,8 @@ public class MainTest {
 
   /**
    * Tests our main method and text view using the big-bang-big-crunch animation.
-   * This test will likely fail on other computers because
-   * the path of the big bang animation file is too specific.
+   * This test will likely fail on other computers because the path of the big bang animation file
+   * is too specific. I was unable to make this test work with a less specific path.
    *
    * @throws IOException if any of the File readers or writers fail.
    */
