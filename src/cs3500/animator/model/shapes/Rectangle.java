@@ -32,7 +32,7 @@ public class Rectangle extends BasicShape {
    * @param height the initial height of this shape.
    * @param color  the initial color of this shape
    */
-  public Rectangle(String name, float x, float y, int width, int height, Color color) {
+  public Rectangle(String name, double x, double y, int width, int height, Color color) {
     super(name, x, y, color);
     if (width < 0 || height < 0) {
       throw new IllegalArgumentException("Cannot have a size less than 0.");
@@ -48,38 +48,38 @@ public class Rectangle extends BasicShape {
   }
 
   @Override
-  public void stretchHorizontal(float scale) {
+  public void stretchHorizontal(double scale) {
     scaleError(scale);
     width *= scale;
   }
 
   @Override
-  public void shrinkHorizontal(float scale) {
+  public void shrinkHorizontal(double scale) {
     scaleError(scale);
     width /= scale;
   }
 
   @Override
-  public void stretchVertical(float scale) {
+  public void stretchVertical(double scale) {
     scaleError(scale);
     height *= scale;
   }
 
   @Override
-  public void shrinkVertical(float scale) {
+  public void shrinkVertical(double scale) {
     scaleError(scale);
     width /= scale;
   }
 
   @Override
-  public void scaleUp(float scale) {
+  public void scaleUp(double scale) {
     scaleError(scale);
     width *= scale;
     height *= scale;
   }
 
   @Override
-  public void scaleDown(float scale) {
+  public void scaleDown(double scale) {
     scaleError(scale);
     width /= scale;
     height /= scale;

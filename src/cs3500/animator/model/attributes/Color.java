@@ -6,19 +6,19 @@ package cs3500.animator.model.attributes;
  */
 public class Color {
 
-  private float r;
-  private float g;
-  private float b;
+  private double r;
+  private double g;
+  private double b;
 
   /**
    * Constructor for color class.
-   * Initializes rgb values to the given integer values.
+   * Initializes rgb values to the given double values.
    *
    * @param r the red value
    * @param g the green value
    * @param b the blue value
    */
-  public Color(float r, float g, float b) {
+  public Color(double r, double g, double b) {
     if (!(inBounds(r) && inBounds(g) && inBounds(b))) {
       throw new IllegalArgumentException("Values must be in range [0-255].");
     }
@@ -46,7 +46,7 @@ public class Color {
    * @param x the number
    * @return if it is in bounds.
    */
-  public boolean inBounds(float x) {
+  public boolean inBounds(double x) {
     return x >= 0 && x <= 255;
   }
 
@@ -55,7 +55,7 @@ public class Color {
    *
    * @param r the desired red value.
    */
-  public void setR(float r) {
+  public void setR(double r) {
     if (!inBounds(r)) {
       throw new IllegalArgumentException("Value must be in range [0-255].");
     }
@@ -67,7 +67,7 @@ public class Color {
    *
    * @param g the desired green value.
    */
-  public void setG(float g) {
+  public void setG(double g) {
     if (!inBounds(g)) {
       throw new IllegalArgumentException("Value must be in range [0-255].");
     }
@@ -79,7 +79,7 @@ public class Color {
    *
    * @param b the desired blue value.
    */
-  public void setB(float b) {
+  public void setB(double b) {
     if (!inBounds(b)) {
       throw new IllegalArgumentException("Value must be in range [0-255].");
     }
@@ -93,7 +93,7 @@ public class Color {
    * @param g the desired green value.
    * @param b the desired blue value.
    */
-  public void setColor(float r, float g, float b) {
+  public void setColor(double r, double g, double b) {
     if (!(inBounds(r) && inBounds(g) && inBounds(b))) {
       throw new IllegalArgumentException("Values must be in range [0-255].");
     }
@@ -133,6 +133,6 @@ public class Color {
 
   @Override
   public int hashCode() {
-    return Float.hashCode(r + g + b);
+    return Double.hashCode(r + g + b);
   }
 }

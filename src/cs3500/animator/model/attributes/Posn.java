@@ -10,8 +10,8 @@ package cs3500.animator.model.attributes;
  */
 public class Posn {
 
-  private float x;
-  private float y;
+  private double x;
+  private double y;
 
   /**
    * Our constructor for Posn taking two floats as arguments.
@@ -20,7 +20,7 @@ public class Posn {
    * @param x the x value
    * @param y the y value
    */
-  public Posn(float x, float y) {
+  public Posn(double x, double y) {
     this.x = x;
     this.y = y;
   }
@@ -41,7 +41,7 @@ public class Posn {
    *
    * @return the x value
    */
-  public float getX() {
+  public double getX() {
     return this.x;
   }
 
@@ -50,7 +50,7 @@ public class Posn {
    *
    * @return the y value
    */
-  public float getY() {
+  public double getY() {
     return this.y;
   }
 
@@ -61,7 +61,7 @@ public class Posn {
    * @param dx change in x.
    * @param dy change in y.
    */
-  public void move(float dx, float dy) {
+  public void move(double dx, double dy) {
     this.x += dx;
     this.y += dy;
   }
@@ -72,7 +72,7 @@ public class Posn {
    * @param nx desired x position
    * @param ny desired y position
    */
-  public void set(float nx, float ny) {
+  public void set(double nx, double ny) {
     this.x = nx;
     this.y = ny;
   }

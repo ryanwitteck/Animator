@@ -13,14 +13,14 @@ public interface Scalable {
    *
    * @param scale the factor to scale this object by
    */
-  void stretchHorizontal(float scale);
+  void stretchHorizontal(double scale);
 
   /**
    * Horizontally stretch this object by the given factor.
    *
    * @param scale the factor to scale this object by
    */
-  void shrinkHorizontal(float scale);
+  void shrinkHorizontal(double scale);
 
 
   /**
@@ -28,14 +28,14 @@ public interface Scalable {
    *
    * @param scale the factor to scale this object by
    */
-  void stretchVertical(float scale);
+  void stretchVertical(double scale);
 
   /**
    * Vertically shrink this object by the given factor.
    *
    * @param scale the factor to scale this object by
    */
-  void shrinkVertical(float scale);
+  void shrinkVertical(double scale);
 
 
   /**
@@ -43,7 +43,7 @@ public interface Scalable {
    *
    * @param scale the factor to scale this object by
    */
-  void scaleUp(float scale);
+  void scaleUp(double scale);
 
 
   /**
@@ -51,5 +51,5 @@ public interface Scalable {
    *
    * @param scale the factor to scale this object by
    */
-  void scaleDown(float scale);
+  void scaleDown(double scale);
 }

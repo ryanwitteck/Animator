@@ -31,7 +31,7 @@ public class CompoundShape extends BasicShape {
    * @param y      the initial y coordinate of this shape
    * @param shapes the shapes that define this shape
    */
-  public CompoundShape(String name, float x, float y, List<IShape> shapes) {
+  public CompoundShape(String name, double x, double y, List<IShape> shapes) {
     super(name, x, y, new Color(0, 0, 0));
     this.shapes = shapes;
   }
@@ -47,7 +47,7 @@ public class CompoundShape extends BasicShape {
   }
 
   @Override
-  public void setColor(float r, float g, float b) {
+  public void setColor(double r, double g, double b) {
     throw new IllegalStateException("Error: this object does not support this operation");
   }
 
@@ -57,7 +57,7 @@ public class CompoundShape extends BasicShape {
   }
 
   @Override
-  public void stretchHorizontal(float scale) {
+  public void stretchHorizontal(double scale) {
     scaleError(scale);
     for (IShape s : shapes) {
       s.stretchHorizontal(scale);
@@ -65,7 +65,7 @@ public class CompoundShape extends BasicShape {
   }
 
   @Override
-  public void shrinkHorizontal(float scale) {
+  public void shrinkHorizontal(double scale) {
     scaleError(scale);
     for (IShape s : shapes) {
       s.shrinkHorizontal(scale);
@@ -73,7 +73,7 @@ public class CompoundShape extends BasicShape {
   }
 
   @Override
-  public void stretchVertical(float scale) {
+  public void stretchVertical(double scale) {
     scaleError(scale);
     for (IShape s : shapes) {
       s.stretchVertical(scale);
@@ -81,7 +81,7 @@ public class CompoundShape extends BasicShape {
   }
 
   @Override
-  public void shrinkVertical(float scale) {
+  public void shrinkVertical(double scale) {
     scaleError(scale);
     for (IShape s : shapes) {
       s.shrinkVertical(scale);
@@ -89,7 +89,7 @@ public class CompoundShape extends BasicShape {
   }
 
   @Override
-  public void scaleUp(float scale) {
+  public void scaleUp(double scale) {
     scaleError(scale);
     for (IShape s : shapes) {
       s.scaleUp(scale);
@@ -97,7 +97,7 @@ public class CompoundShape extends BasicShape {
   }
 
   @Override
-  public void scaleDown(float scale) {
+  public void scaleDown(double scale) {
     scaleError(scale);
     for (IShape s : shapes) {
       s.scaleDown(scale);

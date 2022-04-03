@@ -26,7 +26,7 @@ public abstract class BasicShape implements IShape {
    * @param y     the initial y coordinate of this shape
    * @param color the initial color of this shape
    */
-  public BasicShape(String name, float x, float y, Color color) {
+  public BasicShape(String name, double x, double y, Color color) {
     this.name = name;
     this.color = new Color(color);
     this.posn = new Posn(x, y);
@@ -48,7 +48,7 @@ public abstract class BasicShape implements IShape {
   }
 
   @Override
-  public void place(float x, float y) {
+  public void place(double x, double y) {
     this.posn.set(x, y);
   }
 
@@ -58,12 +58,12 @@ public abstract class BasicShape implements IShape {
   }
 
   @Override
-  public void move(float dx, float dy) {
+  public void move(double dx, double dy) {
     this.posn.move(dx, dy);
   }
 
   @Override
-  public void setColor(float r, float g, float b) {
+  public void setColor(double r, double g, double b) {
     this.color.setColor(r, g, b);
   }
 
@@ -80,7 +80,7 @@ public abstract class BasicShape implements IShape {
    *
    * @param scale the given scale
    */
-  public void scaleError(float scale) {
+  public void scaleError(double scale) {
     if (scale < 0) {
       throw new IllegalArgumentException("Error: Scale cannot be negative");
     }
