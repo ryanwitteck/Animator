@@ -229,10 +229,10 @@ public class SvgView implements AnimationView {
     int[] initRGB = new int[3];
     int[] endRGB = new int[3];
     parseColorStr(args[5], initRGB);
-    parseColorStr(args[5], endRGB);
+    parseColorStr(args[7], endRGB);
 
     return String.format(
-            "<animateColor attributeType=\"xml\" begin=\"%dms\" dur=\"%dms\" "
+            "<animate attributeType=\"xml\" begin=\"%dms\" dur=\"%dms\" "
                     + "attributeName=\"fill\" from=\"rgb(%d,%d,%d)\" to=\"rgb(%d,%d,%d)\" "
                     + "fill=\"freeze\" />\n",
             cmd.getStartTick() * 1000 / fps, (cmd.getEndTick() - cmd.getStartTick()) * 1000 / fps,

@@ -67,9 +67,31 @@ public class SvgViewTest {
     view.renderAnimation();
 
     FileReader reader = new FileReader("test/BasicSvgExpected.txt");
+    char[] cb = new char[888];
+    reader.read(cb);
+    String expected = String.copyValueOf(cb);
+    assertEquals(expected.replace("\r", ""), builder.toString());
+  }
+
+  @Test
+  public void testBasicAnimation2() throws IOException {
+    StringBuilder builder = new StringBuilder();
+    IAnimation a = new SimpleAnimation();
+    a.addCmd(new AddRectCmd("R", 100, 100, 40, 30, new Color(100, 150, 50), 0));
+    a.addCmd(new AddOvalCmd("O", 100, 100, 40, 40, new Color(90, 10, 70), 2));
+    a.addCmd(new MoveCmd("R", 1, 10, new Posn(100, 100), new Posn(0, 0)));
+    a.addCmd(new MoveCmd("R", 10, 15, new Posn(0, 0), new Posn(100, 100)));
+    a.addCmd(new MoveCmd("O", 5, 15, new Posn(100, 100), new Posn(200, 200)));
+    a.addCmd(new ChangeColorCmd("O", 5, 15, new Color(90, 10, 70), new Color(40, 200, 150)));
+    a.compile();
+    AnimationView view = new SvgView(a, builder, 3);
+    view.renderAnimation();
+
+    FileReader reader = new FileReader("test/BasicSvgExpected2.txt");
     char[] cb = new char[891];
     reader.read(cb);
     String expected = String.copyValueOf(cb);
     assertEquals(expected.replace("\r", ""), builder.toString());
   }
+
 }
