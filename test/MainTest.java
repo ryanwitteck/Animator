@@ -28,24 +28,15 @@ public class MainTest {
     myMain.main(args);
 
     FileReader outReader = new FileReader("test\\BigBangOut.txt");
-    char[] cb1 = new char[553];
+    char[] cb1 = new char[538];
     outReader.read(cb1);
-    StringBuilder actual = new StringBuilder();
-    for (int i = 0; i < 493; i++) {
-      if (!(cb1[i] + "").isBlank()) {
-        actual.append(cb1[i]);
-      }
-    }
+    String actual = String.copyValueOf(cb1);
 
     FileReader expReader = new FileReader("test\\BigBangOutCorrect.txt");
-    char[] cb2 = new char[558];
+    char[] cb2 = new char[543];
     expReader.read(cb2);
-    StringBuilder expected = new StringBuilder();
-    for (int i = 0; i < 498; i++) {
-      if (!(cb2[i] + "").isBlank()) {
-        expected.append(cb2[i]);
-      }
-    }
-    assertEquals(expected.toString(), actual.toString());
+    String expected = String.copyValueOf(cb2);
+
+    assertEquals(expected.toString().replace("\r", ""), actual.toString());
   }
 }
