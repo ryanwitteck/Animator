@@ -19,7 +19,6 @@ import static org.junit.Assert.assertEquals;
 
 /**
  * JUnit test cases for our TextView implementation.
- * TODO add more tests
  */
 public class TextViewTest {
 

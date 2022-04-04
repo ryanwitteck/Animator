@@ -37,6 +37,6 @@ public class MainTest {
     expReader.read(cb2);
     String expected = String.copyValueOf(cb2);
 
-    assertEquals(expected.toString().replace("\r", ""), actual.toString());
+    assertEquals(expected.replace("\r", ""), actual);
   }
 }

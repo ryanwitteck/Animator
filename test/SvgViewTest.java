@@ -17,6 +17,9 @@ import cs3500.animator.view.SvgView;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * JUnit test cases for our SvgView implementation.
+ */
 public class SvgViewTest {
 
   @Test
