@@ -212,7 +212,7 @@ public class SvgView implements AnimationView {
             "<animate attributeType=\"xml\" begin=\"%dms\" dur=\"%dms\" "
                     + "attributeName=\"%s\" from=\"%d\" to=\"%d\" fill=\"freeze\" />\n",
             cmd.getStartTick() * 1000 / fps, (cmd.getEndTick() - cmd.getStartTick()) * 1000 / fps,
-            shapeInfo[3], startHeight, endHeight);
+            shapeInfo[4], startHeight, endHeight);
 
     return line + line2;
   }
