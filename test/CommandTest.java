@@ -129,10 +129,10 @@ public class CommandTest {
 
     assertEquals("R2 moves from : ( -10.0, 99.0 ) to ( 1.0, 55.0 ) from t = 1 to t = 12",
             cmd1.logCmd());
-    assertEquals("R1 moves from : ( 3.33, 6.67 ) to ( 10943.1343, 32142.765 ) " +
+    assertEquals("R1 moves from : ( 3.33, 6.67 ) to ( 10943.134, 32142.765 ) " +
             "from t = 1 to t = 1000", cmd2.logCmd());
     assertEquals("R2 moves from : ( 1.0, 55.0 ) to ( 0.0, 3.33 ) at t = 1", cmd3.logCmd());
-    assertEquals("R1 moves from : ( 10943.134300000109, 32142.764999999396 ) " +
+    assertEquals("R1 moves from : ( 10943.134, 32142.765 ) " +
             "to ( -1.75, -9.0 ) at t = 1", cmd4.logCmd());
 
     a.removeDrawable("R2");
