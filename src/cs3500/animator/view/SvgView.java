@@ -49,14 +49,16 @@ public class SvgView implements AnimationView {
     objNames = new ArrayList<>();
 
     for (int i = 0; i < animation.getNFrames(); i++) {
-      for (ICommand cmd : tickCmdMap.get(i)) {
-        String name = cmd.getTarget();
-        if (objCmdMap.containsKey(name)) {
-          objCmdMap.get(name).add(cmd);
-        } else {
-          objNames.add(name);
-          objCmdMap.put(name, new ArrayList<>());
-          objCmdMap.get(name).add(cmd);
+      if (tickCmdMap.containsKey(i)) {
+        for (ICommand cmd : tickCmdMap.get(i)) {
+          String name = cmd.getTarget();
+          if (objCmdMap.containsKey(name)) {
+            objCmdMap.get(name).add(cmd);
+          } else {
+            objNames.add(name);
+            objCmdMap.put(name, new ArrayList<>());
+            objCmdMap.get(name).add(cmd);
+          }
         }
       }
     }
@@ -117,11 +119,11 @@ public class SvgView implements AnimationView {
 
     for (int i = 1; i < cmds.size(); i++) {
       if (cmds.get(i) instanceof MoveCmd) {
-        builder.append(parseMoveShape(shapeInfo, (MoveCmd) cmds.get(i)));
+        builder.append(parseMoveShape(shapeInfo, cmds.get(i)));
       } else if (cmds.get(i) instanceof ChangeColorCmd) {
-        // TODO
+        builder.append(parseChangeColor(shapeInfo, cmds.get(i)));
       } else if (cmds.get(i) instanceof ResizeCmd) {
-        // TODO
+        builder.append(parseResizeShape(shapeInfo, cmds.get(i)));
       }
     }
     builder.append(String.format("</%s>\n", shapeInfo[0]));
@@ -142,7 +144,7 @@ public class SvgView implements AnimationView {
     String[] args = cmd.logCmd().split(" ");
     int[] pos = new int[2];
     int[] rgb = new int[3];
-    parsePosnStr(args[7], pos);
+    parsePosnStr(args[8], pos);
     parseColorStr(args[16], rgb);
     int width = (int) Double.parseDouble(args[10]);
     int height = (int) Double.parseDouble(args[13]);
@@ -161,24 +163,74 @@ public class SvgView implements AnimationView {
    * @param cmd       the move shape command
    * @return the command parsed into svg format
    */
-  private String parseMoveShape(String[] shapeInfo, MoveCmd cmd) {
+  private String parseMoveShape(String[] shapeInfo, ICommand cmd) {
     String[] args = cmd.logCmd().split(" ");
     int[] initPos = new int[2];
     int[] endPos = new int[2];
     parsePosnStr(args[4], initPos);
     parsePosnStr(args[6], endPos);
     String line = String.format(
-            "<animate attributeType=\"xml\" begin=\"%dms\" end=\"%dms\" " +
-                    "attributeName=\"%s\" from=\"%d\" to=\"%d\" fill=\"freeze\" />\n",
+            "<animate attributeType=\"xml\" begin=\"%dms\" end=\"%dms\" "
+                    + "attributeName=\"%s\" from=\"%d\" to=\"%d\" fill=\"freeze\" />\n",
             cmd.getStartTick() * 1000 / fps, cmd.getEndTick() * 1000 / fps,
             shapeInfo[1], initPos[0], endPos[0]);
     String line2 = String.format(
-            "<animate attributeType=\"xml\" begin=\"%dms\" end=\"%dms\" " +
-                    "attributeName=\"%s\" from=\"%d\" to=\"%d\" fill=\"freeze\" />\n",
+            "<animate attributeType=\"xml\" begin=\"%dms\" end=\"%dms\" "
+                    + "attributeName=\"%s\" from=\"%d\" to=\"%d\" fill=\"freeze\" />\n",
             cmd.getStartTick() * 1000 / fps, cmd.getEndTick() * 1000 / fps,
             shapeInfo[2], initPos[1], endPos[1]);
 
     return line + line2;
+  }
+
+  /**
+   * Given a ResizeCmd, parse the command into a form that svg recognizes.
+   *
+   * @param shapeInfo a string array containing the target object's type and attributes
+   * @param cmd       the move shape command
+   * @return the command parsed into svg format
+   */
+  private String parseResizeShape(String[] shapeInfo, ICommand cmd) {
+    String[] args = cmd.logCmd().split(" ");
+    int startWidth = (int) Double.parseDouble(args[4]);
+    int startHeight = (int) Double.parseDouble(args[6]);
+    int endWidth = (int) Double.parseDouble(args[8]);
+    int endHeight = (int) Double.parseDouble(args[10]);
+    String line = String.format(
+            "<animate attributeType=\"xml\" begin=\"%dms\" end=\"%dms\" "
+                    + "attributeName=\"%s\" from=\"%d\" to=\"%d\" fill=\"freeze\" />\n",
+            cmd.getStartTick() * 1000 / fps, cmd.getEndTick() * 1000 / fps,
+            shapeInfo[3], startWidth, endWidth);
+    String line2 = String.format(
+            "<animate attributeType=\"xml\" begin=\"%dms\" end=\"%dms\" "
+                    + "attributeName=\"%s\" from=\"%d\" to=\"%d\" fill=\"freeze\" />\n",
+            cmd.getStartTick() * 1000 / fps, cmd.getEndTick() * 1000 / fps,
+            shapeInfo[3], startHeight, endHeight);
+
+    return line + line2;
+  }
+
+  /**
+   * Given a ChangeColorCmd, parse the command into a form that svg recognizes.
+   *
+   * @param shapeInfo a string array containing the target object's type and attributes
+   * @param cmd       the move shape command
+   * @return the command parsed into svg format
+   */
+  private String parseChangeColor(String[] shapeInfo, ICommand cmd) {
+    String[] args = cmd.logCmd().split(" ");
+    int[] initRGB = new int[3];
+    int[] endRGB = new int[3];
+    parseColorStr(args[16], initRGB);
+    parseColorStr(args[16], endRGB);
+    String line = String.format(
+            "<animateColor attributeType=\"xml\" begin=\"%dms\" end=\"%dms\" "
+                    + "attributeName=\"fill\" from=\"rgb(%d,%d,%d)\" to=\"rgb(%d,%d,%d)\" "
+                    + "fill=\"freeze\" />\n",
+            cmd.getStartTick() * 1000 / fps, cmd.getEndTick() * 1000 / fps,
+            initRGB[0], initRGB[1], initRGB[2], endRGB[0], endRGB[1], endRGB[2]);
+
+    return line;
   }
 
   /**
@@ -190,7 +242,7 @@ public class SvgView implements AnimationView {
    * @param pos the array to store the obtained x and y values to.
    */
   private void parsePosnStr(String str, int[] pos) {
-    String[] splitStr = str.substring(2, str.length() - 2).split(", ");
+    String[] splitStr = str.substring(1, str.length() - 1).split(",");
     pos[0] = (int) Double.parseDouble(splitStr[0]);
     pos[1] = (int) Double.parseDouble(splitStr[1]);
   }
