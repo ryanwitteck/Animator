@@ -20,7 +20,7 @@ public class MainTest {
    * @throws IOException if any of the File readers or writers fail.
    */
   @Test
-  public void testBigBang() throws IOException {
+  public void testBigBangText() throws IOException {
     Main myMain = new Main();
     String path = "C:\\Users\\charl\\Desktop\\CS3500\\IntelliJ" +
             "\\Animator\\test\\demos\\big-bang-big-crunch.txt";
@@ -34,6 +34,34 @@ public class MainTest {
 
     FileReader expReader = new FileReader("test\\BigBangOutCorrect.txt");
     char[] cb2 = new char[563];
+    expReader.read(cb2);
+    String expected = String.copyValueOf(cb2);
+
+    assertEquals(expected.replace("\r", ""), actual);
+  }
+
+  /**
+   * Tests our main method and svg view using the toh-3 animation.
+   * This test will likely fail on other computers because the path of the big bang animation file
+   * is too specific. I was unable to make this test work with a less specific path.
+   *
+   * @throws IOException if any of the File readers or writers fail.
+   */
+  @Test
+  public void testHanoiSvg() throws IOException {
+    Main myMain = new Main();
+    String path = "C:\\Users\\charl\\Desktop\\CS3500\\IntelliJ" +
+            "\\Animator\\test\\demos\\toh-3.txt";
+    String[] args = {"-view", "svg", "-out", "test\\toh-3-50.svg", "-speed", "50", "-in", path};
+    myMain.main(args);
+
+    FileReader outReader = new FileReader("test\\toh-3-50.svg");
+    char[] cb1 = new char[6008];
+    outReader.read(cb1);
+    String actual = String.copyValueOf(cb1);
+
+    FileReader expReader = new FileReader("test\\tohCorrect.txt");
+    char[] cb2 = new char[6066];
     expReader.read(cb2);
     String expected = String.copyValueOf(cb2);
 
