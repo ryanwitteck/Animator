@@ -16,7 +16,8 @@ import cs3500.animator.model.interfaces.Drawable;
  * - nFrames    the number of frames in this animation i.e. the size of frames
  * - width      the width of the window
  * - height     the height of the window
- * Implements all methods defined in IAnimation except for addCmd and removeCmd.
+ * This class implements all methods defined in IAnimation except for addCmd, removeCmd, compile,
+ * and getCmdMap.
  */
 public abstract class AAnimation implements IAnimation {
 
@@ -102,7 +103,7 @@ public abstract class AAnimation implements IAnimation {
   @Override
   public String getCmdLog() {
     StringBuilder log = new StringBuilder();
-    log.append("Window: " + width + " by " + height + "\n");
+    log.append("Window: ").append(width).append(" by ").append(height).append("\n");
     for (String s : cmdLog) {
       log.append(s).append("\n");
     }

@@ -11,7 +11,17 @@ import cs3500.animator.model.commands.ICommand;
  * New Fields:
  * - cmdMap      a HashMap of all the commands in this animation mapped to their start tick
  * - cmds        a list of all the commands in this animation. Used to reset the cmdMap when needed
- * This class implements addCmd, removeCmd, and Compile from the IAnimation interface.
+ * This class implements addCmd, removeCmd, compile, and getCmdMap from the IAnimation interface.
+ *
+ * <p>This class is used to create a model of an animation using the andCmd, removeCmd, and
+ * compile methods. Using these three methods, it is also possible to edit an animation and
+ * recompile it into a new animation.
+ *
+ * <p>Important: adding or removing commands from the animation may not have an effect until
+ * after the compile method is called. These three methods should be the only ones used to create
+ * an animation model. The addDrawable and removeDrawable are meant to be used only by ICommands and
+ * if used the command log of this animation may be inaccurate and our views may be unable to
+ * create a visualization of the model.
  */
 public class SimpleAnimation extends AAnimation {
 

@@ -77,7 +77,7 @@ public interface IAnimation {
   void compile();
 
   /**
-   * This method allow the user to set the dimensions of the window. If the user never sets the
+   * This method allows the user to set the dimensions of the window. If the user never sets the
    * window size, it defaults to 500 by 500.
    */
   void setBounds(int width, int height);
@@ -139,6 +139,8 @@ public interface IAnimation {
 
   /**
    * Get the tick-command HashMap of this animation.
+   * i.e. This method returns a HashMap containing every ICommand in this animation mapped
+   * to the tick it starts running.
    *
    * @return cmdMap the HashMap of this animation's commands mapped to their start ticks.
    */
