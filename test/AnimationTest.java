@@ -74,16 +74,7 @@ public class AnimationTest {
 
     List<ICommand> tick5 = new ArrayList<>();
     tick5.add(cmds.get(6));
-    tick5.add(cmds.get(5));
     tick5.add(cmds.get(7));
-
-    List<ICommand> tick9 = new ArrayList<>();
-    tick9.add(cmds.get(6));
-    tick9.add(cmds.get(5));
-    tick9.add(cmds.get(7));
-
-    List<ICommand> tick14 = new ArrayList<>();
-    tick14.add(cmds.get(7));
 
     HashMap<Integer, List<ICommand>> map = animation.getCmdMap();
 
@@ -91,9 +82,8 @@ public class AnimationTest {
     assertEquals(tick2, map.get(2));
     assertEquals(tick3, map.get(3));
     assertEquals(tick4, map.get(4));
-    assertEquals(tick5, map.get(5));
-    assertEquals(tick9, map.get(9));
-    assertEquals(tick14, map.get(14));
+    assertNull(map.get(9));
+    assertNull(map.get(14));
     assertNull(map.get(15));
   }
 

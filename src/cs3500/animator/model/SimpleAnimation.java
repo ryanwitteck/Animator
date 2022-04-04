@@ -105,6 +105,7 @@ public class SimpleAnimation extends AAnimation {
 
   @Override
   public HashMap<Integer, List<ICommand>> getCmdMap() {
+    resetCmdMap();
     return new HashMap<>(cmdMap);
   }
 }
