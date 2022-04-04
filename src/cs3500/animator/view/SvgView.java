@@ -178,7 +178,7 @@ public class SvgView implements AnimationView {
             shapeInfo[3], width, shapeInfo[4], height, rgb[0], rgb[1], rgb[2]);
     String line2 = String.format(
             "<set attributeType=\"xml\" begin=\"%dms\" "
-                    + "attributeName=\"visibility\" to=\"visible\" />\n",
+                    + "attributeName=\"visibility\" to=\"visible\" fill=\"freeze\" />\n",
             cmd.getStartTick() * 1000 / fps);
 
     return line + line2;

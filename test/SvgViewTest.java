@@ -47,7 +47,7 @@ public class SvgViewTest {
     view.renderAnimation();
 
     FileReader reader = new FileReader("test/SvgAddShapesExpected.txt");
-    char[] cb = new char[846];
+    char[] cb = new char[902];
     reader.read(cb);
     String expected = String.copyValueOf(cb);
     assertEquals(expected.replace("\r", ""), builder.toString());
@@ -67,7 +67,7 @@ public class SvgViewTest {
     view.renderAnimation();
 
     FileReader reader = new FileReader("test/BasicSvgExpected.txt");
-    char[] cb = new char[1050];
+    char[] cb = new char[1078];
     reader.read(cb);
     String expected = String.copyValueOf(cb);
     assertEquals(expected.replace("\r", ""), builder.toString());
@@ -88,7 +88,7 @@ public class SvgViewTest {
     view.renderAnimation();
 
     FileReader reader = new FileReader("test/BasicSvgExpected2.txt");
-    char[] cb = new char[1268];
+    char[] cb = new char[1296];
     reader.read(cb);
     String expected = String.copyValueOf(cb);
     assertEquals(expected.replace("\r", ""), builder.toString());
