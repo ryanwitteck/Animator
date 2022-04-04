@@ -7,6 +7,7 @@ import cs3500.animator.io.AnimationFileReader;
 import cs3500.animator.io.OurModelBuilder;
 import cs3500.animator.model.IAnimation;
 import cs3500.animator.view.AnimationView;
+import cs3500.animator.view.SvgView;
 import cs3500.animator.view.VisualView;
 import cs3500.animator.view.TextView;
 
@@ -91,8 +92,13 @@ public class Main {
         view.renderAnimation();
         break;
       case "svg":
-        // TODO
-        System.out.println("This view is has not been implemented yet");
+        if (!out.isEmpty()) {
+          FileWriter writer = new FileWriter(out);
+          view = new SvgView(animation, writer, tickRate);
+        } else {
+          view = new SvgView(animation, System.out, tickRate);
+        }
+        view.renderAnimation();
         break;
       default:
         System.out.println("The view type provided is not recognized. Exiting Program.");
