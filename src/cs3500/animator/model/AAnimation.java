@@ -12,12 +12,13 @@ import cs3500.animator.model.interfaces.Drawable;
  * - objects    the HashMap of the objects in this animation mapped to their name
  * - frames     the list of IFrames that represents this animation
  * - cmdLog     a list of the string representations of each ICommand in this animation.
- * From this, we can create the command log.
+ *              From this, we can create the command log.
  * - nFrames    the number of frames in this animation i.e. the size of frames
  * - width      the width of the window
  * - height     the height of the window
  * This class implements all methods defined in IAnimation except for addCmd, removeCmd, compile,
  * and getCmdMap.
+ * This class is meant to be extended by more in depth implementations of IAnimation.
  */
 public abstract class AAnimation implements IAnimation {
 

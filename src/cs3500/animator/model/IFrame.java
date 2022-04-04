@@ -8,6 +8,7 @@ import cs3500.animator.model.interfaces.Drawable;
  * Represents a single frame in an animation.
  * Each IFrame contains the information necessary for a user to visualize
  * the state of an animation at a single instant in time.
+ * IFrames are used by our VisualView class to render our animation model.
  */
 public interface IFrame {
 

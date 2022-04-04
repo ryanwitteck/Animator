@@ -9,7 +9,7 @@ import cs3500.animator.model.interfaces.Drawable;
 /**
  * The IAnimation interface represents our model of an animated video.
  * A video in this context is defined as a collection of IFrames with a clear sequence,
- * whose motions (any changes between IFrames) are directed by various ICommands.
+ * whose motions (any changes between IFrames) are directed by a sequence of ICommands.
  * Each IFrame represents the state of the video at a given moment and
  * each ICommand represents some motion in the video.
  * All IAnimations must be able to:

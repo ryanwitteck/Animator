@@ -8,6 +8,8 @@ import cs3500.animator.model.interfaces.Drawable;
 
 /**
  * Represents a single frame in an animation. Simple implementation of IFrame.
+ * This is used by the animation model to store the state of the animation at a single moment in
+ * time and is used by our VisualView class to render our animation model.
  */
 public class Frame implements IFrame {
 
@@ -15,6 +17,7 @@ public class Frame implements IFrame {
 
   /**
    * Constructor of Frame taking a Collection of Drawable as an argument.
+   * Initializes field objects as a list of copies of the objects in the given collection.
    *
    * @param objects the collection of animated objects
    */
