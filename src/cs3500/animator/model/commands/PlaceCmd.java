@@ -41,9 +41,6 @@ public class PlaceCmd extends InstantCmd {
 
   @Override
   public String logCmd() {
-    if (!complete) {
-      throw new IllegalStateException("Error: command has not run");
-    }
     return name + " moves from : " + startPos + " to " + endPos + " at t = " + startTick;
   }
 }

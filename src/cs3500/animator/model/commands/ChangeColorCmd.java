@@ -55,9 +55,6 @@ public class ChangeColorCmd extends GradualCmd {
 
   @Override
   public String logCmd() {
-    if (!running && !complete) {
-      throw new IllegalStateException("Error: command has not run");
-    }
     return this.log;
   }
 
