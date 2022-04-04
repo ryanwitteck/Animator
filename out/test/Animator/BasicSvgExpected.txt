@@ -1,10 +1,10 @@
 <svg width="500" height="500" version="1.1" xmlns="http://www.w3.org/2000/svg">
 <rect id="R" x="100" y="100" width="40" height="30" fill="rgb(100,150,50)" visibility="visible" >
-<animate attributeType="xml" begin="333ms" end="3333ms" attributeName="x" from="100" to="0" fill="freeze" />
-<animate attributeType="xml" begin="333ms" end="3333ms" attributeName="y" from="100" to="0" fill="freeze" />
+<animate attributeType="xml" begin="333ms" dur="3000ms" attributeName="x" from="100" to="0" fill="freeze" />
+<animate attributeType="xml" begin="333ms" dur="3000ms" attributeName="y" from="100" to="0" fill="freeze" />
 </rect>
 <ellipse id="O" cx="100" cy="100" rx="40" ry="40" fill="rgb(90,10,70)" visibility="visible" >
-<animate attributeType="xml" begin="1666ms" end="5000ms" attributeName="cx" from="100" to="200" fill="freeze" />
-<animate attributeType="xml" begin="1666ms" end="5000ms" attributeName="cy" from="100" to="200" fill="freeze" />
+<animate attributeType="xml" begin="1666ms" dur="3333ms" attributeName="cx" from="100" to="200" fill="freeze" />
+<animate attributeType="xml" begin="1666ms" dur="3333ms" attributeName="cy" from="100" to="200" fill="freeze" />
 </ellipse>
 </svg>
