@@ -15,7 +15,10 @@ import cs3500.animator.model.commands.MoveCmd;
 import cs3500.animator.model.commands.ResizeCmd;
 
 /**
- * This class represents a visualization of an IAnimation as an SVG file. TODO implement.
+ * This class represents a visualization of an IAnimation as an SVG file. This class creates the
+ * svg view by reading and parsing the command logs of the ICommands that direct the behavior of
+ * IAnimation. As such, if we decide to implement more ICommands in the future, we will have to add
+ * more methods to this View implementation.
  */
 public class SvgView implements AnimationView {
 
@@ -48,7 +51,7 @@ public class SvgView implements AnimationView {
     objCmdMap = new HashMap<>();
     objNames = new ArrayList<>();
 
-    for (int i = 0; i < animation.getNFrames(); i++) {
+    for (int i = 0; i <= animation.getNFrames(); i++) {
       if (tickCmdMap.containsKey(i)) {
         for (ICommand cmd : tickCmdMap.get(i)) {
           String name = cmd.getTarget();
@@ -66,12 +69,16 @@ public class SvgView implements AnimationView {
 
   private void initSvgString() {
     StringBuilder svgBuilder = new StringBuilder();
-    svgBuilder.append("<svg width=\"").append(animation.getWindowWidth())
-            .append("\" height=\"").append(animation.getWindowHeight())
-            .append("\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\">\n");
+    String line = String.format(
+            "<svg width=\"%d\" height=\"%d\" "
+                    + "version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\">\n",
+            animation.getWindowWidth(), animation.getWindowHeight());
+    svgBuilder.append(line);
 
-    for (String name : objNames) {
-      svgBuilder.append(cmdToSvg(objCmdMap.get(name)));
+    if (!objNames.isEmpty()) {
+      for (String name : objNames) {
+        svgBuilder.append(cmdsToSvg(objCmdMap.get(name)));
+      }
     }
     svgBuilder.append("</svg>");
 
@@ -85,7 +92,7 @@ public class SvgView implements AnimationView {
    * @param cmds the given list of ICommands.
    * @return a svg representation of the object's behavior in the animation.
    */
-  private String cmdToSvg(List<ICommand> cmds) {
+  private String cmdsToSvg(List<ICommand> cmds) {
     if (cmds.isEmpty()) {
       return "";
     }
@@ -144,7 +151,7 @@ public class SvgView implements AnimationView {
     String[] args = cmd.logCmd().split(" ");
     int[] pos = new int[2];
     int[] rgb = new int[3];
-    parsePosnStr(args[8], pos);
+    parsePosnStr(args[7], pos);
     parseColorStr(args[16], rgb);
     int width = (int) Double.parseDouble(args[10]);
     int height = (int) Double.parseDouble(args[13]);
@@ -242,6 +249,7 @@ public class SvgView implements AnimationView {
    * @param pos the array to store the obtained x and y values to.
    */
   private void parsePosnStr(String str, int[] pos) {
+    System.out.println(str);
     String[] splitStr = str.substring(1, str.length() - 1).split(",");
     pos[0] = (int) Double.parseDouble(splitStr[0]);
     pos[1] = (int) Double.parseDouble(splitStr[1]);
