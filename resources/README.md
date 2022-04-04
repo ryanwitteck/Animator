@@ -41,8 +41,8 @@ IShape itself extends our three "basic" interfaces Drawable, Movable, and Scalab
 exist to clearly divide the three basic types of information each IShape should contain and actions
 each IShape should be able to perform -- i.e. every shape should contain the information necessary
 to define its own image (Drawable), be able to change position (Movable), and be able to be
-stretched or shrunk in both the x and y dimensions (Scalable). Currently, only three shapes have
-been implemented: Rectangle, Oval, and Compound Shape. The CompoundShape class exists only as an 
+stretched or shrunk in both the x and y dimensions (Scalable). Currently, three shapes have been 
+implemented: Rectangle, Oval, and Compound Shape. The CompoundShape class exists only as an 
 example of a more complex implementation of shape. Our model builders only allow users to create
 Rectangles and Ovals in the current implementation.
 
@@ -51,16 +51,17 @@ Commands are function-objects that define the behavior of an animation. All acti
 shape in an animation, moving a shape in an animation, to changing a shape's color, et cetera should
 be done through a command. Commands are represented by the ICommand interface and are split into two
 categories: InstantCmds and GradualCmds, representing commands that occur instantly and commands
-that occur over some period of time. Most commands should take both the start and state(s) of the 
-attributes they are changing and throw an error if the attribute they are targeting is an 
-unexpected value if they are going to be used in our animation model. Some commands such as our 
-addOvalCmd and addRectCmd do not throw exceptions themselves, instead relying on our IAnimation 
-implementation to throw an exception in case they fail.
+that occur over some period of time. Most commands should take the start state(s) of the 
+attribute(s) they are changing and throw an error if the attribute they are targeting is an 
+unexpected value. Some commands such as our addOvalCmd and addRectCmd do not throw exceptions 
+themselves, instead relying on our IAnimation implementation to throw an exception in case they 
+fail.
 
 #### Frames
 Frames represent the state of an animation at a single moment in time i.e. a single frame in an
 animation. Frames provide the necessary information to visualize an animation at a given moment.
-Frames are represented by the IFrame interface and implemented in the Frame class.
+Frames are represented by the IFrame interface and implemented in the Frame class. Frames are the 
+main building blocks of our visual view implementation.
 
 #### Animations
 Animations are our model of an animated video itself. They are defined as a collection frames and a
