@@ -34,7 +34,7 @@ public class ResizeCmd extends GradualCmd {
     this.dx = (toX - fromX) / (end - start);
     this.dy = (toY - fromY) / (end - start);
     this.log = name + " scales from : " + fromX + " by " + fromY + " to " + toX + " by " + toY
-            + " from t=" + start + " to t=" + end;
+            + " from t = " + start + " to t = " + end;
   }
 
   @Override
