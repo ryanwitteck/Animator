@@ -187,10 +187,4 @@ public class CommandTest {
     cmd2.execute(a);
     cmd.execute(a);
   }
-
-  @Test(expected = IllegalStateException.class)
-  public void testLogFail1() {
-    ICommand cmd = new PlaceCmd("R1", 1, new Posn(0, 3.33));
-    cmd.logCmd();
-  }
 }
