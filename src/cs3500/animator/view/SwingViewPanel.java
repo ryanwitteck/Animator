@@ -37,7 +37,7 @@ class SwingViewPanel extends JPanel {
     super.paintComponent(g);
     Graphics2D g2 = (Graphics2D) g;
 
-    List<Drawable> list = frame.listObjectsRev();
+    List<Drawable> list = frame.listObjects();
     for (Drawable d : list) {
       if (d instanceof Rectangle) {
         Rectangle r = (Rectangle) d;

@@ -229,9 +229,11 @@ public class SvgView implements AnimationView {
 
   /**
    * Given a ResizeCmd, parse the command into a form that svg recognizes.
+   * Uses the provided shape info, command log of the given command, and getters of the command to
+   * produce the svg-formatted string.
    *
    * @param shapeInfo a string array containing the target object's type and attributes
-   * @param cmd       the move shape command
+   * @param cmd       the resize shape command
    * @return the command parsed into svg format
    */
   private String parseResizeShape(String[] shapeInfo, ICommand cmd) {
@@ -256,8 +258,10 @@ public class SvgView implements AnimationView {
 
   /**
    * Given a ChangeColorCmd, parse the command into a form that svg recognizes.
+   * Uses the command log of the given command and the getters of the command to produce the
+   * svg-formatted string.
    *
-   * @param cmd       the move shape command
+   * @param cmd       the change color command
    * @return the command parsed into svg format
    */
   private String parseChangeColor(ICommand cmd) {
