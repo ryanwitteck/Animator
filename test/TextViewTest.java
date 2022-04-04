@@ -88,7 +88,7 @@ public class TextViewTest {
 
     view.renderAnimation();
     FileReader reader = new FileReader("test/TextViewFileTest");
-    char[] cb = new char[691];
+    char[] cb = new char[652];
     reader.read(cb);
     String s = String.copyValueOf(cb);
     assertEquals(animation.getCmdLog(), s);

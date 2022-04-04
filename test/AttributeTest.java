@@ -84,9 +84,9 @@ public class AttributeTest {
     Posn p2 = new Posn(-123.329, -751.12);
     Posn p3 = new Posn(446535, 658834);
 
-    assertEquals("( 0.0, 0.0 )", p1.toString());
-    assertEquals("( -123.329, -751.12 )", p2.toString());
-    assertEquals("( 446535.0, 658834.0 )", p3.toString());
+    assertEquals("(0.0,0.0)", p1.toString());
+    assertEquals("(-123.329,-751.12)", p2.toString());
+    assertEquals("(446535.0,658834.0)", p3.toString());
 
     assertEquals(0, p1.getX(), 0.001);
     assertEquals(0, p1.getY(), 0.001);

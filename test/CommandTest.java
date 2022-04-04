@@ -42,13 +42,13 @@ public class CommandTest {
     assertEquals(1, cmd2.getStartTick());
     assertEquals(4, cmd3.getStartTick());
 
-    assertEquals("Created Rectangle name = R1 posn = ( 0.0, 0.0 ) " +
+    assertEquals("Created Rectangle name = R1 posn = (0.0,0.0) " +
             "width = 10.0 height = 5.0 color = (0.0,0.0,0.0) at t = 1", cmd1.logCmd());
-    assertEquals("Created Rectangle name = R2 posn = ( 3.33, 6.67 ) " +
+    assertEquals("Created Rectangle name = R2 posn = (3.33,6.67) " +
             "width = 87.0 height = 11.0 color = (0.0,0.0,0.0) at t = 1", cmd2.logCmd());
-    assertEquals("Created Rectangle name = R3 posn = ( -10.0, 999.0 ) " +
+    assertEquals("Created Rectangle name = R3 posn = (-10.0,999.0) " +
             "width = 50.0 height = 1.0 color = (0.0,0.0,0.0) at t = 4", cmd3.logCmd());
-    assertEquals("Created Oval name = O1 posn = ( -10.0, 999.0 ) " +
+    assertEquals("Created Oval name = O1 posn = (-10.0,999.0) " +
             "rx = 50.0 ry = 1.0 color = (0.0,0.0,0.0) at t = 4", cmd4.logCmd());
 
     assertFalse(cmd1.isComplete());
@@ -127,13 +127,13 @@ public class CommandTest {
     assertEquals(new Posn(-1.75, -9), ((Movable) a.getDrawable("R1")).getPos());
     assertTrue(cmd4.isComplete() && !cmd4.isRunning());
 
-    assertEquals("R2 moves from : ( -10.0, 99.0 ) to ( 1.0, 55.0 ) from t = 1 to t = 12",
+    assertEquals("R2 moves from : (-10.0,99.0) to (1.0,55.0) from t = 1 to t = 12",
             cmd1.logCmd());
-    assertEquals("R1 moves from : ( 3.33, 6.67 ) to ( 10943.134, 32142.765 ) " +
+    assertEquals("R1 moves from : (3.33,6.67) to (10943.134,32142.765) " +
             "from t = 1 to t = 1000", cmd2.logCmd());
-    assertEquals("R2 moves from : ( 1.0, 55.0 ) to ( 0.0, 3.33 ) at t = 1", cmd3.logCmd());
-    assertEquals("R1 moves from : ( 10943.134, 32142.765 ) " +
-            "to ( -1.75, -9.0 ) at t = 1", cmd4.logCmd());
+    assertEquals("R2 moves from : (1.0,55.0) to (0.0,3.33) at t = 1", cmd3.logCmd());
+    assertEquals("R1 moves from : (10943.134,32142.765) " +
+            "to (-1.75,-9.0) at t = 1", cmd4.logCmd());
 
     a.removeDrawable("R2");
     Rectangle rect3 = new Rectangle("R2", -10, 99, 50, 1, new Color(0, 0, 0));
