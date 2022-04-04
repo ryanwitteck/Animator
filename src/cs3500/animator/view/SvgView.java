@@ -12,18 +12,16 @@ import cs3500.animator.model.commands.AddRectCmd;
 import cs3500.animator.model.commands.ChangeColorCmd;
 import cs3500.animator.model.commands.ICommand;
 import cs3500.animator.model.commands.MoveCmd;
-import cs3500.animator.model.commands.RemoveDrawableCmd;
 import cs3500.animator.model.commands.ResizeCmd;
-import cs3500.animator.model.shapes.Rectangle;
 
 /**
  * This class represents a visualization of an IAnimation as an SVG file. TODO implement.
  */
 public class SvgView implements AnimationView {
 
-  private IAnimation animation;
-  private Appendable ap;
-  private int fps;
+  private final IAnimation animation;
+  private final Appendable ap;
+  private final int fps;
   private List<String> objNames;
   private HashMap<String, List<ICommand>> objCmdMap;
   private String svgString;
@@ -71,17 +69,145 @@ public class SvgView implements AnimationView {
             .append("\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\">\n");
 
     for (String name : objNames) {
-      for (ICommand cmd : objCmdMap.get(name)) {
-        svgBuilder.append(cmdToSvg(cmd));
-      }
+      svgBuilder.append(cmdToSvg(objCmdMap.get(name)));
     }
-    svgBuilder.append("/svg");
+    svgBuilder.append("</svg>");
 
     svgString = svgBuilder.toString();
   }
 
-  private String cmdToSvg(ICommand cmd) {
-    return "";
+  /**
+   * This method takes a list of ICommand that all target the same object and use their logs to
+   * create a representation of the object's behavior in the svg format.
+   *
+   * @param cmds the given list of ICommands.
+   * @return a svg representation of the object's behavior in the animation.
+   */
+  private String cmdToSvg(List<ICommand> cmds) {
+    if (cmds.isEmpty()) {
+      return "";
+    }
+    /*
+     * shapeInfo is an array containing the target shape's type and attribute names
+     * shapeInfo[0] = the shapeType e.g. "rect" or "ellipse"
+     * shapeInfo[1] = the name of the x position attribute e.g. "x" or "cx"
+     * shapeInfo[2] = the name of the y position attribute e.g. "y" or "cy"
+     * shapeInfo[3] = the name of the x dimension attribute e.g. "width" or "rx"
+     * shapeInfo[4] = the name of the y dimension attribute e.g. "height" or "ry"
+     */
+    String[] shapeInfo = new String[5];
+    StringBuilder builder = new StringBuilder();
+
+    if (cmds.get(0) instanceof AddRectCmd) {
+      shapeInfo[0] = "rect";
+      shapeInfo[1] = "x";
+      shapeInfo[2] = "y";
+      shapeInfo[3] = "width";
+      shapeInfo[4] = "height";
+    } else if (cmds.get(0) instanceof AddOvalCmd) {
+      shapeInfo[0] = "ellipse";
+      shapeInfo[1] = "cx";
+      shapeInfo[2] = "cy";
+      shapeInfo[3] = "rx";
+      shapeInfo[4] = "ry";
+    } else {
+      return "";
+    }
+    builder.append(parseAddShape(shapeInfo, cmds.get(0)));
+
+    for (int i = 1; i < cmds.size(); i++) {
+      if (cmds.get(i) instanceof MoveCmd) {
+        builder.append(parseMoveShape(shapeInfo, (MoveCmd) cmds.get(i)));
+      } else if (cmds.get(i) instanceof ChangeColorCmd) {
+        // TODO
+      } else if (cmds.get(i) instanceof ResizeCmd) {
+        // TODO
+      }
+    }
+    builder.append(String.format("</%s>\n", shapeInfo[0]));
+
+    return builder.toString();
+  }
+
+  /**
+   * Given an ICommand that adds a shape to the animation and the shape's type and attribute names,
+   * parse the command into a form that svg recognizes.
+   * This method assumes that input is a command that adds a shape to the animation.
+   *
+   * @param shapeInfo a string array containing the target object's type and attributes
+   * @param cmd       the add shape command
+   * @return the command parsed into svg format
+   */
+  private String parseAddShape(String[] shapeInfo, ICommand cmd) {
+    String[] args = cmd.logCmd().split(" ");
+    int[] pos = new int[2];
+    int[] rgb = new int[3];
+    parsePosnStr(args[7], pos);
+    parseColorStr(args[16], rgb);
+    int width = (int) Double.parseDouble(args[10]);
+    int height = (int) Double.parseDouble(args[13]);
+
+    return String.format(
+            "<%s id=\"%s\" %s=\"%d\" %s=\"%d\" %s=\"%d\" %s=\"%d\" "
+                    + "fill=\"rgb(%d,%d,%d)\" visibility=\"visible\" >\n",
+            shapeInfo[0], cmd.getTarget(), shapeInfo[1], pos[0], shapeInfo[2], pos[1],
+            shapeInfo[3], width, shapeInfo[4], height, rgb[0], rgb[1], rgb[2]);
+  }
+
+  /**
+   * Given a MoveCmd, parse the command into a form that svg recognizes.
+   *
+   * @param shapeInfo a string array containing the target object's type and attributes
+   * @param cmd       the move shape command
+   * @return the command parsed into svg format
+   */
+  private String parseMoveShape(String[] shapeInfo, MoveCmd cmd) {
+    String[] args = cmd.logCmd().split(" ");
+    int[] initPos = new int[2];
+    int[] endPos = new int[2];
+    parsePosnStr(args[4], initPos);
+    parsePosnStr(args[6], endPos);
+    String line = String.format(
+            "<animate attributeType=\"xml\" begin=\"%dms\" end=\"%dms\" " +
+                    "attributeName=\"%s\" from=\"%d\" to=\"%d\" fill=\"freeze\" />\n",
+            cmd.getStartTick() * 1000 / fps, cmd.getEndTick() * 1000 / fps,
+            shapeInfo[1], initPos[0], endPos[0]);
+    String line2 = String.format(
+            "<animate attributeType=\"xml\" begin=\"%dms\" end=\"%dms\" " +
+                    "attributeName=\"%s\" from=\"%d\" to=\"%d\" fill=\"freeze\" />\n",
+            cmd.getStartTick() * 1000 / fps, cmd.getEndTick() * 1000 / fps,
+            shapeInfo[2], initPos[1], endPos[1]);
+
+    return line + line2;
+  }
+
+  /**
+   * Given the toString representation of a Posn, set the first two indices of the given array to
+   * the truncated x and y values of the Posn. Assumes that the given string is obtained by
+   * calling the toString method in Posn and that the given array's length is at least 2.
+   *
+   * @param str the toString of some Posn. Should be in the form "( x, y )".
+   * @param pos the array to store the obtained x and y values to.
+   */
+  private void parsePosnStr(String str, int[] pos) {
+    String[] splitStr = str.substring(2, str.length() - 2).split(", ");
+    pos[0] = (int) Double.parseDouble(splitStr[0]);
+    pos[1] = (int) Double.parseDouble(splitStr[1]);
+  }
+
+  /**
+   * Given the toString representation of a Color, set the first three indices of the given array
+   * to the truncated rgb values of the Color. Assumes that the given string is obtained by
+   * calling the toString method in Color and that the given array's length is at least 3.
+   *
+   * @param str the toString of some Color. Should be in the form "(r,b,g)".
+   * @param rgb the array to store the obtained rgb values to.
+   */
+  private void parseColorStr(String str, int[] rgb) {
+    String[] splitStr = str.substring(1, str.length() - 1).split(",");
+    rgb[0] = (int) Double.parseDouble(splitStr[0]);
+    rgb[1] = (int) Double.parseDouble(splitStr[1]);
+    rgb[2] = (int) Double.parseDouble(splitStr[2]);
   }
 
   @Override
