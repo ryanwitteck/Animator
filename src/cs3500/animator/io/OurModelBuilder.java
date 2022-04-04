@@ -12,7 +12,10 @@ import cs3500.animator.model.commands.RemoveDrawableCmd;
 import cs3500.animator.model.commands.ResizeCmd;
 
 /**
- * TODO
+ * This is our implementation of the TweenModelBuilder interface. This class is used by the
+ * AnimationFileReader to build an animation model. This class in conjunction with the
+ * AnimationFileReader class parses a text representation of an animation into an instance of our
+ * animation model IAnimation, which is defined by a series of ICommands.
  */
 public class OurModelBuilder implements TweenModelBuilder<IAnimation> {
 
@@ -76,7 +79,8 @@ public class OurModelBuilder implements TweenModelBuilder<IAnimation> {
     checkColor(oldR, oldG, oldB);
     checkColor(newR, newG, newB);
     animation.addCmd(new ChangeColorCmd(name, startTime, endTime,
-            new Color(255 * oldR, 255 * oldG, 255 * oldB), new Color(255 * newR, 255 * newG, 255 * newB)));
+            new Color(255 * oldR, 255 * oldG, 255 * oldB),
+            new Color(255 * newR, 255 * newG, 255 * newB)));
     return this;
   }
 

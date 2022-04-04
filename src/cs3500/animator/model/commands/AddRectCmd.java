@@ -2,14 +2,15 @@ package cs3500.animator.model.commands;
 
 import cs3500.animator.model.IAnimation;
 import cs3500.animator.model.attributes.Color;
-import cs3500.animator.model.attributes.Posn;
 import cs3500.animator.model.shapes.Rectangle;
 
 /**
  * Represents a command to add a Rectangle to an animation.
  * Allows the user to define the parameters of the new Rectangle:
  * its initial position, dimensions, and color.
+ *
  * <p>
+ *
  * log format:
  * - "Created Rectangle name=[name] posn=[posn] width=[width] height=[height] color=[color]
  *   + " at t=[start tick]"

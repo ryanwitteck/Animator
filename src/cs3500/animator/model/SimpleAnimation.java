@@ -72,7 +72,7 @@ public class SimpleAnimation extends AAnimation {
   }
 
   /**
-   * Resets cmdMap to its initial state:
+   * Resets cmdMap to its initial state.
    * - resets cmdMap to a new HashMap
    * - calls reset on every ICommand in cmds
    * - adds every ICommand in cmds to cmdMap

@@ -142,6 +142,20 @@ public class Color {
   }
 
   /**
+   * Sets new Color values.
+   *
+   * @param c the color to copy.
+   */
+  public void setColor(Color c) {
+    if (c == null) {
+      throw new IllegalArgumentException("Color cannot be null");
+    }
+    this.r = c.r;
+    this.g = c.g;
+    this.b = c.b;
+  }
+
+  /**
    * Returns the red value.
    */
   public double getR() {
@@ -160,20 +174,6 @@ public class Color {
    */
   public double getB() {
     return b;
-  }
-
-  /**
-   * Sets new Color values.
-   *
-   * @param c the color to copy.
-   */
-  public void setColor(Color c) {
-    if (c == null) {
-      throw new IllegalArgumentException("Color cannot be null");
-    }
-    this.r = c.r;
-    this.g = c.g;
-    this.b = c.b;
   }
 
   @Override

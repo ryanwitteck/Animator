@@ -22,6 +22,8 @@ public class Main {
   /**
    * Our main method. Takes in command line arguments and parses them to get the information
    * required to create a model and view of the user's animation.
+   *
+   * <p>
    * <p>
    * Command line arguments should be in formatted in pairs with the field being declared first
    * followed by the value. In other words:
@@ -30,7 +32,9 @@ public class Main {
    * "-out" followed by "where-output-should-go"
    * "-speed" followed by "integer-ticks-per-second"
    * The order that the arguments for -in, -out, -view, and -speed are given does not matter.
+   *
    * <p>
+   *
    * The arguments for -in and -view are required by this method,
    * while -out will default to System.out and -speed will default to 1 tick per second.
    *

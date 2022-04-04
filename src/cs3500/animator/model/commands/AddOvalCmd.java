@@ -8,7 +8,9 @@ import cs3500.animator.model.shapes.Oval;
  * Represents a command to add an Oval to an animation.
  * Allows the user to define the parameters of the new Oval:
  * its initial position, dimensions, and color.
+ *
  * <p>
+ *
  * log format:
  * - "Created Oval name=[name] posn=[posn] xr=[XRadius] yr=[yRadius] color=[color]
  *   + " at t=[start tick]"
