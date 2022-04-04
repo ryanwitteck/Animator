@@ -141,11 +141,11 @@ public class SvgView implements AnimationView {
       if (cmds.get(i) instanceof MoveCmd) {
         builder.append(parseMoveShape(shapeInfo, cmds.get(i)));
       } else if (cmds.get(i) instanceof ChangeColorCmd) {
-        builder.append(parseChangeColor(shapeInfo, cmds.get(i)));
+        builder.append(parseChangeColor(cmds.get(i)));
       } else if (cmds.get(i) instanceof ResizeCmd) {
         builder.append(parseResizeShape(shapeInfo, cmds.get(i)));
       } else if (cmds.get(i) instanceof RemoveDrawableCmd) {
-        builder.append(parseRemoveShape(shapeInfo, cmds.get(i)));
+        builder.append(parseRemoveShape(cmds.get(i)));
       }
     }
     builder.append(String.format("</%s>\n", shapeInfo[0]));
@@ -185,15 +185,14 @@ public class SvgView implements AnimationView {
   }
 
   /**
-   * Given an ICommand that removes a shape from the animation and the shape's type and attribute
-   * names, parse the command into a form that svg recognizes.
+   * Given an ICommand that removes a shape from the animation, parse the command into a form
+   * that svg recognizes.
    * This method assumes that input is a command that removes a shape from the animation.
    *
-   * @param shapeInfo a string array containing the target object's type and attributes
    * @param cmd       the add shape command
    * @return the command parsed into svg format
    */
-  private String parseRemoveShape(String[] shapeInfo, ICommand cmd) {
+  private String parseRemoveShape(ICommand cmd) {
 
     return String.format(
             "<set attributeType=\"xml\" begin=\"%dms\" "
@@ -221,7 +220,7 @@ public class SvgView implements AnimationView {
             shapeInfo[1], initPos[0], endPos[0]);
     String line2 = String.format(
             "<animate attributeType=\"xml\" begin=\"%dms\" dur=\"%dms\" "
-                    + "attributeName=\"%s\" from=\"%d\" to=\"%d\" />\n",
+                    + "attributeName=\"%s\" from=\"%d\" to=\"%d\" fill=\"freeze\" />\n",
             cmd.getStartTick() * 1000 / fps, (cmd.getEndTick() - cmd.getStartTick()) * 1000 / fps,
             shapeInfo[2], initPos[1], endPos[1]);
 
@@ -258,11 +257,10 @@ public class SvgView implements AnimationView {
   /**
    * Given a ChangeColorCmd, parse the command into a form that svg recognizes.
    *
-   * @param shapeInfo a string array containing the target object's type and attributes
    * @param cmd       the move shape command
    * @return the command parsed into svg format
    */
-  private String parseChangeColor(String[] shapeInfo, ICommand cmd) {
+  private String parseChangeColor(ICommand cmd) {
     String[] args = cmd.logCmd().split(" ");
     int[] initRGB = new int[3];
     int[] endRGB = new int[3];
