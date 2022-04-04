@@ -6,5 +6,6 @@
 <ellipse id="O" cx="100" cy="100" rx="40" ry="40" fill="rgb(90,10,70)" visibility="visible" >
 <animate attributeType="xml" begin="1666ms" dur="3333ms" attributeName="cx" from="100" to="200" fill="freeze" />
 <animate attributeType="xml" begin="1666ms" dur="3333ms" attributeName="cy" from="100" to="200" fill="freeze" />
+<animateColor attributeType="xml" begin="1666ms" dur="3333ms" attributeName="fill" from="rgb(90,10,70)" to="rgb(90,10,70)" fill="freeze" />
 </ellipse>
 </svg>
