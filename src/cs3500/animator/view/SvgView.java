@@ -177,14 +177,14 @@ public class SvgView implements AnimationView {
     parsePosnStr(args[4], initPos);
     parsePosnStr(args[6], endPos);
     String line = String.format(
-            "<animate attributeType=\"xml\" begin=\"%dms\" end=\"%dms\" "
+            "<animate attributeType=\"xml\" begin=\"%dms\" dur=\"%dms\" "
                     + "attributeName=\"%s\" from=\"%d\" to=\"%d\" fill=\"freeze\" />\n",
-            cmd.getStartTick() * 1000 / fps, cmd.getEndTick() * 1000 / fps,
+            cmd.getStartTick() * 1000 / fps, (cmd.getEndTick() - cmd.getStartTick()) * 1000 / fps,
             shapeInfo[1], initPos[0], endPos[0]);
     String line2 = String.format(
-            "<animate attributeType=\"xml\" begin=\"%dms\" end=\"%dms\" "
+            "<animate attributeType=\"xml\" begin=\"%dms\" dur=\"%dms\" "
                     + "attributeName=\"%s\" from=\"%d\" to=\"%d\" fill=\"freeze\" />\n",
-            cmd.getStartTick() * 1000 / fps, cmd.getEndTick() * 1000 / fps,
+            cmd.getStartTick() * 1000 / fps, (cmd.getEndTick() - cmd.getStartTick()) * 1000 / fps,
             shapeInfo[2], initPos[1], endPos[1]);
 
     return line + line2;
@@ -204,14 +204,14 @@ public class SvgView implements AnimationView {
     int endWidth = (int) Double.parseDouble(args[8]);
     int endHeight = (int) Double.parseDouble(args[10]);
     String line = String.format(
-            "<animate attributeType=\"xml\" begin=\"%dms\" end=\"%dms\" "
+            "<animate attributeType=\"xml\" begin=\"%dms\" dur=\"%dms\" "
                     + "attributeName=\"%s\" from=\"%d\" to=\"%d\" fill=\"freeze\" />\n",
-            cmd.getStartTick() * 1000 / fps, cmd.getEndTick() * 1000 / fps,
+            cmd.getStartTick() * 1000 / fps, (cmd.getEndTick() - cmd.getStartTick()) * 1000 / fps,
             shapeInfo[3], startWidth, endWidth);
     String line2 = String.format(
-            "<animate attributeType=\"xml\" begin=\"%dms\" end=\"%dms\" "
+            "<animate attributeType=\"xml\" begin=\"%dms\" dur=\"%dms\" "
                     + "attributeName=\"%s\" from=\"%d\" to=\"%d\" fill=\"freeze\" />\n",
-            cmd.getStartTick() * 1000 / fps, cmd.getEndTick() * 1000 / fps,
+            cmd.getStartTick() * 1000 / fps, (cmd.getEndTick() - cmd.getStartTick()) * 1000 / fps,
             shapeInfo[3], startHeight, endHeight);
 
     return line + line2;
@@ -230,14 +230,13 @@ public class SvgView implements AnimationView {
     int[] endRGB = new int[3];
     parseColorStr(args[16], initRGB);
     parseColorStr(args[16], endRGB);
-    String line = String.format(
-            "<animateColor attributeType=\"xml\" begin=\"%dms\" end=\"%dms\" "
+
+    return String.format(
+            "<animateColor attributeType=\"xml\" begin=\"%dms\" dur=\"%dms\" "
                     + "attributeName=\"fill\" from=\"rgb(%d,%d,%d)\" to=\"rgb(%d,%d,%d)\" "
                     + "fill=\"freeze\" />\n",
-            cmd.getStartTick() * 1000 / fps, cmd.getEndTick() * 1000 / fps,
+            cmd.getStartTick() * 1000 / fps, (cmd.getEndTick() - cmd.getStartTick()) * 1000 / fps,
             initRGB[0], initRGB[1], initRGB[2], endRGB[0], endRGB[1], endRGB[2]);
-
-    return line;
   }
 
   /**
