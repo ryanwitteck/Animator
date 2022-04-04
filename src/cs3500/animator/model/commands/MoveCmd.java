@@ -35,7 +35,7 @@ public class MoveCmd extends GradualCmd {
     this.startPos = startPos;
     this.currentPos = new Posn(startPos);
     this.log = name + " moves from : " + startPos + " to " + dest
-            + " from t=" + startTick + " to t=" + endTick;
+            + " from t = " + startTick + " to t = " + endTick;
     this.dx = (dest.getX() - startPos.getX()) / (endTick - startTick);
     this.dy = (dest.getY() - startPos.getY()) / (endTick - startTick);
   }

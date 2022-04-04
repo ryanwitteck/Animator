@@ -9,8 +9,8 @@ import cs3500.animator.model.shapes.Rectangle;
  * Allows the user to define the parameters of the new Rectangle:
  * its initial position, dimensions, and color.
  * log format:
- * - "Created Rectangle name=[name] posn=[posn] width=[width] height=[height] color=[color]
- *   + " at t=[start tick]"
+ * - "Created Rectangle name = [name] posn = [posn] width = [width] height = [height]"
+ *   + " color = [color] at t = [start tick]"
  */
 public class AddRectCmd extends InstantCmd {
 
@@ -47,7 +47,8 @@ public class AddRectCmd extends InstantCmd {
 
   @Override
   public String logCmd() {
-    return "Created Rectangle name=" + name + " posn=" + rect.getPos() + " width=" + rect.getWidth()
-            + " height=" + rect.getHeight() + " color=" + rect.getColor() + " at t=" + startTick;
+    return "Created Rectangle name = " + name + " posn = " + rect.getPos()
+            + " width = " + rect.getWidth() + " height = " + rect.getHeight()
+            + " color = " + rect.getColor() + " at t = " + startTick;
   }
 }

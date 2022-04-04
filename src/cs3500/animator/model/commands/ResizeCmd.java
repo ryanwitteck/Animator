@@ -9,7 +9,8 @@ import cs3500.animator.model.interfaces.Scalable;
  * Implements new fields dx and dy, the change in the target's width and height per tick
  * respectively.
  * log format:
- * - "[target name] scales from : [x0] by [y0] to [x1] by [y1] from t=[start tick] to t=[end tick]"
+ * - "[target name] scales from : [x0] by [y0] to [x1] by [y1]"
+ *   + " from t = [start tick] to t = [end tick]"
  */
 public class ResizeCmd extends GradualCmd {
   protected String log;

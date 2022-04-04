@@ -36,7 +36,7 @@ public class ChangeColorCmd extends GradualCmd {
     this.initColor = startColor;
     this.startColor = new Color(startColor);
     this.log = name + " changes color from : " + initColor + " to " + endColor
-            + " from t=" + (startTick - 1) + " to t=" + endTick;
+            + " from t = " + (startTick - 1) + " to t = " + endTick;
     this.dr = (endColor.getR() - initColor.getR()) / (endTick - startTick + 1);
     this.dg = (endColor.getG() - initColor.getG()) / (endTick - startTick + 1);
     this.db = (endColor.getB() - initColor.getB()) / (endTick - startTick + 1);

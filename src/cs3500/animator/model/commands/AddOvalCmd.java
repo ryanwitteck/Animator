@@ -9,8 +9,8 @@ import cs3500.animator.model.shapes.Oval;
  * Allows the user to define the parameters of the new Oval:
  * its initial position, dimensions, and color.
  * log format:
- * - "Created Oval name=[name] posn=[posn] xr=[XRadius] yr=[yRadius] color=[color]
- *   + " at t=[start tick]"
+ * - "Created Oval name = [name] posn = [posn] ry = [XRadius] ry = [yRadius] color = [color]
+ *   + " at t = [start tick]"
  */
 public class AddOvalCmd extends InstantCmd {
 
@@ -47,7 +47,8 @@ public class AddOvalCmd extends InstantCmd {
 
   @Override
   public String logCmd() {
-    return "Created Oval name=" + name + " posn=" + oval.getPos() + " xr=" + oval.getXRadius()
-            + " yr=" + oval.getYRadius() + " color=" + oval.getColor() + " at t=" + startTick;
+    return "Created Oval name = " + name + " posn = " + oval.getPos()
+            + " rx = " + oval.getXRadius() + " ry = " + oval.getYRadius()
+            + " color = " + oval.getColor() + " at t = " + startTick;
   }
 }

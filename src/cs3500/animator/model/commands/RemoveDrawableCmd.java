@@ -5,7 +5,7 @@ import cs3500.animator.model.IAnimation;
 /**
  * Represents a command to remove a Drawable from an animation.
  * log format:
- * - "Removed Drawable named [object name] at t=[start tick]"
+ * - "Removed Drawable named [object name] at t = [start tick]"
  */
 public class RemoveDrawableCmd extends InstantCmd {
 
@@ -28,6 +28,6 @@ public class RemoveDrawableCmd extends InstantCmd {
 
   @Override
   public String logCmd() {
-    return "Removed Drawable named " + name + " at t=" + startTick;
+    return "Removed Drawable named " + name + " at t = " + startTick;
   }
 }
