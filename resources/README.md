@@ -17,7 +17,7 @@
   </p>
 
   <p align="center">
-    Authors: Charles Zhao, Ryan WItteck
+    Authors: Charles Zhao, Ryan Witteck
   </p>
 
 <!-- ABOUT THE PROJECT -->
