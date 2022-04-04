@@ -228,8 +228,8 @@ public class SvgView implements AnimationView {
     String[] args = cmd.logCmd().split(" ");
     int[] initRGB = new int[3];
     int[] endRGB = new int[3];
-    parseColorStr(args[16], initRGB);
-    parseColorStr(args[16], endRGB);
+    parseColorStr(args[5], initRGB);
+    parseColorStr(args[5], endRGB);
 
     return String.format(
             "<animateColor attributeType=\"xml\" begin=\"%dms\" dur=\"%dms\" "
