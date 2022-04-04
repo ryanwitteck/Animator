@@ -105,22 +105,19 @@ public class Color {
     // keep red in bounds
     if (r < 0) {
       r = 0;
-    }
-    else if (r > 255) {
+    } else if (r > 255) {
       r = 255;
     }
     // keep green in bounds
     if (g < 0) {
       g = 0;
-    }
-    else if (g > 255) {
+    } else if (g > 255) {
       g = 255;
     }
     // keep blue in bounds
     if (b < 0) {
       b = 0;
-    }
-    else if (b > 255) {
+    } else if (b > 255) {
       b = 255;
     }
   }
@@ -198,6 +195,7 @@ public class Color {
 
   @Override
   public String toString() {
-    return "(" + r + "," + g + "," + b + ")";
+    return "(" + Math.round(r * 1000) / 1000 + ","
+            + Math.round(g * 1000) / 1000 + "," + Math.round(b * 1000) / 1000 + ")";
   }
 }
