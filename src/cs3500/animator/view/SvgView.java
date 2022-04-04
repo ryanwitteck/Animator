@@ -15,10 +15,10 @@ import cs3500.animator.model.commands.MoveCmd;
 import cs3500.animator.model.commands.ResizeCmd;
 
 /**
- * This class represents a visualization of an IAnimation as an SVG file. This class creates the
- * svg view by reading and parsing the command logs of the ICommands that direct the behavior of
- * IAnimation. As such, if we decide to implement more ICommands in the future, we will have to add
- * more methods to this View implementation.
+ * This class represents a text visualization of an IAnimation as in the SVG file format. This class
+ * creates the svg view by reading and parsing the command logs of the ICommands that direct the
+ * behavior of the IAnimation model being visualized. As such, if we decide to implement more
+ * ICommands in the future, we will have to add more methods to this View implementation.
  */
 public class SvgView implements AnimationView {
 
@@ -32,7 +32,9 @@ public class SvgView implements AnimationView {
   /**
    * Sole constructor of SvgView. Initialize fields animation, ap, and fps to the given arguments
    * and use the given model to initialize objNames, objCmdMap, and svgString.
-   * This view will not print to the given destination until renderAnimation is called.
+   * This constructor assumes the animation given to it has already been created and has had its
+   * compile method called.
+   * This view will not write or append to the given destination until renderAnimation is called.
    *
    * @param animation the animation being converted to SVG format.
    * @param ap        the destination that this view will be printed to.
@@ -46,6 +48,11 @@ public class SvgView implements AnimationView {
     initSvgString();
   }
 
+  /**
+   * Initializes the fields objNames and objCmdMap by using the HashMap returned by the getCmdMap
+   * method in IAnimation. The purpose of objNames and objCmdMap is to keep track of every object
+   * that exists in the animation and the motions associated with them.
+   */
   private void initMapAndList() {
     HashMap<Integer, List<ICommand>> tickCmdMap = animation.getCmdMap();
     objCmdMap = new HashMap<>();
@@ -67,6 +74,11 @@ public class SvgView implements AnimationView {
     }
   }
 
+  /**
+   * Initializes the field svgString using the objNames and objCmdMap fields.
+   * Using these two fields, we iterate through every unique object and assign their motions to
+   * them in the SVG format.
+   */
   private void initSvgString() {
     StringBuilder svgBuilder = new StringBuilder();
     String line = String.format(

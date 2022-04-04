@@ -1,9 +1,7 @@
 import org.junit.Test;
 
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 
 import cs3500.animator.model.IAnimation;
 import cs3500.animator.model.SimpleAnimation;
@@ -12,9 +10,7 @@ import cs3500.animator.model.attributes.Posn;
 import cs3500.animator.model.commands.AddOvalCmd;
 import cs3500.animator.model.commands.AddRectCmd;
 import cs3500.animator.model.commands.ChangeColorCmd;
-import cs3500.animator.model.commands.ICommand;
 import cs3500.animator.model.commands.MoveCmd;
-import cs3500.animator.model.commands.PlaceCmd;
 import cs3500.animator.model.commands.ResizeCmd;
 import cs3500.animator.view.AnimationView;
 import cs3500.animator.view.SvgView;
