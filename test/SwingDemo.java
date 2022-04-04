@@ -47,7 +47,7 @@ public class SwingDemo {
     try {
       view.renderAnimation();
     } catch (IOException e) {
-      System.out.println("Failed to render demo in SwingDemo.testRender");
+      System.out.println("Failed to render demo in SwingDemo.main");
     }
   }
 }
