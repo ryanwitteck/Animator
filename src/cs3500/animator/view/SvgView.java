@@ -7,7 +7,7 @@ import cs3500.animator.model.IAnimation;
 import cs3500.animator.model.commands.ICommand;
 
 /**
- * TODO
+ * This class represents a visualization of an IAnimation as an SVG file. TODO implement.
  */
 public class SvgView implements AnimationView {
 
@@ -16,10 +16,12 @@ public class SvgView implements AnimationView {
   private HashMap<String, ICommand> objCmdMap;
 
   /**
-   * TODO
+   * Sole constructor of SvgView. Initialize fields animation and ap to the given arguments and
+   * use the given model to initialize objCmdMap.
+   * This view will not print to the given destination until renderAnimation is called.
    *
    * @param animation the animation being converted to SVG format.
-   * @param ap        the visualization of this view.
+   * @param ap        the destination that this view will be printed to.
    */
   public SvgView(IAnimation animation, Appendable ap) {
     this.animation = animation;

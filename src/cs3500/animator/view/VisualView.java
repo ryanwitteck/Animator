@@ -9,10 +9,11 @@ import javax.swing.Timer;
 import cs3500.animator.model.IAnimation;
 
 /**
- * This class renders a visual representation of an animation using swing.
- * The animation will be rendered as a video in a new window that is opened when renderAnimation is
- * run. This view controls the timing of the video and relies on the SwingViewPanel class to paint
+ * This class represents a visual representation of an animation using swing.
+ * This view controls the timing of the video and relies on the SwingViewPanel class to paint
  * each frame.
+ * The animation will be rendered as a video in a new window that is opened when renderAnimation is
+ * run. This window will also allow the user to scroll through it (TODO implement scrolling).
  */
 public class VisualView extends JFrame implements AnimationView {
 
