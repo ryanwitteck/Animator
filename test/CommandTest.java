@@ -91,8 +91,8 @@ public class CommandTest {
     ICommand cmd1 = new MoveCmd("R2", 1, 12, new Posn(-10, 99), new Posn(1, 55));
     ICommand cmd2 = new MoveCmd("R1", 1, 1000,
             new Posn(3.33, 6.67), new Posn(10943.1343, 32142.765));
-    ICommand cmd3 = new PlaceCmd("R2", 1, new Posn(0, 3.33));
-    ICommand cmd4 = new PlaceCmd("R1", 1, new Posn(-1.75, -9));
+    ICommand cmd3 = new PlaceCmd("R2", 1, new Posn(1, 55), new Posn(0, 3.33));
+    ICommand cmd4 = new PlaceCmd("R1", 1, new Posn(10943.1343, 32142.765), new Posn(-1.75, -9));
 
     assertFalse(cmd1.isComplete() || cmd1.isRunning());
     assertFalse(cmd2.isComplete() || cmd2.isRunning());

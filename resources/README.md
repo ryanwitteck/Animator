@@ -49,7 +49,11 @@ Commands are function-objects that define the behavior of an animation. All acti
 shape in an animation, moving a shape in an animation, to changing a shape's color, et cetera should
 be done through a command. Commands are represented by the ICommand interface and are split into two
 categories: InstantCmds and GradualCmds, representing commands that occur instantly and commands
-that occur over some period of time.
+that occur over some period of time. Most commands should take both the start and state(s) of the 
+attributes they are changing and throw an error if the attribute they are targeting is an 
+unexpected value if they are going to be used in our animation model. Some commands such as our 
+addOvalCmd and addRectCmd do not throw exceptions themselves, instead relying on our IAnimation 
+implementation to throw an exception in case they fail.
 
 #### Frames
 Frames represent the state of an animation at a single moment in time i.e. a single frame in an

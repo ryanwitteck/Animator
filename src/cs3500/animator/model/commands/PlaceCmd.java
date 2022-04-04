@@ -12,7 +12,7 @@ import cs3500.animator.model.attributes.Posn;
  */
 public class PlaceCmd extends InstantCmd {
 
-  private Posn startPos;
+  private final Posn startPos;
   private final Posn endPos;
 
   /**
@@ -23,8 +23,9 @@ public class PlaceCmd extends InstantCmd {
    * @param tick the tick when this command triggers.
    * @param dest the position we want to place the object.
    */
-  public PlaceCmd(String name, int tick, Posn dest) {
+  public PlaceCmd(String name, int tick, Posn initPos, Posn dest) {
     super(name, tick);
+    this.startPos = new Posn(initPos);
     this.endPos = new Posn(dest);
   }
 
@@ -35,7 +36,9 @@ public class PlaceCmd extends InstantCmd {
     if (!(target instanceof Movable)) {
       throw new IllegalArgumentException("Error: This object is not instance of Movable");
     }
-    this.startPos = new Posn(((Movable) target).getPos());
+    if (!startPos.equals(target.getPos())) {
+      throw new IllegalStateException("Error: This object is not at the expected position");
+    }
     ((Movable) target).place(new Posn(endPos));
   }
 
