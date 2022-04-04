@@ -1,9 +1,9 @@
 Window: 500 by 500
-Created Rectangle name = R1 posn = (0.0,0.0) width = 30.0 height = 40.0 color = (0.0,100.0,100.0) at t = 1
-Created Rectangle name = R2 posn = (50.0,100.0) width = 20.0 height = 20.0 color = (0.0,200.0,0.0) at t = 1
-Created Rectangle name = R3 posn = (100.0,100.0) width = 90.0 height = 90.0 color = (100.0,100.0,100.0) at t = 2
-R1 moves from : (0.0,0.0) to (900.0,900.0) at t = 3
-R2 moves from : (50.0,100.0) to (-10.0,-50.0) at t = 3
-R1 moves from : (900.0,900.0) to (0.0,0.0) from t = 4 to t = 10
-R3 moves from : (100.0,100.0) to (45.0,45.0) from t = 4 to t = 15
-R2 moves from : (-10.0,-50.0) to (555.0,123.0) from t = 5 to t = 10
+Created Rectangle name = R1 posn = (0.0,0.0) width = 30.0 height = 0.5s
+Created Rectangle name = R2 posn = (50.0,100.0) width = 20.0 height = 0.5s
+Created Rectangle name = R3 posn = (100.0,100.0) width = 90.0 height = 1.0s
+R1 moves from : (0.0,0.0) to (900.0,900.0) at t = 1.5s
+R2 moves from : (50.0,100.0) to (-10.0,-50.0) at t = 1.5s
+R1 moves from : (900.0,900.0) to (0.0,0.0) from t = 2.0s to t = 5.0s
+R3 moves from : (100.0,100.0) to (45.0,45.0) from t = 2.0s to t = 7.5s
+R2 moves from : (-10.0,-50.0) to (555.0,123.0) from t = 2.5s to t = 5.0s

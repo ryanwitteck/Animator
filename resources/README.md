@@ -72,10 +72,11 @@ method must be called by the user. We have implemented three types of views: tex
 
 #### Text
 Our text view of an animation produces a readable text visualization of an animation. We have 
-implemented this view in the TextView class. This class requires the user to create an IAnimation 
-and supply a valid data destination for the view to print the created visualization to. Currently, 
-this view simply prints the command log of an animation to the given destination when 
-renderAnimation is run.
+implemented this view in the TextView class. This class requires the user to supply an IAnimation 
+model, a valid data destination for the view to print the created visualization to, and a framerate. 
+Currently, this view simply prints the command log of an animation to the given destination when 
+renderAnimation is run except that rather than measuring time in ticks, time is measured in 
+seconds.
 
 #### Visual
 Our visual view of an animation creates an animated video of an animation model using swing. We have

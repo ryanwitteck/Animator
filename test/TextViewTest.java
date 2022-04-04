@@ -26,7 +26,7 @@ public class TextViewTest {
   public void testViewEmptyAnimation() {
     StringBuilder builder = new StringBuilder();
     IAnimation animation = new SimpleAnimation();
-    TextView view = new TextView(animation, builder);
+    TextView view = new TextView(animation, builder, 1);
 
     try {
       view.renderAnimation();
@@ -55,11 +55,22 @@ public class TextViewTest {
       animation.addCmd(cmd);
     }
     animation.compile();
-    TextView view = new TextView(animation, builder);
+    TextView view = new TextView(animation, builder, 100);
 
     try {
       view.renderAnimation();
-      assertEquals(animation.getCmdLog(), builder.toString());
+
+      String expected = "Window: 500 by 500\n"
+              + "Created Rectangle name = R1 posn = (0.0,0.0) width = 30.0 height = 10.0ms\n"
+              + "Created Rectangle name = R2 posn = (50.0,100.0) width = 20.0 height = 10.0ms\n"
+              + "Created Rectangle name = R3 posn = (100.0,100.0) width = 90.0 height = 20.0ms\n"
+              + "R1 moves from : (0.0,0.0) to (900.0,900.0) at t = 30.0ms\n"
+              + "R2 moves from : (50.0,100.0) to (-10.0,-50.0) at t = 30.0ms\n"
+              + "R1 moves from : (900.0,900.0) to (0.0,0.0) from t = 40.0ms to t = 100.0ms\n"
+              + "R3 moves from : (100.0,100.0) to (45.0,45.0) from t = 40.0ms to t = 0.15s\n"
+              + "R2 moves from : (-10.0,-50.0) to (555.0,123.0) from t = 50.0ms to t = 100.0ms\n";
+
+      assertEquals(expected, builder.toString());
     } catch (IOException e) {
       System.out.println("Could not read data destination");
     }
@@ -83,13 +94,24 @@ public class TextViewTest {
       animation.addCmd(cmd);
     }
     animation.compile();
-    TextView view = new TextView(animation, writer);
+    TextView view = new TextView(animation, writer, 2);
 
     view.renderAnimation();
     FileReader reader = new FileReader("test/TextViewFileTest");
-    char[] cb = new char[652];
+    char[] cb = new char[568];
     reader.read(cb);
     String s = String.copyValueOf(cb);
-    assertEquals(animation.getCmdLog(), s);
+
+    String expected = "Window: 500 by 500\n"
+            + "Created Rectangle name = R1 posn = (0.0,0.0) width = 30.0 height = 0.5s\n"
+            + "Created Rectangle name = R2 posn = (50.0,100.0) width = 20.0 height = 0.5s\n"
+            + "Created Rectangle name = R3 posn = (100.0,100.0) width = 90.0 height = 1.0s\n"
+            + "R1 moves from : (0.0,0.0) to (900.0,900.0) at t = 1.5s\n"
+            + "R2 moves from : (50.0,100.0) to (-10.0,-50.0) at t = 1.5s\n"
+            + "R1 moves from : (900.0,900.0) to (0.0,0.0) from t = 2.0s to t = 5.0s\n"
+            + "R3 moves from : (100.0,100.0) to (45.0,45.0) from t = 2.0s to t = 7.5s\n"
+            + "R2 moves from : (-10.0,-50.0) to (555.0,123.0) from t = 2.5s to t = 5.0s\n";
+
+    assertEquals(expected, s);
   }
 }

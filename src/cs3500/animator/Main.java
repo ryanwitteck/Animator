@@ -81,9 +81,9 @@ public class Main {
       case "text":
         if (!out.isEmpty()) {
           FileWriter writer = new FileWriter(out);
-          view = new TextView(animation, writer);
+          view = new TextView(animation, writer, tickRate);
         } else {
-          view = new TextView(animation, System.out);
+          view = new TextView(animation, System.out, tickRate);
         }
         view.renderAnimation();
         break;

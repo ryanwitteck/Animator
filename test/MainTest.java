@@ -28,12 +28,12 @@ public class MainTest {
     myMain.main(args);
 
     FileReader outReader = new FileReader("test\\BigBangOut.txt");
-    char[] cb1 = new char[538];
+    char[] cb1 = new char[558];
     outReader.read(cb1);
     String actual = String.copyValueOf(cb1);
 
     FileReader expReader = new FileReader("test\\BigBangOutCorrect.txt");
-    char[] cb2 = new char[543];
+    char[] cb2 = new char[563];
     expReader.read(cb2);
     String expected = String.copyValueOf(cb2);
 
