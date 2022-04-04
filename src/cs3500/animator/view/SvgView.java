@@ -202,6 +202,8 @@ public class SvgView implements AnimationView {
 
   /**
    * Given a MoveCmd, parse the command into a form that svg recognizes.
+   * Uses the provided shape info, command log of the given command, and getters of the command to
+   * produce the svg-formatted string.
    *
    * @param shapeInfo a string array containing the target object's type and attributes
    * @param cmd       the move shape command
