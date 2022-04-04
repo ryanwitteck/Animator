@@ -28,7 +28,7 @@ public class MainTest {
     myMain.main(args);
 
     FileReader outReader = new FileReader("test\\BigBangOut.txt");
-    char[] cb1 = new char[493];
+    char[] cb1 = new char[553];
     outReader.read(cb1);
     StringBuilder actual = new StringBuilder();
     for (int i = 0; i < 493; i++) {
@@ -38,7 +38,7 @@ public class MainTest {
     }
 
     FileReader expReader = new FileReader("test\\BigBangOutCorrect.txt");
-    char[] cb2 = new char[498];
+    char[] cb2 = new char[558];
     expReader.read(cb2);
     StringBuilder expected = new StringBuilder();
     for (int i = 0; i < 498; i++) {

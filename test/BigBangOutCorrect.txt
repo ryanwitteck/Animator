@@ -1,6 +1,6 @@
 Window: 1205 by 1204
-Created Oval name=P1 posn=( 400.0, 400.0 ) xr=4.0 yr=4.0 color=(240.414,122.823,106.629) at t=1
-Created Oval name=P2 posn=( 400.0, 400.0 ) xr=5.0 yr=5.0 color=(244.721,2.295,97.934) at t=1
-Created Oval name=P3 posn=( 400.0, 400.0 ) xr=3.0 yr=3.0 color=(165.567,131.425,28.443) at t=1
-Created Oval name=P4 posn=( 400.0, 400.0 ) xr=4.0 yr=4.0 color=(117.203,6.173,147.263) at t=1
-Created Oval name=P5 posn=( 400.0, 400.0 ) xr=3.0 yr=3.0 color=(209.311,85.692,235.301) at t=1
+Created Oval name = P1 posn = ( 400.0, 400.0 ) rx = 4.0 ry = 4.0 color = (240.414,122.823,106.629) at t = 1
+Created Oval name = P2 posn = ( 400.0, 400.0 ) rx = 5.0 ry = 5.0 color = (244.721,2.295,97.934) at t = 1
+Created Oval name = P3 posn = ( 400.0, 400.0 ) rx = 3.0 ry = 3.0 color = (165.567,131.425,28.443) at t = 1
+Created Oval name = P4 posn = ( 400.0, 400.0 ) rx = 4.0 ry = 4.0 color = (117.203,6.173,147.263) at t = 1
+Created Oval name = P5 posn = ( 400.0, 400.0 ) rx = 3.0 ry = 3.0 color = (209.311,85.692,235.301) at t = 1

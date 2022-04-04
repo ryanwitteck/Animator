@@ -72,7 +72,7 @@ public class SvgView implements AnimationView {
 
     for (String name : objNames) {
       for (ICommand cmd : objCmdMap.get(name)) {
-        svgBuilder.append(cmd.toSvg(fps));
+        svgBuilder.append(cmdToSvg(cmd));
       }
     }
     svgBuilder.append("/svg");
@@ -81,14 +81,7 @@ public class SvgView implements AnimationView {
   }
 
   private String cmdToSvg(ICommand cmd) {
-    return "<animate attributeType=\"xml\" "
-            + "attributeName=\"" + xattr + "\" "
-            + "begin=\"" + startTick * 1000 / fps + "ms\" end=\"" + endTick * 1000 / fps + "ms\" "
-            + "from=\"" + fromX + "\" to=\"" + dest.getX() + "\" fill=\"freeze\" />\n"
-            + "<animate attributeType=\"xml\" "
-            + "begin=\"" + startTick * 1000 / fps + "ms\" end=\"" + endTick * 1000 / fps + "ms\" "
-            + "attributeName=\"" + yattr + "\" "
-            + "from=\"" + startPos.getY() + "\" to=\"" + dest.getY() + "\" fill=\"freeze\" />\n";
+    return "";
   }
 
   @Override
