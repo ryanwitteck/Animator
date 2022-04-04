@@ -38,11 +38,13 @@ color and position at any given time. These are implemented in our attributes pa
 #### Shapes
 Shapes are the objects being animated by our model and are represented by the interface IShape.
 IShape itself extends our three "basic" interfaces Drawable, Movable, and Scalable. These interfaces
-exist to clearly divide the three basic type of information each IShape should contain and actions
+exist to clearly divide the three basic types of information each IShape should contain and actions
 each IShape should be able to perform -- i.e. every shape should contain the information necessary
 to define its own image (Drawable), be able to change position (Movable), and be able to be
 stretched or shrunk in both the x and y dimensions (Scalable). Currently, only three shapes have
-been implemented: Rectangle, Oval, and Compound Shape and only Rectangle and Oval are in use.
+been implemented: Rectangle, Oval, and Compound Shape. The CompoundShape class exists only as an 
+example of a more complex implementation of shape. Our model builders only allow users to create
+Rectangles and Ovals in the current implementation.
 
 #### Commands
 Commands are function-objects that define the behavior of an animation. All actions from creating a
