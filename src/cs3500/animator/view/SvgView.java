@@ -12,6 +12,7 @@ import cs3500.animator.model.commands.AddRectCmd;
 import cs3500.animator.model.commands.ChangeColorCmd;
 import cs3500.animator.model.commands.ICommand;
 import cs3500.animator.model.commands.MoveCmd;
+import cs3500.animator.model.commands.RemoveDrawableCmd;
 import cs3500.animator.model.commands.ResizeCmd;
 
 /**
@@ -143,6 +144,8 @@ public class SvgView implements AnimationView {
         builder.append(parseChangeColor(shapeInfo, cmds.get(i)));
       } else if (cmds.get(i) instanceof ResizeCmd) {
         builder.append(parseResizeShape(shapeInfo, cmds.get(i)));
+      } else if (cmds.get(i) instanceof RemoveDrawableCmd) {
+        builder.append(parseRemoveShape(shapeInfo, cmds.get(i)));
       }
     }
     builder.append(String.format("</%s>\n", shapeInfo[0]));
@@ -168,11 +171,34 @@ public class SvgView implements AnimationView {
     int width = (int) Double.parseDouble(args[10]);
     int height = (int) Double.parseDouble(args[13]);
 
-    return String.format(
+    String line = String.format(
             "<%s id=\"%s\" %s=\"%d\" %s=\"%d\" %s=\"%d\" %s=\"%d\" "
-                    + "fill=\"rgb(%d,%d,%d)\" visibility=\"visible\" >\n",
+                    + "fill=\"rgb(%d,%d,%d)\" visibility=\"hidden\" >\n",
             shapeInfo[0], cmd.getTarget(), shapeInfo[1], pos[0], shapeInfo[2], pos[1],
             shapeInfo[3], width, shapeInfo[4], height, rgb[0], rgb[1], rgb[2]);
+    String line2 = String.format(
+            "<set attributeType=\"xml\" begin=\"%dms\" "
+                    + "attributeName=\"visibility\" to=\"visible\" />\n",
+            cmd.getStartTick() * 1000 / fps);
+
+    return line + line2;
+  }
+
+  /**
+   * Given an ICommand that removes a shape from the animation and the shape's type and attribute
+   * names, parse the command into a form that svg recognizes.
+   * This method assumes that input is a command that removes a shape from the animation.
+   *
+   * @param shapeInfo a string array containing the target object's type and attributes
+   * @param cmd       the add shape command
+   * @return the command parsed into svg format
+   */
+  private String parseRemoveShape(String[] shapeInfo, ICommand cmd) {
+
+    return String.format(
+            "<set attributeType=\"xml\" begin=\"%dms\" "
+                    + "attributeName=\"visibility\" to=\"hidden\" fill=\"freeze\" />\n",
+            cmd.getStartTick() * 1000 / fps);
   }
 
   /**
@@ -195,7 +221,7 @@ public class SvgView implements AnimationView {
             shapeInfo[1], initPos[0], endPos[0]);
     String line2 = String.format(
             "<animate attributeType=\"xml\" begin=\"%dms\" dur=\"%dms\" "
-                    + "attributeName=\"%s\" from=\"%d\" to=\"%d\" fill=\"freeze\" />\n",
+                    + "attributeName=\"%s\" from=\"%d\" to=\"%d\" />\n",
             cmd.getStartTick() * 1000 / fps, (cmd.getEndTick() - cmd.getStartTick()) * 1000 / fps,
             shapeInfo[2], initPos[1], endPos[1]);
 
