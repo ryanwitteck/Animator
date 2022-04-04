@@ -3,7 +3,7 @@ package cs3500.animator.model.attributes;
 /**
  * This class represents a position on our canvas with an x and y coordinate.
  * Our coordinate system:
- * - The position (0, 0) corresponds to the top left corner of our canvas.
+ * - The position (0,0) corresponds to the top left corner of our canvas.
  * - The x-value increases as we move rightward on the canvas.
  * - The y-value increases as we move downward on the canvas.
  * - Pixels are 1 by 1 in size.
@@ -97,7 +97,7 @@ public class Posn {
 
   @Override
   public String toString() {
-    return "( " + Math.round(this.x * 1000) / 1000.0 + ", "
-            + Math.round(this.y * 1000) / 1000.0 + " )";
+    return "(" + Math.round(this.x * 1000) / 1000.0 + ","
+            + Math.round(this.y * 1000) / 1000.0 + ")";
   }
 }
