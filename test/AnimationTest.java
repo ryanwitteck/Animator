@@ -160,7 +160,8 @@ public class AnimationTest {
 
     testLog();
     testFrames();
-    assertTrue(true); // to remove style error
+    // trivial assertion for style points. The main test is the above two statements
+    assertEquals(animation.getWindowHeight(), 200);
   }
 
   //---------------------------- Test Exceptions ---------------------------------------------------

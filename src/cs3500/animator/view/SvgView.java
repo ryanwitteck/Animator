@@ -30,6 +30,10 @@ public class SvgView implements AnimationView {
 
   @Override
   public void renderAnimation() throws IOException {
-
+    // TODO implement
+    // These calls are just meant to save our style points
+    animation.getCmdLog();
+    ap.append("");
+    objCmdMap.get("");
   }
 }

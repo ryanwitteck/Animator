@@ -1,6 +1,5 @@
 package cs3500.animator;
 
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -23,9 +22,7 @@ public class Main {
    * Our main method. Takes in command line arguments and parses them to get the information
    * required to create a model and view of the user's animation.
    *
-   * <p>
-   * <p>
-   * Command line arguments should be in formatted in pairs with the field being declared first
+   * <p>Command line arguments should be in formatted in pairs with the field being declared first
    * followed by the value. In other words:
    * "-in" followed by "name-of-animation-file"
    * "-view" followed by "type-of-view"
@@ -33,9 +30,7 @@ public class Main {
    * "-speed" followed by "integer-ticks-per-second"
    * The order that the arguments for -in, -out, -view, and -speed are given does not matter.
    *
-   * <p>
-   *
-   * The arguments for -in and -view are required by this method,
+   * <p>The arguments for -in and -view are required by this method,
    * while -out will default to System.out and -speed will default to 1 tick per second.
    *
    * @param args the command line arguments.

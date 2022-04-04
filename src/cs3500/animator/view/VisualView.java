@@ -61,7 +61,7 @@ public class VisualView extends JFrame implements AnimationView {
   private class MyActionListener implements ActionListener {
 
     @Override
-    public void actionPerformed(ActionEvent arg0) {
+    public void actionPerformed(ActionEvent event) {
       tick++;
       panel.setFrame(animation.getFrame(tick));
       repaint();
