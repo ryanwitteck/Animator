@@ -8,7 +8,6 @@ import cs3500.animator.model.interfaces.Scalable;
  * This class represents a command that scales an object's dimensions over time to a given value.
  * Implements new fields dx and dy, the change in the target's width and height per tick
  * respectively.
- * <p>
  * log format:
  * - "[target name] scales from : [x0] by [y0] to [x1] by [y1] from t=[start tick] to t=[end tick]"
  */

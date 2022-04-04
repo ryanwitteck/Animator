@@ -3,23 +3,28 @@ package cs3500.animator.view;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.Timer;
 
 import cs3500.animator.model.IAnimation;
 
 /**
- * This class represents a visual representation of an animation using swing. --- TODO
+ * This class renders a visual representation of an animation using swing.
+ * The animation will be rendered as a video in a new window that is opened when renderAnimation is
+ * run. This view controls the timing of the video and relies on the SwingViewPanel class to paint
+ * each frame.
  */
 public class VisualView extends JFrame implements AnimationView {
 
-  private Timer timer;
+  private final Timer timer;
   private final IAnimation animation;
   private final SwingViewPanel panel;
   private int tick;
-  private final int fps;
 
   /**
-   * Constructor --- TODO make better
+   * Sole constructor for VisualView. Initializes all fields of this class and sets the
+   * parameters of the window that the animation will be animated in.
+   * The animation will not start until the renderAnimation method is called.
    *
    * @param windowTitle the title of the animation window
    * @param animation   the animation that this view will visualize
@@ -38,11 +43,19 @@ public class VisualView extends JFrame implements AnimationView {
     this.add(panel);
     this.timer = new Timer(1000 / fps, new MyActionListener());
     tick = 0;
-    this.fps = fps;
+  }
+
+  @Override
+  public void renderAnimation() {
+    this.setVisible(true);
+    tick = 0;
+    timer.start();
   }
 
   /**
-   * This ActionListener class increments the tick every 1000 / fps milliseconds.
+   * This ActionListener class triggers every 1000 / fps milliseconds. Every time it triggers,
+   * it increments the tick and updates the visuals of this view. When the animation runs out of
+   * frames, this class stops the timer and the window stops changing.
    */
   private class MyActionListener implements ActionListener {
 
@@ -55,12 +68,5 @@ public class VisualView extends JFrame implements AnimationView {
         timer.stop();
       }
     }
-  }
-
-  @Override
-  public void renderAnimation() {
-    this.setVisible(true);
-    tick = 0;
-    timer.start();
   }
 }

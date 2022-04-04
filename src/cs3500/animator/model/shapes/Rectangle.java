@@ -5,7 +5,6 @@ import cs3500.animator.model.interfaces.Drawable;
 
 /**
  * This class represents a rectangle.
- * <p>
  * Contains fields:
  * - All fields in BasicShape by inheritance.
  * - width   the width of this rectangle.

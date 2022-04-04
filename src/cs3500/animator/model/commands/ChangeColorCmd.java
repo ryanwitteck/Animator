@@ -8,9 +8,6 @@ import cs3500.animator.model.interfaces.Drawable;
  * Represents a command to change the color of an object over a period of time.
  * Requires the user to know the initial color of the object and
  * allows the user to decide the final color of the object.
- *
- * <p>
- *
  * log format:
  * - "[target name] changes color from : (r0, g0, g0) to (r1, g1, b1) "
  * + "from t=[start tick] to t=[end tick]"

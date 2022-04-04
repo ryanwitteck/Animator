@@ -2,7 +2,6 @@ package cs3500.animator.model.interfaces;
 
 /**
  * Our interface for any object that can be scaled up and down.
- * <p>
  * Every Scalable should...
  * - Be able to change its horizontal and vertical dimensions.
  */

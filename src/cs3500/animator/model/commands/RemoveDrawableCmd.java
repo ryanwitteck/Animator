@@ -4,7 +4,6 @@ import cs3500.animator.model.IAnimation;
 
 /**
  * Represents a command to remove a Drawable from an animation.
- * <p>
  * log format:
  * - "Removed Drawable named [object name] at t=[start tick]"
  */

@@ -9,7 +9,6 @@ import cs3500.animator.model.interfaces.Drawable;
  * Represents a command to move an object over a period of time.
  * Requires the user to know the start position of the object and
  * allows the user to decide the end position of the object.
- * <p>
  * log format:
  * - "[target name] moves from : (x0, y0) to (x1, y1) from t=[start tick] to t=[end tick]"
  */
@@ -25,11 +24,11 @@ public class MoveCmd extends GradualCmd {
    * Constructor for MoveCmd.
    * Takes the name of the target object, start and end tick, and destination Posn as arguments.
    *
-   * @param name  the name of the object to be added to the list.
-   * @param start the tick when this command triggers.
-   * @param end   the tick when this command ends.
-   * @param start the original position of the target.
-   * @param dest  the position we want to move the object to.
+   * @param name     the name of the object to be added to the list.
+   * @param start    the tick when this command triggers.
+   * @param end      the tick when this command ends.
+   * @param startPos the original position of the target.
+   * @param dest     the position we want to move the object to.
    */
   public MoveCmd(String name, int start, int end, Posn startPos, Posn dest) {
     super(name, start, end);

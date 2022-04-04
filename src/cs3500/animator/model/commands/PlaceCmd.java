@@ -7,7 +7,6 @@ import cs3500.animator.model.attributes.Posn;
 
 /**
  * Represents a command to place an object at a specified position.
- * <p>
  * log format:
  * - "[target name] moves from : (x0, y0) to (x1, y1) at t=[start tick]"
  */

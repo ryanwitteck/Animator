@@ -9,7 +9,6 @@ import cs3500.animator.model.interfaces.Drawable;
 /**
  * This class represents a shape composed of multiple shapes.
  * May be changed when using swing later on for the view.
- * <p>
  * Contains fields:
  * - All fields in BasicShape by inheritance.
  * - shapes  the list of shapes that form this shape.

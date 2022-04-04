@@ -5,7 +5,6 @@ import cs3500.animator.model.attributes.Posn;
 
 /**
  * Our interface for any object that can be drawn onto the canvas.
- * <p>
  * Every Drawable should...
  * - Have a unique name/ID for recognition.
  * - Have a position on the canvas.

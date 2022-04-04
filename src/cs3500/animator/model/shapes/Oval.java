@@ -5,7 +5,6 @@ import cs3500.animator.model.interfaces.Drawable;
 
 /**
  * This class represents an oval.
- * <p>
  * Contains fields:
  * - All fields in BasicShape by inheritance.
  * - xRadius  the horizontal dimension of this oval.
@@ -106,6 +105,7 @@ public class Oval extends BasicShape {
 
   @Override
   public int hashCode() {
-    return name.hashCode() + posn.hashCode() + color.hashCode() + Double.hashCode(xRadius + yRadius);
+    return name.hashCode() + posn.hashCode() + color.hashCode()
+            + Double.hashCode(xRadius + yRadius);
   }
 }
