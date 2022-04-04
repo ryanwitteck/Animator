@@ -195,7 +195,7 @@ public class Color {
 
   @Override
   public String toString() {
-    return "(" + Math.round(r * 1000) / 1000 + ","
-            + Math.round(g * 1000) / 1000 + "," + Math.round(b * 1000) / 1000 + ")";
+    return "(" + Math.round(r * 1000) / 1000.0 + ","
+            + Math.round(g * 1000) / 1000.0 + "," + Math.round(b * 1000) / 1000.0 + ")";
   }
 }
