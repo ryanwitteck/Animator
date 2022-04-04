@@ -13,8 +13,11 @@
 <h3 align="center">Animator</h3>
 
   <p align="center">
-    CS3500 Assignment 4 Spring 2022
-    <br />
+    CS3500 Assignment 4-5 Spring 2022
+  </p>
+
+  <p align="center">
+    Authors: Charles Zhao, Ryan WItteck
   </p>
 
 <!-- ABOUT THE PROJECT -->
@@ -68,13 +71,14 @@ represented by the interface AnimationView. To get receive the visualization, th
 method must be called by the user. We have implemented three types of views: text, visual, and SVG.
 
 #### Text
-Our text view of an animation gives a readable visualization of an animation. We have implemented
-this view in the TextView class. This class requires the user to create an IAnimation and supply a
-valid data destination for the view to print the created visualization to. Currently, this view
-simply prints the command log of an animation to the given destination when renderAnimation is run.
+Our text view of an animation produces a readable text visualization of an animation. We have 
+implemented this view in the TextView class. This class requires the user to create an IAnimation 
+and supply a valid data destination for the view to print the created visualization to. Currently, 
+this view simply prints the command log of an animation to the given destination when 
+renderAnimation is run.
 
 #### Visual
-Our visual view of an animation creates an animated video of an animation using swing. We have
+Our visual view of an animation creates an animated video of an animation model using swing. We have
 implemented this view in the VisualView class. This class requires the user to supply a window 
 title, IAnimation, and frame rate in ticks per second. After the renderAnimation method is called, 
 a window will appear, on which the animation will play. This class relies on the class 
@@ -83,8 +87,12 @@ animation finishes running, the window will not close automatically, and if you 
 the animation early, simply close the window.
 
 #### SVG
-We have not completed the implementation of this view yet. When complete this view will use the
-information provided by our model to create a svg file that can be played as an animated video.
+Our SVG view of an animation produces a text representation of our animation that is compliant 
+with the XML-based SVG file format. This view allows the user to convert their animations to svg 
+files which can be easily run. This view is implemented in our SvgView class, which must be supplied
+with an IAnimation model, output destination, and frame rate to function. Our implementation of 
+this view relies on parsing the command logs of the ICommands in the given IAnimation to produce 
+the SVG visualization.
 
 ### Controller and IO
 
