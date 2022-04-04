@@ -3,6 +3,8 @@ package cs3500.animator.model.attributes;
 /**
  * This class represents a color.
  * Colors are represented by traditional rgb values and each color value is stored as a double.
+ * This class implements getter methods that allow the user to receive the RGB values of a Color
+ * and various setter methods that allow for the alteration of the RGB values in a Color.
  */
 public class Color {
 

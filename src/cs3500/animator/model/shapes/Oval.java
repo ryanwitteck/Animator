@@ -55,6 +55,9 @@ public class Oval extends BasicShape {
   @Override
   public void addHorizontal(double dx) {
     xRadius += dx;
+    if (xRadius < 0) {
+      xRadius = 0;
+    }
   }
 
   @Override
@@ -66,6 +69,9 @@ public class Oval extends BasicShape {
   @Override
   public void addVertical(double dy) {
     yRadius += dy;
+    if (yRadius < 0) {
+      yRadius = 0;
+    }
   }
 
   /**

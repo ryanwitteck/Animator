@@ -33,18 +33,34 @@ broken down into 5 components: Attributes, Shapes, Commands, Frames, and Animati
 
 #### Attributes
 Attributes are the smallest and simplest data that exists: Color and Posn, which represent a shape's
-color and position at any given time. These are implemented in our attributes package.
+color and position at any given time. These are implemented in our attributes package. 
+
+Since part one of this assignment we have changed our Color class to store RGB values as doubles 
+instead of ints, to allow us to still accurately represent colors when they are not exact integer 
+values. We have also created a new method changeColor that allows us to change the RGB values of a 
+color by a certain amount instead of directly setting it to a value. We created this method, so we 
+could more easily implement our ChangeColorCmd class.
 
 #### Shapes
 Shapes are the objects being animated by our model and are represented by the interface IShape.
 IShape itself extends our three "basic" interfaces Drawable, Movable, and Scalable. These interfaces
 exist to clearly divide the three basic types of information each IShape should contain and actions
 each IShape should be able to perform -- i.e. every shape should contain the information necessary
-to define its own image (Drawable), be able to change position (Movable), and be able to be
-stretched or shrunk in both the x and y dimensions (Scalable). Currently, three shapes have been 
-implemented: Rectangle, Oval, and Compound Shape. The CompoundShape class exists only as an 
-example of a more complex implementation of shape. Our model builders only allow users to create
-Rectangles and Ovals in the current implementation.
+to define its own image (Drawable), have a position and be to change its position (Movable), and be 
+able to stretch or shrink in both the x and y dimensions (Scalable). Currently, we have four shape 
+classes: BasicShape, Rectangle, Oval, and Compound Shape. The BasicShape class is an abstract class
+that the other three extend, contains fields shared by all shapes, and implements methods that do 
+not differ in behavior depending on the shape type. Our Oval and Rectangle classes represent 
+ellipses and rectangles, respectively, and our model builder and views are able to create and 
+render these two shapes. The CompoundShape class only exists as an example of a more complex 
+implementation of shape and is not properly implemented to work with our model, builder, or view.
+
+Since part one of this assignment, we have removed the shrink and scale up/down methods from the
+Scalable interface and their implementations and added the methods addHorizontal and addVertical to 
+Scalable. The removed methods didn't serve any particular purpose and were unlikely to serve any in 
+the future. Meanwhile, the added methods are being used to more easily implement the ResizeCmd.
+
+
 
 #### Commands
 Commands are function-objects that define the behavior of an animation. All actions from creating a

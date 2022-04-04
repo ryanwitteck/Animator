@@ -55,6 +55,9 @@ public class Rectangle extends BasicShape {
   @Override
   public void addHorizontal(double dx) {
     width += dx;
+    if (width < 0) {
+      width = 0;
+    }
   }
 
   @Override
@@ -66,6 +69,9 @@ public class Rectangle extends BasicShape {
   @Override
   public void addVertical(double dy) {
     height += dy;
+    if (height < 0) {
+      height = 0;
+    }
   }
 
   /**

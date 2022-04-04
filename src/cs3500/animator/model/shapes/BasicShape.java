@@ -20,6 +20,7 @@ public abstract class BasicShape implements IShape {
 
   /**
    * Constructor for BasicShape.
+   * Initializes this shape's name, position, and color to the given values.
    *
    * @param name  the name of this shape
    * @param x     the initial x coordinate of this shape
@@ -77,6 +78,9 @@ public abstract class BasicShape implements IShape {
 
   /**
    * If the given scale is negative, throw an exception.
+   * This method is used by our implementations of the scalable methods that multiply or a
+   * dimension by a given double value. A scale factor cannot be negative because it would make
+   * the dimension being altered negative.
    *
    * @param scale the given scale
    */
