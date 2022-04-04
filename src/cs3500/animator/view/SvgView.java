@@ -248,7 +248,6 @@ public class SvgView implements AnimationView {
    * @param pos the array to store the obtained x and y values to.
    */
   private void parsePosnStr(String str, int[] pos) {
-    System.out.println(str);
     String[] splitStr = str.substring(1, str.length() - 1).split(",");
     pos[0] = (int) Double.parseDouble(splitStr[0]);
     pos[1] = (int) Double.parseDouble(splitStr[1]);
