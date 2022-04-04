@@ -12,10 +12,10 @@ import cs3500.animator.view.VisualView;
 import cs3500.animator.view.TextView;
 
 /**
- * This class is the main class of this program. It contains one method main, which is used
+ * This class is the main class of this program. It contains one method -- main, which is used
  * by the user to interact with this program. This class is responsible for parsing command line
- * inputs, using our other classes to create an animation model and its view, and giving the user
- * access to the view.
+ * inputs, using our other classes to create an animation model and its view, and delivering the
+ * created view to the user.
  */
 public class Main {
 
