@@ -7,6 +7,7 @@ import cs3500.animator.io.AnimationFileReader;
 import cs3500.animator.io.OurModelBuilder;
 import cs3500.animator.model.IAnimation;
 import cs3500.animator.view.AnimationView;
+import cs3500.animator.view.InteractiveView;
 import cs3500.animator.view.SvgView;
 import cs3500.animator.view.VisualView;
 import cs3500.animator.view.TextView;
@@ -98,6 +99,10 @@ public class Main {
         } else {
           view = new SvgView(animation, System.out, tickRate);
         }
+        view.renderAnimation();
+        break;
+      case "interactive":
+        view = new InteractiveView("Animation", animation, tickRate);
         view.renderAnimation();
         break;
       default:
