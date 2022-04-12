@@ -59,7 +59,8 @@ public class SimpleAnimation extends AAnimation {
   public void compile() {
     resetCmdMap();
     cmdLog = new ArrayList<>();
-    objects = new HashMap<>();
+    objects = new ArrayList<>();
+    objMap = new HashMap<>();
     frames = new ArrayList<>();
 
     for (int i = 0; i < nFrames; i++) {
@@ -76,7 +77,7 @@ public class SimpleAnimation extends AAnimation {
           }
         }
       }
-      frames.add(new Frame(objects.values()));
+      frames.add(new Frame(objects));
     }
     assert (nFrames == frames.size());
   }

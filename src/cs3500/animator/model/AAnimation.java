@@ -9,7 +9,10 @@ import cs3500.animator.model.interfaces.Drawable;
 /**
  * Abstract class for IAnimation interface.
  * Implements fields:
- * - objects    the HashMap of the objects in this animation mapped to their name
+ * - objects    the list of all the objects in this animation. Used to keep track of the order
+ *              in which objects are added to the animation.
+ * - objMap     the HashMap of the objects in this animation mapped to their name. Used to quickly
+ *              reference specific objects.
  * - frames     the list of IFrames that represents this animation
  * - cmdLog     a list of the string representations of each ICommand in this animation.
  *              From this, we can create the command log.
@@ -22,7 +25,8 @@ import cs3500.animator.model.interfaces.Drawable;
  */
 public abstract class AAnimation implements IAnimation {
 
-  protected HashMap<String, Drawable> objects;
+  protected List<Drawable> objects;
+  protected HashMap<String, Drawable> objMap;
   protected List<IFrame> frames;
   protected List<String> cmdLog;
   protected int nFrames;
@@ -36,7 +40,8 @@ public abstract class AAnimation implements IAnimation {
   public AAnimation() {
     this.width = 500;
     this.height = 500;
-    objects = new HashMap<>();
+    objects = new ArrayList<>();
+    objMap = new HashMap<>();
     frames = new ArrayList<>();
     cmdLog = new ArrayList<>();
     nFrames = 0;
@@ -44,15 +49,17 @@ public abstract class AAnimation implements IAnimation {
 
   @Override
   public void addDrawable(Drawable d) {
-    if (objects.containsKey(d.getName())) {
+    if (objMap.containsKey(d.getName())) {
       throw new IllegalArgumentException("Error: An object with this name already exists");
     }
-    objects.put(d.getName(), d.getCopy());
+    Drawable copy = d.getCopy();
+    objects.add(copy);
+    objMap.put(d.getName(), copy);
   }
 
   @Override
   public void removeDrawable(String name) {
-    objects.remove(name);
+    objects.remove(objMap.remove(name));
   }
 
   @Override
@@ -63,7 +70,7 @@ public abstract class AAnimation implements IAnimation {
 
   @Override
   public Drawable getDrawable(String name) {
-    return objects.get(name);
+    return objMap.get(name);
   }
 
   @Override

@@ -33,6 +33,7 @@ public class InteractiveDemo {
     List<ICommand> cmds = new ArrayList<>();
     cmds.add(new AddRectCmd("R1", 0, 0, 30, 40, new Color(0, 100, 100), 1));
     cmds.add(new AddRectCmd("R2", 50, 100, 20, 20, new Color(0, 200, 0), 1));
+    cmds.add(new AddRectCmd("ZTest", 50, 100, 70, 70, new Color(0, 0, 0), 1));
     cmds.add(new AddOvalCmd("O1", 100, 100, 90, 60, new Color(100, 100, 100), 2));
     cmds.add(new MoveCmd("R1", 4, 100, new Posn(0, 0), new Posn(50, 200)));
     cmds.add(new MoveCmd("R2", 5, 100, new Posn(50, 100), new Posn(400, 300)));

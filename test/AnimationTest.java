@@ -117,30 +117,30 @@ public class AnimationTest {
     Rectangle r2 = new Rectangle("R2", 50, 100, 20, 20, new Color(0, 200, 0));
     Rectangle r3 = new Rectangle("R3", 100, 100, 90, 90, new Color(100, 100, 100));
     assertTrue(frames.get(0).listObjects().isEmpty());
-    assertEquals(r2, frames.get(1).listObjects().get(0));
-    assertEquals(r1, frames.get(1).listObjects().get(1));
+    assertEquals(r1, frames.get(1).listObjects().get(0));
+    assertEquals(r2, frames.get(1).listObjects().get(1));
 
-    assertEquals(r2, frames.get(2).listObjects().get(0));
-    assertEquals(r3, frames.get(2).listObjects().get(1));
-    assertEquals(r1, frames.get(2).listObjects().get(2));
+    assertEquals(r1, frames.get(2).listObjects().get(0));
+    assertEquals(r2, frames.get(2).listObjects().get(1));
+    assertEquals(r3, frames.get(2).listObjects().get(2));
 
     r1.place(900, 900);
     r2.place(-10, -50);
-    assertEquals(r2, frames.get(3).listObjects().get(0));
-    assertEquals(r3, frames.get(3).listObjects().get(1));
-    assertEquals(r1, frames.get(3).listObjects().get(2));
+    assertEquals(r1, frames.get(3).listObjects().get(0));
+    assertEquals(r2, frames.get(3).listObjects().get(1));
+    assertEquals(r3, frames.get(3).listObjects().get(2));
 
     r1.place(0, 0);
     r2.place(555, 123);
     r3.place(70, 70);
-    assertEquals(r2, frames.get(9).listObjects().get(0));
-    assertEquals(r3, frames.get(9).listObjects().get(1));
-    assertEquals(r1, frames.get(9).listObjects().get(2));
+    assertEquals(r1, frames.get(9).listObjects().get(0));
+    assertEquals(r2, frames.get(9).listObjects().get(1));
+    assertEquals(r3, frames.get(9).listObjects().get(2));
 
     r3.place(45, 45);
-    assertEquals(r2, frames.get(14).listObjects().get(0));
-    assertEquals(r3, frames.get(14).listObjects().get(1));
-    assertEquals(r1, frames.get(14).listObjects().get(2));
+    assertEquals(r1, frames.get(14).listObjects().get(0));
+    assertEquals(r2, frames.get(14).listObjects().get(1));
+    assertEquals(r3, frames.get(14).listObjects().get(2));
   }
 
   @Test
