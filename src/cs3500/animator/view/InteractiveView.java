@@ -29,6 +29,8 @@ public class InteractiveView extends JFrame implements AnimationView, ActionList
   private int fps;
   private int tick;
   private boolean isLooping;
+  private final JCheckBox looping;
+  private final JTextField fpsTextbox;
 
   /**
    * Sole constructor for InteractiveView.
@@ -72,13 +74,12 @@ public class InteractiveView extends JFrame implements AnimationView, ActionList
     JPanel controlPanel = new JPanel();
     controlPanel.setBorder(BorderFactory.createTitledBorder("Animation Controls"));
     controlPanel.setPreferredSize(new Dimension(animation.getWindowWidth(), 100));
+    controlPanel.setLayout(new BoxLayout(controlPanel, BoxLayout.LINE_AXIS));
     mainPanel.add(BorderLayout.SOUTH, controlPanel);
 
-    //looping option
-    JCheckBox looping = new JCheckBox("Loop Animation (off)");
-    looping.setActionCommand("loop");
-    looping.addItemListener(this);
-    controlPanel.add(looping);
+    //button panel
+    JPanel buttonPanel = new JPanel();
+    buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.PAGE_AXIS));
 
     //play/pause button
     JButton pausePlay = new JButton("Play/Pause");
@@ -88,19 +89,33 @@ public class InteractiveView extends JFrame implements AnimationView, ActionList
     JButton restart = new JButton("Restart");
     restart.setActionCommand("restart");
     restart.addActionListener(this);
-    //speed up button
-    JButton speedUp = new JButton("Speed up");
-    speedUp.setActionCommand("speed");
-    speedUp.addActionListener(this);
-    //slow down button
-    JButton slowDown = new JButton("Slow down");
-    slowDown.setActionCommand("slow");
-    slowDown.addActionListener(this);
+    buttonPanel.add(pausePlay);
+    buttonPanel.add(restart);
 
-    controlPanel.add(pausePlay);
-    controlPanel.add(restart);
-    controlPanel.add(speedUp);
-    controlPanel.add(slowDown);
+    //looping and framerate panel
+    JPanel rightPanel = new JPanel();
+    rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.PAGE_AXIS));
+
+    //looping option
+    this.looping = new JCheckBox("Loop Animation (off)");
+    looping.setActionCommand("loop");
+    looping.addItemListener(this);
+    rightPanel.add(looping);
+
+    //framerate controller
+    JPanel fpsControl = new JPanel();
+
+    fpsControl.add(new JLabel("fps: "));
+    this.fpsTextbox = new JTextField();
+    fpsTextbox.setColumns(5);
+    fpsTextbox.setText(fps + "");
+    fpsTextbox.setActionCommand("fps");
+    fpsTextbox.addActionListener(this);
+    fpsControl.add(fpsTextbox);
+    rightPanel.add(fpsControl);
+
+    controlPanel.add(buttonPanel);
+    controlPanel.add(rightPanel);
   }
 
   @Override
@@ -142,17 +157,19 @@ public class InteractiveView extends JFrame implements AnimationView, ActionList
         repaint();
         timer.start();
         break;
-      case "speed":
-        fps += 5;
-        timer.setDelay(1000 / fps);
-        break;
-      case "slow":
-        fps -= 5;
-        if (fps <= 0) {
-          fps = 1;
+      case "fps":
+        try {
+          int newfps = Integer.parseInt(fpsTextbox.getText());
+          if (newfps > 0 && newfps < 4096) {
+            fps = newfps;
+            timer.setDelay(1000 / fps);
+          }
+        } catch(NumberFormatException ignored) {
+          
         }
-        timer.setDelay(1000 / fps);
         break;
+      default:
+        throw new IllegalStateException("Unexpected value: " + cmd);
     }
   }
 
@@ -161,24 +178,11 @@ public class InteractiveView extends JFrame implements AnimationView, ActionList
     String cmd = ((JCheckBox) e.getItemSelectable()).getActionCommand();
     if (cmd.equals("loop")) {
       isLooping = !isLooping;
-    }
-  }
-
-
-  /**
-   * This ActionListener class triggers every 1000 / fps milliseconds. Every time it triggers,
-   * it increments the tick and updates the visuals of this view. When the animation runs out of
-   * frames, this class stops the timer and the window stops changing.
-   */
-  private class MyActionListener implements ActionListener {
-
-    @Override
-    public void actionPerformed(ActionEvent event) {
-      tick++;
-      panel.setFrame(animation.getFrame(tick));
-      repaint();
-      if (tick >= animation.getNFrames() - 1) {
-        timer.stop();
+      if (isLooping) {
+        looping.setText("Loop Animation (on)");
+      }
+      else {
+        looping.setText("Loop Animation (off)");
       }
     }
   }
