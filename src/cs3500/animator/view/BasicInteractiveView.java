@@ -1,6 +1,6 @@
 package cs3500.animator.view;
 
-import java.awt.BorderLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -57,15 +57,15 @@ public class BasicInteractiveView extends JFrame implements InteractiveView, Act
 
     //main panel
     JPanel mainPanel = new JPanel();
-    mainPanel.setLayout(new BorderLayout());
-    //scroll bars around this main panel
-    JScrollPane mainScrollPane = new JScrollPane(mainPanel);
-    add(mainScrollPane);
+    add(mainPanel);
 
     //animation panel with a scrollbar
     this.panel = new SwingViewPanel();
     this.panel.setFrame(animation.getFrame(0));
-    mainPanel.add(panel);
+    JScrollPane scrollPane = new JScrollPane(panel);
+    scrollPane.setPreferredSize(
+            new Dimension(animation.getWindowWidth(), animation.getWindowHeight()));
+    mainPanel.add(scrollPane);
   }
 
   @Override
