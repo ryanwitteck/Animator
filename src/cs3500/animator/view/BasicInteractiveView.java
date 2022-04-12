@@ -1,12 +1,13 @@
 package cs3500.animator.view;
 
-import java.awt.*;
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.Timer;
 
 import cs3500.animator.model.IAnimation;
 
@@ -96,10 +97,16 @@ public class BasicInteractiveView extends JFrame implements InteractiveView, Act
     timer.start();
   }
 
+  /**
+   * Set the fps of the visualization of this animation to the given framerate.
+   * This view is limited to a fps of 1000 because of the limits of the swing timer.
+   *
+   * @param fps the desired framerate
+   */
   @Override
   public void setFps(int fps) {
-    if (fps < 1 || fps > 4096) {
-      throw new IllegalArgumentException("Error: fps must be in range [1, 4096]");
+    if (fps < 1 || fps > 1000) {
+      throw new IllegalArgumentException("Error: fps must be in range [1, 1000]");
     }
     this.fps = fps;
     this.timer.setDelay(1000 / fps);
