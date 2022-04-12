@@ -25,6 +25,10 @@
 
 In this project, we used the MVC model to design and create an implementation of an animation using
 basic shapes. The traditional roles a controller fills is split between our view and main class.
+There is an exception to this: for our interactive views, we have implemented a controller class 
+that provides the user with a user-friendly UI that gives the user control over the playback options
+of our interactive view, though our view is still responsible for the timer and our main class still
+handles the initial set-up of the view.
 
 ### Model
 
@@ -123,8 +127,21 @@ the information they need.
 In this project, the view is takes on the controller's role of timing and provides the user with
 some visualization of some animation represented by our model. A visualization of an animation is
 represented by the interface AnimationView. To receive a visualization of an animation, the 
-renderAnimation method must be called by the user. We have implemented three types of views: text, 
-visual, and SVG.
+renderAnimation method must be called by the user. We have implemented three types of views that 
+directly implement the AnimationView interface: text, visual, and SVG.
+
+Since part two of this assignment, we have created a new view interface InteractiveView. This 
+interface extends our AnimationView interface and represents a view that the user can interact with 
+as the animation is playing. The interface allows the user to control the playback options of the 
+view. These options include:
+
+-Pausing/Unpausing the animation
+
+-Restarting the animation
+
+-Changing the framerate
+
+-Toggling whether the animation loops after completion
 
 #### Text
 Our text view of an animation produces a readable text visualization of an animation. We have 
@@ -152,11 +169,22 @@ be supplied with an IAnimation model, output destination, and frame rate to func
 implementation of this view relies on parsing the command logs of the ICommands in the given 
 IAnimation to produce the SVG visualization.
 
+#### Interactive
+Our interactive view is implemented in the class BasicInteractiveView. Our implementation creates an
+animated video of an animation model using swing. The visuals provided are identical to those 
+provided by our visual view. In addition to the having all the functionality of the visual view, 
+this interface also defines methods that can be used by our controller class to control the playback
+options of this view. Unlike our other views, this view will not automatically start playing when 
+the renderAnimation method is called and will wait for a controller class to instruct it to start.
+
 ### Controller and IO
 
 In this project, the controller's role of parsing user input is filled by our Main class and the
 classes in the IO package. They are in charge of parsing user inputs and building a model and view
 according to the given input.
+
+There is no controller class for any view except for the interactive view, which is a new addition
+that was added in part three of this assignment.
 
 #### IO Package
 This package contains an interface TweenModelBuilder and two classes AnimationFileReader and 
@@ -172,3 +200,24 @@ parsing that into five pieces of information: the name of the animation file, th
 desired, the output file, and the tick rate of the animation. Using that information, our main 
 method uses an instance of AnimationFileReader and OurModelBuilder to read the given animation file
 and create the appropriate model and view of it.
+
+#### AnimationController
+This interface was created to handle creating and managing the UI for interactive views. It contains
+one method start. When called, this method should render the view the controller is controlling and 
+display some UI that the user can use to control the playback of the view.
+
+We have implemented one type of controller in our SwingController class. This class creates a new 
+window containing a Play/Pause button, Reset button, Looping checkbox, and FPS text-field that can 
+be used to control the playback of any complete implementation of our InteractiveView interface. To
+pause or unpause the animation, simply push the button labeled "Play/Pause"; to restart the 
+animation, simply push the button labeled "Restart"; to toggle looping, simply check or uncheck the
+checkbox labeled "Loop Animation"; and to set the framerate, enter a number into the text-field 
+labeled "fps:".
+
+To make the controls more user-friendly, the label next to the looping checkbox will
+end in "(on)" or "(off)" to clearly display whether the animation is looping, and the fps text-field 
+will always display the current framerate, so that the user will always know the framerate that the
+animation is running in and if they input an unrecognized or invalid framerate. For example, if the 
+user tries to set the framerate to a non-integer, negative integer, or some other unsupported 
+input, neither the framerate of the animation nor the framerate displayed by the text-field will 
+change.
