@@ -14,12 +14,12 @@ import cs3500.animator.model.commands.ChangeColorCmd;
 import cs3500.animator.model.commands.ICommand;
 import cs3500.animator.model.commands.MoveCmd;
 import cs3500.animator.model.commands.ResizeCmd;
-import cs3500.animator.view.AnimationView;
 import cs3500.animator.view.BasicInteractiveView;
 import cs3500.animator.view.InteractiveView;
 
 /**
- * This class runs a short demo of our swing view. It is for testing purposes only.
+ * This class runs a short demo of our interactive view and swing controller.
+ * This class is for testing purposes only.
  */
 public class InteractiveDemo {
 
