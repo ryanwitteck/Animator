@@ -98,8 +98,8 @@ public class BasicInteractiveView extends JFrame implements InteractiveView, Act
 
   @Override
   public void setFps(int fps) {
-    if (fps < 0 || fps > 4096) {
-      return;
+    if (fps < 1 || fps > 4096) {
+      throw new IllegalArgumentException("Error: fps must be in range [1, 4096]");
     }
     this.fps = fps;
     this.timer.setDelay(1000 / fps);

@@ -38,7 +38,7 @@ public class SwingController extends JFrame implements
   public SwingController(InteractiveView view) {
     super("Control Window");
 
-    setSize(400, 200);
+    setSize(350, 150);
     setLocation(0, 0);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -115,8 +115,8 @@ public class SwingController extends JFrame implements
         try {
           int fps = Integer.parseInt(fpsTextbox.getText());
           view.setFps(fps);
-        } catch (NumberFormatException ignored) {
-
+        } catch (Exception exception) {
+          fpsTextbox.setText(view.getFps() + "");
         }
         break;
       default:
