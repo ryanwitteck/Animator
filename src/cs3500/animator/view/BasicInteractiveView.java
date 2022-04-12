@@ -1,6 +1,6 @@
 package cs3500.animator.view;
 
-import java.awt.*;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
