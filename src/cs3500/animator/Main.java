@@ -3,10 +3,13 @@ package cs3500.animator;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import cs3500.animator.controller.AnimationController;
+import cs3500.animator.controller.SwingController;
 import cs3500.animator.io.AnimationFileReader;
 import cs3500.animator.io.OurModelBuilder;
 import cs3500.animator.model.IAnimation;
 import cs3500.animator.view.AnimationView;
+import cs3500.animator.view.BasicInteractiveView;
 import cs3500.animator.view.InteractiveView;
 import cs3500.animator.view.SvgView;
 import cs3500.animator.view.VisualView;
@@ -102,8 +105,9 @@ public class Main {
         view.renderAnimation();
         break;
       case "interactive":
-        view = new InteractiveView("Animation", animation, tickRate);
-        view.renderAnimation();
+        view = new BasicInteractiveView("Animation", animation, tickRate);
+        AnimationController controller = new SwingController((InteractiveView) view);
+        controller.start();
         break;
       default:
         System.out.println("The view type provided is not recognized. Exiting Program.");

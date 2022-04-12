@@ -2,6 +2,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import cs3500.animator.controller.AnimationController;
+import cs3500.animator.controller.SwingController;
 import cs3500.animator.model.IAnimation;
 import cs3500.animator.model.SimpleAnimation;
 import cs3500.animator.model.attributes.Color;
@@ -13,8 +15,8 @@ import cs3500.animator.model.commands.ICommand;
 import cs3500.animator.model.commands.MoveCmd;
 import cs3500.animator.model.commands.ResizeCmd;
 import cs3500.animator.view.AnimationView;
+import cs3500.animator.view.BasicInteractiveView;
 import cs3500.animator.view.InteractiveView;
-import cs3500.animator.view.VisualView;
 
 /**
  * This class runs a short demo of our swing view. It is for testing purposes only.
@@ -44,11 +46,12 @@ public class InteractiveDemo {
     }
     animation.compile();
 
-    AnimationView view = new InteractiveView("Demo", animation, 50);
+    InteractiveView view = new BasicInteractiveView("Demo", animation, 50);
+    AnimationController controller = new SwingController(view);
     try {
-      view.renderAnimation();
+      controller.start();
     } catch (IOException e) {
-      System.out.println("Failed to render demo in SwingDemo.main");
+      System.out.println("Failed to render demo in InteractiveDemo.main");
     }
   }
 }
