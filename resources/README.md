@@ -158,12 +158,10 @@ that rather than measuring time in ticks, time is measured in seconds.
 Our visual view of an animation creates an animated video of an animation model using swing. We have
 implemented this view in the VisualView class. This class requires the user to supply a window
 title, IAnimation, and frame rate in ticks per second. After the renderAnimation method is called,
-a window will appear, on which the animation will play. This class relies on the class
+a scrollable window will appear, on which the animation will play. This class relies on the class
 SwingViewPanel a JPanel, which is responsible for drawing each frame of the animation. After the
 animation finishes running, the window will not close automatically, and if you would like to end
 the animation early, simply close the window.
-
-We have not implemented the ability to scroll through the window yet.
 
 #### SVG
 Our SVG view of an animation produces a text representation of our animation that is compliant
