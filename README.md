@@ -13,7 +13,7 @@
 <h3 align="center">Animator</h3>
 
   <p align="center">
-    CS3500 Assignment 4-5 Spring 2022
+    CS3500 Assignment 4-6 Spring 2022
   </p>
 
   <p align="center">
@@ -24,11 +24,9 @@
 ## Our MVC Model
 
 In this project, we used the MVC model to design and create an implementation of an animation using
-basic shapes. The traditional roles a controller fills is split between our view and main class.
-There is an exception to this: for our interactive views, we have implemented a controller class 
-that provides the user with a user-friendly UI that gives the user control over the playback options
-of our interactive view, though our view is still responsible for the timer and our main class still
-handles the initial set-up of the view.
+basic shapes. The traditional roles a controller fills is split between our view and main classes 
+for non-interactive views. While for interactive views, the controller roles are split between our 
+view, main, and UI classes.
 
 ### Model
 
@@ -39,12 +37,12 @@ broken down into 5 components: Attributes, Shapes, Commands, Frames, and Animati
 Attributes are the smallest and simplest data that exists: Color and Posn, which represent a shape's
 color and position at any given time. These are implemented in our attributes package. 
 
-Since part one of this assignment we have changed our Color class to store RGB values as doubles 
-instead of ints, to allow us to still accurately represent colors when they are not exact integer 
-values. We have also created a new method changeColor that allows us to change the RGB values of a 
-color by a certain amount instead of directly setting it to a value. We created this method, so we 
-could more easily implement our ChangeColorCmd class. We have also changed the toString methods of
-both the Posn and Color classes in order to make the information more easily parsable.
+In part two of this assignment, we changed our Color class to store RGB values as doubles instead of 
+ints to allow us to still accurately represent colors when they are not exact integer values. We 
+also created a new method changeColor that allows us to change the RGB values of a color by a 
+certain amount instead of directly setting it to a value. We created this method, so we could more 
+easily implement our ChangeColorCmd class. We have also changed the toString methods of both the 
+Posn and Color classes in order to make the information more easily parsable.
 
 #### Shapes
 Shapes are the objects being animated by our model and are represented by the interface IShape.
@@ -60,10 +58,10 @@ ellipses and rectangles, respectively, and our model builder and views are able 
 render these two shapes. The CompoundShape class only exists as an example of a more complex 
 implementation of shape and is not properly implemented to work with our model, builder, or view.
 
-Since part one of this assignment, we have removed the shrink and scale up/down methods from the
-Scalable interface and their implementations and added the methods addHorizontal and addVertical to 
-Scalable. The removed methods didn't serve any particular purpose and were unlikely to serve any in 
-the future. Meanwhile, the added methods are being used to more easily implement the ResizeCmd.
+In part two of this assignment, we removed the shrink and scale up/down methods from the Scalable 
+interface and their implementations and added the methods addHorizontal and addVertical to Scalable.
+The removed methods didn't serve any particular purpose and were unlikely to serve any in the 
+future. Meanwhile, the added methods are being used to more easily implement the ResizeCmd.
 
 No other major changes have been made that to any IShape implementations that were not a result of
 changing the design of the Scalable interface.
@@ -87,15 +85,15 @@ position to some other position over a period of time; PlaceCmd, a command that 
 object's position to some position; RemoveDrawableCmd, a command that removes an object from an 
 animation; and ResizeCmd, a command that changes the dimensions of an object over a period of time.
 
-Since part one of this assignment, we have changed the execute method to take in an IAnimation as a
+In part two of this assignment, we changed the execute method to take in an IAnimation as a
 parameter, changed our command classes to store the name of their targets rather than a pointer to 
 their target, and changed the format of the strings returned by our cmdLog method. The first two 
 changes were made mainly because the previous model of ICommand ran into issues when we implemented 
 our new methods in our animation model among other issues due to not following proper coding 
 conventions. We changed the cmdLog method to be more easily parsable.
 
-Besides, these foundational changes to our ICommand implementations, the biggest changes made since 
-part one have been the implementation of all the new ICommand classes themselves. The previous 
+Besides, these foundational changes to our ICommand implementations, the biggest changes made in 
+part two have been the implementation of all the new ICommand classes themselves. The previous 
 AddShapeCmd has been split into AddOvalCmd and AddRectCmd, ResizeCmd is no longer abstract and is
 fully implemented, and the classes ChangeColorCmd and RemoveDrawableCmd are completely new.
 
@@ -105,7 +103,8 @@ animation. Frames provide the necessary information to visualize an animation at
 Frames are represented by the IFrame interface and implemented in the Frame class. Frames are the 
 main building blocks of our visual view implementation.
 
-There have been no changes to our implementation of the IFrame interface or the Frame class.
+There have been no changes to our implementation of the IFrame interface or the Frame class since
+part one of this assignment.
 
 #### Animations
 Animations are our model of an animated video itself. They are defined as a sequence of frames and a
@@ -114,13 +113,18 @@ the AAnimation (an abstract class) and SimpleAnimation classes. An animation all
 access the information necessary to visualize the animation itself either as a video or as a
 sequence of commands.
 
-Since part one of this assignment, we have renamed our implementation of IAnimation to 
-SimpleAnimation and removed multiple redundant methods that offered different ways of getting the 
-frames that model this animation. We have also added new methods to add and remove commands from 
-our animation; add and remove objects from our animation; set and get the window dimensions of our 
-animation; get the commands in this animation; and compile and recompile this animation. These new 
-methods have made our model more flexible and give it a greater ability to provide our views with 
-the information they need.
+In part two of this assignment, we renamed our implementation of IAnimation to SimpleAnimation and 
+removed multiple redundant methods that offered different ways of getting the frames that model 
+this animation. We also added new methods to add and remove commands from our animation; add 
+and remove objects from our animation; set and get the window dimensions of our animation; get the 
+commands in this animation; and compile and recompile this animation. These new methods have made 
+our model more flexible and give it a greater ability to provide our views with the information 
+they need.
+
+Since part two of this assignment, we have only made no changes to our implementation of the model
+except for one bug fix. The bug was that the model sometimes created new IFrames with the list of 
+the objects in the IFrames not being in the correct order, which could affect our visual and 
+interactive views. This has been fixed.
 
 ### View
 
@@ -175,7 +179,7 @@ animated video of an animation model using swing. The visuals provided are ident
 provided by our visual view. In addition to the having all the functionality of the visual view, 
 this interface also defines methods that can be used by our controller class to control the playback
 options of this view. Unlike our other views, this view will not automatically start playing when 
-the renderAnimation method is called and will wait for a controller class to instruct it to start.
+the renderAnimation method is called and will not start until its play method is called.
 
 ### Controller and IO
 
@@ -183,8 +187,10 @@ In this project, the controller's role of parsing user input is filled by our Ma
 classes in the IO package. They are in charge of parsing user inputs and building a model and view
 according to the given input.
 
-There is no controller class for any view except for the interactive view, which is a new addition
-that was added in part three of this assignment.
+For interactive views, we have implemented a new interface InteractiveUI. This interface takes on 
+a mix of traditionally controller and view roles. The InteractiveUI interface contains one method 
+start that renders a user-friendly UI that the user can use to control the playback behavior of an 
+interactive view.
 
 #### IO Package
 This package contains an interface TweenModelBuilder and two classes AnimationFileReader and 
@@ -201,12 +207,12 @@ desired, the output file, and the tick rate of the animation. Using that informa
 method uses an instance of AnimationFileReader and OurModelBuilder to read the given animation file
 and create the appropriate model and view of it.
 
-#### AnimationController
+#### InteractiveUI
 This interface was created to handle creating and managing the UI for interactive views. It contains
-one method start. When called, this method should render the view the controller is controlling and 
+one method start. When called, this method should render the view the UI is connected to and 
 display some UI that the user can use to control the playback of the view.
 
-We have implemented one type of controller in our SwingController class. This class creates a new 
+We have implemented one type of InteractiveUI in our SwingGUI class. This class creates a new 
 window containing a Play/Pause button, Reset button, Looping checkbox, and FPS text-field that can 
 be used to control the playback of any complete implementation of our InteractiveView interface. To
 pause or unpause the animation, simply push the button labeled "Play/Pause"; to restart the 

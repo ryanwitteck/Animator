@@ -1,4 +1,4 @@
-package cs3500.animator.controller;
+package cs3500.animator.ui;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -18,15 +18,16 @@ import javax.swing.BoxLayout;
 import cs3500.animator.view.InteractiveView;
 
 /**
- * This class is a controller of our interactive animation implementation. This controller creates
- * a GUI in a new swing window that the user can use to interact with an interactive view.
- * This controller provides the user with the ability to:
+ * This class is represents a GUI that can be used to control any InteractiveView implementation.
+ * This class creates a GUI in a new swing window that the user can use to interact with an
+ * interactive view using JComponents.
+ * This class provides the user with the ability to:
  * - Start, pause, resume, and restart the animation.
  * - Enable/disable looping.
  * - Increase or decrease the speed of the animation.
  */
-public class SwingController extends JFrame implements
-        AnimationController, ActionListener, ItemListener {
+public class SwingGUI extends JFrame implements
+        InteractiveUI, ActionListener, ItemListener {
   private final InteractiveView view;
   private final JCheckBox looping;
   private final JTextField fpsTextbox;
@@ -41,7 +42,7 @@ public class SwingController extends JFrame implements
    *
    * @param view the InteractiveView that this controller will allow the user to interact with
    */
-  public SwingController(InteractiveView view) {
+  public SwingGUI(InteractiveView view) {
     super("Control Window");
 
     setSize(350, 150);

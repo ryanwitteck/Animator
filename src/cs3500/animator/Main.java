@@ -3,8 +3,8 @@ package cs3500.animator;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import cs3500.animator.controller.AnimationController;
-import cs3500.animator.controller.SwingController;
+import cs3500.animator.ui.InteractiveUI;
+import cs3500.animator.ui.SwingGUI;
 import cs3500.animator.io.AnimationFileReader;
 import cs3500.animator.io.OurModelBuilder;
 import cs3500.animator.model.IAnimation;
@@ -106,7 +106,7 @@ public class Main {
         break;
       case "interactive":
         view = new BasicInteractiveView("Animation", animation, tickRate);
-        AnimationController controller = new SwingController((InteractiveView) view);
+        InteractiveUI controller = new SwingGUI((InteractiveView) view);
         controller.start();
         break;
       default:

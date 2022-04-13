@@ -2,8 +2,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import cs3500.animator.controller.AnimationController;
-import cs3500.animator.controller.SwingController;
+import cs3500.animator.ui.InteractiveUI;
+import cs3500.animator.ui.SwingGUI;
 import cs3500.animator.model.IAnimation;
 import cs3500.animator.model.SimpleAnimation;
 import cs3500.animator.model.attributes.Color;
@@ -48,7 +48,7 @@ public class InteractiveDemo {
     animation.compile();
 
     InteractiveView view = new BasicInteractiveView("Demo", animation, 50);
-    AnimationController controller = new SwingController(view);
+    InteractiveUI controller = new SwingGUI(view);
     try {
       controller.start();
     } catch (IOException e) {
