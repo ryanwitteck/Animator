@@ -178,8 +178,8 @@ Our interactive view is implemented in the class BasicInteractiveView. Our imple
 animated video of an animation model using swing. The visuals provided are identical to those 
 provided by our visual view. In addition to the having all the functionality of the visual view, 
 this interface also defines methods that can be used by our controller class to control the playback
-options of this view. Unlike our other views, this view will not automatically start playing when 
-the renderAnimation method is called and will not start until its play method is called.
+options of this view. Like our other views, this view will automatically start playing when 
+the renderAnimation method is called.
 
 ### Controller and IO
 
