@@ -1,0 +1,51 @@
+canvas 500 500
+
+rectangle name background min-x 0.0 min-y 0.0 width 500.0 height 500 color 0.96078431372 0.96078431372 0.86274509803 from 1 to 200
+oval name sun center-x -100.0 center-y -100.0 x-radius 200 y-radius 200  color 1.0 1.0 0.4 from 1 to 200
+
+oval name R1 center-x 50.0 center-y 10.0 x-radius 6 y-radius 12 color 0.0 0.0 1.0 from 1 to 200
+oval name R2 center-x 100.0 center-y 10.0 x-radius 6 y-radius 12 color 0.0 0.0 1.0 from 1 to 200
+oval name R3 center-x 150.0 center-y 10.0 x-radius 6 y-radius 12 color 0.0 0.0 1.0 from 1 to 200
+oval name R4 center-x 200.0 center-y 10.0 x-radius 6 y-radius 12 color 0.0 0.0 1.0 from 1 to 200
+oval name R5 center-x 250.0 center-y 10.0 x-radius 6 y-radius 12 color 0.0 0.0 1.0 from 1 to 200
+oval name R6 center-x 300.0 center-y 10.0 x-radius 6 y-radius 12 color 0.0 0.0 1.0 from 1 to 200
+oval name R7 center-x 350.0 center-y 10.0 x-radius 6 y-radius 12 color 0.0 0.0 1.0 from 1 to 200
+oval name R8 center-x 400.0 center-y 10.0 x-radius 6 y-radius 12 color 0.0 0.0 1.0 from 1 to 200
+oval name R9 center-x 450.0 center-y 10.0 x-radius 6 y-radius 12 color 0.0 0.0 1.0 from 1 to 200
+oval name R10 center-x 470.0 center-y 10.0 x-radius 6 y-radius 12 color 0.0 0.0 1.0 from 1 to 200
+oval name R11 center-x 0.0 center-y 10.0 x-radius 6 y-radius 12 color 0.0 0.0 1.0 from 1 to 200
+
+
+
+rectangle name cloud min-x 0.0 min-y 0.0 width 500.0 height 100 color 1.0 1.0 1.0 from 1 to 200
+
+rectangle name grass min-x 0.0 min-y 450.0 width 500.0 height 50 color 0.0 1.0 0.0 from 1 to 200
+
+rectangle name leg1 min-x 100.0 min-y 420.0 width 20.0 height 30 color 0.0 0.0 1.0 from 1 to 200
+rectangle name leg2 min-x 130.0 min-y 420.0 width 20.0 height 30 color 0.0 0.0 1.0 from 1 to 200
+
+rectangle name body min-x 100.0 min-y 370.0 width 50.0 height 50 color 0.9 0.5 0.9 from 1 to 200
+oval name head center-x 100.0 center-y 320.0 x-radius 50 y-radius 50 color 0.8 0.6 0.5 from 1 to 200
+
+rectangle name arm1 min-x 80.0 min-y 370.0 width 20.0 height 20 color 0.3 0.7 0.3 from 1 to 200
+rectangle name arm2 min-x 150.0 min-y 370.0 width 25.0 height 20 color 0.3 0.7 0.3 from 1 to 200
+
+rectangle name wandbody min-x 175.0 min-y 340.0 width 10.0 height 50 color 0.7 0.4 0.1 from 1 to 200
+oval name wandHeadCase center-x 167.9 center-y 327.5 x-radius 25 y-radius 25 color 0.7 0.4 0.1 from 1 to 200
+
+oval name wandHead center-x 170.0 center-y 330.0 x-radius 20 y-radius 20 color 0.8 0.0 0.5 from 1 to 200
+
+
+move name R1 moveto 50.0 10.0 170.9 330.5 from 10 to 90
+move name R2 moveto 100.0 10.0 170.9 330.5 from 20 to 100
+move name R3 moveto 150.0 10.0 170.9 330.5 from 15 to 105
+move name R4 moveto 200.0 10.0 170.9 330.5 from 20 to 100
+move name R5 moveto 250.0 10.0 170.9 330.5 from 10 to 110
+move name R6 moveto 300.0 10.0 170.9 330.5 from 30 to 90
+move name R7 moveto 350.0 10.0 170.9 330.5 from 18 to 79
+move name R8 moveto 400.0 10.0 170.9 330.5 from 27 to 138
+move name R9 moveto 450.0 10.0 170.9 330.5 from 17 to 74
+move name R10 moveto 470.0 10.0 170.9 330.5 from 8 to 110
+move name R11 moveto 0.0 10.0 170.9 330.5 from 11 to 120
+
+scale name cloud scaleto 500 100 500 10 from 1 to 150
