@@ -20,7 +20,7 @@ import cs3500.animator.model.IAnimation;
  * - Enable/disable looping.
  * - Increase or decrease the speed of the animation.
  * The animation will be rendered as a video in a new window that is opened when renderAnimation is
- * run. This window will also allow the user to scroll through it (TODO implement scrolling).
+ * run. This window will also allow the user to scroll through it.
  */
 public class BasicInteractiveView extends JFrame implements InteractiveView, ActionListener {
 
@@ -45,7 +45,7 @@ public class BasicInteractiveView extends JFrame implements InteractiveView, Act
   public BasicInteractiveView(String windowTitle, IAnimation animation, int fps) {
     super(windowTitle);
 
-    setSize(animation.getWindowWidth(), animation.getWindowHeight());
+    setSize(animation.getWindowWidth() + 10, animation.getWindowHeight() + 40);
     setLocation(0, 0);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -68,6 +68,8 @@ public class BasicInteractiveView extends JFrame implements InteractiveView, Act
     //animation panel with a scrollbar
     this.panel = new SwingViewPanel();
     this.panel.setFrame(animation.getFrame(0));
+    this.panel.setPreferredSize(
+            new Dimension(10 * animation.getWindowWidth(), 10 * animation.getWindowHeight()));
     JScrollPane scrollPane = new JScrollPane(panel);
     scrollPane.setPreferredSize(
             new Dimension(animation.getWindowWidth(), animation.getWindowHeight()));

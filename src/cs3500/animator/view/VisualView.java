@@ -1,10 +1,10 @@
 package cs3500.animator.view;
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
-import javax.swing.Timer;
+import javax.swing.*;
 
 import cs3500.animator.model.IAnimation;
 
@@ -13,7 +13,7 @@ import cs3500.animator.model.IAnimation;
  * This view controls the timing of the video and relies on the SwingViewPanel class to paint
  * each frame.
  * The animation will be rendered as a video in a new window that is opened when renderAnimation is
- * run. This window will also allow the user to scroll through it (TODO implement scrolling).
+ * run. This window will also allow the user to scroll through it.
  */
 public class VisualView extends JFrame implements AnimationView {
 
@@ -34,14 +34,19 @@ public class VisualView extends JFrame implements AnimationView {
   public VisualView(String windowTitle, IAnimation animation, int fps) {
     super(windowTitle);
 
-    setSize(animation.getWindowWidth(), animation.getWindowHeight());
+    setSize(animation.getWindowWidth() + 10, animation.getWindowHeight() + 40);
     setLocation(0, 0);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     this.animation = animation;
     this.panel = new SwingViewPanel();
     this.panel.setFrame(animation.getFrame(0));
-    this.add(panel);
+    this.panel.setPreferredSize(
+            new Dimension(10 * animation.getWindowWidth(), 10 * animation.getWindowHeight()));
+    JScrollPane scrollPane = new JScrollPane(panel);
+    scrollPane.setPreferredSize(
+            new Dimension(animation.getWindowWidth(), animation.getWindowHeight()));
+    this.add(scrollPane);
     this.timer = new Timer(1000 / fps, new MyActionListener());
     tick = 0;
   }
