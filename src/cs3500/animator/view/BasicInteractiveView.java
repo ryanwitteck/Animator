@@ -36,7 +36,7 @@ public class BasicInteractiveView extends JFrame implements InteractiveView, Act
    * Initializes all fields of this class and sets the parameters of the window that the animation
    * will be animated in.
    * The window will not appear until the renderAnimation method is called.
-   * The animation will not play until the play button is pressed.
+   * The animation will not play until the play method is called.
    *
    * @param windowTitle the title of the animation window
    * @param animation   the animation that this view will visualize

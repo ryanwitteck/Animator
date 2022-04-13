@@ -18,13 +18,13 @@ import cs3500.animator.view.BasicInteractiveView;
 import cs3500.animator.view.InteractiveView;
 
 /**
- * This class runs a short demo of our interactive view and swing controller.
+ * This class runs a short demo of our interactive view and swing GUI.
  * This class is for testing purposes only.
  */
 public class InteractiveDemo {
 
   /**
-   * This method creates and renders a basic animation in the swing view.
+   * This method creates and renders a basic animation in the interactive view and a control GUI.
    * This is for testing purposes only.
    *
    * @param args the command line arguments. These are not used in this method.
