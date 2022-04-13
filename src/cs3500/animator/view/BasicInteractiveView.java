@@ -50,6 +50,12 @@ public class BasicInteractiveView extends JFrame implements InteractiveView, Act
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     this.animation = animation;
+    if (fps < 1) {
+      fps = 1;
+    }
+    else if (fps > 1000) {
+      fps = 1000;
+    }
     this.timer = new Timer(1000 / fps, this);
     this.fps = fps;
     this.tick = 0;
@@ -71,7 +77,7 @@ public class BasicInteractiveView extends JFrame implements InteractiveView, Act
   @Override
   public void renderAnimation() {
     this.setVisible(true);
-    repaint();
+    tick = 0;
     timer.start();
   }
 
