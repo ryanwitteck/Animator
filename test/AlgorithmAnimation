@@ -1,0 +1,77 @@
+import java.io.FileWriter;
+import java.io.IOException;
+import org.junit.Test;
+
+/**
+ * This class runs a short demo of our interactive view and swing GUI. This class is for testing
+ * purposes only.
+ */
+
+public class AlgorithmAnimation {
+
+  @Test
+  public void fileCreator() throws IOException {
+
+    FileWriter writer = new FileWriter("/Users/ryan/OOD Projects/Animator/resources/Program.txt");
+    writer.append("canvas 1000 1000 \n");
+    writer.append("rectangle name void min-x 0.0 min-y 0.0 width 1000 height 1000 color 0.0 0.0 0.0 from 1 to 2000\n");
+    writer.append("oval name sun center-x 425.0 center-y 425.0 x-radius 100 y-radius 100 color 1.0 1.0 0.5 from 1 to 2000\n");
+
+    writer.append("oval name earth center-x 800.0 center-y 425.0 x-radius 50 y-radius 50 color 0.8 1.0 0.4 from 1 to 2000\n");
+    writer.append("oval name mars center-x 455.0 center-y 175.0 x-radius 50 y-radius 50 color 0.8 0.4 0.0 from 1 to 2000\n");
+    writer.append("oval name merc center-x 455.0 center-y 550.0 x-radius 20 y-radius 20 color 0.7 0.4 0.0 from 1 to 2000\n");
+    writer.append("oval name venus center-x 200.0 center-y 425.0 x-radius 40 y-radius 40 color 0.0 0.2 1.0 from 1 to 3000\n");
+    //writer.append("oval name asteroid center-x 0.0 center-y 0.0 x-radius 30 y-radius 30 color 0.7 0.4 0.1 from 1 to 500\n");
+    double prevxE = 800.0;
+    double prevyE = 425.0;
+    double prevxM = 455.0;
+    double prevyM = 175.0;
+    double prevxC = 455.0;
+    double prevyC = 550.0;
+    double prevxV = 200.0;
+    double prevyV = 425.0;
+    int t1M = 1;
+    int t2M = 4;
+    int t1C = 1;
+    int t2C = 3;
+    int t1 = 1;
+    int t2 = 5;
+    int t1V = 1;
+    int t2V = 6;
+
+    for(int i = 1; i<=360; i++){
+      double newxE = (375) * (Math.cos(i)) + 425;
+      double newyE = (375) * (Math.sin(i)) + 425;
+      double newxM = (225) * (Math.cos(360-i)) + 425;
+      double newyM = (225) * (Math.sin(360-i)) + 425;
+      double newxC = (100) * (Math.cos(i)) + 455;
+      double newyC = (100) * (Math.sin(i)) + 485;
+      double newxV = (375) * (Math.cos(i)) + 425;
+      double newyV = (375) * (Math.sin(i)) + 425;
+      writer.append("move name earth moveto "+prevxE+" "+prevyE+" "+newxE +" "+ newyE+" from "+t1+" to "+t2+"\n");
+      writer.append("move name mars moveto "+prevxM+" "+prevyM+" "+newxM +" "+ newyM+" from "+t1M+" to "+t2M+"\n");
+      writer.append("move name merc moveto "+prevxC+" "+prevyC+" "+newxC +" "+ newyC+" from "+t1C+" to "+t2C+"\n");
+      writer.append("move name venus moveto "+prevxV+" "+prevyV+" "+newxV +" "+ newyV+" from "+t1V+" to "+t2V+"\n");
+      t1 = t2;
+      t2+=4;
+      t1M = t2M;
+      t2M+=5;
+      t1C = t2C;
+      t2C+=3;
+      t1V = t2V;
+      t2V+=6;
+      prevxE = newxE;
+      prevyE = newyE;
+      prevxM = newxM;
+      prevyM = newyM;
+      prevxC = newxC;
+      prevyC = newyC;
+      prevxV = newxV;
+      prevyV = newyV;
+    }
+
+    writer.close();
+
+  }
+
+}
