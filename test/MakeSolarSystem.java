@@ -1,5 +1,3 @@
-package cs3500.animator;
-
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -25,10 +23,14 @@ public class MakeSolarSystem {
 
     writer.append(makePlanet("sun", center - 50, center - 50, 100, 1, 1, 0.5F, 1, endTime));
 
-    writer.append(makePlanet("mercury", center + 140, center - 10, 20, 0.2F, 0.2F, 0.2F, 1, endTime));
-    writer.append(makePlanet("venus", center + 210, center - 20, 40, 0.9F, 0.35F, 0.35F, 1, endTime));
-    writer.append(makePlanet("earth", center + 280, center - 20, 40, 0.1F, 0.1F, 0.9F, 1, endTime));
-    writer.append(makePlanet("mars", center + 350, center - 20, 40, 0.5F, 0.15F, 0.15F, 1, endTime));
+    writer.append(makePlanet("mercury", center + 140, center - 10,
+            20, 0.2F, 0.2F, 0.2F, 1, endTime));
+    writer.append(makePlanet("venus", center + 210, center - 20,
+            40, 0.9F, 0.35F, 0.35F, 1, endTime));
+    writer.append(makePlanet("earth", center + 280, center - 20,
+            40, 0.1F, 0.1F, 0.9F, 1, endTime));
+    writer.append(makePlanet("mars", center + 350, center - 20,
+            40, 0.5F, 0.15F, 0.15F, 1, endTime));
 
     int nPlanets = 4;
     String[] names = {"mercury", "venus", "earth", "mars"};
