@@ -17,12 +17,12 @@ import cs3500.animator.model.IAnimation;
  * The animation will be rendered as a video in a new window that is opened when renderAnimation is
  * run. This window will also allow the user to scroll through it.
  */
-public class VisualView extends JFrame implements AnimationView {
+public class VisualView extends JFrame implements AnimationView, ActionListener {
 
-  private final Timer timer;
-  private final IAnimation animation;
-  private final SwingViewPanel panel;
-  private int tick;
+  protected final Timer timer;
+  protected final IAnimation animation;
+  protected final SwingViewPanel panel;
+  protected int tick;
 
   /**
    * Sole constructor for VisualView. Initializes all fields of this class and sets the
@@ -49,7 +49,15 @@ public class VisualView extends JFrame implements AnimationView {
     scrollPane.setPreferredSize(
             new Dimension(animation.getWindowWidth(), animation.getWindowHeight()));
     this.add(scrollPane);
-    this.timer = new Timer(1000 / fps, new MyActionListener());
+
+    if (fps < 1) {
+      fps = 1;
+    }
+    else if (fps > 1000) {
+      fps = 1000;
+    }
+
+    this.timer = new Timer(1000 / fps, this);
     tick = 0;
   }
 
@@ -60,21 +68,13 @@ public class VisualView extends JFrame implements AnimationView {
     timer.start();
   }
 
-  /**
-   * This ActionListener class triggers every 1000 / fps milliseconds. Every time it triggers,
-   * it increments the tick and updates the visuals of this view. When the animation runs out of
-   * frames, this class stops the timer and the window stops changing.
-   */
-  private class MyActionListener implements ActionListener {
-
-    @Override
-    public void actionPerformed(ActionEvent event) {
-      tick++;
-      panel.setFrame(animation.getFrame(tick));
-      repaint();
-      if (tick >= animation.getNFrames() - 1) {
-        timer.stop();
-      }
+  @Override
+  public void actionPerformed(ActionEvent event) {
+    tick++;
+    panel.setFrame(animation.getFrame(tick));
+    repaint();
+    if (tick >= animation.getNFrames() - 1) {
+      timer.stop();
     }
   }
 }

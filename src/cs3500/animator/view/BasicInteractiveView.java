@@ -1,13 +1,6 @@
 package cs3500.animator.view;
 
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.Timer;
 
 import cs3500.animator.model.IAnimation;
 
@@ -22,14 +15,10 @@ import cs3500.animator.model.IAnimation;
  * The animation will be rendered as a video in a new window that is opened when renderAnimation is
  * run. This window will also allow the user to scroll through it.
  */
-public class BasicInteractiveView extends JFrame implements InteractiveView, ActionListener {
+public class BasicInteractiveView extends VisualView implements InteractiveView {
 
-  private final Timer timer;
-  private final IAnimation animation;
-  private final SwingViewPanel panel;
-  private int fps;
-  private int tick;
   private boolean isLooping;
+  private int fps;
 
   /**
    * Sole constructor for InteractiveView.
@@ -43,44 +32,15 @@ public class BasicInteractiveView extends JFrame implements InteractiveView, Act
    * @param fps         the framerate of this animation in frames per second
    */
   public BasicInteractiveView(String windowTitle, IAnimation animation, int fps) {
-    super(windowTitle);
-
-    setSize(animation.getWindowWidth() + 10, animation.getWindowHeight() + 40);
-    setLocation(0, 0);
-    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-    this.animation = animation;
+    super(windowTitle, animation, fps);
     if (fps < 1) {
       fps = 1;
     }
     else if (fps > 1000) {
       fps = 1000;
     }
-    this.timer = new Timer(1000 / fps, this);
     this.fps = fps;
-    this.tick = 0;
     this.isLooping = false;
-
-    //main panel
-    JPanel mainPanel = new JPanel();
-    add(mainPanel);
-
-    //animation panel with a scrollbar
-    this.panel = new SwingViewPanel();
-    this.panel.setFrame(animation.getFrame(0));
-    this.panel.setPreferredSize(
-            new Dimension(10 * animation.getWindowWidth(), 10 * animation.getWindowHeight()));
-    JScrollPane scrollPane = new JScrollPane(panel);
-    scrollPane.setPreferredSize(
-            new Dimension(animation.getWindowWidth(), animation.getWindowHeight()));
-    mainPanel.add(scrollPane);
-  }
-
-  @Override
-  public void renderAnimation() {
-    this.setVisible(true);
-    tick = 0;
-    timer.start();
   }
 
   @Override
